@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+description: Rule for writing the commit messages
+alwaysApply: false
 ---
 
 As an AI, ensure every commit message strictly follows the Conventional Commits specification:
