@@ -1,0 +1,4 @@
+# This directory is ignored as it contains course materials provided by the lecturer not my own work.
+
+**/*
+!/.gitignore
