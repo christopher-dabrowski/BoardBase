@@ -1,7 +1,6 @@
 ---
 title: BoardBase Case Study
 subtitle: Zaawansowane systemy baz danych - Projekt Etap 1
-# author: "Krzysztof Dąbrowski 293101"
 bibliography: ../references.bib
 csl: ../diabetologia.csl
 link-citations: true
@@ -19,6 +18,14 @@ format:
     toc: false
     number-sections: true
     colorlinks: true
+filters:
+  - acronyms
+acronyms:
+  fromfile: ./glossary.yaml
+  insert_links: true
+  loa_title: Zastosowane skróty
+  insert_loa: end
+  sorting: alphabetical
 ---
 
 # Koncepcja Systemu
@@ -63,6 +70,8 @@ Przypadki użycia systemu.
 - Rejestracja rozegranych partii
 - Uwierzytelnianie: rejestracja/logowanie
 - Zapisywanie gier na listę życzeń
+
+# Wybrany {{< acr SZBD >}}
 
 
 # Źródła
