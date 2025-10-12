@@ -1,0 +1,71 @@
+---
+title: BoardBase Case Study
+subtitle: Zaawansowane systemy baz danych - Projekt Etap 1
+# author: "Krzysztof Dąbrowski 293101"
+bibliography: ../references.bib
+csl: ../diabetologia.csl
+link-citations: true
+author:
+  - name: Krzysztof Dąbrowski 293101
+    id: kd
+    # orcid: 293101
+    email: krzysztof.dabrowski7.stud@pw.edu.pl
+    affiliation: Politechnika Warszawska
+# format: html
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: A4
+    toc: false
+    number-sections: true
+    colorlinks: true
+---
+
+# Koncepcja Systemu
+
+Wielu miłośników gier planszowych chciałoby wiedzieć jakie gry planszowe są dostępne na rynku czy w jakich wersjach zostały wydane czy móc łatwo sprawdzić inne informacje o grach planszowych. \
+Aplikacja bazodanowa _BoardBase_ pomoże rozwiązać te problemy oraz umożliwi graczom recenzję gier oraz łatwe przechowywanie informacji o posiadanej kolekcji gier lub rozegranych partiach.
+
+
+## Dane przechowywane w bazie
+
+Główne informacje, które będą przechowywane.
+
+- Informacje o grach planszowych
+- Kategorie i mechaniki gier w postaci słowników
+- Dane użytkowników
+- Oceny gier
+- Recenzje gier
+- Kolekcje gier danych użytkowników
+- Lisy życzeń użytkowników
+- Dziennik partii gier użytkowników
+
+
+## Użytkownicy systemu
+
+Role dostępne w systemie.
+
+- Gość: przegląda katalog i recenzje
+- Użytkownik: ocenia gry, pisze recenzje, prowadzi kolekcję i dziennik partii
+- Administrator: zarządza danymi gier, kategoriami
+
+## Usługi udostępniane użytkownikom
+
+Przypadki użycia systemu.
+
+- Wyszukiwanie gier w katalogu
+- Oglądanie rankingów gier
+- Wyszukanie podobnych tytułów do wskazanej gry
+- Podgląd szczegółowych informacji o grze
+- Ocena gry w postaci gwiazdek lub punktów
+- Napisanie recenzji gry
+- Katalogowanie posiadanych gier
+- Rejestracja rozegranych partii
+- Uwierzytelnianie: rejestracja/logowanie
+- Zapisywanie gier na listę życzeń
+
+
+# Źródła
+
+::: {#refs}
+:::
