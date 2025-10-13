@@ -92,6 +92,9 @@ Przypadki użycia systemu.
 Słyszałem, że \acr{SZBD} Postgres pozwala na instalowanie wielu modułów, które znacząco rozwijają jego działanie @youtube:IReplacedMyEntireTechStackWithPostgres. Możliwe, że nie będę korzystał z nich w tym projekcie, ale mimo tego uznałem to za bardzo ciekawe. Z tego powodu wybieram \acr{SZBD} **Postgres**. \
 Dodatkowo nie używałem wcześniej Postgresa i chcę się go nauczyć.
 
+Zastanawiałem się czy zainstalować Postgress bezpośrednio na komputerze, czy uruchomić go w kontenerze Docker. Skłaniałem się w strone kontenera, ponieważ instalacja wydaje sie znacznie prostsza. Planuję też uruchamiać mój projekt na komputerze z systemem Windows i Mac OS, co wydaje się również łatwiejsze z użyciem kontenera.
+Nie byłem pewny czy zastosowanie kontenera jest dobrą praktyką w środowiskach produkcyjnych, ale przeczytanie dyskusji Why not run production postgres in docker? @reddit:WhyNotRunProductionPostgresInDocker rozwiało moje wątpliwości.
+
 # Diagram \acr{ERD}
 
 Wysokopoziomowy model relacji przedstawiony na @fig-erd.
