@@ -76,6 +76,10 @@ Przypadki użycia systemu.
 
 # Wybrany {{< acr SZBD >}}
 
+Słyszałem, że {{< acr SZBD >}} Postgres pozwala na instalowanie wielu modułów, które znacząco rozwijają jego działanie @youtube:IReplacedMyEntireTechStackWithPostgres. Możliwe, że nie będę korzystał z nich w tym projekcie, ale mimo tego uznałem to za bardzo ciekawe. Z tego powodu wybieram **Postgres**. \
+Dodatkowo nie używałem wcześniej Postgresa i chcę się go nauczyć.
+
+
 
 # Źródła {.unnumbered}
 
