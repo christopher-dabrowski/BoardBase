@@ -1,11 +1,47 @@
+---
+config:
+  theme: default
+  look: handDrawn
+---
 erDiagram
-    GAME {
-        string gameName
+    direction TB
+
+    BoardGame {
+        string name
+        string description
+        string designer
+        int declaredMinimalPlayerCount
+        int declaredMaximumPlayerCount
+        int declaredMinimalAge
     }
-    CATEGORY {
-        string categoryName
+    BoardGame }o--o{ Category : "belongs to"
+    BoardGame ||--o{ Rating : "receives"
+    BoardGame ||--o{ GameRelease : "printed in"
+    BoardGame }o--o{ Mechanic : "uses"
+
+    GameRelease {
+      date releaseDate
+      string language
     }
-    RATING {
+    GameRelease }o--|| Publisher : "published by"
+
+    Publisher {
+      string name
+      string websiteUrl
+      string description
+    }
+
+    Category {
+        string name
+    }
+    Category:::dictionaryTable
+
+    Mechanic {
+      string name
+    }
+    Mechanic:::dictionaryTable
+
+    Rating {
         int enjoyment
         int minimalPlayerCount
         int maximumPlayerCount
@@ -13,25 +49,43 @@ erDiagram
         int complexity
         timestamp date
     }
-    USER {
+
+    User {
         string username
         string email
         boolean isAdmin
         binary passwordHash
     }
+    User ||--o{ Rating : "gives"
+    User ||--o{ Review : "writes"
+    User }o--o{ Collection : "owns"
 
-    USER ||--o{ RATING : "gives"
-    GAME ||--o{ RATING : "receives"
+    Review {
+        string reviewText
+        timestamp date
+    }
+    Review ||--o{ BoardGame : "is reviewed in"
 
-    %% USER ||--o{ REVIEW : "writes"
-    %% GAME ||--o{ REVIEW : "is reviewed in"
+    Collection {
+      string name
+    }
+    Collection }o--o{ GameRelease : "includes"
 
-    %% USER ||--|| COLLECTION : "owns"
-    %% COLLECTION }o--o{ GAME : "contains"
+    Play {
+      date playDate
+      int playerCount
+      int durationInMinutes
+      string note
+    }
+    Play }o--|| BoardGame : "played"
+    Play }o--|{ User : "played by"
+    Play }o--o| User : "winner"
 
-    %% USER ||--|| WISHLIST : "has"
-    %% WISHLIST }o--o{ GAME : "includes"
+    GameWish {
+      string note
+      enum wantLevel
+    }
+    GameWish }o--|| BoardGame : "is wished for"
+    GameWish }o--|| User : "is wished for by"
 
-    GAME }o--o{ CATEGORY : "belongs to category"
-
-    GAME }o--o{ MECHANIC : "uses"
+    classDef dictionaryTable :,stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
