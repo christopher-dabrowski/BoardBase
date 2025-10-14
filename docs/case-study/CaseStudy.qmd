@@ -38,7 +38,16 @@ Kod projektu i sprawozdań jest dostępny na GitHub [BoardBase ![](https://githu
 # Koncepcja Systemu
 
 Wielu miłośników gier planszowych chciałoby wiedzieć jakie gry planszowe są dostępne na rynku czy w jakich wersjach zostały wydane czy móc łatwo sprawdzić inne informacje o grach planszowych. \
-Aplikacja bazodanowa _BoardBase_ pomoże rozwiązać te problemy oraz umożliwi graczom recenzję gier oraz łatwe przechowywanie informacji o posiadanej kolekcji gier lub rozegranych partiach.
+Aplikacja bazodanowa _BoardBase_ pomoże rozwiązać te problemy.
+
+W ramach aplikacji _BoardBase_ będą przechowywane dane o grach planszowych, ich kategorii, mechanikach, ocenach graczy oraz rozgrywanych partiach. Dzięki temu gracze będą mogli wyszukać informacje o interesujących ich tytułach.
+Gracze będą mogli dzielić się swoimi ocenami gier oraz recenzjami. Na tej podstawie generowane będą rankingi najciekawszych gier.
+
+Użytkownicy będą mogli monitorować swoją kolekcję gier oraz rozgrywane partie oraz interesujące ich gry, których zakup rozważają.
+
+Administratorzy będą dodawać nowe gry do katalogu.
+
+Dzięki tym funkcjom aplikacja _BoardBase_ ułatwi znajdowanie interesujących graczy gier oraz dowiadywanie się więcej na temat ich ulubionych tytułów.
 
 ## Dane przechowywane w bazie
 
