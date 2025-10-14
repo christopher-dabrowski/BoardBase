@@ -19,6 +19,7 @@ format:
     toc: false
     number-sections: true
     colorlinks: true
+    fig-pos: 'H'
 filters:
   - acronyms
 acronyms:
@@ -134,11 +135,15 @@ Oznacza to, że \acr{SZBD} działa i odpowiada na zapytania.
 
 Wysokopoziomowy model relacji przedstawiony na @fig-erd.
 
-```{mermaid}
+![Diagram ERD](ERD.png){#fig-erd height=87%}
+
+<!-- ```{mermaid}
+%%| fig-align: left
 %%| label: fig-erd
 %%| file: ERD.mmd
-%%| fig-width: 6
-```
+%%| fig-width: 4
+%%| fig-pos: 'H'
+``` -->
 
 # Źródła {.unnumbered}
 
