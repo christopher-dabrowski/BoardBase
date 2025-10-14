@@ -14,6 +14,7 @@ lang: pl
 # format: html
 format:
   pdf:
+    output-file: Etap 1 Case Study Krzysztof Dąbrowski 293101.pdf
     documentclass: scrartcl
     papersize: A4
     toc: false
