@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:18.0
+    command: -c config_file=/etc/postgresql.conf
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: boardbase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql.conf:/etc/postgresql.conf
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    labels:
+      com.example.description: "Postgres data volume"
