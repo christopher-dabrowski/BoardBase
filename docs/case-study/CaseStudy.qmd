@@ -31,11 +31,14 @@ acronyms:
   sorting: alphabetical
 ---
 
+::: {.callout-note title="Kod projektu"}
+Kod projektu i sprawozdań jest dostępny na GitHub [BoardBase ![](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png){width=20}](https://github.com/christopher-dabrowski/BoardBase)
+:::
+
 # Koncepcja Systemu
 
 Wielu miłośników gier planszowych chciałoby wiedzieć jakie gry planszowe są dostępne na rynku czy w jakich wersjach zostały wydane czy móc łatwo sprawdzić inne informacje o grach planszowych. \
 Aplikacja bazodanowa _BoardBase_ pomoże rozwiązać te problemy oraz umożliwi graczom recenzję gier oraz łatwe przechowywanie informacji o posiadanej kolekcji gier lub rozegranych partiach.
-
 
 ## Dane przechowywane w bazie
 
