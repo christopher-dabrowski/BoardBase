@@ -4,12 +4,13 @@ subtitle: Zaawansowane systemy baz danych - Projekt Etap 1
 bibliography: ../references.bib
 csl: ../diabetologia.csl
 link-citations: true
+mermaid-format: png
 author:
   - name: Krzysztof Dąbrowski 293101
     id: kd
-    # orcid: 293101
     email: krzysztof.dabrowski7.stud@pw.edu.pl
     affiliation: Politechnika Warszawska
+lang: pl
 # format: html
 format:
   pdf:
@@ -91,7 +92,15 @@ Przypadki użycia systemu.
 Słyszałem, że \acr{SZBD} Postgres pozwala na instalowanie wielu modułów, które znacząco rozwijają jego działanie @youtube:IReplacedMyEntireTechStackWithPostgres. Możliwe, że nie będę korzystał z nich w tym projekcie, ale mimo tego uznałem to za bardzo ciekawe. Z tego powodu wybieram \acr{SZBD} **Postgres**. \
 Dodatkowo nie używałem wcześniej Postgresa i chcę się go nauczyć.
 
+# Diagram \acr{ERD}
 
+Wysokopoziomowy model relacji przedstawiony na @fig-erd.
+
+```{mermaid}
+%%| label: fig-erd
+%%| file: ERD.mmd
+%%| fig-width: 6
+```
 
 # Źródła {.unnumbered}
 
