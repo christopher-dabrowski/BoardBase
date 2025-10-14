@@ -1,6 +1,27 @@
 erDiagram
-    %% USER ||--o{ RATING : "gives"
-    %% GAME ||--o{ RATING : "receives"
+    GAME {
+        string gameName
+    }
+    CATEGORY {
+        string categoryName
+    }
+    RATING {
+        int enjoyment
+        int minimalPlayerCount
+        int maximumPlayerCount
+        int minimalAge
+        int complexity
+        timestamp date
+    }
+    USER {
+        string username
+        string email
+        boolean isAdmin
+        binary passwordHash
+    }
+
+    USER ||--o{ RATING : "gives"
+    GAME ||--o{ RATING : "receives"
 
     %% USER ||--o{ REVIEW : "writes"
     %% GAME ||--o{ REVIEW : "is reviewed in"
@@ -12,30 +33,5 @@ erDiagram
     %% WISHLIST }o--o{ GAME : "includes"
 
     GAME }o--o{ CATEGORY : "belongs to category"
-    GAME {
-        string gameName
-    }
-    CATEGORY {
-        string categoryName
-    }
+
     GAME }o--o{ MECHANIC : "uses"
-
-    %% USER ||--o{ PLAY_SESSION : "logs"
-    %% GAME ||--o{ PLAY_SESSION : "is played in"
-
-    CUSTOMER ||--o{ ORDER : places
-    %% CUSTOMER {
-    %%     string name
-    %%     string custNumber
-    %%     string sector
-    %% }
-    %% ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber
-        string deliveryAddress
-    }
-    %% LINE-ITEM {
-    %%     string productCode
-    %%     int quantity
-    %%     float pricePerUnit
-    %% }
