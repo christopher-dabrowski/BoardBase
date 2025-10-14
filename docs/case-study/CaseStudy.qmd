@@ -92,8 +92,43 @@ Przypadki użycia systemu.
 Słyszałem, że \acr{SZBD} Postgres pozwala na instalowanie wielu modułów, które znacząco rozwijają jego działanie @youtube:IReplacedMyEntireTechStackWithPostgres. Możliwe, że nie będę korzystał z nich w tym projekcie, ale mimo tego uznałem to za bardzo ciekawe. Z tego powodu wybieram \acr{SZBD} **Postgres**. \
 Dodatkowo nie używałem wcześniej Postgresa i chcę się go nauczyć.
 
+## Instalacja
+
 Zastanawiałem się czy zainstalować Postgress bezpośrednio na komputerze, czy uruchomić go w kontenerze Docker. Skłaniałem się w strone kontenera, ponieważ instalacja wydaje sie znacznie prostsza. Planuję też uruchamiać mój projekt na komputerze z systemem Windows i Mac OS, co wydaje się również łatwiejsze z użyciem kontenera.
 Nie byłem pewny czy zastosowanie kontenera jest dobrą praktyką w środowiskach produkcyjnych, ale przeczytanie dyskusji Why not run production postgres in docker? @reddit:WhyNotRunProductionPostgresInDocker rozwiało moje wątpliwości.
+
+## Konfiguracja
+
+W celu skonfigurowania \acr{SZBD} postanowiłem dostosować przykładowy plik konfiguracyjny. Zgodnie z oficjalną instrukcją @docker:HowToUseThePostgresDockerOfficialImage i dokumentacją, do której odnosi @github:docker-library-readme, skopiowałem plik `/usr/share/postgresql/postgresql.conf.sample` z kontenera do mojego projektu i dostosowałem go do moich potrzeb.
+
+Nie mam jeszcze zbyt dużej wiedzy o konfiguracji \acr{SZBD} Postgres, więc zostawiłem większość ustawień na wartościach domyślnych.
+
+Pozostawiłem odkomentowane ustawienia
+```conf
+listen_addresses = '*'
+autovacuum_worker_slots = 16
+```
+oraz ustawiłem kilka ustawień związanych z logowaniem, żeby mieć więcej informacji o działaniu \acr{SZBD} i potencjalnych problemach.
+Lekko zwiększyłem też dostępną pamięć, ponieważ mam zapas RAMu na komputerze, a oryginalne ustawienia wydawały mi się niskie. Zmieniłem też nazwę pliku logów na granularność na poziomie dnia, ponieważ nie będę potrzebował większej ilości plików logów.
+```conf
+shared_buffers = 256MB
+work_mem = 8MB
+log_filename = 'postgresql-%Y-%m-%d.log'
+log_duration = on
+log_statement = 'all'
+track_io_timing = on
+track_functions = all
+```
+
+Żeby wczytać konfigurację w obrazie Postgres skonfigurowałem w pliku _docker-compose.yml_ opcje `command: -c config_file=/etc/postgresql.conf` i `volumes: - ./postgresql.conf:/etc/postgresql.conf`.
+
+## Testowanie działania
+
+Aby sprawdzić czy \acr{SZBD} działa poprawnie uruchomiłem kontener z moim plikiem konfiguracyjnym.
+
+Połączyłem się do bazy za pomocą `psql` i sprawdziłem czy działa poprawnie. \
+Polecenie `SELECT version();` zwróciło poprawną wersję: `PostgreSQL 18.0 (Debian 18.0-1.pgdg13+3) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit`. \
+Oznacza to, że \acr{SZBD} działa i odpowiada na zapytania.
 
 # Diagram \acr{ERD}
 
