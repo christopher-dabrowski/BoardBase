@@ -11,8 +11,8 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 ### 🎯 Wymagania krytyczne
 
-- [ ] **Case study** - krótki opis problematyki (~½ strony)
-- [ ] **SZBD** - wybrany, zainstalowany i skonfigurowany
+- [x] **Case study** - krótki opis problematyki (~½ strony)
+- [x] **SZBD** - wybrany, zainstalowany i skonfigurowany
 - [ ] **Minimum 8 tabel** (nie-asocjacyjnych, nie-słownikowych)
 - [ ] **Dane** - każda tabela zawiera min. 4 rekordy
 - [ ] **Relacje** - zdefiniowane między tabelami
@@ -22,19 +22,19 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 ### 📋 Case Study & Projekt
 
-- [ ] Napisać case study (~½ strony)
-- [ ] Stworzyć diagram ERD (może być odręczny, zdjęcie)
-- [ ] Opisać jakie dane będą przechowywane
-- [ ] Opisać użytkowników i ich potrzeby
-- [ ] Opisać usługi do udostępnienia
-- [ ] **Wgrać do ISOD** w rubryce "Case Study"
+- [x] Napisać case study (~½ strony)
+- [x] Stworzyć diagram ERD (może być odręczny, zdjęcie)
+- [x] Opisać jakie dane będą przechowywane
+- [x] Opisać użytkowników i ich potrzeby
+- [x] Opisać usługi do udostępnienia
+- [x] **Wgrać do ISOD** w rubryce "Case Study"
 
 ### 🗄️ System zarządzania bazą danych
 
-- [ ] Wybrać SZBD (SQL Server/PostgreSQL/MySQL/Oracle)
-- [ ] Zainstalować i skonfigurować (można Docker)
+- [x] Wybrać SZBD (SQL Server/PostgreSQL/MySQL/Oracle)
+- [x] Zainstalować i skonfigurować (można Docker)
 - [ ] Uzasadnić wybór w sprawozdaniu
-- [ ] Przedstawić efekty i konfigurację
+- [x] Przedstawić efekty i konfigurację
 
 ### 🏗️ Struktura bazy danych (2.5 pkt)
 
