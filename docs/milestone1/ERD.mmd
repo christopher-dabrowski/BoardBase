@@ -1,0 +1,121 @@
+---
+config:
+  theme: default
+  look: handDrawn
+---
+erDiagram
+    direction TB
+
+    BoardGame {
+        string name
+        string description
+        string designer
+        int declaredMinimalPlayerCount
+        int declaredMaximumPlayerCount
+        int declaredMinimalAge
+        string[] categories
+        string[] mechanics
+    }
+    %% BoardGame }o--o{ Category : "belongs to"
+    BoardGame ||--o{ Rating : "receives"
+    BoardGame ||--o{ GameRelease : "printed in"
+    %% BoardGame }o--o{ Mechanic : "uses"
+
+    GameRelease {
+      date releaseDate
+      string language
+    }
+    GameRelease }o--|| Publisher : "published by"
+    GameRelease ||--|{ Price : "costs"
+
+    Publisher {
+      string name
+      string websiteUrl
+      string description
+    }
+
+    %% Category {
+    %%     string name
+    %% }
+    %% Category:::dictionaryTable
+
+    %% Mechanic {
+    %%   string name
+    %% }
+    %% Mechanic:::dictionaryTable
+
+    Rating {
+        int enjoyment
+        int minimalPlayerCount
+        int maximumPlayerCount
+        int minimalAge
+        int complexity
+        timestamp date
+    }
+
+    User {
+        string username
+        string email
+        boolean isAdmin
+        binary passwordHash
+    }
+    User ||--o{ Rating : "gives"
+    User ||--o{ Review : "writes"
+    User }o--o{ GameRelease : "owns"
+
+    Review {
+        string reviewText
+        timestamp date
+        int hoursSpentPlaying
+    }
+    Review }o--|| BoardGame : "is reviewed in"
+
+    %% Collection {
+    %%   string name
+    %% }
+    %% Collection }o--o{ GameRelease : "includes"
+
+    Play {
+      date playDate
+      int playerCount
+      int durationInMinutes
+      string note
+    }
+    Play }o--|| BoardGame : "played"
+    Play }o--|{ User : "played by"
+    Play }o--o| User : "winner"
+    Play }o--o| Location : "at location"
+
+    GameWish {
+      string note
+      enum wantLevel
+      timestamp date
+    }
+    GameWish }o--|| BoardGame : "is wished for"
+    GameWish }o--|| User : "is wished for by"
+
+    Location {
+      string name
+      string address
+      string description
+    }
+    Location }o--|{ User : "owned by"
+
+    Price {
+      float amount
+      string currency
+      date startDate
+      date endDate
+    }
+
+    Award {
+      string name
+      string awardingBody
+      string description
+      string year
+      string category
+      int place
+    }
+    Award }o--|{ BoardGame : "awarded to"
+
+    classDef dictionaryTable :,stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
