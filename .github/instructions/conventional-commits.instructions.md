@@ -1,0 +1,39 @@
+As an AI, ensure every commit message strictly follows the Conventional Commits specification:
+
+- The commit message must have the following format:
+
+  <type>[optional scope]: <description>
+
+  [optional body]
+
+  [optional footer(s)]
+
+- <type> must be one of: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+- There must be no capitalization after the colon, and no trailing period in the description.
+- The description must be written in the imperative mood (e.g., "add feature," not "added feature").
+- The description must be no longer than 100 characters.
+
+Valid examples:
+
+- feat(board): add drag and drop functionality
+- fix(api): return error on invalid request
+- docs: update installation instructions
+- refactor: rename user fields
+- test: add unit tests
+- chore: update dependencies
+
+Invalid examples:
+
+- Added drag and drop
+- fix Add API error handling
+- fix: Add error
+- feat: update.
+- hotfix: critical issue
+- docs update
+
+Rationale: Adhering to this commit message style enables automated changelogs, consistent release notes, and reliable semantic versioning.
+
+Reference:
+
+- https://www.conventionalcommits.org/en/v1.0.0/
+- https://github.com/conventional-changelog/commitlint
