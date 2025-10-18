@@ -12,6 +12,22 @@ format:
 
 # Zmiany w Diagramie ERD
 
+Poprawiłem diagram \acr{ERD} @fig-erd, odnosząc się do uwag do _Case Study_. Wprowadziłem następujące zmiany:
+
+- Usunąłem tablice słownikowe zastępując je bezpośrednimi atrybutami w tabelach,
+- Usunąłem tabele _Collection_ tworząc bezpośrednią relację N:N między _User_ a _GameRelease_. Niestety straciłem w ten sposób informacje o nazwie kolekcji, ale nie wiem jak to rozwiązać,
+- Dodałem tablicę _Location_, do monitorowania gdzie miały miejsce rozgrywki.
+- Dodałem tablicę _Price_, pozwalającą śledzić ceny danego wydania. Tabela zawiera datę startu i końca obowiązywania ceny, żebyś śledzić jej zmiany w czasie,
+- Dodałem tabelę _Award_, aby móc przechowywać informacje o nagrodach zdobytych przez gry planszowe.
+
+```{mermaid}
+%%| fig-align: left
+%%| label: fig-erd
+%%| file: ERD.mmd
+%%| fig-width: 6
+%%| fig-height: 8.5
+```
+
 
 # Źródła {.unnumbered}
 
