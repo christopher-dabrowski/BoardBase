@@ -1,37 +1,11 @@
 ---
 title: BoardBase Case Study
 subtitle: Zaawansowane systemy baz danych - Projekt Etap 1
-bibliography: ../references.bib
-csl: ../diabetologia.csl
-link-citations: true
-mermaid-format: png
-author:
-  - name: Krzysztof Dąbrowski 293101
-    id: kd
-    email: krzysztof.dabrowski7.stud@pw.edu.pl
-    affiliation: Politechnika Warszawska
-lang: pl
-# format: html
 format:
   pdf:
     output-file: Etap 1 Case Study Krzysztof Dąbrowski 293101.pdf
-    documentclass: scrartcl
-    papersize: A4
     toc: false
-    number-sections: true
-    colorlinks: true
     fig-pos: 'H'
-filters:
-  - acronyms
-acronyms:
-  fromfile: ../glossary.yaml
-  include_unused: false
-  insert_links: true
-  loa_header_classes:
-    - unnumbered
-  loa_title: Zastosowane skróty
-  insert_loa: end
-  sorting: alphabetical
 ---
 
 ::: {.callout-note title="Kod projektu"}
