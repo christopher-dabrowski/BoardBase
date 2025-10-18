@@ -1,0 +1,19 @@
+---
+title: Projekt BoardBase
+subtitle: Sprawozdanie z Etapu 1 - Zaawansowane systemy baz danych
+format:
+  pdf:
+    output-file: Etap 1 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
+    toc: false
+    fig-pos: 'H'
+---
+
+{{< include ../shared/repo_callout.qmd >}}
+
+# Zmiany w Diagramie ERD
+
+
+# Źródła {.unnumbered}
+
+::: {#refs}
+:::
