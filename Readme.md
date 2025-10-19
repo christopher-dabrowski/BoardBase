@@ -13,11 +13,11 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 - [x] **Case study** - krótki opis problematyki (~½ strony)
 - [x] **SZBD** - wybrany, zainstalowany i skonfigurowany
-- [ ] **Minimum 8 tabel** (nie-asocjacyjnych, nie-słownikowych)
-- [ ] **Dane** - każda tabela zawiera min. 4 rekordy
-- [ ] **Relacje** - zdefiniowane między tabelami
-- [ ] **Min. 2 użytkowników** - z odpowiednimi uprawnieniami
-- [ ] **Min. 2 perspektywy** - nietrywialne
+- [x] **Minimum 8 tabel** (nie-asocjacyjnych, nie-słownikowych)
+- [x] **Dane** - każda tabela zawiera min. 4 rekordy
+- [x] **Relacje** - zdefiniowane między tabelami
+- [x] **Min. 2 użytkowników** - z odpowiednimi uprawnieniami
+- [x] **Min. 2 perspektywy** - nietrywialne
 - [ ] **Min. 2 indeksy** - z uzasadnieniem
 
 ### 📋 Case Study & Projekt
@@ -33,52 +33,51 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 - [x] Wybrać SZBD (SQL Server/PostgreSQL/MySQL/Oracle)
 - [x] Zainstalować i skonfigurować (można Docker)
-- [ ] Uzasadnić wybór w sprawozdaniu
+- [x] Uzasadnić wybór w sprawozdaniu
 - [x] Przedstawić efekty i konfigurację
 
 ### 🏗️ Struktura bazy danych (2.5 pkt)
 
-- [ ] Zaprojektować schemat logiczny bazy danych
-- [ ] Utworzyć bazę w 3NF
-- [ ] Min. 8 tabel niezależnych (nie-asocjacyjnych, nie-słownikowych)
-- [ ] Min. 1 schemat bazodanowy (jeśli SZBD pozwala)
-- [ ] Tabele słownikowe i asocjacyjne (gdzie potrzeba)
-- [ ] Określić odpowiednie typy danych
-- [ ] Ustawić UNIQUE i NOT NULL gdzie potrzeba
-- [ ] **Klucze główne** - wybrać i zaimplementować
-- [ ] **Klucze obce** - utworzyć relacje
-- [ ] **Klucze kompozytowe** - tam gdzie przydatne
-- [ ] Umieścić czytelny schemat logiczny w sprawozdaniu
-- [ ] Uzasadnić istotne decyzje (typy, klucze, ewentualne odejście od 3NF)
+- [x] Zaprojektować schemat logiczny bazy danych
+- [x] Utworzyć bazę w 3NF
+- [x] Min. 8 tabel niezależnych (nie-asocjacyjnych, nie-słownikowych)
+- [x] Min. 1 schemat bazodanowy (jeśli SZBD pozwala)
+- [x] Tabele słownikowe i asocjacyjne (gdzie potrzeba)
+- [x] Określić odpowiednie typy danych
+- [x] Ustawić UNIQUE i NOT NULL gdzie potrzeba
+- [x] **Klucze główne** - wybrać i zaimplementować
+- [x] **Klucze obce** - utworzyć relacje
+- [x] **Klucze kompozytowe** - tam gdzie przydatne
+- [x] Umieścić czytelny schemat logiczny w sprawozdaniu
+- [x] Uzasadnić istotne decyzje (typy, klucze, ewentualne odejście od 3NF)
 
 ### 📊 Dane (0.5 pkt)
 
-- [ ] Wypełnić wszystkie tabele danymi (min. 4 rekordy/tabela)
-- [ ] Dane mają sens merytoryczny
-- [ ] Można użyć generatorów danych syntetycznych
+- [x] Wypełnić wszystkie tabele danymi (min. 4 rekordy/tabela)
+- [x] Dane mają sens merytoryczny
 
 ### 👥 Użytkownicy i uprawnienia
 
-- [ ] Utworzyć min. 2 użytkowników
-- [ ] Nadać odpowiednie uprawnienia
-- [ ] Wykorzystać schematy bazodanowe (jeśli potrzeba)
-- [ ] **Przetestować** dostęp użytkowników
-- [ ] Udokumentować testy w sprawozdaniu
+- [x] Utworzyć min. 2 użytkowników
+- [x] Nadać odpowiednie uprawnienia
+- [x] Wykorzystać schematy bazodanowe (jeśli potrzeba)
+- [x] **Przetestować** dostęp użytkowników
+- [x] Udokumentować testy w sprawozdaniu
 
 ### 🔍 Zapytania SQL (2 pkt)
 
-- [ ] Wykonać min. 2 zapytania SQL
-- [ ] Zapytania nietrywialne (złożone)
-- [ ] Min. 1 podzapytanie
-- [ ] Udokumentować zapytania
-- [ ] Zapytania spełniają funkcjonalności biznesowe
+- [x] Wykonać min. 2 zapytania SQL
+- [x] Zapytania nietrywialne (złożone)
+- [x] Min. 1 podzapytanie
+- [x] Udokumentować zapytania
+- [x] Zapytania spełniają funkcjonalności biznesowe
 
 ### 👁️ Perspektywy (Views) (1 pkt)
 
-- [ ] Przygotować min. 2 perspektywy
-- [ ] Perspektywy nietrywialne
-- [ ] Informacje czytelne dla użytkownika
-- [ ] Udostępnić właściwym użytkownikom
+- [x] Przygotować min. 2 perspektywy
+- [x] Perspektywy nietrywialne
+- [x] Informacje czytelne dla użytkownika
+- [x] Udostępnić właściwym użytkownikom
 - [ ] Jeśli możliwe - dostęp tylko przez perspektywy dla niektórych użytkowników
 - [ ] Wymienić i opisać pozostałe potrzebne perspektywy (jeśli nie zaimplementowano wszystkich)
 
@@ -96,21 +95,15 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 ### 📄 Sprawozdanie (1 pkt)
 
-- [ ] Case study
-- [ ] Uzasadnienie wyboru SZBD + konfiguracja
-- [ ] Opis danych, użytkowników i usług
-- [ ] Diagram ERD
-- [ ] Schemat logiczny bazy danych (z typami, relacjami, kluczami)
-- [ ] Uzasadnienie decyzji projektowych
-- [ ] Dokumentacja zapytań SQL
-- [ ] Dokumentacja perspektyw
-- [ ] Dokumentacja i uzasadnienie indeksów
-- [ ] Testy uprawnień użytkowników
-- [ ] Testy wydajności indeksów
-- [ ] Czytelna forma i struktura
-
-### 🚀 Finalizacja
-
-- [ ] Przegląd całości projektu
-- [ ] Sprawdzenie wszystkich wymagań minimalnych
-- [ ] Oddanie przed terminem (20.10.2025, 1:00)
+- [x] Case study
+- [x] Uzasadnienie wyboru SZBD + konfiguracja
+- [x] Opis danych, użytkowników i usług
+- [x] Diagram ERD
+- [x] Schemat logiczny bazy danych (z typami, relacjami, kluczami)
+- [x] Uzasadnienie decyzji projektowych
+- [x] Dokumentacja zapytań SQL
+- [x] Dokumentacja perspektyw
+- [x] Dokumentacja i uzasadnienie indeksów
+- [x] Testy uprawnień użytkowników
+- [x] Testy wydajności indeksów
+- [x] Czytelna forma i struktura
