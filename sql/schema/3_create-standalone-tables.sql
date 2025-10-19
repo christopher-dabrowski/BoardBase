@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS award (
     description VARCHAR(1000),
     awarded_date DATE,
     category VARCHAR(80),
-    CONSTRAINT award_name_not_empty CHECK (TRIM(name) <> ''),
+    CONSTRAINT award_name_not_empty CHECK (TRIM(name) <> '')
 );
 COMMENT ON TABLE award IS 'Awards that board games can receive (e.g., Spiel des Jahres)';
-COMMENT ON COLUMN award.place IS 'Placement in award (1 for winner, 2 for runner-up, etc.)';

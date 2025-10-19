@@ -65,7 +65,6 @@ CREATE TABLE IF NOT EXISTS award_board_game (
     board_game_id INTEGER NOT NULL,
     received_place INTEGER,
     PRIMARY KEY (award_id, board_game_id),
-    CONSTRAINT award_place_positive CHECK (place IS NULL OR place > 0)
     CONSTRAINT fk_award_board_game_award
         FOREIGN KEY (award_id)
         REFERENCES award(award_id)
