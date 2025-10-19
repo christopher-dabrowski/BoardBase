@@ -41,6 +41,10 @@ Przed utworzeniem tabel utworzyłem schemat bazodanowy `mian` z autoryzacją dla
 Po stworzeniu pierwszych tabl w schemacie `main` zauważyłem, że pisząc zapytania muszę nazwy razem ze schematem. Zastanowiło mnie to, ponieważ w przeszłości wykonywałem zapytania w innych bazach danych podając samą nazwę tabeli. Przeczytałem więcej dokumentacji @postgres-docs:ddl-schemas na temat działania schematów w PostgreSQL i znalazłem informację, że można skonfigurować domyślnie przeszukiwane schematy. \
 Dowiedziałem się, że rekomendowaną praktyką jest dodanie schematu do domyślnego wyszukiwania, tak więc zrobiłem.
 
+Po pewnym czasie zorientowałem się, że `SET search_path` działa tylko w biedzącej sesji. Ponieważ za każdym raziem chciałem korzystać ze schematu `main` zmieniłem `search_path` na poziomie bazy danych zgodnie z artykułem How Do I Set/Change the Default Schema in PostgreSQL @commandprompt:how-to-set-change-default-schema-postgresql.
+
+
+<!-- Odchodzę od 3NF w language i currency, ponieważ nazwy języków się nie zmieniają -->
 
 # Źródła {.unnumbered}
 
