@@ -268,6 +268,44 @@ Execution Time: 0.067 ms
 
 Jest to wynik lekko szybszy niż B-tree. Wymaga on jednak podania dokładnej nazwy użytkownika. Uważam, że w tym przypadku lepiej pozostać przy indeksie B-tree.
 
+## Indeksy na tabeli gier planszowych
+
+Na tabeli `board_game` utworzyłem 4 indeksy:
+
+- idx_board_game_name — indeks B-tree na kolumnie `name` przyspieszający wyszukiwanie po nazwie oraz sortowanie.
+- idx_board_game_player_count — indeks B-tree na parach kolumn (`declared_minimal_player_count`, `declared_maximum_player_count`) zoptymalizowany pod zapytania typu "czy N graczy mieści się w zakresie", używany przez warunki typu BETWEEN.
+- idx_board_game_min_age — indeks B-tree na kolumnie `declared_minimal_age` przyspieszający filtrowanie po minimalnym wieku.
+- idx_board_game_description — indeks GIN przewidziany do wsparcia zapytań pełnotekstowych
+
+Zmierzyłem czas wykonania zapytań wyszukiwania gry pasującej dla określonej liczby graczy.
+
+```sql
+EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT)
+SELECT board_game_id, name,
+       declared_minimal_player_count,
+       declared_maximum_player_count
+FROM board_game
+WHERE 4 BETWEEN declared_minimal_player_count AND declared_maximum_player_count;
+```
+
+Przed zastosowaniem indeksu
+
+```txt
+Planning Time: 2.095 ms
+Execution Time: 9.450 ms
+```
+
+Po zastosowaniu indeksu
+
+```txt
+Planning Time: 1.445 ms
+Execution Time: 1.514 ms
+```
+
+Indeks zdecydowanie poprawił czas wykonania tego typu zapytań.
+
+Przy wyborze indeksów kierowałem się przewidywaniem jakie zlatania będą najczęściej wykonywane. Nie wybierałem kolumn z małą liczbą unikalnych wartości, ponieważ indeksowanie ich prawdopodobnie nie przyniosłoby znaczącego wzrostu wydajności.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
