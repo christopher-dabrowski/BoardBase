@@ -231,7 +231,42 @@ df
 Żeby poprawnie przetestować działanie indeksów wygenerowałem znaczną ilość danych testowych za pomocą narzędzia mockaroo @mockaroo:homepage. \
 Wygenerowałem po 1000 rekordów dla tabeli `board_game` i `app_user`.
 
+Wybierając typy indeksów kierowałem się ich opisami w dokumentacji @postgres-docs:indexes-types.
 
+Pomiędzy zapytaniami usuwałem i tworzyłem na nowo kontener z bazą danych, żeby pozbyć się cashowania danych.
+
+## Wyszukiwanie użytkownika po nazwie
+
+Próbowałem dodać indeks do kolumny `username` w tabeli `app_user`. Podczas testowania zorientowałem się jednak, że nawet bez tego indeksu zapytania używają indeksu o nazwie `app_user_username_key`. \
+Z dokumentacji @postgres-docs:unique-constraints dowiedziałem się, że `UNIQUE` tworzy indeks B-tree automatycznie. \
+Chciałem jednak przetestować jego działanie, więc usunąłem ograniczenie `UNIQUE` z kolumny `username` i utworzyłem indeks ręcznie.
+
+Wybrałem indeks B-tree, ponieważ dobrze nadaje się do indeksowania krótkich tekstów i pozwala szukać nawet tylko po początkowej części nazwy użytkownika, w przeciwieństwie do indeksu Hash.
+
+Bez indeksu zapytanie znalezienia konkretnego użytkownika wykonywało się metodą `Seq Scan on app_user` i trwało
+
+```txt
+Planning Time: 1.994 ms
+Execution Time: 0.980 ms
+```
+
+Z indeksem zapytanie wykonywało się metodą `Index Scan using username_index on app_user` i trwało
+
+```txt
+Planning Time: 1.588 ms
+Execution Time: 0.094 ms
+```
+
+Widać wyraźną poprawę czasu wykonania zapytania przy zastosowaniu indeksu.
+
+Z ciekawości przetestowałem też indeks typu Hash. Zapytanie wykonywało się metodą `Index Scan using idx_app_user_username on app_user` i trwało
+
+```txt
+Planning Time: 0.753 ms
+Execution Time: 0.067 ms
+```
+
+Jest to wynik lekko szybszy niż B-tree. Wymaga on jednak podania dokładnej nazwy użytkownika. Uważam, że w tym przypadku lepiej pozostać przy indeksie B-tree.
 
 # Źródła {.unnumbered}
 
