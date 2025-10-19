@@ -2,6 +2,7 @@
   "recommendations": [
     "mermaidchart.vscode-mermaid-chart",
     "quarto.quarto",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "ms-ossdata.vscode-pgsql"
   ]
 }
