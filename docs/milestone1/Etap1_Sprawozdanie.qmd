@@ -180,6 +180,7 @@ Napisałem zapytanie, które dla każdej kategorii znajduje gry z ponad przecię
 
 import pandas as pd
 df = pd.read_csv("above-average-games.csv")
+df.name = "Test name"
 df = df.style.hide(axis='index')
 df
 ```
@@ -224,6 +225,13 @@ df
 ```
 
 `}`{=latex}
+
+# Indeksy
+
+Żeby poprawnie przetestować działanie indeksów wygenerowałem znaczną ilość danych testowych za pomocą narzędzia mockaroo @mockaroo:homepage. \
+Wygenerowałem po 1000 rekordów dla tabeli `board_game` i `app_user`.
+
+
 
 # Źródła {.unnumbered}
 
