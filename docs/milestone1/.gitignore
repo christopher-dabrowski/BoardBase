@@ -1,4 +1,30 @@
 # Generated files
 *Etap 1*.pdf
 
-Etap1_Sprawozdanie_files/
+# Quarto build outputs
+_site/
+_freeze/
+.quarto/
+
+# Per-document resource directories (e.g., CaseStudy_files/)
+*_files/
+
+# Jupyter / RMarkdown intermediates
+*.knit.md
+*.utf8.md
+.ipynb_checkpoints/
+
+# LaTeX auxiliary files (keep PDFs)
+*.aux
+*.out
+*.log
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Caches
+_cache/
+cache/
