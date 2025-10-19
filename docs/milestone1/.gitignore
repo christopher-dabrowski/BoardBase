@@ -1,5 +1,6 @@
 # Generated files
 *Etap 1*.pdf
+*.tex
 
 # Quarto build outputs
 _site/
