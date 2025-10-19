@@ -48,7 +48,7 @@ Po pewnym czasie zorientowałem się, że `SET search_path` działa tylko w bied
 ## Tabele
 
 Na podstawie koncepcyjnego diagramu \acr{ERD} @fig-erd stworzyłem odpowiednie tabele. \
-Do przechowania informacji o tym jak bardzo ktoś chce zagrać w daną grę ze swojej listy życzeń utworzyłem `ENUM`. Do przechowania kategorii i mechanik używanych w grach użyłem tablic słownikowych.
+Do przechowania informacji o tym jak bardzo ktoś chce zagrać w daną grę ze swojej listy życzeń utworzyłem `ENUM` @postgres:enum-types. Do przechowania kategorii i mechanik używanych w grach użyłem tablic słownikowych.
 
 Rozważałem czy utworzyć oddzielne tabele dla języków i walut. Zdecydowałem się odejść od \acr{3NF} w tym przypadku, ponieważ nazwy języków i walut praktycznie się nie zmieniają, a dodanie kolejnych tabel spowolniłoby odczytywanie danych.
 
