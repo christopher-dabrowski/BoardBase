@@ -4,13 +4,15 @@ subtitle: Sprawozdanie z Etapu 1 - Zaawansowane systemy baz danych
 format:
   pdf:
     output-file: Etap 1 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
-    toc: false
-    fig-pos: 'H'
+    toc: true
+    lof: true
+    lot: true
+    # fig-pos: 'H'
 ---
 
 {{< include ../shared/repo_callout.qmd >}}
 
-# Zmiany w Diagramie ERD
+# Zmiany w diagramie ERD
 
 Poprawiłem diagram \acr{ERD} @fig-erd, odnosząc się do uwag do _Case Study_. Wprowadziłem następujące zmiany:
 
@@ -23,6 +25,7 @@ Poprawiłem diagram \acr{ERD} @fig-erd, odnosząc się do uwag do _Case Study_. 
 ```{mermaid}
 %%| fig-align: left
 %%| label: fig-erd
+%%| fig-cap: Zaktualizowany diagram ERD
 %%| file: ERD.mmd
 %%| fig-width: 6
 %%| fig-height: 8.5
