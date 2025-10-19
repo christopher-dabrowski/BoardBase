@@ -90,7 +90,7 @@ Po tych poprawach udało mi się wczytać całość wygenerowanych danych.
 # Użytkownicy i uprawnienia
 
 Do zarządzania uprawnieniami użyłem roli @postgres-docs:database-roles. \
-Zacząłem od utworzenia roli grupowych `admins`, `players` i `guests`. Przypisałem im uprawnienia do odpowiednich typów zapytań w zależności od tabeli.
+Zacząłem od utworzenia roli grupowych `admins`, `players` i `guests`. Przypisałem im uprawnienia do odpowiednich typów zapytań w zależności od tabeli poleceniem `GRANT` @postgres-docs:grant.
 
 W kolejnym kroku utworzyłem użytkowników, po jednym dla każdej roli grupowej.
 
@@ -136,6 +136,8 @@ DELETE FROM rating WHERE rating_id = 12;
 Zapytanie wykonało się poprawnie.
 
 Po tych testach spodziewam się, że uprawnienia zostały poprawnie skonfigurowane.
+
+# Przykładowe zapytania
 
 # Źródła {.unnumbered}
 
