@@ -18,7 +18,7 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 - [x] **Relacje** - zdefiniowane między tabelami
 - [x] **Min. 2 użytkowników** - z odpowiednimi uprawnieniami
 - [x] **Min. 2 perspektywy** - nietrywialne
-- [ ] **Min. 2 indeksy** - z uzasadnieniem
+- [x] **Min. 2 indeksy** - z uzasadnieniem
 
 ### 📋 Case Study & Projekt
 
@@ -83,15 +83,14 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 ### ⚡ Indeksy (2 pkt)
 
-- [ ] Utworzyć min. 2 indeksy
-- [ ] Wybrać odpowiedni typ indeksu dla każdej tabeli
-- [ ] Uzasadnić wybór typu indeksu
-- [ ] Uzasadnić wybór kolumn
-- [ ] Indeksy kompozytowe (gdzie potrzebne)
-- [ ] **Testy wydajności** - porównanie różnych typów indeksów
-- [ ] Wgrać większą ilość danych syntetycznych (dla testów)
-- [ ] Wyjaśnić różnice w działaniu (praktyczne przykłady)
-- [ ] Porównać: indeks kompozytowy vs prosty vs dwa proste vs brak indeksów
+- [x] Utworzyć min. 2 indeksy
+- [x] Wybrać odpowiedni typ indeksu dla każdej tabeli
+- [x] Uzasadnić wybór typu indeksu
+- [x] Uzasadnić wybór kolumn
+- [x] Indeksy kompozytowe (gdzie potrzebne)
+- [x] **Testy wydajności** - porównanie różnych typów indeksów
+- [x] Wgrać większą ilość danych syntetycznych (dla testów)
+- [x] Wyjaśnić różnice w działaniu (praktyczne przykłady)
 
 ### 📄 Sprawozdanie (1 pkt)
 
