@@ -31,6 +31,16 @@ Poprawiłem diagram \acr{ERD} @fig-erd, odnosząc się do uwag do _Case Study_. 
 %%| fig-height: 8.5
 ```
 
+# Utworzenie bazy danych
+
+Wybrałem \acr{SZBD} PostgreSQL. Opis mojego wyboru i konfiguracji \acr{SZBD} przedstawiłem w [Case Study](https://github.com/christopher-dabrowski/BoardBase/blob/main/docs/case-study/CaseStudy.qmd).
+
+Sama baza danych `boardbase` została utworzona automatycznie na podstawie konfiguracji kontenera Docker. \
+Przed utworzeniem tabel utworzyłem schemat bazodanowy `mian` z autoryzacją dla domyślnego użytkownika `postgres` zgodnie z dokumentacją @postgres-docs:createschema.
+
+Po stworzeniu pierwszych tabl w schemacie `main` zauważyłem, że pisząc zapytania muszę nazwy razem ze schematem. Zastanowiło mnie to, ponieważ w przeszłości wykonywałem zapytania w innych bazach danych podając samą nazwę tabeli. Przeczytałem więcej dokumentacji @postgres-docs:ddl-schemas na temat działania schematów w PostgreSQL i znalazłem informację, że można skonfigurować domyślnie przeszukiwane schematy. \
+Dowiedziałem się, że rekomendowaną praktyką jest dodanie schematu do domyślnego wyszukiwania, tak więc zrobiłem.
+
 
 # Źródła {.unnumbered}
 
