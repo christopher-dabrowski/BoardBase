@@ -7,7 +7,7 @@ format:
     toc: true
     lof: true
     code-overflow: wrap
-    # lot: true
+    lot: true
     # fig-pos: 'H'
 ---
 
@@ -138,6 +138,53 @@ Zapytanie wykonało się poprawnie.
 Po tych testach spodziewam się, że uprawnienia zostały poprawnie skonfigurowane.
 
 # Przykładowe zapytania
+
+Wykonałem kilka przykładowych zapytań, aby przetestować działanie bazy danych.
+
+## Użytkownicy z ponad przeciętną liczbą gier
+
+Zastanawiałem się ilu jest użytkowników, którzy mają ponad przeciętną liczbę gier. Napisałem zapytanie, które znajduje takich użytkowników i zwraca ich statystki.
+
+```sql
+{{< include ../../sql/queries/users-with-games-above-average.sql >}}
+```
+
+`{\footnotesize`{=latex}
+```{python}
+#| label: tbl-users-with-games-above-average
+#| tbl-cap: Użytkownicy z ponad przeciętną liczbą gier
+#| echo: false
+
+import pandas as pd
+df = pd.read_csv("users-with-games-above-average.csv")
+df = df.style.hide(axis='index')
+df
+```
+
+`}`{=latex}
+
+## Najlepsze gry w danej kategorii
+
+Chciałem znaleźć wyjątkowo dobre gry. Pomyślałem, że sprawiedliwie będzie porównywać je w ramach danej kategorii.
+Napisałem zapytanie, które dla każdej kategorii znajduje gry z ponad przeciętną oceną względem swojej kategorii.
+
+```sql
+{{< include ../../sql/queries/above-average-games.sql >}}
+```
+
+`{\footnotesize`{=latex}
+```{python}
+#| label: tbl-games-above-category-average
+#| tbl-cap: Gry z oceną powyżej średniej w swojej kategorii
+#| echo: false
+
+import pandas as pd
+df = pd.read_csv("above-average-games.csv")
+df = df.style.hide(axis='index')
+df
+```
+
+`}`{=latex}
 
 # Źródła {.unnumbered}
 
