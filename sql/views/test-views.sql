@@ -26,7 +26,6 @@ LIMIT 5;
 SET ROLE casual_gamer;
 
 SELECT
-    username,
     game_name,
     publisher_name,
     language,
@@ -34,9 +33,7 @@ SELECT
     currency,
     years_owned,
     times_played
-FROM main.user_game_collection
-ORDER BY acquired_at DESC
-LIMIT 5;
+FROM main.user_game_collection;
 
 SELECT
     play_date,
