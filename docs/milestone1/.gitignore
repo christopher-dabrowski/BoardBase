@@ -24,6 +24,8 @@ _freeze/
 *.synctex.gz
 *.bbl
 *.blg
+*.lof
+*.lot
 
 # Caches
 _cache/
