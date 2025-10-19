@@ -186,6 +186,45 @@ df
 
 `}`{=latex}
 
+# Perspektywy
+
+Utworzyłem 5 widoków dostępnych dla różnych ról użytkowników:
+
+1. **game_catalog** – Publiczny katalog wszystkich gier planszowych z agregowanymi informacjami: średnimi ocenami, liczbą odgrywek, średnim czasem trwania oraz połączonymi listami kategorii i mechanik. Dostępny dla wszystkich użytkowników.
+2. **game_prices_current** – Widok aktualnych cen wydań gier. Dostępny dla wszystkich.
+3. **user_game_collection** – Filtruje dane po nazwie aktualnie zalogowanego użytkownika i wyświetla jego kolekcję gier.
+4. **user_play_history** – Filtruje dane po nazwie aktualnie zalogowanego użytkownika i pokazuje historię jego rozgrywek.
+5. **games_missing_metadata** – Widok administratorski wyświetlający gry bez przypisanych kategorii lub mechanik.
+
+Tak przykładowo wygląda użycie widoku `user_game_collection`, którego wynik przedstawia @tbl-user-game-collection.:
+```sql
+SET ROLE casual_gamer;
+
+SELECT
+    game_name,
+    publisher_name,
+    language,
+    current_price,
+    currency,
+    years_owned,
+    times_played
+FROM main.user_game_collection;
+```
+
+`{\footnotesize`{=latex}
+```{python}
+#| label: tbl-user-game-collection
+#| tbl-cap: Kolekcja gier użytkownika casual_gamer
+#| echo: false
+
+import pandas as pd
+df = pd.read_csv("user_game_collection.csv")
+df = df.style.hide(axis='index')
+df
+```
+
+`}`{=latex}
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
