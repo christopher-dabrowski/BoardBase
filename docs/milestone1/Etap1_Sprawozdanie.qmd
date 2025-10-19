@@ -6,6 +6,7 @@ format:
     output-file: Etap 1 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
     toc: true
     lof: true
+    code-overflow: wrap
     # lot: true
     # fig-pos: 'H'
 ---
@@ -60,6 +61,31 @@ Dla tabeli realizujących relacje N:N użyłem kluczy złożonych kierując się
 Po utworzeniu tabel wygenerowałem schemat logiczny bazy danych @fig-logical-db-schema, za pomocą narzędzia pgAdmin @pgadmin:homepage.
 
 ![Logiczny schemat bazy danych](logical-db-schema.png){#fig-logical-db-schema fig-cap="Schemat logiczny bazy danych"}
+
+# Wypełnie bazy danymi
+
+Do wygenerowania przykładowych danych użyłem \acr{LLM} Claude Sonet 4.5.
+
+## Generowanie przykładowych danych
+
+Najpierw przygotowałem plik z informacjami o strukturze bazy danych za pomocą narzędzia GitHub Copilot @github:copilot-homepage zintegrowanego z VS Code. Prompt którego użyłem:
+
+> I'll need to generate real looking data for my database. Your task is to crate a LLM readable file describing the database scheema so the LLM can use it to create the sample data. See the #file:schema files to learn about the database
+
+Na tej podstawie \acr{LLM} wygenerował plik [SCHEMA_DESCRIPTION.md](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/schema/SCHEMA_DESCRIPTION.md), który dostosowałem do moich potrzeb. \
+Następnie na stronie <https://claude.ai/> wygenerowałem pliki z przykładowymi danymi. Tak wyglądała [moja konwersacja z agentem \acr{AI}](https://claude.ai/share/57272be2-05b8-493b-8f1a-3c8dbc72d03f).
+
+## Wczytywanie danych
+
+Przy próbie wczytania danych napotkałem problemy ze wstawieniem danych do tabeli `award`. Sprawdziłem, że ta tabela nie została utworzona. Okazało się, że zrobiłem drobne błędy składniowe i nie zauważyłem błędu podczas tworzenia tabel. Poprawiłem błędy i ponownie utworzyłem tabele.
+
+Napotkałem kolejny problem z wczytaniem haszy haseł. Były one zaczytywane z notacji heksadecymalnej, która ma dość sztywny format. \acr{LLM} wygenerował niepoprawne wartości. Wygenerowałem haszhe ręcznie używając narzędzia online @emn178:sha256-hash-generator. \
+Wiem, że hash sha256 nie jest najbezpieczniejszym rozwiązaniem. Mimo tego, do projektu zdecydowałem się go użyć ze względu na szybkość działania.
+
+Przy kolejnej próbie wczytania danych napotkałem problem z kluczami głównymi w tabeli `user`. Ponieważ użyłem automatycznej sekwencji do generowania kluczy, to przy usunięciu i ponownym wczytaniu danych zostały one ponumerowane kolejnymi wartoścami sekwencji, a dane wygenerowane przez \acr{LLM} zakładały numerację od 1.
+Rozwiązałem ten problem resetując sekwencję razem z usuwaniem danych zgodnie z odpowiedzią na forum @stackoverflow:reset-auto-increment-counter.
+
+Po tych poprawach udało mi się wczytać całość wygenerowanych danych.
 
 # Źródła {.unnumbered}
 
