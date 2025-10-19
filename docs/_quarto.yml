@@ -31,3 +31,4 @@ acronyms:
   loa_title: Zastosowane skróty
   insert_loa: end
   sorting: alphabetical
+  non_existing: error
