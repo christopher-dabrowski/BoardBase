@@ -87,6 +87,13 @@ Rozwiązałem ten problem resetując sekwencję razem z usuwaniem danych zgodnie
 
 Po tych poprawach udało mi się wczytać całość wygenerowanych danych.
 
+# Użytkownicy i uprawnienia
+
+Do zarządzania uprawnieniami użyłem roli @postgres-docs:database-roles. \
+Zacząłem od utworzenia roli grupowych `admins`, `players` i `guests`. Przypisałem im uprawnienia do odpowiednich typów zapytań w zależności od tabeli.
+
+W kolejnym kroku utworzyłem użytkowników, po jednym dla każdej roli grupowej.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
