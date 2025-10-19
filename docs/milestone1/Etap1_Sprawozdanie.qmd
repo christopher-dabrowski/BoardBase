@@ -6,7 +6,7 @@ format:
     output-file: Etap 1 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
     toc: true
     lof: true
-    lot: true
+    # lot: true
     # fig-pos: 'H'
 ---
 
@@ -35,6 +35,8 @@ Poprawiłem diagram \acr{ERD} @fig-erd, odnosząc się do uwag do _Case Study_. 
 
 Wybrałem \acr{SZBD} PostgreSQL. Opis mojego wyboru i konfiguracji \acr{SZBD} przedstawiłem w [Case Study](https://github.com/christopher-dabrowski/BoardBase/blob/main/docs/case-study/CaseStudy.qmd).
 
+## Schemat bazy danych
+
 Sama baza danych `boardbase` została utworzona automatycznie na podstawie konfiguracji kontenera Docker. \
 Przed utworzeniem tabel utworzyłem schemat bazodanowy `mian` z autoryzacją dla domyślnego użytkownika `postgres` zgodnie z dokumentacją @postgres-docs:createschema.
 
@@ -43,8 +45,21 @@ Dowiedziałem się, że rekomendowaną praktyką jest dodanie schematu do domyś
 
 Po pewnym czasie zorientowałem się, że `SET search_path` działa tylko w biedzącej sesji. Ponieważ za każdym raziem chciałem korzystać ze schematu `main` zmieniłem `search_path` na poziomie bazy danych zgodnie z artykułem _How Do I Set/Change the Default Schema in PostgreSQL_ @commandprompt:how-to-set-change-default-schema-postgresql.
 
+## Tabele
 
-<!-- Odchodzę od 3NF w language i currency, ponieważ nazwy języków się nie zmieniają -->
+Na podstawie koncepcyjnego diagramu \acr{ERD} @fig-erd stworzyłem odpowiednie tabele. \
+Do przechowania informacji o tym jak bardzo ktoś chce zagrać w daną grę ze swojej listy życzeń utworzyłem `ENUM`. Do przechowania kategorii i mechanik używanych w grach użyłem tablic słownikowych.
+
+Rozważałem czy utworzyć oddzielne tabele dla języków i walut. Zdecydowałem się odejść od \acr{3NF} w tym przypadku, ponieważ nazwy języków i walut praktycznie się nie zmieniają, a dodanie kolejnych tabel spowolniłoby odczytywanie danych.
+
+Do przechowania danych tekstowych używam `VARCHAR` z ograniczeniem długości. Długości te wybrałem empirycznie na podstawie przykładowych wartości. \
+Żeby dbać o poprawność wprowadzanych danych użyłem instrukcji `CONSTRAINT`, `UNIQUE` oraz kontroli "nullowości". \
+Dla zależnych tabeli rozważyłem co powinno się stać, gdy zależne dane zostaną usunięte. Ustawiłem odpowiednie zachowania instrukcjami `ON DELETE`. \
+Dla tabeli realizujących relacje N:N użyłem kluczy złożonych kierując się dyskusją na temat ze stackoverflow @stackoverflow:composite-key-in-associative-tables.
+
+Po utworzeniu tabel wygenerowałem schemat logiczny bazy danych @fig-logical-db-schema, za pomocą narzędzia pgAdmin @pgadmin:homepage.
+
+![Logiczny schemat bazy danych](logical-db-schema.png){#fig-logical-db-schema fig-cap="Schemat logiczny bazy danych"}
 
 # Źródła {.unnumbered}
 

@@ -2,5 +2,6 @@
 # Define your acronyms directly here as shortname: longname
 SZBD: System zarządzania bazami danych
 ERD: Entity Relationship Diagram
+3NF: Third Normal Form (Trzecia postać normalna)
 ---
 
