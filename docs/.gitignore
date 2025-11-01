@@ -5,6 +5,8 @@
 *Etap * Sprawozdanie Krzysztof Dąbrowski *.pdf
 *Etap * Sprawozdanie Krzysztof Dąbrowski *.tex
 
+*_files/
+
 # Quarto build outputs
 _site/
 _freeze/
