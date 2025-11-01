@@ -1,2 +1,28 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# Generated files
+*Etap * Sprawozdanie Krzysztof Dąbrowski *.pdf
+*Etap * Sprawozdanie Krzysztof Dąbrowski *.tex
+
+# Quarto build outputs
+_site/
+_freeze/
+.quarto/
+
+# LaTeX auxiliary files (keep PDFs)
+*.aux
+*.out
+*.log
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.lof
+*.lot
+
+# Caches
+_cache/
+cache/
