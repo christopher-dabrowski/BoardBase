@@ -1,0 +1,24 @@
+---
+title: Projekt BoardBase
+subtitle: Sprawozdanie z Etapu 2 - Zaawansowane systemy baz danych
+format:
+  pdf:
+    output-file: Etap 2 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
+    toc: true
+    lof: true
+    code-overflow: wrap
+    lot: true
+    # fig-pos: 'H'
+---
+
+{{< include ../shared/repo_callout.qmd >}}
+
+# Funkcje i procedury
+
+
+
+
+# Źródła {.unnumbered}
+
+::: {#refs}
+:::
