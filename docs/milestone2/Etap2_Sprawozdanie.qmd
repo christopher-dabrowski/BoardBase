@@ -15,7 +15,9 @@ format:
 
 # Funkcje i procedury
 
+Przeczytałem, że liczenie arytmetycznej średniej ocen jest mało miarodajne dla małej liczby ocen, a użycie średniej bayesowskiej jest lepszym rozwiązaniem @algolia:bayesian-average. Napisałem \acr{UDF} liczącą w ten sposób średnią ocenę gry.
 
+Dla gry z 5 pozytywnymi ocenami średnia arytmetyczna wychodziła 8.8, a wynik mojej \acr{UDF} [`fair_game_rating`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/user-defined-functions.sql) wyniósł 8.48(6).
 
 
 # Źródła {.unnumbered}
