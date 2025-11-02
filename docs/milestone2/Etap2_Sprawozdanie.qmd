@@ -19,6 +19,27 @@ Przeczytałem, że liczenie arytmetycznej średniej ocen jest mało miarodajne d
 
 Dla gry z 5 pozytywnymi ocenami średnia arytmetyczna wychodziła 8.8, a wynik mojej \acr{UDF} [`fair_game_rating`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/user-defined-functions.sql) wyniósł 8.48(6).
 
+Utworzyłem kilka procedur do dodawania nowych rekordów do bazy danych w pliku [`create-records-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/create-records-procedures.sql).
+- `add_user` dodaje nowego użytkownika do bazy danych,
+- `add_location` dodaje nowe miejsce gdzie mogły miejsce rozgrywki,
+- `add_rating` dodaje nową ocenę gry,
+- `add_review` dodaje nową recenzję gry,
+- `add_game_wish` dodaje nową grę do listy życzeń.
+
+Procedura `add_user` automatycznie wylicza hash hasła i przycina białe znaki z nazwy użytkownika i adresu email. \
+Pozostałe procedury ułatwiają ustawiają automatycznie id użytkownika na pasujące do aktualnie zalogowanego użytkownika do bazy za pomocą `WITH` z \acr{CTE}.
+
+Przy testowaniu procedur miałem kłopot z deklarowaniem zmiennych. Jestem przyzwyczajony do deklarowania zmiennych w ramach sesji \acr{SQL} za pomocą zwykłego `DECLARE` \@nazwa zmiennej. \
+Przeczytałem, że w PostgreSQL trzeba deklarować zmienne w blokach @postgres-docs:declarations.
+Do tego dowiedziałem się, że w blokach nie mogę używać `SELECT` do wyświetlania wartości. Zamiast tego użyłem `RAISE NOTICE` @stackoverflow:how-to-perform-a-select-query-in-a-do-block.
+
+Na początku nie działało mi tworzenie nowego użytkownika procedurą `add_user`. \
+Przypominałem sobie, że na poprzednim etapie ustawiłem uprawnienia do tworzenia użytkowników i tylko administratorzy mogą to robić. Przełączyłem się na konto administratora i procedura zadziałała.
+
+```txt
+NOTICE: Created user: 1015
+```
+
 
 # Źródła {.unnumbered}
 
