@@ -20,10 +20,11 @@ Przeczytałem, że liczenie arytmetycznej średniej ocen jest mało miarodajne d
 Dla gry z 5 pozytywnymi ocenami średnia arytmetyczna wychodziła 8.8, a wynik mojej \acr{UDF} [`fair_game_rating`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/user-defined-functions.sql) wyniósł 8.48(6).
 
 Utworzyłem kilka procedur do dodawania nowych rekordów do bazy danych w pliku [`create-records-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/create-records-procedures.sql).
-- `add_user` dodaje nowego użytkownika do bazy danych,
-- `add_location` dodaje nowe miejsce gdzie mogły miejsce rozgrywki,
+
+- `add_user` dodaje nowego użytkownika,
+- `add_location` dodaje nowe miejsce do grania,
 - `add_rating` dodaje nową ocenę gry,
-- `add_review` dodaje nową recenzję gry,
+- `add_review` dodaje nową recenzję,
 - `add_game_wish` dodaje nową grę do listy życzeń.
 
 Procedura `add_user` automatycznie wylicza hash hasła i przycina białe znaki z nazwy użytkownika i adresu email. \
