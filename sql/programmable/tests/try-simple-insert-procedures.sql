@@ -20,8 +20,6 @@ BEGIN
     RAISE NOTICE 'Created location: %', new_location_id;
 END $$;
 
-
--- Test add_rating procedure
 DO $$
 DECLARE
     game_id INTEGER;
@@ -33,6 +31,7 @@ BEGIN
     LIMIT 1;
 
     CALL add_rating(game_id, 8, new_rating_id);
+    RAISE NOTICE 'Created rating: %', new_rating_id;
 END $$;
 
 WITH game AS (
@@ -55,6 +54,7 @@ BEGIN
     LIMIT 1;
 
     CALL add_review(game_id, 'Great game!', new_review_id);
+    RAISE NOTICE 'Created review: %', new_review_id;
 END $$;
 
 WITH game AS (
@@ -75,6 +75,7 @@ BEGIN
     LIMIT 1;
 
     CALL add_game_wish(game_id, new_game_wish_id);
+    RAISE NOTICE 'Created game wish: %', new_game_wish_id;
 END $$;
 
 WITH game AS (
