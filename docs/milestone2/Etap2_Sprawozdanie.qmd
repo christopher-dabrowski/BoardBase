@@ -41,6 +41,17 @@ Przypominałem sobie, że na poprzednim etapie ustawiłem uprawnienia do tworzen
 NOTICE: Created user: 1015
 ```
 
+Zmieniłem użytkownika na _casual_gamer_ i wykonałem kolejne procedury z mojego testowego pliku [`try-simple-insert-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/tests/try-simple-insert-procedures.sql).
+
+```text
+NOTICE: Created location: 11
+NOTICE: Created rating: 61
+NOTICE: Created review: 19
+NOTICE: Created game wish: 16
+```
+
+Utworzenie rekordów sprawdziłem też zapytaniami `SELECT`.
+
 
 # Źródła {.unnumbered}
 
