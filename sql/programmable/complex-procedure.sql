@@ -1,4 +1,4 @@
-CREATE PROCEDURE merge_user_accounts(
+CREATE OR REPLACE PROCEDURE merge_user_accounts(
     source_user_id INTEGER,
     target_user_id INTEGER
 )
