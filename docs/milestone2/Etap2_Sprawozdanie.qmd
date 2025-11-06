@@ -13,7 +13,7 @@ format:
 
 {{< include ../shared/repo_callout.qmd >}}
 
-# Funkcje i procedury
+# Funkcje i procedury dodawania elementów
 
 Przeczytałem, że liczenie arytmetycznej średniej ocen jest mało miarodajne dla małej liczby ocen, a użycie średniej bayesowskiej jest lepszym rozwiązaniem @algolia:bayesian-average. Napisałem \acr{UDF} liczącą w ten sposób średnią ocenę gry.
 
