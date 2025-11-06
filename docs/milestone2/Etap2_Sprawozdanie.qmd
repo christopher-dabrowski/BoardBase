@@ -52,6 +52,25 @@ NOTICE: Created game wish: 16
 
 Utworzenie rekordów sprawdziłem też zapytaniami `SELECT`.
 
+# Złożona procedura
+
+Czasem zdarza się, że użytkownik posiada na kilka kont w systemie na przykład zalogowane mailem i założone za pośrednictwem konta dużego serwisu takiego jak na przykład Google. \
+W takiej sytuacji, której sam kiedyś doświadczyłem, użytkownik po jakimś czasie może chcieć połączyć swoje konta w jedno.
+
+W tym celu przygotowałem procedurę [`merge_user_accounts`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/complex-procedure.sql), która pozwala zmigrować dane z jednego konta do drugiego. \
+Wszystkie aktualizacje danych są wykonywane w ramach transakcji. Dzięki temu baza przejdzie ze stanu spójnego do spójnego lub cofnie wszystkie zmiany.
+
+Procedura sprawdza czy użytkownicy istnieją i czy są różni. Jeśli tak, to wykonuje następujące kroki:
+
+1. Migruje oceny gry,
+2. Migruje recenzje,
+3. Migruje listy życzeń,
+4. Migruje kolekcję gier,
+5. Migruje lokalizacje,
+6. Migruje dziennik rozegranych gier,
+7. Usuwa stare konto.
+
+Na każdym etapie sprawdzane jest czy użytkownik nie ma już danych wartości na docelowym koncie. Jeśli to możliwe, to dane są aktualizowane, a w przeciwnym razie dane starego konta są usuwane.
 
 # Źródła {.unnumbered}
 
