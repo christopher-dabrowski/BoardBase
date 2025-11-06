@@ -8,8 +8,6 @@ format:
     lof: true
     code-overflow: wrap
     lot: true
-    code-line-numbers: true
-    # highlight-style: solarized
     # fig-pos: 'H'
 ---
 

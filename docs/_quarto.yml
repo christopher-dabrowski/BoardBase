@@ -21,6 +21,8 @@ format:
     papersize: A4
     number-sections: true
     colorlinks: true
+    code-line-numbers: true
+    # highlight-style: solarized
 
 acronyms:
   fromfile: glossary.yaml
