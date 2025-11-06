@@ -8,6 +8,8 @@ format:
     lof: true
     code-overflow: wrap
     lot: true
+    code-line-numbers: true
+    # highlight-style: solarized
     # fig-pos: 'H'
 ---
 
@@ -74,7 +76,7 @@ Na każdym etapie sprawdzane jest czy użytkownik nie ma już danych wartości n
 
 Do przetestowania transakcji w procedurze zasymulowałem błąd pod koniec dodając `RAISE EXCEPTION`.
 
-```sql
+```sqlpostgresql
 CALL merge_user_accounts(9, 10);
 SELECT * FROM user_game_release WHERE user_id = 9;
 ```
@@ -82,20 +84,7 @@ SELECT * FROM user_game_release WHERE user_id = 9;
 Logi procedury:
 
 ```text
-NOTICE: Starting merge: card_shark_99 (ID: 9) → family_fun_time (ID: 10)
-NOTICE: Deleted conflicting ratings where target user already has ratings
-NOTICE: Migrated ratings from source to target user
-NOTICE: Migrated reviews from source to target user
-NOTICE: Deleted conflicting game wishes where target user already has wishes
-NOTICE: Migrated game wishes from source to target user
-NOTICE: Updated acquired dates where source user acquired games earlier
-NOTICE: Deleted conflicting game releases from source collection
-NOTICE: Migrated unique game releases to target user collection
-NOTICE: Transferred location ownership from source to target user
-NOTICE: Updated play sessions where source user was winner
-NOTICE: Deleted conflicting play participations where target user already participated
-Test exception
-CONTEXT: PL/pgSQL function merge_user_accounts(integer,integer) line 123 at RAISE
+{{< include listings/user-merge-procedure-fail.txt >}}
 ```
 
 Po wynikach `SELECT` @tbl-games-after-failed-merge widać, że dane nie zostały zmigrowane, a mechanizm transakcji cofnął zmiany
@@ -111,20 +100,7 @@ Po wynikach `SELECT` @tbl-games-after-failed-merge widać, że dane nie zostały
 Gdy usunąłem ręcznie rzucenie wyjątku, dane dane użytkownika zostały poprawnie przeniesione, a zapytanie `SELECT` @tbl-games-after-successful-merge nie zwróciło żadnych wyników.
 
 ```text
-Started executing query at Line 4
-NOTICE: Starting merge: card_shark_99 (ID: 9) → family_fun_time (ID: 10)
-NOTICE: Deleted conflicting ratings where target user already has ratings
-NOTICE: Migrated ratings from source to target user
-NOTICE: Migrated reviews from source to target user
-NOTICE: Deleted conflicting game wishes where target user already has wishes
-NOTICE: Migrated game wishes from source to target user
-NOTICE: Updated acquired dates where source user acquired games earlier
-NOTICE: Deleted conflicting game releases from source collection
-NOTICE: Migrated unique game releases to target user collection
-NOTICE: Transferred location ownership from source to target user
-NOTICE: Updated play sessions where source user was winner
-NOTICE: Deleted conflicting play participations where target user already participated
-NOTICE: Migrated play participations from source to target user
+{{< include listings/user-merge-procedure-success.txt >}}
 ```
 
 | user_id | game_release_id |    acquired_at        |

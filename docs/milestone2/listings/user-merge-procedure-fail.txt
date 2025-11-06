@@ -1,0 +1,14 @@
+NOTICE: Starting merge: card_shark_99 (ID: 9) → family_fun_time (ID: 10)
+NOTICE: Deleted conflicting ratings where target user already has ratings
+NOTICE: Migrated ratings from source to target user
+NOTICE: Migrated reviews from source to target user
+NOTICE: Deleted conflicting game wishes where target user already has wishes
+NOTICE: Migrated game wishes from source to target user
+NOTICE: Updated acquired dates where source user acquired games earlier
+NOTICE: Deleted conflicting game releases from source collection
+NOTICE: Migrated unique game releases to target user collection
+NOTICE: Transferred location ownership from source to target user
+NOTICE: Updated play sessions where source user was winner
+NOTICE: Deleted conflicting play participations where target user already participated
+Test exception
+CONTEXT: PL/pgSQL function merge_user_accounts(integer,integer) line 123 at RAISE
