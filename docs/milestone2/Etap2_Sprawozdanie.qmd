@@ -146,6 +146,7 @@ Po dodaniu gry _Pandemic_ do kolekcji użytkownika automatycznie zniknęła ona 
 
 : Życzenia użytkownika `casual_gamer` po dodaniu gry _Pandemic_ do kolekcji {#tbl-wishlist-after-acquire-pandemic}
 
+Kod użyty do testów umieściłem w pliku [`test-wishlist-trigger.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/tests/test-wishlist-trigger.sql).
 
 # Źródła {.unnumbered}
 
