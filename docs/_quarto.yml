@@ -22,6 +22,25 @@ format:
     number-sections: true
     colorlinks: true
     code-line-numbers: true
+    # highlight-style: arrow # default
+    # highlight-style: pygments # brak tła
+    highlight-style: tango # fajne
+    # highlight-style: espresso # czarne tło
+    # highlight-style: zenburn # czarne tło
+    # highlight-style: breezedark # czarne tło
+    # highlight-style: haddock # brak tła
+    # highlight-style: atom-one # brak tła
+    # highlight-style: ayu # brak tła
+    # highlight-style: breeze # brak tła
+    # highlight-style: dracula # czarne tło
+    # highlight-style: github # brak tła
+    # highlight-style: gruvbox # brak tła
+    # highlight-style: monokai # czarne tło
+    # highlight-style: nord
+    # highlight-style: oblivion
+    # highlight-style: printing # brak tła
+    # highlight-style: radical # czarne tło
+    # highlight-style: solarized # fajne
     include-in-header:
       text: |
         \usepackage{fvextra}
