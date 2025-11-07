@@ -22,7 +22,13 @@ format:
     number-sections: true
     colorlinks: true
     code-line-numbers: true
-    # highlight-style: solarized
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          commandchars=\\\{\},
+          breaklines, breaknonspaceingroup, breakanywhere
+        }
 
 acronyms:
   fromfile: glossary.yaml
