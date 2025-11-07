@@ -72,6 +72,8 @@ Procedura sprawdza czy użytkownicy istnieją i czy są różni. Jeśli tak, to 
 
 Na każdym etapie sprawdzane jest czy użytkownik nie ma już danych wartości na docelowym koncie. Jeśli to możliwe, to dane są aktualizowane, a w przeciwnym razie dane starego konta są usuwane.
 
+## Dokumentacja działania
+
 Do przetestowania transakcji w procedurze zasymulowałem błąd pod koniec dodając `RAISE EXCEPTION`.
 
 ```sqlpostgresql
@@ -116,6 +118,34 @@ Przygotowałem wyzwalacz, który przy dodaniu relacji na większą liczbę gracz
 
 W PosgreSQL wyzwalacz musi wywoływać funkcję lub procedurę @postgres-docs:createtrigger, więc do każdego wyzwalacza stworzyłem też odpowiadającą procedurę. \
 Kod wyzwalaczy umieściłem w pliku [`triggers.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/triggers.sql).
+
+## Dokumentacja działania
+
+Dla użytkownika `casual_gamer` dodałem grę _Pandemic_ do jego listy życzeń @tbl-wishlist-after-pandemic-add.
+
+```postgresql
+CALL add_game_wish(4, NULL);
+```
+
+Sprawdziłem listę życzeń użytkownika.
+
+|username    |name    |wished_at                 |
+|------------|--------|--------------------------|
+|casual_gamer|Pandemic|2025-11-07 10:39:01.453507|
+|casual_gamer|Splendor|2024-09-20 14:00:00       |
+|casual_gamer|Gloomhaven|2024-08-20 16:45:00       |
+
+: Życzenia użytkownika `casual_gamer` po dodaniu gry _Pandemic_ {#tbl-wishlist-after-pandemic-add}
+
+Po dodaniu gry _Pandemic_ do kolekcji użytkownika automatycznie zniknęła ona z jego listy życzeń @tbl-wishlist-after-acquire-pandemic.
+
+|username    |name    |wished_at                 |
+|------------|--------|--------------------------|
+|casual_gamer|Splendor|2024-09-20 14:00:00       |
+|casual_gamer|Gloomhaven|2024-08-20 16:45:00       |
+
+: Życzenia użytkownika `casual_gamer` po dodaniu gry _Pandemic_ do kolekcji {#tbl-wishlist-after-acquire-pandemic}
+
 
 # Źródła {.unnumbered}
 
