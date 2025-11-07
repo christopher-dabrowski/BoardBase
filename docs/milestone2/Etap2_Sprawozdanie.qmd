@@ -106,6 +106,16 @@ Gdy usunąłem ręcznie rzucenie wyjątku, dane dane użytkownika zostały popra
 
 : Gry użytkownika źródłowego po poprawnym wykonaniu procedury {#tbl-games-after-successful-merge}
 
+# Wyzwalacze
+
+Chciałem, żeby gdy użytkownik wejdzie w posiadanie gry została ona automatycznie usunięta z jego listy życzeń. W tym celu przygotowałem wyzwalacz, który to automatyzuje.
+
+Mój pomysł na logikę biznesową zakłada, że zapisują informację o rozgrywce (`play`) można podać większą liczbę uczestników (`player_count`) niż powiązanych graczy, ponieważ nie każdy uczestnik musi mieć konto w systemie.
+Może to jednak prowadzić do błędnej sytuacji podania mniejszej liczby `player_count` niż powiązanych graczy. \
+Przygotowałem wyzwalacz, który przy dodaniu relacji na większą liczbę graczy niż `player_count` aktualizuje `player_count` na większą wartość oraz drugi, który pilnuje, żeby `player_count` nie był ustawiony na mniejszą wartość niż liczba faktycznych graczy.
+
+W PosgreSQL wyzwalacz musi wywoływać funkcję lub procedurę @postgres-docs:createtrigger, więc do każdego wyzwalacza stworzyłem też odpowiadającą procedurę. \
+Kod wyzwalaczy umieściłem w pliku [`triggers.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/triggers.sql).
 
 # Źródła {.unnumbered}
 
