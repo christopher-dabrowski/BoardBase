@@ -133,6 +133,6 @@ BEGIN
         RAISE NOTICE 'Deleted source user account: % (ID: %)', source_username, source_user_id;
 
         RAISE NOTICE 'Successfully merged user % into user %', source_username, target_username;
-    END;
+    COMMIT;
 END;
 $$;
