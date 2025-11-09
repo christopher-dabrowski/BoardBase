@@ -184,7 +184,19 @@ Poprawiłem więc ścieżkę volumenu, co rozwiązało problem, choć dalej zast
 
 Pomyślałem, że użytkownicy często chcieliby przeglądać statystyki gier. Niektóre ze statystyk wymagają agregacji.
 Ponieważ wyliczanie niektórych agregacji jest czasochłonne, a użytkownicy nie oczekują raczej w pełni aktualnych statystyk (pewnie wyniki z ostatniego dnia będą dobre), to utworzyłem zmaterializowany widok przechowujący te dane. \
-Za pomocą automatycznego zadania [pg_cron](https://github.com/citusdata/pg_cron), skonfigurowanego w pliku [`automation.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/automation/automation.sql), aktualizuję ten widok codziennie o 3 w nocy.
+Za pomocą automatycznego zadania [pg_cron](https://github.com/citusdata/pg_cron), skonfigurowanego w pliku [`automation.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/automation/automation.sql), aktualizuję ten widok codziennie o 3 w nocy. \
+Skonfigurowane zadanie widać w wyniku poniższego zapytania w @tbl-automation-jobs.
+
+```sqlpostgresql
+SELECT jobid, schedule, command
+FROM cron.job
+```
+
+|jobid|schedule |command                                             |
+|-----|---------|----------------------------------------------------|
+|1    |0 3 * * *|REFRESH MATERIALIZED VIEW main.game_popularity_stats|
+
+: Automatyczne zadania {#tbl-automation-jobs}
 
 \acr{SQL} widoku zapisałem w pliku [`game-stats-materialized-view.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/views/game-stats-materialized-view.sql). Widok wylicza między innymi bayesowską średnią ocenę gry, którą zaimplementowałem wykorzystując moją \acr{UDF} `fair_game_rating`, liczbę gier rozegranych w ostatnich 90 dniach, czy też customowy ranking popularności, który wyliczam heurystycznie na podstawie kilku innych parametrów i inne statystyki.
 
