@@ -13,3 +13,4 @@ SELECT cron.schedule(
 SELECT *
 FROM cron.job
 
+SELECT * FROM main.game_popularity_stats;
