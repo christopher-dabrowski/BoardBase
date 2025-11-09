@@ -182,6 +182,14 @@ Zdziwiło mnie to, ponieważ wcześniej używałem po prostu obrazu 18.0, a ten 
 Przywróciłem konfigurację Docker Compose do używania bezpośrednio bazowego obrazu, ale błąd dalej występował.
 Poprawiłem więc ścieżkę volumenu, co rozwiązało problem, choć dalej zastanawia mnie, dlaczego wcześniej nie miałem tego problemu.
 
+Pomyślałem, że użytkownicy często chcieliby przeglądać statystyki gier. Niektóre ze statystyk wymagają agregacji.
+Ponieważ wyliczanie niektórych agregacji jest czasochłonne, a użytkownicy nie oczekują raczej w pełni aktualnych statystyk (pewnie wyniki z ostatniego dnia będą dobre), to utworzyłem zmaterializowany widok przechowujący te dane. \
+Za pomocą automatycznego zadania [pg_cron](https://github.com/citusdata/pg_cron), skonfigurowanego w pliku [`automation.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/automation/automation.sql), aktualizuję ten widok codziennie o 3 w nocy.
+
+\acr{SQL} widoku zapisałem w pliku [`game-stats-materialized-view.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/views/game-stats-materialized-view.sql). Widok wylicza między innymi bayesowską średnią ocenę gry, którą zaimplementowałem wykorzystując moją \acr{UDF} `fair_game_rating`, liczbę gier rozegranych w ostatnich 90 dniach, czy też customowy ranking popularności, który wyliczam heurystycznie na podstawie kilku innych parametrów i inne statystyki.
+
+Rozważałem użycie scheduler'a [pgAgent](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html), ale po przeczytaniu artykułu porównującego te rozwiązania @medium:comparing-postgresql-job-schedulers-pg-cron-vs-pgagent i tabeli różnić @github:pg-agent-vs-pg-cron, uznałem, że [pg_cron](https://github.com/citusdata/pg_cron) bardziej mi pasuje, ponieważ jest lżejszym rozwiązaniem i nie wymaga oddzielnego demona.
+Gdyby zadanie wymagało zaawansowanej logiki uruchamiania zadań w czasie i zależności między zadaniami pewnie wybrałbym[pgAgent'a](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html).
 
 
 # Źródła {.unnumbered}
