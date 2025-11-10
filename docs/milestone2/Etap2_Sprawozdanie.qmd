@@ -178,9 +178,10 @@ Znalazłem obraz z od razu zainstalowanym rozszerzeniem pg_cron @docker:postgres
 Przygotowałem własny obraz z zainstalowanym rozszerzeniem pg_cron w pliku [`Postgres.Dockerfile`](https://github.com/christopher-dabrowski/BoardBase/blob/main/Postgres.Dockerfile), zmieniłem plik [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml), żeby używał tego obrazu i skonfigurowałem \acr{SZBD} w pliku [`postgresql.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/postgresql.conf).
 
 Po skonfigurowaniu obrazu Docker okazało się, że nie uruchamia się kontener. Pojawiał się błąd, że w obrazach w wersji 18+ volumen musi być zamontowany poziom wyżej w kontenerze.
-Zdziwiło mnie to, ponieważ wcześniej używałem po prostu obrazu 18.0, a ten błąd nie występował. \
+Zdziwiło mnie to, ponieważ wcześniej używałem po prostu obrazu `18.0`, a ten błąd nie występował. \
 Przywróciłem konfigurację Docker Compose do używania bezpośrednio bazowego obrazu, ale błąd dalej występował.
-Poprawiłem więc ścieżkę volumenu, co rozwiązało problem, choć dalej zastanawia mnie, dlaczego wcześniej nie miałem tego problemu.
+Poprawiłem więc ścieżkę volumenu, co rozwiązało problem, choć dalej zastanawia mnie, dlaczego wcześniej nie miałem tego problemu. \
+Przypuszczam, że został wgrany nowy obraz pod tag `18.0`, a przygotowanie mojego obrazu sprowokowało `docker pull`.
 
 Pomyślałem, że użytkownicy często chcieliby przeglądać statystyki gier. Niektóre ze statystyk wymagają agregacji.
 Ponieważ wyliczanie niektórych agregacji jest czasochłonne, a użytkownicy nie oczekują raczej w pełni aktualnych statystyk (pewnie wyniki z ostatniego dnia będą dobre), to utworzyłem zmaterializowany widok przechowujący te dane. \
