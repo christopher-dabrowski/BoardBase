@@ -204,6 +204,17 @@ FROM cron.job
 Rozważałem użycie scheduler'a [pgAgent](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html), ale po przeczytaniu artykułu porównującego te rozwiązania @medium:comparing-postgresql-job-schedulers-pg-cron-vs-pgagent i tabeli różnić @github:pg-agent-vs-pg-cron, uznałem, że [pg_cron](https://github.com/citusdata/pg_cron) bardziej mi pasuje, ponieważ jest lżejszym rozwiązaniem i nie wymaga oddzielnego demona.
 Gdyby zadanie wymagało zaawansowanej logiki uruchamiania zadań w czasie i zależności między zadaniami pewnie wybrałbym[pgAgent'a](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html).
 
+# Kopia zapasowa
+
+Zastanawiałem się nad wyborem między trzema głownymi podejściami do backupu @postgres-docs:backup-and-restore:
+
+1. \acr{SQL} dump,
+2. backup plików bazy danych,
+3. backup plików i \acr{WAL} z odtwarzaniem bazy point in time z \acr{WAL}.
+
+Uznałem, że podejście bazujące na \acr{WAL} jest zbyt złożone na moje potrzeby, gdy zapoznałem się z mechanizmem jego działania @postgres-docs:backup-online-wal. \
+Podejście drugie wymaga zatrzymania \acr{SZBD}, co sprawia, że w produkcyjnych środowiskach jest mało praktyczne.
+Dokumentacja sugeruje, żeby raczej używać podejścia bazującego na \acr{SQL} dump @postgres-docs:backup-file, więc na nie się zdecydowałem.
 
 # Źródła {.unnumbered}
 
