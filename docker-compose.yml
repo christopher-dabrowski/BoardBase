@@ -12,9 +12,12 @@ services:
       - "5432:5432"
     volumes:
       - ./postgresql.conf:/etc/postgresql.conf:ro
-      - pgdata:/var/lib/postgresql
+      - pgbackuptest:/var/lib/postgresql
 
 volumes:
   pgdata:
     labels:
       com.example.description: "Postgres data volume"
+  pgbackuptest:
+    labels:
+      com.example.description: "Temporary volume for backup verification"
