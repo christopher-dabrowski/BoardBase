@@ -232,6 +232,20 @@ pg_dump --dbname=boardbase --username=postgres --host=localhost --file=2025-11-1
 Zgodnie z moimi oczekiwaniami powstały plik zawiera kod \acr{SQL} do odtworzenia schematu bazy, danych, a nawet utworzonego rozszerzenia.
 Zawiera nawet konfigurację mojego cron joba.
 
+## Weryfikacja kopii zapasowej
+
+Żeby sprawdzić poprawność kopii zapasowej postanowiłem odtworzyć z niej bazę danych.
+
+Do kontenera z \acr{SZBD} zamontowałem nowy volumen. \
+Przed wgraniem kopii zapasowej utworzyłem użytkowników, ponieważ skrypt kopii nie tworzy użytkowników @postgres-docs:backup-dump.
+W moim skrypcie [`1_create-groups`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/users/1_create-groups.sql) tworzę grupy i nadaję im role.
+Ponieważ nie powstał jeszcze schemat `main`, to nadanie do niego ról nie zadziałało. Nie jest to problem, ponieważ przypisanie uprawnień jest zawarte w kopii zapasowej. \
+Po utworzeniu grup, mogłem stworzyć użytkowników i przypisać ich do grup skryptem [`2_craete-users`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/users/2_craete-users.sql).
+
+Wczytałem kopię zapasową i spróbowałem uruchomić kilka zapytań. \
+Okazało się, że **zapytania, w których nie podawałem jawnie nazwy schematu, nie działały**. \
+Sprawdziłem, i okazało się, że w pliku backupu **nie ma mojej instrukcji zmiany domyślnego `search_path`**, żeby zawierał schemat `main`.
+Wykonałem ją ręcznie. Wtedy zapytania działały poprawnie już poprawnie.
 
 # Źródła {.unnumbered}
 
