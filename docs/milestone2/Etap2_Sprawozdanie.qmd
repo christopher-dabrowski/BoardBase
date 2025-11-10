@@ -15,9 +15,12 @@ format:
 
 # Funkcje i procedury dodawania elementów
 
+## Funkcja
 Przeczytałem, że liczenie arytmetycznej średniej ocen jest mało miarodajne dla małej liczby ocen, a użycie średniej bayesowskiej jest lepszym rozwiązaniem @algolia:bayesian-average. Napisałem \acr{UDF} liczącą w ten sposób średnią ocenę gry.
 
 Dla gry z 5 pozytywnymi ocenami średnia arytmetyczna wychodziła 8.8, a wynik mojej \acr{UDF} [`fair_game_rating`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/user-defined-functions.sql) wyniósł 8.48(6).
+
+## Procedury dodawania elementów
 
 Utworzyłem kilka procedur do dodawania nowych rekordów do bazy danych w pliku [`create-records-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/create-records-procedures.sql).
 
@@ -29,6 +32,8 @@ Utworzyłem kilka procedur do dodawania nowych rekordów do bazy danych w pliku 
 
 Procedura `add_user` automatycznie wylicza hash hasła i przycina białe znaki z nazwy użytkownika i adresu email. \
 Pozostałe procedury ułatwiają ustawiają automatycznie id użytkownika na pasujące do aktualnie zalogowanego użytkownika do bazy za pomocą `WITH` z \acr{CTE}.
+
+## Dokumentacja działania
 
 Przy testowaniu procedur miałem kłopot z deklarowaniem zmiennych. Jestem przyzwyczajony do deklarowania zmiennych w ramach sesji \acr{SQL} za pomocą zwykłego `DECLARE` \@nazwa zmiennej. \
 Przeczytałem, że w PostgreSQL trzeba deklarować zmienne w blokach @postgres-docs:declarations.
@@ -170,8 +175,16 @@ Sporą część zachowania spójności zapewniają już instrukcje kaskadowego u
 
 # Automatyzacja zadania
 
+## Wybór scheduler'a
+
 Żeby uruchamiać automatycznie kod `SQL` w bazie zdecydowałem się użyć rozszerzenia [pg_cron](https://github.com/citusdata/pg_cron), o którym słyszałem w filmie _I replaced my entire tech stack with Postgres..._
- @youtube:IReplacedMyEntireTechStackWithPostgres. \
+ @youtube:IReplacedMyEntireTechStackWithPostgres.
+
+Rozważałem użycie scheduler'a [pgAgent](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html), ale po przeczytaniu artykułu porównującego te rozwiązania @medium:comparing-postgresql-job-schedulers-pg-cron-vs-pgagent i tabeli różnić @github:pg-agent-vs-pg-cron, uznałem, że [pg_cron](https://github.com/citusdata/pg_cron) bardziej mi pasuje, ponieważ jest lżejszym rozwiązaniem i nie wymaga oddzielnego demona.
+Gdyby zadanie wymagało zaawansowanej logiki uruchamiania zadań w czasie i zależności między zadaniami pewnie wybrałbym[pgAgent'a](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html).
+
+## Instalacja
+
 Żeby zainstalować rozszerzenie nie mogłem już korzystać z domyślnego obrazu Docker @docker:postgres-official-image i musiałem skonfigurować własny obraz, który bazuje na tym bazowy, na którym zainstaluję rozszerzenie.
 Znalazłem obraz z od razu zainstalowanym rozszerzeniem pg_cron @docker:postgres-pg-cron-image, ale używa on starej wersji Postgres, więc wolałem stworzyć swój.
 
@@ -182,6 +195,8 @@ Zdziwiło mnie to, ponieważ wcześniej używałem po prostu obrazu `18.0`, a te
 Przywróciłem konfigurację Docker Compose do używania bezpośrednio bazowego obrazu, ale błąd dalej występował.
 Poprawiłem więc ścieżkę volumenu, co rozwiązało problem, choć dalej zastanawia mnie, dlaczego wcześniej nie miałem tego problemu. \
 Przypuszczam, że został wgrany nowy obraz pod tag `18.0`, a przygotowanie mojego obrazu sprowokowało `docker pull`.
+
+## Automatyczne zadanie
 
 Pomyślałem, że użytkownicy często chcieliby przeglądać statystyki gier. Niektóre ze statystyk wymagają agregacji.
 Ponieważ wyliczanie niektórych agregacji jest czasochłonne, a użytkownicy nie oczekują raczej w pełni aktualnych statystyk (pewnie wyniki z ostatniego dnia będą dobre), to utworzyłem zmaterializowany widok przechowujący te dane. \
@@ -200,9 +215,6 @@ FROM cron.job
 : Automatyczne zadania {#tbl-automation-jobs}
 
 \acr{SQL} widoku zapisałem w pliku [`game-stats-materialized-view.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/views/game-stats-materialized-view.sql). Widok wylicza między innymi bayesowską średnią ocenę gry, którą zaimplementowałem wykorzystując moją \acr{UDF} `fair_game_rating`, liczbę gier rozegranych w ostatnich 90 dniach, czy też customowy ranking popularności, który wyliczam heurystycznie na podstawie kilku innych parametrów i inne statystyki.
-
-Rozważałem użycie scheduler'a [pgAgent](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html), ale po przeczytaniu artykułu porównującego te rozwiązania @medium:comparing-postgresql-job-schedulers-pg-cron-vs-pgagent i tabeli różnić @github:pg-agent-vs-pg-cron, uznałem, że [pg_cron](https://github.com/citusdata/pg_cron) bardziej mi pasuje, ponieważ jest lżejszym rozwiązaniem i nie wymaga oddzielnego demona.
-Gdyby zadanie wymagało zaawansowanej logiki uruchamiania zadań w czasie i zależności między zadaniami pewnie wybrałbym[pgAgent'a](https://www.pgadmin.org/docs/pgadmin4/9.9/pgagent.html).
 
 # Kopia zapasowa
 
@@ -245,7 +257,7 @@ Po utworzeniu grup, mogłem stworzyć użytkowników i przypisać ich do grup sk
 Wczytałem kopię zapasową i spróbowałem uruchomić kilka zapytań. \
 Okazało się, że **zapytania, w których nie podawałem jawnie nazwy schematu, nie działały**. \
 Sprawdziłem, i okazało się, że w pliku backupu **nie ma mojej instrukcji zmiany domyślnego `search_path`**, żeby zawierał schemat `main`.
-Wykonałem ją ręcznie. Wtedy zapytania działały poprawnie już poprawnie.
+Wykonałem ją ręcznie. Wtedy zapytania działały już poprawnie.
 
 # Źródła {.unnumbered}
 
