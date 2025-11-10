@@ -206,6 +206,7 @@ Gdyby zadanie wymagało zaawansowanej logiki uruchamiania zadań w czasie i zale
 
 # Kopia zapasowa
 
+## Wybór podejścia
 Zastanawiałem się nad wyborem między trzema głownymi podejściami do backupu @postgres-docs:backup-and-restore:
 
 1. \acr{SQL} dump,
@@ -214,7 +215,23 @@ Zastanawiałem się nad wyborem między trzema głownymi podejściami do backupu
 
 Uznałem, że podejście bazujące na \acr{WAL} jest zbyt złożone na moje potrzeby, gdy zapoznałem się z mechanizmem jego działania @postgres-docs:backup-online-wal. \
 Podejście drugie wymaga zatrzymania \acr{SZBD}, co sprawia, że w produkcyjnych środowiskach jest mało praktyczne.
-Dokumentacja sugeruje, żeby raczej używać podejścia bazującego na \acr{SQL} dump @postgres-docs:backup-file, więc na nie się zdecydowałem.
+Dokumentacja sugeruje, żeby raczej używać podejścia bazującego na \acr{SQL} dump @postgres-docs:backup-file, więc to na nie się zdecydowałem.
+
+## Wykonanie kopii zapasowej
+
+Zgodnie z zaleceniami z dokumentacji @postgres-docs:backup-dump, użyłem narzędzia `pg_dump` do zrobienia backupu. \
+Za pierwszym razem narzędzie `pg_dump` nie zadziałało, ponieważ okazało się, że domyślny pakiet [homebrew](https://brew.sh/) instaluje wersję 14, a mój \acr{SZBD} jest w wersji 18.
+Na szczęście przyczyna błędu była dobrze opisana w komunikacie i wystarczyło zainstalować odpowiednią wersję. Zrobiłem to poleceniem `brew install postgresql@18`.
+
+Ponieważ przeczytałem, że domyślnie `pg_dump` loguje się do bazy taką samą nazwą użytkownika @postgres-docs:backup-dump, jak zalogowane konto, to nadpisałem nazwę użytkownika i kilka innych podstawowych parametrów w wywołaniu.
+
+```sh
+pg_dump --dbname=boardbase --username=postgres --host=localhost --file=2025-11-10_boardbase_backup.sql
+```
+
+Zgodnie z moimi oczekiwaniami powstały plik zawiera kod \acr{SQL} do odtworzenia schematu bazy, danych, a nawet utworzonego rozszerzenia.
+Zawiera nawet konfigurację mojego cron joba.
+
 
 # Źródła {.unnumbered}
 
