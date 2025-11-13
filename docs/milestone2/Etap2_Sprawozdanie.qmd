@@ -259,6 +259,24 @@ Okazało się, że **zapytania, w których nie podawałem jawnie nazwy schematu,
 Sprawdziłem, i okazało się, że w pliku backupu **nie ma mojej instrukcji zmiany domyślnego `search_path`**, żeby zawierał schemat `main`.
 Wykonałem ją ręcznie. Wtedy zapytania działały już poprawnie.
 
+# Inny \acr{SZBD}
+
+Wybrałem \acr{SZBD} MS SQL Server.
+Używałem go pośrednio w pracy w aplikacjach backendowych przez \acr{ORM} i chciałbym lepiej poznać tą technologię.
+
+Tak jak w przypadku Postgres, zdecydowałem się na uruchomienie MS SQL Serwer w kontenerze Docker skonfigurowanym w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml). \
+Przy konfiguracji kontenera wzorowałem się na oficjalnej dokumentacji @ms-learn:docker-run-containers-for-sql-server-on-linux.
+Nie chciałem jednak używać obrazu _latest_, jak rekomenduje dokumentacja @ms-learn:docker-run-containers-for-sql-server-on-linux, ponieważ sądzę, że nie jest to dobra praktyka, ponieważ jest on automatycznie zmieniany. \
+Na szczęście dokumentacja sugeruje alternatywnie użycie konkretnej wersji obrazu `mcr.microsoft.com/mssql/server:2025-GA-ubuntu`.
+Zdziwiłem się jednak, gdy spróbowałem pobrać ten obraz, ponieważ okazało się, że **taki obraz nie istnieje**. \
+Sprawdziłem to na oficjalnej liście tagów tego obrazu @microsoft-artifact-registry:mssql-server-tags.
+Spojrzałem też na informację o aktualnych wersjach SQL Server @ms-learn:latest-updates-and-version-history-for-sql-server, gdzie dowiedziałem się, że wersja 2025 nie została jeszcze oficjalnie wydana, co sugerował podany w dokumentacji @ms-learn:docker-run-containers-for-sql-server-on-linux tag `2025-GA-ubuntu`, gdzie w nomenklaturze Microsoft GA oznacza publicznie wydaną wersję. \
+Najwyraźniej **dokumentacja Microsoft @ms-learn:docker-run-containers-for-sql-server-on-linux podaje zmyślony tag do wersji MS SQL Server, która jeszcze nie istnieje**.
+
+Gdy już to zrozumiałem, zdecydowałem się użyć najnowszej stabilnej wersji SQL Server 2022. \
+Skonfigurowałem edycję SQL Server na developerską i zmieniłem domyślny Collation @ms-learn:collation-and-unicode-support, tak żeby wspierał kodowanie UTF-8, ponieważ wiem, że większość danych w bazie zmieści się w jednym bajcie UTF-8. \
+W oddzielnym artykule dokumentacji @ms-learn:configure-and-customize-sql-server-docker-containers znalazłem informację, gdzie kontener przechowuje dane i zamontowałem tam volumen.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
