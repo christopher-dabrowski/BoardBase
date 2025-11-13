@@ -284,7 +284,7 @@ SELECT @@VERSION;
 GO;
 ```
 
-Otrzymałem spodziewany wynik @tbl-sql-server-version.
+Otrzymałem spodziewany wynik:
 
 ```text
 Microsoft SQL Server 2022 (RTM-CU21-GDR) (KB5068406) - 16.0.4222.2 (X64)
@@ -292,8 +292,6 @@ Microsoft SQL Server 2022 (RTM-CU21-GDR) (KB5068406) - 16.0.4222.2 (X64)
 	Copyright (C) 2022 Microsoft Corporation
 	Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
 ```
-
-: Wersja SQL Server {#tbl-sql-server-version}
 
 # Źródła {.unnumbered}
 
