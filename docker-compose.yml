@@ -13,7 +13,17 @@ services:
     volumes:
       - ./postgresql.conf:/etc/postgresql.conf:ro
       - pgdata:/var/lib/postgresql
-
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-CU21-GDR2-ubuntu-22.04
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ${MSSQL_PASSWORD:-Password123!}
+      MSSQL_PID: Developer
+      MSSQL_COLLATION: Latin1_General_100_CI_AS_SC_UTF8
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
 volumes:
   pgdata:
     labels:
@@ -21,3 +31,6 @@ volumes:
   pgbackuptest:
     labels:
       com.example.description: "Temporary volume for backup verification"
+  sqlserver_data:
+    labels:
+      com.example.description: "MS SQL Server data volume"
