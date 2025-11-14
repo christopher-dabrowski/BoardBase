@@ -25,6 +25,7 @@ _freeze/
 *.blg
 *.lof
 *.lot
+*.lop
 
 # Caches
 _cache/
