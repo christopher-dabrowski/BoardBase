@@ -11,6 +11,8 @@ format:
     # fig-pos: 'H'
 ---
 
+\listoflistings
+
 {{< include ../shared/repo_callout.qmd >}}
 
 # Funkcje i procedury dodawania elementów
