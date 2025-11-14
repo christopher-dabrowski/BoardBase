@@ -42,15 +42,16 @@ Przeczytałem, że w PostgreSQL trzeba deklarować zmienne w blokach @postgres-d
 Do tego dowiedziałem się, że w blokach nie mogę używać `SELECT` do wyświetlania wartości. Zamiast tego użyłem `RAISE NOTICE` @stackoverflow:how-to-perform-a-select-query-in-a-do-block.
 
 Na początku nie działało mi tworzenie nowego użytkownika procedurą `add_user`. \
-Przypominałem sobie, że na poprzednim etapie ustawiłem uprawnienia do tworzenia użytkowników i tylko administratorzy mogą to robić. Przełączyłem się na konto administratora i procedura zadziałała.
+Przypominałem sobie, że na poprzednim etapie ustawiłem uprawnienia do tworzenia użytkowników i tylko administratorzy mogą to robić. Przełączyłem się na konto administratora i procedura zadziałała (@lst-add-user-procedure-result).
 
-```txt
+```{#lst-add-user-procedure-result .text lst-cap="Wynik procedury `add_user`"}
 NOTICE: Created user: 1015
 ```
 
-Zmieniłem użytkownika na _casual_gamer_ i wykonałem kolejne procedury z mojego testowego pliku [`try-simple-insert-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/tests/try-simple-insert-procedures.sql).
+Zmieniłem użytkownika na _casual_gamer_ i wykonałem kolejne procedury z mojego testowego pliku [`try-simple-insert-procedures.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/programmable/tests/try-simple-insert-procedures.sql). \
+Zgodnie z oczekiwaniami otrzymałem wyniki @lst-other-insert-procedures-results.
 
-```text
+```{#lst-other-insert-procedures-results .text lst-cap="Wyniki pozostałych procedur dodawania rekordów"}
 NOTICE: Created location: 11
 NOTICE: Created rating: 61
 NOTICE: Created review: 19
@@ -81,20 +82,20 @@ Na każdym etapie sprawdzane jest czy użytkownik nie ma już danych wartości n
 
 ## Dokumentacja działania
 
-Do przetestowania transakcji w procedurze zasymulowałem błąd pod koniec dodając `RAISE EXCEPTION`.
+Do przetestowania transakcji w procedurze zasymulowałem błąd pod koniec dodając `RAISE EXCEPTION`, a następnie ją wywołałem i sprawdziłem gry użytkownika (@lst-merge-user-accounts-error).
 
-```sqlpostgresql
+```{#lst-merge-user-accounts-error .sqlpostgresql lst-cap="Wywołanie procedury `merge_user_accounts` z dodanym błedem"}
 CALL merge_user_accounts(9, 10);
 SELECT * FROM user_game_release WHERE user_id = 9;
 ```
 
-Logi procedury:
+Po wynikach (@lst-merge-user-accounts-fail-logs) zaobserwowałem, że wystąpił błąd pod koniec działania procedury.
 
-```text
+```{#lst-merge-user-accounts-fail-logs .txt lst-cap="Logi nieudanego łączenia kont"}
 {{< include listings/user-merge-procedure-fail.txt >}}
 ```
 
-Po wynikach `SELECT` @tbl-games-after-failed-merge widać, że dane nie zostały zmigrowane, a mechanizm transakcji cofnął zmiany
+Po wynikach `SELECT` (@tbl-games-after-failed-merge) widać, że dane nie zostały zmigrowane, ponieważ użytkownik nadal ma gry, Mechanizm transakcji cofnął zmiany.
 
 | user_id | game_release_id |    acquired_at        |
 |---------|-----------------|----------------------|
@@ -104,9 +105,9 @@ Po wynikach `SELECT` @tbl-games-after-failed-merge widać, że dane nie zostały
 
 : Gry użytkownika źródłowego po nieudanym wykonaniu procedury {#tbl-games-after-failed-merge}
 
-Gdy usunąłem ręcznie rzucenie wyjątku, dane dane użytkownika zostały poprawnie przeniesione, a zapytanie `SELECT` @tbl-games-after-successful-merge nie zwróciło żadnych wyników.
+Gdy usunąłem ręcznie rzucenie wyjątku, dane dane użytkownika zostały poprawnie przeniesione (@lst-merge-user-accounts-success), a zapytanie `SELECT` (@tbl-games-after-successful-merge) nie zwróciło żadnych wyników.
 
-```text
+```{#lst-merge-user-accounts-success .txt lst-cap="Udane połączenie kont"}
 {{< include listings/user-merge-procedure-success.txt >}}
 ```
 
@@ -128,13 +129,11 @@ Kod wyzwalaczy umieściłem w pliku [`triggers.sql`](https://github.com/christop
 
 ## Dokumentacja działania
 
-Dla użytkownika `casual_gamer` dodałem grę _Pandemic_ do jego listy życzeń @tbl-wishlist-after-pandemic-add.
+Dla użytkownika `casual_gamer` dodałem grę _Pandemic_ (@lst-add-game-wish) do jego listy życzeń @tbl-wishlist-after-pandemic-add.
 
-```postgresql
+```{#lst-add-game-wish .postgresql lst-cap="Dodanie gry Pandemic do listy życzeń"}
 CALL add_game_wish(4, NULL);
 ```
-
-Sprawdziłem listę życzeń użytkownika.
 
 |username    |name    |wished_at                 |
 |------------|--------|--------------------------|
@@ -144,7 +143,7 @@ Sprawdziłem listę życzeń użytkownika.
 
 : Życzenia użytkownika `casual_gamer` po dodaniu gry _Pandemic_ do listy życzeń {#tbl-wishlist-after-pandemic-add}
 
-Po dodaniu gry _Pandemic_ do kolekcji użytkownika automatycznie zniknęła ona z jego listy życzeń @tbl-wishlist-after-acquire-pandemic.
+Następnie dodałem egzemplarz gry _Pandemic_ do kolekcji użytkownika. Po dodaniu gry do kolekcji automatycznie zniknęła ona z jego listy życzeń @tbl-wishlist-after-acquire-pandemic.
 
 |username    |name    |wished_at                 |
 |------------|--------|--------------------------|
@@ -203,9 +202,9 @@ Przypuszczam, że został wgrany nowy obraz pod tag `18.0`, a przygotowanie moje
 Pomyślałem, że użytkownicy często chcieliby przeglądać statystyki gier. Niektóre ze statystyk wymagają agregacji.
 Ponieważ wyliczanie niektórych agregacji jest czasochłonne, a użytkownicy nie oczekują raczej w pełni aktualnych statystyk (pewnie wyniki z ostatniego dnia będą dobre), to utworzyłem zmaterializowany widok przechowujący te dane. \
 Za pomocą automatycznego zadania [pg_cron](https://github.com/citusdata/pg_cron), skonfigurowanego w pliku [`automation.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/automation/automation.sql), aktualizuję ten widok codziennie o 3 w nocy. \
-Skonfigurowane zadanie widać w wyniku poniższego zapytania w @tbl-automation-jobs.
+Skonfigurowane zadanie widać w wyniku poniższego zapytania (@lst-cron-jobs) w @tbl-automation-jobs.
 
-```sqlpostgresql
+```{#lst-cron-jobs .sqlpostgresql lst-cap="Zadania pg_cron"}
 SELECT jobid, schedule, command
 FROM cron.job
 ```
@@ -237,9 +236,9 @@ Zgodnie z zaleceniami z dokumentacji @postgres-docs:backup-dump, użyłem narzę
 Za pierwszym razem narzędzie `pg_dump` nie zadziałało, ponieważ okazało się, że domyślny pakiet [homebrew](https://brew.sh/) instaluje wersję 14, a mój \acr{SZBD} jest w wersji 18.
 Na szczęście przyczyna błędu była dobrze opisana w komunikacie i wystarczyło zainstalować odpowiednią wersję. Zrobiłem to poleceniem `brew install postgresql@18`.
 
-Ponieważ przeczytałem, że domyślnie `pg_dump` loguje się do bazy taką samą nazwą użytkownika @postgres-docs:backup-dump, jak zalogowane konto, to nadpisałem nazwę użytkownika i kilka innych podstawowych parametrów w wywołaniu.
+Ponieważ przeczytałem, że domyślnie `pg_dump` loguje się do bazy taką samą nazwą użytkownika @postgres-docs:backup-dump, jak zalogowane konto, to nadpisałem nazwę użytkownika i kilka innych podstawowych parametrów w wywołaniu @lst-pg-dump-backup.
 
-```sh
+```{#lst-pg-dump-backup .sh lst-cap="Wykonanie kopii zapasowej pg_dump"}
 pg_dump --dbname=boardbase --username=postgres --host=localhost --file=2025-11-10_boardbase_backup.sql
 ```
 
