@@ -22,6 +22,11 @@ format:
     number-sections: true
     colorlinks: true
     code-line-numbers: true
+    toc: true
+    lof: true
+    code-overflow: wrap
+    lot: true
+
     # highlight-style: arrow # default
     # highlight-style: pygments # brak tła
     highlight-style: tango # fajne
@@ -41,6 +46,8 @@ format:
     # highlight-style: printing # brak tła
     # highlight-style: radical # czarne tło
     # highlight-style: solarized # fajne
+
+    # Configure code listings line wrapping
     include-in-header:
       text: |
         \usepackage{fvextra}
