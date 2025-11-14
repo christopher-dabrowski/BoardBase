@@ -10,5 +10,7 @@ CTE: Common Table Expression
 SQL: Structured Query Language
 WAL: Write Ahead Log
 ORM: Object Relational Mapper
+T-SQL: Transact-SQL
+MSSQL: Microsoft SQL Server
 ---
 

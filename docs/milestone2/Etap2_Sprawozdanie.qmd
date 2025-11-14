@@ -290,6 +290,34 @@ Microsoft SQL Server 2022 (RTM-CU21-GDR) (KB5068406) - 16.0.4222.2 (X64)
 	Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
 ```
 
+# Analiza zmian między \acr{SZBD}
+
+<!-- Zapoznaj się z różnicami pomiędzy dialektami i dokonaj analizy (którą umieść w
+sprawozdaniu) jak wpłyną one na bazę danych używaną w projekcie i jakie poprawki będą
+potrzebne. Proszę przygotować ten punkt sprawozdania przed wykonaniem kolejnych. Z
+doświadczenia poprzedniego rocznika – nie polecam korzystania tutaj z podpowiedzi modeli
+językowych (a jeśli tak to dokładnie je sprawdzić). -->
+
+## Artykuły porównawcze
+
+Analizę zmian zacząłem od zapoznania się z artykułem od _Google Cloud_ _PostgreSQL vs SQL Server: What are the key differences?_ @google-cloud:postgresql-vs-sql-server. Okazał się on jednak bardzo powierzchowny i prawdopodobnie mijał się miejscami z prawdą. W tabeli porównującej prezentowane jest w tym artykule, że Microsoft SQL Server "Uses Transact-SQL or T-SQL (standard SQL + extra functionality)" a PostgreSQL "Uses Standard SQL".
+Z mojego doświadczenia i dokumentacji @postgres-docs:plpgsql-overview wynika, że Postgres używa własnej wersji składni `PL/pgSQL`, a nie standardowego \acr{SQL}.
+
+Następnie przeczytałem bardziej obszerny artykuł _A Complete Comparison of PostgreSQL vs Microsoft SQL Server_ @edb:mssql-vs-postgresql.
+Wydaje się on rzetelny, ale zauważyłem, że o ile są w artykule opisane rodzaje indeksów PostgreSQL, to dla \acr{MSSQL} wspomniane są tylko indeksy _clustered_ i _nonclustered_ oraz automatyczne indeksy tworzone na kluczach i _constraint_.
+Sugeruje to, że \acr{MSSQL} nie ma konkretnych typów indeksów, co nie jest prawdą @ms-learn:indexes.
+Podobne nieścisłości zauważyłem w sekcji opisującej wyzwalacze.
+
+## Wpływ różnic
+
+Typ binarny `VARBINARY` w \acr{T-SQL} wymaga podania maksymalnej długości (można podać `max`) @ms-learn:binary-and-varbinary, a używany do tej pory przeze mnie `BYTEA` w PostgreSQL tego nie wymaga @postgres-docs:binary-data-types. \
+Różnią się też trochę typy do przechowywania dat @edb:mssql-vs-postgresql. \
+Oznacza to, że będzie konieczna zmiana typów niektórych kolumn w bazie danych.
+
+Odpowiednikiem automatycznego generowania sekwencyjnych wartości `GENERATED ALWAYS AS IDENTITY` z Postgres w \acr{MSSQL} jest `IDENTITY(1,1)` @ms-learn:identity.
+
+\acr{MSSQL} ma wbudowany scheduler @edb:mssql-vs-postgresql, @ms-learn:create-a-schedule, więc nie będę musiał instalować rozszerzeń lub korzystać z zewnętrznych narzędzi.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
