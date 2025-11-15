@@ -1,0 +1,95 @@
+name: Generate and Publish Quarto PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/milestone2/Etap2_Sprawozdanie.qmd"
+      - "docs/milestone2/listings/**"
+      - "docs/shared/**"
+      - "docs/references.bib"
+      - "docs/glossary.yaml"
+      - "docs/_quarto.yml"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v5
+
+      - name: 🔧 Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tinytex: true
+
+      - name: 📄 Render Quarto document to PDF
+        run: |
+          cd docs/milestone2
+          quarto render Etap2_Sprawozdanie.qmd --to pdf
+
+      - name: 📋 Get generated PDF filename
+        id: pdf-info
+        run: |
+          cd docs/milestone2
+          PDF_FILE=$(ls -t *.pdf | head -1)
+          echo "Generated PDF: $PDF_FILE"
+          echo "pdf_filename=$PDF_FILE" >> $GITHUB_OUTPUT
+
+      - name: 🌿 Create/Switch to orphan branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch all branches
+          git fetch origin
+
+          # Check if orphan branch exists
+          if git ls-remote --heads origin pdf-reports | grep -q pdf-reports; then
+            echo "Branch pdf-reports exists, checking out..."
+            git checkout pdf-reports
+          else
+            echo "Creating new orphan branch pdf-reports..."
+            git checkout --orphan pdf-reports
+            git rm -rf .
+          fi
+
+      - name: 📤 Commit and push PDF
+        run: |
+          # Copy PDF to root of orphan branch
+          cp "docs/milestone2/${{ steps.pdf-info.outputs.pdf_filename }}" .
+
+          # Remove everything except the PDF
+          git rm -rf . 2>/dev/null || true
+          git clean -fdx
+
+          # Add only the PDF
+          git add "${{ steps.pdf-info.outputs.pdf_filename }}"
+
+          # Create commit message with timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          git commit -m "docs: update Etap 2 PDF report
+
+          Generated from commit ${{ github.sha }}
+          Rendered at: $TIMESTAMP"
+
+          # Push to orphan branch
+          git push origin pdf-reports --force
+
+      - name: ✅ Summary
+        run: |
+          echo "### 🎉 PDF Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **PDF File:** ${{ steps.pdf-info.outputs.pdf_filename }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** pdf-reports" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View PDF](https://github.com/${{ github.repository }}/blob/pdf-reports/${{ steps.pdf-info.outputs.pdf_filename }})" >> $GITHUB_STEP_SUMMARY
