@@ -323,6 +323,27 @@ Składnia elementów programowalnych jest nieco inna @edb:mssql-vs-postgresql. B
 Przeczytałem też, że \acr{MSSQL} nie ma wsparcia dla `JSON`, które jest dostępne w Postgres @estuary:migrate-postgresql-to-sql-server.
 Nie korzystałem jednak z tej funkcji.
 
+# Migracja na inny \acr{SZBD}
+
+## SQL Server Migration Assistant
+
+Początkowo miałem nadzieję użyć oficjalnego narzędzia od Microsoft [SQL Server Migration Assistant](https://learn.microsoft.com/en-us/sql/ssma/sql-server-migration-assistant), ponieważ przeczytałem, że jest to możliwe w artykule @estuary:migrate-postgresql-to-sql-server.
+Niestety narzędzie to wspiera tylko migrację z MySQL i Oracle @ms-learn:sql-server-migration-assistant, z \acr{SZBD} omawianych w zadaniu.
+
+Oceniam to narzędzie jako nieprzydatne do mojej migracji.
+
+## pg_dump
+
+Post na _Stack Overflow_ @stackoverflow:how-to-migrate-a-postgresql-database-into-a-sqlserver
+opisuje, że jednym ze sposobów na migrację jest wygenerowanie skryptów \acr{SQL} w możliwie uniwersalnej postaci do utworzenia struktury tabel i danych, a potem wczytanie ich w innym \acr{SZBD}.
+
+Z podobnym podejściem spotkałem się w wątku na _Server Fault_ @serverfault:best-tool-to-migrate-a-postgresql-database-to-ms-sql-2005.
+Autor opisywał w nim też transformację formatu wyeksportowanych danych skryptem i wczytanie ich narzędziem [`bcp`](https://learn.microsoft.com/en-us/sql/tools/bcp-utility).
+Do przeniesienia schematu bazy sugerował narzędzie [Full Convert](https://www.fullconvert.com/).
+
+Sądzę, że to podejście nie przeniesie żadnych elementów programowalnych, a jedynie dane i schemat, co i tak może wymagać ręcznych poprawek. \
+Chciałbym spróbować bardziej automatycznego narzędzia, ale możliwe, że wrócę do tego podejścia, ponieważ mimo swoich ograniczeń wydaje się mało zawodne.
+
 
 # Źródła {.unnumbered}
 
