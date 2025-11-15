@@ -344,6 +344,29 @@ Do przeniesienia schematu bazy sugerował narzędzie [Full Convert](https://www.
 Sądzę, że to podejście nie przeniesie żadnych elementów programowalnych, a jedynie dane i schemat, co i tak może wymagać ręcznych poprawek. \
 Chciałbym spróbować bardziej automatycznego narzędzia, ale możliwe, że wrócę do tego podejścia, ponieważ mimo swoich ograniczeń wydaje się mało zawodne.
 
+## DBConvert
+
+Narzędzie [DBConvert](https://dbconvert.com/postgresql/mssql/) automatycznie migruje tabele, indeksy i widoki oraz dane z bazy PostgreSQL do \acr{MSSQL}. \
+Dokonywane jest mapowanie typów, a w przypadku braku jednoznacznego dopasowania narzędzie pozwala na ręczne dobranie docelowych typów. \
+Wygląda na to, że nie wykonuje migracji elementów programowalnych @dbconvert:postgresql-to-sql-server. \
+Narzędzie to jest dostępne tylko w wersji na system Windows.
+
+Migracja danych i schematu z narzędziem [DBConvert](https://dbconvert.com/postgresql/mssql/) wydaje się łatwiejsza niż za pomocą `pg_dump`, jednak chciałbym użyć narzędzia, które zmigruje też automatyzację bazy. Niedostępność na systemie MacOS sprawia, że nie mogę bezpośrednio uruchomić tego narzędzia.
+
+## Sqlines
+
+Narzędzie [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) składa się z dwóch modułów i wspiera migrację z PostgreSQL do \acr{MSSQL} @sqlines:postgresql-to-sql-server. \
+Moduł _SQLines Data_ realizuje migrację danych i schematu.
+Moduł _SQLines SQL Converter_ pozwala przekonwertować skrypt \acr{SQL} do formatu docelowej bazy (\acr{T-SQL}).
+
+Wersja próbna narzędzia wprowadza nietypowe ograniczenia. \
+Moduł _SQLines Data_ może nie zaimportować jednego wiersza z oryginalnej tabeli, a moduł _SQLines SQL Converter_ może dodawać lub usuwać komentarze.
+
+Niestety najnowsza wspierana wersja bazy PostgreSQL to 16.x @sqlines:postgresql-to-sql-server, a niestety moja baza jest w wersji 18.0. \
+Narzędzie to jest dostępne tylko w wersji na system Windows. \
+Mimo tych potencjalnych ograniczeń chciałbym je wypróbować z uwagi na wsparcie konwersji skryptów \acr{SQL}. Nie spotkałem się jeszcze z innym narzędziem, które by to robiło.
+
+Żeby uruchomić narzędzie będę musiał przenieść moją bazę do systemu Windows. Dzięki użyciu kontenerów Docker i volumenów nie powinno to być trudne.
 
 # Źródła {.unnumbered}
 
