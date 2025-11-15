@@ -318,6 +318,12 @@ Odpowiednikiem automatycznego generowania sekwencyjnych wartości `GENERATED ALW
 
 \acr{MSSQL} ma wbudowany scheduler @edb:mssql-vs-postgresql, @ms-learn:create-a-schedule, więc nie będę musiał instalować rozszerzeń lub korzystać z zewnętrznych narzędzi.
 
+Składnia elementów programowalnych jest nieco inna @edb:mssql-vs-postgresql. Będzie konieczna konwersja kodu do składni \acr{T-SQL}.
+
+Przeczytałem też, że \acr{MSSQL} nie ma wsparcia dla `JSON`, które jest dostępne w Postgres @estuary:migrate-postgresql-to-sql-server.
+Nie korzystałem jednak z tej funkcji.
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
