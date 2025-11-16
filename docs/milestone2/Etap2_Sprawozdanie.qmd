@@ -373,6 +373,10 @@ Dostępna jest darmowa wersja nawet na MacOS.
 
 Ponieważ brak importu pojedynczych wierszy [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) (@sec-sqlines), będzie kłopotliwy przy kluczach obcych, chciałbym użyć [DBeaver](https://dbeaver.io/) do importu danych, a [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych.
 
+## Ispirer
+
+Firma [Ispirer](https://www.ispirer.com/) oferuje narzędzia do migracji baz danych. Niestety nie wspierają PostgreSQL jako źródła, a jedynie jako docelową bazę @ispirer:requesting-license.
+
 # Migracja bazy
 
 Zdecydowałem się na hybrydowe podejście, w którym użyję [DBeaver](https://dbeaver.io/) do importu danych i [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych. \
