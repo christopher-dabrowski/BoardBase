@@ -40,34 +40,29 @@ jobs:
           echo "Generated PDF: $PDF_FILE"
           echo "pdf_filename=$PDF_FILE" >> $GITHUB_OUTPUT
 
-      - name: Create/Switch to orphan branch
+      - name: Create fresh orphan branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Fetch all branches
-          git fetch origin
+          # Create a fresh orphan branch (no history)
+          git checkout --orphan pdf-reports
 
-          # Check if orphan branch exists
-          if git ls-remote --heads origin pdf-reports | grep -q pdf-reports; then
-            echo "Branch pdf-reports exists, checking out..."
-            git checkout pdf-reports
-          else
-            echo "Creating new orphan branch pdf-reports..."
-            git checkout --orphan pdf-reports
-            git rm -rf .
-          fi
+          # Remove all files from the branch
+          git rm -rf .
 
       - name: Commit and push PDF
         run: |
           # Copy PDF to root of orphan branch
           cp "docs/milestone2/${{ steps.pdf-info.outputs.pdf_filename }}" .
 
+          # Add only the PDF file
           git add "${{ steps.pdf-info.outputs.pdf_filename }}"
 
+          # Create a single commit
           git commit -m "docs: update Etap 2 PDF report"
 
-          # Push to orphan branch
+          # Force push to replace any existing history
           git push origin pdf-reports --force
 
       - name: Summary
