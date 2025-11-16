@@ -37,7 +37,6 @@ GROUP BY u.user_id, u.username, bg.board_game_id, bg.name, bg.designer,
          pr.amount, pr.currency, r.rating_id, r.enjoyment
 ORDER BY ugr.acquired_at DESC;
 
-EXECUTE sp_addextendedproperty 'MS_Description',
 'Shows user specific game collection', 'user', main, 'view', user_game_collection;
 
 
@@ -75,7 +74,6 @@ GROUP BY pl.play_id, pl.play_date, bg.board_game_id, bg.name, l.name, l.address,
          pl.player_count, pl.duration_in_minutes, w.username, pl.note
 ORDER BY pl.play_date DESC;
 
-EXECUTE sp_addextendedproperty 'MS_Description',
 'Complete current user play session log', 'user', main, 'view', user_play_history;
 
 GRANT SELECT ON main.user_game_collection TO players, admins;

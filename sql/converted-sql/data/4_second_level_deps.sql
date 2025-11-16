@@ -4,22 +4,22 @@
 -- SQLINES DEMO *** ====================================
 
 -- SQLINES DEMO *** ta (if any)
-TRUNCATE TABLE price CASCADE;
-ALTER SEQUENCE price_price_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
- WITH 1;
-TRUNCATE TABLE rating CASCADE;
-ALTER SEQUENCE rating_rating_id_seq RESTART WITH 1;
-TRUNCATE TABLE review CASCADE;
-ALTER SEQUENCE review_review_id_seq RESTART WITH 1;
-TRUNCATE TABLE play CASCADE;
-ALTER SEQUENCE play_play_id_seq RESTART WITH 1;
-TRUNCATE TABLE game_wish CASCADE;
-ALTER SEQUENCE game_wish_game_wish_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE price CASCADE;
+-- ALTER SEQUENCE price_price_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
+--  WITH 1;
+-- TRUNCATE TABLE rating CASCADE;
+-- ALTER SEQUENCE rating_rating_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE review CASCADE;
+-- ALTER SEQUENCE review_review_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE play CASCADE;
+-- ALTER SEQUENCE play_play_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE game_wish CASCADE;
+-- ALTER SEQUENCE game_wish_game_wish_id_seq RESTART WITH 1;
 
 -- SQLINES DEMO *** ====================================
 -- PR... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO price (game_release_id, amount, currency, start_date, end_date) VALUES
+INSERT INTO main.price (game_release_id, amount, currency, start_date, end_date) VALUES
 -- Wi... SQLINES DEMO ***
 (1, 55.00, 'USD', '2019-01-25', '2020-12-31'),
 (1, 60.00, 'USD', '2021-01-01', '2022-12-31'),
@@ -99,7 +99,7 @@ INSERT INTO price (game_release_id, amount, currency, start_date, end_date) VALU
 -- SQLINES DEMO *** ====================================
 -- RA... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO rating (board_game_id, user_id, enjoyment, minimal_player_count, maximum_player_count, best_player_count, minimal_age, complexity, rated_at) VALUES
+INSERT INTO main.rating (board_game_id, user_id, enjoyment, minimal_player_count, maximum_player_count, best_player_count, minimal_age, complexity, rated_at) VALUES
 -- Wi... SQLINES DEMO ***
 (1, 1, 9, 1, 5, 3, 10, 3, '2019-03-15 14:30:00'),
 (1, 2, 8, 2, 5, 4, 12, 2, '2019-04-20 10:15:00'),
@@ -191,7 +191,7 @@ INSERT INTO rating (board_game_id, user_id, enjoyment, minimal_player_count, max
 -- SQLINES DEMO *** ====================================
 -- RE... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO review (board_game_id, user_id, review_text, hours_spent_playing, reviewed_at) VALUES
+INSERT INTO main.review (board_game_id, user_id, review_text, hours_spent_playing, reviewed_at) VALUES
 (1, 1, 'Wingspan is an absolute masterpiece! The bird theme is beautifully integrated with the engine-building mechanics. Each turn feels meaningful, and the variety of birds ensures no two games are the same. The production quality is outstanding with gorgeous artwork. My only minor complaint is that it can be a bit multiplayer solitaire at times, but the gameplay is so engaging that I don''t mind. Highly recommended for anyone who enjoys medium-weight Euro games.', 45, '2019-03-20 15:00:00'),
 
 (1, 5, 'As a nature enthusiast and board gamer, Wingspan hits all the right notes. The educational aspect of learning about different bird species adds depth to the experience. The card combos are satisfying to pull off, and the egg-laying mechanism is clever. Games flow smoothly once everyone knows the rules. Perfect for relaxed game nights with friends who appreciate thoughtful strategy without being overly competitive.', 60, '2019-06-15 18:30:00'),
@@ -231,7 +231,7 @@ INSERT INTO review (board_game_id, user_id, review_text, hours_spent_playing, re
 -- SQLINES DEMO *** ====================================
 -- PL... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO play (board_game_id, location_id, winner_user_id, play_date, player_count, duration_in_minutes, note) VALUES
+INSERT INTO main.play (board_game_id, location_id, winner_user_id, play_date, player_count, duration_in_minutes, note) VALUES
 -- Re... SQLINES DEMO ***
 (1, 1, 5, '2024-10-15', 4, 75, 'Great game with the European expansion. Close scores all around!'),
 (2, 8, 10, '2024-10-12', 5, 65, 'Family game night - kids loved it!'),
@@ -283,7 +283,7 @@ INSERT INTO play (board_game_id, location_id, winner_user_id, play_date, player_
 -- SQLINES DEMO *** ====================================
 -- GA... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO game_wish (board_game_id, user_id, note, want_level, wished_at) VALUES
+INSERT INTO main.game_wish (board_game_id, user_id, note, want_level, wished_at) VALUES
 (12, 3, 'Want to get the deluxe edition with upgraded components. Waiting for restock.', 'MUST_HAVE', '2024-09-15 14:30:00'),
 (15, 4, 'Heard amazing things but need to commit to a group first. Maybe next year.', 'SOMEDAY', '2024-08-20 16:45:00'),
 (14, 7, 'Love engine building games. Want to get this after I finish my current game backlog.', 'WANT_TO_PLAY', '2024-10-01 18:00:00'),

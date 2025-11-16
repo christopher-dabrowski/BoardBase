@@ -4,16 +4,15 @@
 -- SQLINES DEMO *** ====================================
 
 -- SQLINES DEMO *** ta (if any)
-TRUNCATE TABLE location CASCADE;
-ALTER SEQUENCE location_location_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
- WITH 1;
-TRUNCATE TABLE game_release CASCADE;
-ALTER SEQUENCE game_release_game_release_id_seq RESTART WITH 1;
-
+-- TRUNCATE TABLE main.location;
+-- ALTER SEQUENCE main.location_location_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
+--  WITH 1;
+-- TRUNCATE TABLE main.game_release;
+-- ALTER SEQUENCE main.game_release_game_release_id_seq RESTART WITH 1;
 -- SQLINES DEMO *** ====================================
 -- LO... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO location (name, address, description, owner_user_id) VALUES
+INSERT INTO main.location (name, address, description, owner_user_id) VALUES
 ('Home - Living Room', '123 Maple Street, Springfield', 'My main gaming space with a large table and comfortable seating', 1),
 ('Board Game Cafe "Dice Tower"', '456 Oak Avenue, Downtown', 'Local board game cafe with extensive library and great coffee', 1),
 ('Chris Gaming Den', '789 Pine Road, Suburbia', 'Dedicated game room in the basement with custom gaming table', 7),
@@ -28,7 +27,7 @@ INSERT INTO location (name, address, description, owner_user_id) VALUES
 -- SQLINES DEMO *** ====================================
 -- GA... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO game_release (board_game_id, publisher_id, release_date, language) VALUES
+INSERT INTO main.game_release (board_game_id, publisher_id, release_date, language) VALUES
 -- Wi... SQLINES DEMO ***
 (1, 1, '2019-01-25', 'English'),
 (1, 1, '2019-03-15', 'German'),

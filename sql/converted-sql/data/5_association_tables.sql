@@ -4,17 +4,17 @@
 -- SQLINES DEMO *** ====================================
 
 -- SQLINES DEMO *** ta (if any)
-TRUNCATE TABLE board_game_category CASCADE;
-TRUNCATE TABLE board_game_mechanic CASCADE;
-TRUNCATE TABLE user_game_release CASCADE;
-TRUNCATE TABLE play_participant CASCADE;
-TRUNCATE TABLE award_board_game CASCADE;
+-- TRUNCATE TABLE board_game_category CASCADE;
+-- TRUNCATE TABLE board_game_mechanic CASCADE;
+-- TRUNCATE TABLE user_game_release CASCADE;
+-- TRUNCATE TABLE play_participant CASCADE;
+-- TRUNCATE TABLE award_board_game CASCADE;
 
 -- SQLINES DEMO *** ====================================
 -- BO... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
 -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
-INSERT INTO board_game_category (board_game_id, category_id) VALUES
+INSERT INTO main.board_game_category (board_game_id, category_id) VALUES
 -- SQLINES DEMO *** y, Family
 (1, 1),
 (1, 4),
@@ -84,7 +84,7 @@ INSERT INTO board_game_category (board_game_id, category_id) VALUES
 -- SQLINES DEMO *** ====================================
 -- BO... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO board_game_mechanic (board_game_id, mechanic_id) VALUES
+INSERT INTO main.board_game_mechanic (board_game_id, mechanic_id) VALUES
 -- SQLINES DEMO *** nagement, Set Collection, Engine Building
 (1, 8),
 (1, 6),
@@ -157,7 +157,7 @@ INSERT INTO board_game_mechanic (board_game_id, mechanic_id) VALUES
 -- SQLINES DEMO *** ====================================
 -- US... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO user_game_release (user_id, game_release_id, acquired_at) VALUES
+INSERT INTO main.user_game_release (user_id, game_release_id, acquired_at) VALUES
 -- SQLINES DEMO *** ter_42) - large collection
 (1, 1, '2019-02-15 14:00:00'),  -- Wi... SQLINES DEMO ***
 (1, 4, '2010-05-20 16:30:00'),  -- SQLINES DEMO *** glish
@@ -239,7 +239,7 @@ INSERT INTO user_game_release (user_id, game_release_id, acquired_at) VALUES
 -- SQLINES DEMO *** ====================================
 -- PL... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO play_participant (play_id, user_id) VALUES
+INSERT INTO main.play_participant (play_id, user_id) VALUES
 -- SQLINES DEMO *** at User 1's home
 (1, 1),
 (1, 5),
@@ -511,7 +511,7 @@ INSERT INTO play_participant (play_id, user_id) VALUES
 -- SQLINES DEMO *** ====================================
 -- AW... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO award_board_game (award_id, board_game_id, received_place) VALUES
+INSERT INTO main.award_board_game (award_id, board_game_id, received_place) VALUES
 -- SQLINES DEMO *** 2019
 (1, 1, 1),  -- Wi... SQLINES DEMO ***
 

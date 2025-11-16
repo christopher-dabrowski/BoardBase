@@ -13,7 +13,6 @@ GROUP BY bg.board_game_id, bg.name, bg.designer
 HAVING COUNT(DISTINCT bgc.category_id) = 0 OR COUNT(DISTINCT bgm.mechanic_id) = 0
 ORDER BY categories_count, mechanics_count;
 
-EXECUTE sp_addextendedproperty 'MS_Description',
 'Shows board games without categories or mechanics', 'user', main, 'view', games_missing_metadata;
 
 GRANT SELECT ON main.games_missing_metadata TO admins;

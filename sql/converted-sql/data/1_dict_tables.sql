@@ -4,20 +4,20 @@
 -- SQLINES DEMO *** ====================================
 
 -- SQLINES DEMO *** ta (if any)
-TRUNCATE TABLE category CASCADE;
-ALTER SEQUENCE category_category_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
- WITH 1;
-TRUNCATE TABLE mechanic CASCADE;
-ALTER SEQUENCE mechanic_mechanic_id_seq RESTART WITH 1;
-TRUNCATE TABLE publisher CASCADE;
-ALTER SEQUENCE publisher_publisher_id_seq RESTART WITH 1;
-TRUNCATE TABLE award CASCADE;
-ALTER SEQUENCE award_award_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE category CASCADE;
+-- ALTER SEQUENCE category_category_id_seq RESTART -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
+--  WITH 1;
+-- TRUNCATE TABLE mechanic CASCADE;
+-- ALTER SEQUENCE mechanic_mechanic_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE main.publisher;
+-- ALTER SEQUENCE publisher_publisher_id_seq RESTART WITH 1;
+-- TRUNCATE TABLE award CASCADE;
+-- ALTER SEQUENCE award_award_id_seq RESTART WITH 1;
 
 -- SQLINES DEMO *** ====================================
 -- CA... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO category (name, description) VALUES
+INSERT INTO main.category (name, description) VALUES
 ('Strategy', 'Games that emphasize strategic thinking, planning, and decision-making to achieve victory.'),
 ('Party', 'Social games designed for larger groups, focusing on fun and interaction rather than complex strategy.'),
 ('Cooperative', 'Games where players work together towards a common goal rather than competing against each other.'),
@@ -30,7 +30,7 @@ INSERT INTO category (name, description) VALUES
 -- SQLINES DEMO *** ====================================
 -- ME... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO mechanic (name, description) VALUES
+INSERT INTO main.mechanic (name, description) VALUES
 ('Deck Building', 'Players construct and optimize their personal deck of cards throughout the game.'),
 ('Worker Placement', 'Players place limited worker pieces on board spaces to take actions.'),
 ('Area Control', 'Players compete to dominate regions of the game board for points or resources.'),
@@ -45,7 +45,7 @@ INSERT INTO mechanic (name, description) VALUES
 -- SQLINES DEMO *** ====================================
 -- PU... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO publisher (name, website_url, description) VALUES
+INSERT INTO main.publisher (name, website_url, description) VALUES
 ('Stonemaier Games', 'https://stonemaiergames.com', 'Known for beautifully produced games like Wingspan and Scythe, focusing on elegant mechanics and stunning artwork.'),
 ('Days of Wonder', 'https://www.daysofwonder.com', 'Publisher of family-friendly classics including Ticket to Ride and Small World.'),
 ('Czech Games Edition', 'https://czechgames.com', 'European publisher known for innovative designs like Codenames and Through the Ages.'),
@@ -56,7 +56,7 @@ INSERT INTO publisher (name, website_url, description) VALUES
 -- SQLINES DEMO *** ====================================
 -- AW... SQLINES DEMO ***
 -- SQLINES DEMO *** ====================================
-INSERT INTO award (name, awarding_body, description, awarded_date, category) VALUES
+INSERT INTO main.award (name, awarding_body, description, awarded_date, category) VALUES
 ('Spiel des Jahres 2019', 'Spiel des Jahres Jury', 'The most prestigious German board game award, recognizing excellence in family-friendly game design.', '2019-07-22', 'Game of the Year'),
 ('Kennerspiel des Jahres 2020', 'Spiel des Jahres Jury', 'Award for more complex games aimed at experienced players.', '2020-07-20', 'Connoisseur Game of the Year'),
 ('Golden Geek Best Board Game 2021', 'BoardGameGeek Community', 'Community-voted award recognizing the best overall board game of the year.', '2022-01-15', 'Best Board Game'),

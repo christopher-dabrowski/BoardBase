@@ -32,7 +32,6 @@ GROUP BY bg.board_game_id, bg.name, bg.designer, bg.description,
          bg.declared_minimal_player_count, bg.declared_maximum_player_count,
          bg.declared_minimal_age;
 
-EXECUTE sp_addextendedproperty 'MS_Description',
 'Main game catalog', 'user', main, 'view', game_catalog;
 
 CREATE OR ALTER VIEW main.game_prices_current AS
@@ -62,7 +61,6 @@ INNER JOIN main.price pr ON gr.game_release_id = pr.game_release_id
 WHERE pr.end_date IS NULL  -- On... SQLINES DEMO ***
 ORDER BY bg.name, pr.amount;
 
-EXECUTE sp_addextendedproperty 'MS_Description',
 'Current market prices for all game releases', 'user', main, 'view', game_prices_current;
 
 GRANT SELECT ON main.game_catalog TO guests, players, admins;
