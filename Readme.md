@@ -5,6 +5,8 @@
 Projekt akademicki do nauki zaawansowanych systemów baz danych.
 Projekt będzie skupiał się na implementacji bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
 
+Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plików Quarto przez GitHub Actions i publikowane na orphan branchach 🚀
+
 ## Etap 1 - Projektowanie i implementacja bazy danych
 
 [![Publish Case Study PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml)
