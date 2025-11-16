@@ -494,6 +494,9 @@ W ten sposób udało mi się odtworzyć strukturę bazy razem z relacjami i wczy
 Instrukcje tworzące indeksy zamieniłem ręcznie na `CREATE INDEX` i `CREATE UNIQUE INDEX` bez podawania typu ineksów. \
 Kod testowania indeksów wykomentówałem, ponieważ pozostał w składni Postgres.
 
+Do poprawy widoku `game_catalog` spróbowałem wykorzystać \acr{LLM} w [chacie z Gemini](https://gemini.google.com/share/7d7e19a1d760). W drugiej iteracji widok zadziałał poprawnie.
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
