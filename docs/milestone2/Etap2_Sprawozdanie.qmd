@@ -373,7 +373,7 @@ Dostępna jest darmowa wersja nawet na MacOS.
 
 Ponieważ brak importu pojedynczych wierszy [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) (@sec-sqlines), będzie kłopotliwy przy kluczach obcych, chciałbym użyć [DBeaver](https://dbeaver.io/) do importu danych, a [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych.
 
-## Migracja danych
+# Migracja bazy
 
 Zdecydowałem się na hybrydowe podejście, w którym użyję [DBeaver](https://dbeaver.io/) do importu danych i [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych. \
 Wybrałem [DBeaver](https://dbeaver.io/) ponieważ jest dostępny na MacOS i posiada darmową wersję. \
@@ -382,6 +382,31 @@ Wybrałem [DBeaver](https://dbeaver.io/) ponieważ jest dostępny na MacOS i pos
 Myślałem nad zastosowaniem wyłącznie obu narzędzi [Sqlines](https://www.sqlines.com/postgresql-to-sql-server), jednak obawiałem się ograniczenia wersji próbnej, która może nie zaimportować po jednym wierszu z każdej tabeli.
 Spodziewam się, że spowodowałoby to problemy z kluczami obcymi, które musiałbym ręcznie naprawiać. \
 Musiałbym też przenieść dane bazy na Windows. Spodziewam się, że byłoby to możliwe za pomocą eksportu i importu volumenów Docker @docker:volumes, ale wolę tego uniknąć.
+
+## Dane
+
+[DBeaver](https://dbeaver.io/) wymaga podania istniejącej bazy i schemat, do której zostaną zmigrowane wybrane tabele.
+W tym celu utworzyłem nową bazę _boardbase_ na \acr{MSSQL} i schemat `main`. \
+Do utworzenia schematu spróbowałem przekonwertować skrypt [1_create-schema.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/schema/1_create-schema.sql) [Sqlines online](https://www.sqlines.com/online). Niestety narzędzie zmieniło tylko komentarz. Kod \acr{SQL} pozostał bez zmian (poza dodaniem `GO`) i nie działał na \acr{MSSQL}. Poprawiłem go ręcznie.
+
+Dowiedziałem się, że w \acr{MSSQL} nie ma konceptu `search_path` @dba-stackexchange:does-t-sql-have-a-schema-search-path,
+ale można skonfigurować domyślny schemat dla danego użytkownika @ms-learn:alter-user. Niestety nie udało mi się tego zrobić dla użytkownika `sa`.
+
+Po uruchomieniu migracji napotkałem błąd przy tworzeniu tabeli `game_wish`.
+
+> SQL Error [4188] [S0001]: Column or parameter 'want_level' has type 'text' and collation 'Latin1_General_100_CI_AS_SC_UTF8'. The legacy LOB types do not support UTF-8 or UTF-16 encodings. Use types varchar(max), nvarchar(max) or a collation which does not have the _SC or _UTF8 flags.
+> Column or parameter 'want_level' has type 'text' and collation 'Latin1_General_100_CI_AS_SC_UTF8'. The legacy LOB types do not support UTF-8 or UTF-16 encodings. Use types varchar(max), nvarchar(max) or a collation which does not have the _SC or _UTF8 flags.
+
+Zauważyłem, że [DBeaver](https://dbeaver.io/) zmienił typ kolumny `want_level` na `text`.
+Oryginalnie używałem własnego typu `ENUM`. `ENUM` nie jest wspierany w \acr{MSSQL} @bigdatansql:enum-equivalent-in-sql-server. \
+Zmieniłem domyślne mapowanie typu kolumny `want_level` na `nvarchar(20)`.
+
+Po tej poprawie dane zostały poprawnie zaimportowane do \acr{MSSQL}.
+Sprawdziłem, że tabela `game_wish` zawiera poprawne informacje w kolumnie `want_level`, teraz zapisane jako zwykły tekst. \
+Sprawdziłem też, że poprawnie zostały przeniesione moje `CONSTRAINT` dbające na przykład o poprawność formatu maili czy niedopuszczanie pustych wartości w niektórych kolumnach. Miło mnie to zaskoczyło. \
+Przeniosły się też reguły kaskadowego usuwania danych na podstawie kluczy obcych.
+
+Przeniesienie danych za pomocą narzędzia [DBeaver](https://dbeaver.io/) było zaskakująco proste.
 
 # Źródła {.unnumbered}
 
