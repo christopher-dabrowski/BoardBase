@@ -1,17 +1,12 @@
-name: Generate and Publish Quarto PDF
+name: Generate and Publish Milestone 2 PDF
 
 on:
   push:
     branches:
       - main
     paths:
-      - "docs/milestone2/Etap2_Sprawozdanie.qmd"
-      - "docs/milestone2/listings/**"
-      - "docs/shared/**"
-      - "docs/references.bib"
-      - "docs/glossary.yaml"
-      - "docs/_quarto.yml"
-  workflow_dispatch: # Allow manual trigger
+      - docs/milestone2/Etap2_Sprawozdanie.qmd
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,22 +16,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: 🔧 Set up Quarto
+      - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tinytex: true
 
-      - name: 📄 Render Quarto document to PDF
+      - name: Render Quarto document to PDF
         run: |
           cd docs/milestone2
           quarto render Etap2_Sprawozdanie.qmd --to pdf
 
-      - name: 📋 Get generated PDF filename
+      - name: Get generated PDF filename
         id: pdf-info
         run: |
           cd docs/milestone2
@@ -44,7 +39,7 @@ jobs:
           echo "Generated PDF: $PDF_FILE"
           echo "pdf_filename=$PDF_FILE" >> $GITHUB_OUTPUT
 
-      - name: 🌿 Create/Switch to orphan branch
+      - name: Create/Switch to orphan branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -62,7 +57,7 @@ jobs:
             git rm -rf .
           fi
 
-      - name: 📤 Commit and push PDF
+      - name: Commit and push PDF
         run: |
           # Copy PDF to root of orphan branch
           cp "docs/milestone2/${{ steps.pdf-info.outputs.pdf_filename }}" .
@@ -74,7 +69,7 @@ jobs:
           # Push to orphan branch
           git push origin pdf-reports --force
 
-      - name: ✅ Summary
+      - name: Summary
         run: |
           echo "### 🎉 PDF Published Successfully!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
