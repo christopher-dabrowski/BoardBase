@@ -10,7 +10,6 @@ Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plik
 ## Etap 1 - Projektowanie i implementacja bazy danych
 
 [![Publish Case Study PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml)
-
 [![Publish Milestone 1 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone1-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone1-pdf.yaml)
 
 Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjnej bazy danych zgodnie z najlepszymi praktykami. Obejmuje przygotowanie case study, wybór i konfigurację SZBD, stworzenie schematu bazy danych w 3NF z co najmniej 8 tabelami, wypełnienie danymi, konfigurację użytkowników oraz przygotowanie zapytań, perspektyw i indeksów. Kluczowe jest nie tylko stworzenie funkcjonalnej bazy, ale także jej dokładne udokumentowanie i uzasadnienie podjętych decyzji projektowych.
