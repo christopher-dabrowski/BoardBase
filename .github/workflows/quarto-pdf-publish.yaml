@@ -26,10 +26,11 @@ jobs:
         with:
           tinytex: true
 
-      - name: Render Quarto document to PDF
-        run: |
-          cd docs/milestone2
-          quarto render Etap2_Sprawozdanie.qmd --to pdf
+      - name: Render Quarto Project to PDF
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: pdf
+          path: docs/milestone2
 
       - name: Get generated PDF filename
         id: pdf-info
