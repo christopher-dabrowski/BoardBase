@@ -1,7 +1,3 @@
-SET @role casual_gamer;
--- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
-SELECT system_user, [session_user];
-
 SELECT user_id, username FROM main.app_user WHERE username = 'casual_gamer';
 SELECT TOP 1 board_game_id, name FROM main.board_game WHERE name = 'Catan';
 
@@ -13,11 +9,13 @@ WHERE u.username = 'casual_gamer'
 
 SELECT * FROM board_game;
 
--- id... SQLINES DEMO ***
+EXECUTE AS USER = 'casual_gamer';
+
+
 EXEC add_game_wish 4, NULL;
 
-SET @role god;
-SELECT system_user, [session_user];
+REVERT;
+SELECT CURRENT_USER;
 
 SELECT u.username, bg.name, gw.wished_at FROM main.game_wish gw
 JOIN main.app_user u ON gw.user_id = u.user_id
