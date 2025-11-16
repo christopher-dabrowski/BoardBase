@@ -1,0 +1,19 @@
+name: Publish Case Study PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/case-study/CaseStudy.qmd
+  workflow_dispatch:
+
+jobs:
+  publish:
+    uses: ./.github/workflows/quarto-pdf-publish.yaml
+    with:
+      source_file_path: docs/case-study/CaseStudy.qmd
+      publish_branch: publish/case-study
+      commit_message: "docs: update case study PDF report"
+    permissions:
+      contents: write
