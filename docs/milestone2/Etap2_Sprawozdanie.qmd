@@ -389,6 +389,8 @@ Musiałbym też przenieść dane bazy na Windows. Spodziewam się, że byłoby t
 
 ## Dane
 
+### DBeaver
+
 [DBeaver](https://dbeaver.io/) wymaga podania istniejącej bazy i schemat, do której zostaną zmigrowane wybrane tabele.
 W tym celu utworzyłem nową bazę _boardbase_ na \acr{MSSQL} i schemat `main`. \
 Do utworzenia schematu spróbowałem przekonwertować skrypt [1_create-schema.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/schema/1_create-schema.sql) [Sqlines online](https://www.sqlines.com/online). Niestety narzędzie zmieniło tylko komentarz. Kod \acr{SQL} pozostał bez zmian (poza dodaniem `GO`) i nie działał na \acr{MSSQL}. Poprawiłem go ręcznie.
@@ -412,6 +414,27 @@ Nie przeniosły się też klucze obce.
 
 Nie jest to zadowalający mnie wynik. Chciałbym wypróbować narzędzi działających na systemie Windows.
 W tym celu wyeksportowałem Docer'owy volumen z danymi i przeniosłem go komputer z systemem Windows.
+
+### DBConvert
+
+Po wczytaniu volumenu z danymi i odpaleniu baz na Widowsie uruchomiłem narzędzie [DBConvert](https://dbconvert.com/postgresql/mssql/).
+
+Nowy typ dla kolumny `want_level` narzędzie ustawiło domyślnie na VARCHAR(800), co zadziałałoby lepiej niż `TEXT`, ale i tak poprawiłem typ ręcznie na `VARCHAR(20)`. \
+Domyślnie narzędzie [DBConvert](https://dbconvert.com/postgresql/mssql/) pokazywało problemy z kluczami obcymi (@fig-dbconvert-type-issues).
+Klucze główne miały ustawiony typ `BIGINT`, a klucze obce `INT`. Rozwiązałem to zmieniając typy kluczy obcych na `BIGINT`.
+
+::: {#fig-dbconvert-type-config layout-ncol=2}
+
+![Domyślne ustawienie typów](img/MSSQL2PostgreSQLPro_initial-conversion-issues.png){#fig-dbconvert-type-issues}
+
+![Poprawione klucze obce](img/MSSQL2PostgreSQLPro_fixed-types.png)
+
+Konfiguracja importu danych w DBConvert
+:::
+
+Niestety po uruchomieniu migracji kończyła się ona błędami (@fig-dbconvert-import-failure).
+
+![Błędy migracji DBConvert](img/MSSQL2PostgreSQLPro_import-failure.png){#fig-dbconvert-import-failure}
 
 # Źródła {.unnumbered}
 
