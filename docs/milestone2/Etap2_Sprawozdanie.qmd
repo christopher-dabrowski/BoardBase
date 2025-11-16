@@ -362,11 +362,9 @@ Moduł _SQLines SQL Converter_ pozwala przekonwertować skrypt \acr{SQL} do form
 Wersja próbna narzędzia wprowadza nietypowe ograniczenia. \
 Moduł _SQLines Data_ może nie zaimportować jednego wiersza z oryginalnej tabeli, a moduł _SQLines SQL Converter_ może dodawać lub usuwać komentarze @sqlines:download.
 
-Niestety najnowsza wspierana wersja bazy PostgreSQL to 16.x @sqlines:postgresql-to-sql-server, a niestety moja baza jest w wersji 18.0, ale może i tak zadziała. \
+Niestety najnowsza wspierana wersja bazy PostgreSQL to 16.x @sqlines:postgresql-to-sql-server, a niestety moja baza jest w wersji 18.0. \
 Narzędzie to jest dostępne tylko w wersji na system Windows. \
 Mimo tych potencjalnych ograniczeń chciałbym je wypróbować z uwagi na wsparcie konwersji skryptów \acr{SQL}. Nie spotkałem się jeszcze z innym narzędziem, które by to robiło.
-
-Żeby uruchomić narzędzie będę musiał przenieść moją bazę do systemu Windows. Dzięki użyciu kontenerów Docker i volumenów nie powinno to być trudne.
 
 ## DBeaver
 
@@ -374,6 +372,16 @@ Mimo tych potencjalnych ograniczeń chciałbym je wypróbować z uwagi na wsparc
 Dostępna jest darmowa wersja nawet na MacOS.
 
 Ponieważ brak importu pojedynczych wierszy [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) (@sec-sqlines), będzie kłopotliwy przy kluczach obcych, chciałbym użyć [DBeaver](https://dbeaver.io/) do importu danych, a [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych.
+
+## Migracja danych
+
+Zdecydowałem się na hybrydowe podejście, w którym użyję [DBeaver](https://dbeaver.io/) do importu danych i [Sqlines](https://www.sqlines.com/postgresql-to-sql-server) do dostosowania elementów programowalnych. \
+Wybrałem [DBeaver](https://dbeaver.io/) ponieważ jest dostępny na MacOS i posiada darmową wersję. \
+[Sqlines](https://www.sqlines.com/postgresql-to-sql-server) nie jest dostępny na MacOS, ale ponieważ operuje na plikach kodu \acr{SQL} to stosunkowo łatwo będzie mi skorzystać z tego narzędzia na innym komputerze. Niestety narzędzie to wspiera tylko wersje PostgreSQL do 16.x, ale liczę na to, że mój kod działający na PostgreSQL 18.0 będzie kompatybilny.
+
+Myślałem nad zastosowaniem wyłącznie obu narzędzi [Sqlines](https://www.sqlines.com/postgresql-to-sql-server), jednak obawiałem się ograniczenia wersji próbnej, która może nie zaimportować po jednym wierszu z każdej tabeli.
+Spodziewam się, że spowodowałoby to problemy z kluczami obcymi, które musiałbym ręcznie naprawiać. \
+Musiałbym też przenieść dane bazy na Windows. Spodziewam się, że byłoby to możliwe za pomocą eksportu i importu volumenów Docker @docker:volumes, ale wolę tego uniknąć.
 
 # Źródła {.unnumbered}
 
