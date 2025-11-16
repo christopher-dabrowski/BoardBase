@@ -456,6 +456,40 @@ Problemy z instalacją Full Convert
 Uznałem, że **wykorzystam import danych**, który zrobiłem za pomocą [**DBeaver**](https://dbeaver.io/).
 Klucze obce i `CONSTRAINT` dodam dodam na kolejnym etapie.
 
+## Skrypty \acr{SQL}
+
+Elementy programowalne nie zostały przeniesione narzędziami \acr{ETL}.
+Nie przeniosły się też klucze i `CONSTRAINT`. \
+Przekonwertuję skrypty, żeby odtworzyć elementy programowalne i dodać brakujące relacje.
+
+### SQLines SQL Converter @sqlines:download
+
+Za pomocą polecenia \acr{CLI} _SQLines SQL Converter_ przekonwertowałem moje skrypty do składni \acr{T-SQL}. \
+Konwersja zadziałała bez błędów, lecz skrypty wymagały ręcznych poprawek.
+Zauważyłem, że dla niektórych instrukcji narzędzie przepisało zupełnie bez zmian oryginalny kod, mimo, że korzysta on wyraźnie ze składni Postgres np. w [2_create-custom-types.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/schema/2_create-custom-types.sql).
+
+Dostosowałem kod tworzący tabele ręcznie, za pomocą find and replace z wyrażeniami regularnymi.
+Poprawiłem też kod wczytujący dane, żeby od razu przetestować kolejne elementy. \
+Rozważałem zdjęcie relacji i wczytanie danych [DBeaver](https://dbeaver.io/) i ich przywrócenie, lecz zdecydowałem się na wczytanie danych na podstawie moich skryptów.
+
+- dodałem schemat `main` do nazw tabel,
+- poprawiłem deklarację `IDENTITY` na `IDENTITY(1,1)`,
+- usunąłem niedziałające dodawanie komentarzy `EXECUTE sp_addextendedproperty ...`,
+- usunąłem porównania używające wyrażeń regularnych `~` zastępując je `LIKE`,
+- zmieniłem `ON DELETE RESTRICT` na `SET` ustawiający odpowiednią wartość,
+- znów zamieniłem użycie enum na `VARCHAR(20)` w kolumnie `want_level`,
+- dodałem nazwę schematu `main` do konfiguracji kluczy obcych `REFERENCES`,
+- skrypt do wylistowania tabeli przepisałem ręcznie,
+- dodałem nazwę schematu `main` do nazw tabel w `INSERT INTO`,
+- poprawiłem wczytanie binarnych danych,
+- zamieniłem `TRUE` i `FALSE` na `1` i `0`,
+- wykomentowałem indepondentnet `TRUNCATE TABLE` i resetowanie sekwencji, ponieważ nie działało.
+
+W ten sposób udało mi się odtworzyć strukturę bazy razem z relacjami i wczytać dane, co demonstruję wykonując przykładowe proste zapytanie @fig-migrated-sample-query.
+
+![Przykładowe zapytanie na MSSQL](img/converted-code-simple-queries.png){#fig-migrated-sample-query width=60%}
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}

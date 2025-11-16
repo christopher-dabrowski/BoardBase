@@ -12,5 +12,7 @@ WAL: Write Ahead Log
 ORM: Object Relational Mapper
 T-SQL: Transact-SQL
 MSSQL: Microsoft SQL Server
+ETL: Extract Transform Load
+CLI: Command Line Interface
 ---
 
