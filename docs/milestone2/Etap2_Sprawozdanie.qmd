@@ -462,8 +462,6 @@ Elementy programowalne nie zostały przeniesione narzędziami \acr{ETL}.
 Nie przeniosły się też klucze i `CONSTRAINT`. \
 Przekonwertuję skrypty, żeby odtworzyć elementy programowalne i dodać brakujące relacje.
 
-### SQLines SQL Converter @sqlines:download
-
 Za pomocą polecenia \acr{CLI} _SQLines SQL Converter_ przekonwertowałem moje skrypty do składni \acr{T-SQL}. \
 Konwersja zadziałała bez błędów, lecz skrypty wymagały ręcznych poprawek.
 Zauważyłem, że dla niektórych instrukcji narzędzie przepisało zupełnie bez zmian oryginalny kod, mimo, że korzysta on wyraźnie ze składni Postgres np. w [2_create-custom-types.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/schema/2_create-custom-types.sql).
