@@ -496,6 +496,9 @@ Kod testowania indeksów wykomentówałem, ponieważ pozostał w składni Postgr
 
 Do poprawy widoku `game_catalog` spróbowałem wykorzystać \acr{LLM} w [chacie z Gemini](https://gemini.google.com/share/7d7e19a1d760). W drugiej iteracji widok zadziałał poprawnie.
 
+Ręcznie przepisałem tworzenie grup [1_create-groups.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/users/1_create-groups.sql) i użytkowników [2_create-users.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/users/2_craete-users.sql). \
+Tworząc użytkowników musiałem lekko rozbudować ich hasła, ponieważ \acr{MSSQL} narzuca wymagania siły haseł.
+
 
 # Źródła {.unnumbered}
 
