@@ -453,6 +453,9 @@ Wolałem nie ryzykować i zrezygnowałem z użycia tego narzędzia.
 Problemy z instalacją Full Convert
 :::
 
+Uznałem, że **wykorzystam import danych**, który zrobiłem za pomocą [**DBeaver**](https://dbeaver.io/).
+Klucze obce i `CONSTRAINT` dodam dodam na kolejnym etapie.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
