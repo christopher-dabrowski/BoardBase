@@ -410,6 +410,9 @@ Sprawdziłem, że tabela `game_wish` zawiera poprawne informacje w kolumnie `wan
 Sprawdziłem też, czy zostały przeniesione moje `CONSTRAINT` dbające na przykład o poprawność formatu maili czy niedopuszczanie pustych wartości w niektórych kolumnach. Niestety żadne z nich nie zostały przeniesione, nawet tak podstawowe jak `UNIQUE`. \
 Nie przeniosły się też klucze obce.
 
+Nie jest to zadowalający mnie wynik. Chciałbym wypróbować narzędzi działających na systemie Windows.
+W tym celu wyeksportowałem Docer'owy volumen z danymi i przeniosłem go komputer z systemem Windows.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
