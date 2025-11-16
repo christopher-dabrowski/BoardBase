@@ -81,6 +81,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout --orphan ${{ inputs.publish_branch }}
+          git reset
       - name: Commit and push PDF
         run: |
           cp "${{ steps.paths.outputs.source_dir }}/${{ steps.pdf-info.outputs.pdf_filename }}" .
