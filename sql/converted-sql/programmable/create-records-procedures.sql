@@ -42,6 +42,8 @@ BEGIN
     SET @new_location_id = SCOPE_IDENTITY();
 END;
 GO
+GRANT EXECUTE ON OBJECT:: main.add_location TO players;
+GO
 
 ---
 
@@ -88,6 +90,8 @@ BEGIN
 END;
 GO
 
+GRANT EXECUTE ON OBJECT:: main.add_rating TO players;
+GO
 ---
 
 CREATE PROCEDURE main.add_review
@@ -116,6 +120,9 @@ BEGIN
 END;
 GO
 
+
+GRANT EXECUTE ON OBJECT:: main.add_review TO players;
+
 ---
 
 CREATE PROCEDURE main.add_game_wish
@@ -143,3 +150,5 @@ BEGIN
     SET @new_game_wish_id = SCOPE_IDENTITY();
 END;
 GO
+
+GRANT EXECUTE ON OBJECT:: main.add_game_wish TO players;
