@@ -501,7 +501,8 @@ Tworząc użytkowników musiałem lekko rozbudować ich hasła, ponieważ \acr{M
 
 Skoro \acr{LLM} dobrze poradził sobie z przepisaniem kodu widoku postanowiłem użyć go też do aktualizacji kodu wyzwalaczy [`triggers.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/programmable/triggers.sql) ([chat z Gemini](https://gemini.google.com/share/ff2410cfd30c)).
 
-W [kolejnym chacie](https://gemini.google.com/share/32f50ca92533) przekonwertowałem proste procedury [create-records-procedures.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/programmable/create-records-procedures.sql)
+W [kolejnym chacie](https://gemini.google.com/share/32f50ca92533) przekonwertowałem proste procedury [create-records-procedures.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/programmable/create-records-procedures.sql).
+Przy testowaniu zauważyłem, że użytkownik _casual\_gamer_ nie ma uprawnień do wykonania procedury. Dodałem ręcznie uprawnienie do uruchomienia procedury.
 
 
 # Źródła {.unnumbered}
