@@ -407,10 +407,8 @@ Zmieniłem domyślne mapowanie typu kolumny `want_level` na `nvarchar(20)`.
 
 Po tej poprawie dane zostały poprawnie zaimportowane do \acr{MSSQL}.
 Sprawdziłem, że tabela `game_wish` zawiera poprawne informacje w kolumnie `want_level`, teraz zapisane jako zwykły tekst. \
-Sprawdziłem też, że poprawnie zostały przeniesione moje `CONSTRAINT` dbające na przykład o poprawność formatu maili czy niedopuszczanie pustych wartości w niektórych kolumnach. Miło mnie to zaskoczyło. \
-Przeniosły się też reguły kaskadowego usuwania danych na podstawie kluczy obcych.
-
-Przeniesienie danych za pomocą narzędzia [DBeaver](https://dbeaver.io/) było zaskakująco proste.
+Sprawdziłem też, czy zostały przeniesione moje `CONSTRAINT` dbające na przykład o poprawność formatu maili czy niedopuszczanie pustych wartości w niektórych kolumnach. Niestety żadne z nich nie zostały przeniesione, nawet tak podstawowe jak `UNIQUE`. \
+Nie przeniosły się też klucze obce.
 
 # Źródła {.unnumbered}
 
