@@ -481,7 +481,7 @@ Rozważałem zdjęcie relacji i wczytanie danych [DBeaver](https://dbeaver.io/) 
 
 - dodałem schemat `main` do nazw tabel,
 - poprawiłem deklarację `IDENTITY` na `IDENTITY(1,1)`,
-- usunąłem niedziałające dodawanie komentarzy `EXECUTE sp_addextendedproperty ...`,
+- usunąłem niedziałające dodawanie komentarzy `EXECUTE sp_addextendedproperty`,
 - usunąłem porównania używające wyrażeń regularnych `~` zastępując je `LIKE`,
 - zmieniłem `ON DELETE RESTRICT` na `SET` ustawiający odpowiednią wartość,
 - znów zamieniłem użycie enum na `VARCHAR(20)` w kolumnie `want_level`,
