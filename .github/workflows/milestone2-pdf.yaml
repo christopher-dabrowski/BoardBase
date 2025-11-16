@@ -8,6 +8,10 @@ on:
       - docs/milestone2/Etap2_Sprawozdanie.qmd
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow}}
+  cancel-in-progress: true
+
 jobs:
   publish:
     uses: ./.github/workflows/quarto-pdf-publish.yaml
