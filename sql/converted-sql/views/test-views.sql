@@ -1,16 +1,7 @@
 -- SQLINES FOR EVALUATION USE ONLY (14 DAYS)
-SELECT TOP 5
-    game_name,
-    designer,
-    min_players,
-    max_players,
-    SUBSTRING(categories, 1, 40) AS categories_preview,
-    SUBSTRING(mechanics, 1, 40) AS mechanics_preview,
-    average_enjoyment,
-    total_ratings,
-    total_plays
+SELECT *
 FROM main.game_catalog
-ORDER BY total_ratings DESC NULLS LAST
+ORDER BY total_ratings DESC
 ;
 
 SELECT TOP 5
