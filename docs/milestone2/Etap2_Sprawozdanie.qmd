@@ -499,6 +499,10 @@ Do poprawy widoku `game_catalog` spróbowałem wykorzystać \acr{LLM} w [chacie 
 Ręcznie przepisałem tworzenie grup [1_create-groups.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/users/1_create-groups.sql) i użytkowników [2_create-users.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/users/2_craete-users.sql). \
 Tworząc użytkowników musiałem lekko rozbudować ich hasła, ponieważ \acr{MSSQL} narzuca wymagania siły haseł.
 
+Skoro \acr{LLM} dobrze poradził sobie z przepisaniem kodu widoku postanowiłem użyć go też do aktualizacji kodu wyzwalaczy [`triggers.sql`](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/programmable/triggers.sql) ([chat z Gemini](https://gemini.google.com/share/ff2410cfd30c)).
+
+W [kolejnym chacie](https://gemini.google.com/share/32f50ca92533) przekonwertowałem proste procedury [create-records-procedures.sql](https://github.com/christopher-dabrowski/BoardBase/blob/main/sql/converted-sql/programmable/create-records-procedures.sql)
+
 
 # Źródła {.unnumbered}
 
