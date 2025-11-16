@@ -61,11 +61,16 @@ jobs:
           echo "Source directory: $SOURCE_DIR"
           echo "Source filename: $SOURCE_FILENAME"
 
-      - name: Render Quarto Project to PDF
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: pdf
-          path: ${{ steps.paths.outputs.source_dir }}
+      # - name: Render Quarto Project to PDF
+      #   uses: quarto-dev/quarto-actions/render@v2
+      #   with:
+      #     to: pdf
+      #     path: ${{ steps.paths.outputs.source_dir }}
+
+      - name: CLI Quarto Render to PDF
+        run: |
+          cd ${{ steps.paths.outputs.source_dir }}
+          quarto render --to pdf
 
       - name: Get generated PDF filename
         id: pdf-info
