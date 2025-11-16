@@ -407,10 +407,19 @@ Zauważyłem, że [DBeaver](https://dbeaver.io/) zmienił typ kolumny `want_leve
 Oryginalnie używałem własnego typu `ENUM`. `ENUM` nie jest wspierany w \acr{MSSQL} @bigdatansql:enum-equivalent-in-sql-server. \
 Zmieniłem domyślne mapowanie typu kolumny `want_level` na `nvarchar(20)`.
 
-Po tej poprawie dane zostały poprawnie zaimportowane do \acr{MSSQL}.
-Sprawdziłem, że tabela `game_wish` zawiera poprawne informacje w kolumnie `want_level`, teraz zapisane jako zwykły tekst. \
+Po tej poprawie dane zostały poprawnie zaimportowane do \acr{MSSQL} (@fig-dbeaver-migration).
+Sprawdziłem, że tabela `game_wish` zawiera poprawne informacje w kolumnie `want_level`, teraz zapisane jako zwykły tekst (@fig-dbeaver-game-wish-table). \
 Sprawdziłem też, czy zostały przeniesione moje `CONSTRAINT` dbające na przykład o poprawność formatu maili czy niedopuszczanie pustych wartości w niektórych kolumnach. Niestety żadne z nich nie zostały przeniesione, nawet tak podstawowe jak `UNIQUE`. \
 Nie przeniosły się też klucze obce.
+
+::: {#fig-dbeaver-migration layout="[50, -5, 50]"}
+
+![Zmigrowana tabela game_wish](img/mssql_game-wish-table.png){#fig-dbeaver-game-wish-table}
+
+![Zmigrowana tabela app_users](img/mssql_users-table.png)
+
+Migracja danych za pomocą DBeaver
+:::
 
 Nie jest to zadowalający mnie wynik. Chciałbym wypróbować narzędzi działających na systemie Windows.
 W tym celu wyeksportowałem Docer'owy volumen z danymi i przeniosłem go komputer z systemem Windows.
