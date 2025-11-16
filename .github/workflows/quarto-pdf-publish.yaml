@@ -67,19 +67,9 @@ jobs:
           # Copy PDF to root of orphan branch
           cp "docs/milestone2/${{ steps.pdf-info.outputs.pdf_filename }}" .
 
-          # Remove everything except the PDF
-          git rm -rf . 2>/dev/null || true
-          git clean -fdx
-
-          # Add only the PDF
           git add "${{ steps.pdf-info.outputs.pdf_filename }}"
 
-          # Create commit message with timestamp
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git commit -m "docs: update Etap 2 PDF report
-
-          Generated from commit ${{ github.sha }}
-          Rendered at: $TIMESTAMP"
+          git commit -m "docs: update Etap 2 PDF report"
 
           # Push to orphan branch
           git push origin pdf-reports --force
