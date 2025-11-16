@@ -489,6 +489,10 @@ W ten sposób udało mi się odtworzyć strukturę bazy razem z relacjami i wczy
 
 ![Przykładowe zapytanie na MSSQL](img/converted-code-simple-queries.png){#fig-migrated-sample-query width=60%}
 
+[Bardziej złożone zapytania](https://github.com/christopher-dabrowski/BoardBase/tree/main/sql/converted-sql/queries) zostały poprawnie przekonwertowane i działają bez mojej ingerencji.
+
+Instrukcje tworzące indeksy zamieniłem ręcznie na `CREATE INDEX` i `CREATE UNIQUE INDEX` bez podawania typu ineksów. \
+Kod testowania indeksów wykomentówałem, ponieważ pozostał w składni Postgres.
 
 # Źródła {.unnumbered}
 
