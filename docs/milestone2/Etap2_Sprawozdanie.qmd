@@ -423,7 +423,7 @@ Nowy typ dla kolumny `want_level` narzędzie ustawiło domyślnie na VARCHAR(800
 Domyślnie narzędzie [DBConvert](https://dbconvert.com/postgresql/mssql/) pokazywało problemy z kluczami obcymi (@fig-dbconvert-type-issues).
 Klucze główne miały ustawiony typ `BIGINT`, a klucze obce `INT`. Rozwiązałem to zmieniając typy kluczy obcych na `BIGINT`.
 
-::: {#fig-dbconvert-type-config layout-ncol=2}
+::: {#fig-dbconvert-type-config layout="[50, -5, 50]"}
 
 ![Domyślne ustawienie typów](img/MSSQL2PostgreSQLPro_initial-conversion-issues.png){#fig-dbconvert-type-issues}
 
@@ -435,6 +435,23 @@ Konfiguracja importu danych w DBConvert
 Niestety po uruchomieniu migracji kończyła się ona błędami (@fig-dbconvert-import-failure).
 
 ![Błędy migracji DBConvert](img/MSSQL2PostgreSQLPro_import-failure.png){#fig-dbconvert-import-failure}
+
+### Full Convert
+
+Chciałem wypróbować jeszcze narzędzie [Full Convert](https://www.fullconvert.com).
+Jest ono dostępne tylko na Windows, ale na to byłem już przygotowany. \
+
+Podczas instalacji Windows Defender oznaczył jeden z plików jako trojan, co spowodowało niepowodzenie instalacji (@fig-full-convert-install-issues).
+Wolałem nie ryzykować i zrezygnowałem z użycia tego narzędzia.
+
+::: {#fig-full-convert-install-issues layout="[50, -5, 50]"}
+
+![Problem wykryty przez Windows Defender](img/WindowsDefender_full-converter-trojan-error.png)
+
+![Instalacja zakończona niepowodzeniem](img/SetupFullConvert_installation-error.png)
+
+Problemy z instalacją Full Convert
+:::
 
 # Źródła {.unnumbered}
 
