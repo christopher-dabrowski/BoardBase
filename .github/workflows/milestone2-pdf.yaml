@@ -1,0 +1,19 @@
+name: Publish Milestone 2 PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/milestone2/Etap2_Sprawozdanie.qmd
+  workflow_dispatch:
+
+jobs:
+  publish:
+    uses: ./.github/workflows/quarto-pdf-publish.yaml
+    with:
+      source_file_path: docs/milestone2/Etap2_Sprawozdanie.qmd
+      publish_branch: publish/milestone2
+      commit_message: "docs: update milestone 2 PDF report"
+    permissions:
+      contents: write

@@ -1,12 +1,36 @@
-name: Generate and Publish Milestone 2 PDF
+name: Generate and Publish Quarto PDF
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - docs/milestone2/Etap2_Sprawozdanie.qmd
+  workflow_call:
+    inputs:
+      source_file_path:
+        description: "Path to the Quarto source file (e.g., docs/milestone2/Etap2_Sprawozdanie.qmd)"
+        required: true
+        type: string
+      publish_branch:
+        description: "Branch name to publish the PDF to (e.g., pdf-reports)"
+        required: true
+        type: string
+      commit_message:
+        description: "Commit message for the PDF update"
+        required: false
+        type: string
+        default: "docs: update PDF report"
   workflow_dispatch:
+    inputs:
+      source_file_path:
+        description: "Path to the Quarto source file (e.g., docs/milestone2/Etap2_Sprawozdanie.qmd)"
+        required: true
+        type: string
+      publish_branch:
+        description: "Branch name to publish the PDF to (e.g., pdf-reports)"
+        required: true
+        type: string
+      commit_message:
+        description: "Commit message for the PDF update"
+        required: false
+        type: string
+        default: "docs: update PDF report"
 
 permissions:
   contents: write
@@ -26,16 +50,27 @@ jobs:
         with:
           tinytex: true
 
+      - name: Extract source directory
+        id: paths
+        run: |
+          SOURCE_FILE="${{ inputs.source_file_path }}"
+          SOURCE_DIR=$(dirname "$SOURCE_FILE")
+          SOURCE_FILENAME=$(basename "$SOURCE_FILE")
+          echo "source_dir=$SOURCE_DIR" >> $GITHUB_OUTPUT
+          echo "source_filename=$SOURCE_FILENAME" >> $GITHUB_OUTPUT
+          echo "Source directory: $SOURCE_DIR"
+          echo "Source filename: $SOURCE_FILENAME"
+
       - name: Render Quarto Project to PDF
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: pdf
-          path: docs/milestone2
+          path: ${{ steps.paths.outputs.source_dir }}
 
       - name: Get generated PDF filename
         id: pdf-info
         run: |
-          cd docs/milestone2
+          cd ${{ steps.paths.outputs.source_dir }}
           PDF_FILE=$(ls -t *.pdf | head -1)
           echo "Generated PDF: $PDF_FILE"
           echo "pdf_filename=$PDF_FILE" >> $GITHUB_OUTPUT
@@ -45,32 +80,22 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Create a fresh orphan branch (no history)
-          git checkout --orphan pdf-reports
-
-          # Remove all files from the branch
-          git rm -rf .
-
+          git checkout --orphan ${{ inputs.publish_branch }}
       - name: Commit and push PDF
         run: |
-          # Copy PDF to root of orphan branch
-          cp "docs/milestone2/${{ steps.pdf-info.outputs.pdf_filename }}" .
-
-          # Add only the PDF file
+          cp "${{ steps.paths.outputs.source_dir }}/${{ steps.pdf-info.outputs.pdf_filename }}" .
           git add "${{ steps.pdf-info.outputs.pdf_filename }}"
-
-          # Create a single commit
-          git commit -m "docs: update Etap 2 PDF report"
-
-          # Force push to replace any existing history
-          git push origin pdf-reports --force
+          git commit -m "${{ inputs.commit_message }}"
+          git push origin ${{ inputs.publish_branch }} --force
 
       - name: Summary
         run: |
+          PDF_ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${{ steps.pdf-info.outputs.pdf_filename }}'))")
           echo "### 🎉 PDF Published Successfully!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source File:** ${{ inputs.source_file_path }}" >> $GITHUB_STEP_SUMMARY
           echo "- **PDF File:** ${{ steps.pdf-info.outputs.pdf_filename }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Branch:** pdf-reports" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** ${{ inputs.publish_branch }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 [View PDF](https://github.com/${{ github.repository }}/blob/pdf-reports/${{ steps.pdf-info.outputs.pdf_filename }})" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View PDF](https://github.com/${{ github.repository }}/blob/${{ inputs.publish_branch }}/${PDF_ENCODED})" >> $GITHUB_STEP_SUMMARY
