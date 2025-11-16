@@ -11,4 +11,6 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 ## Etap 2 - Elementy programowalne i migracja na inną bazę
 
+[![Publish Milestone 2 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml)
+
 [Sprawozdanie z etapu 2](https://github.com/christopher-dabrowski/BoardBase/blob/publish/milestone2/Etap%202%20Sprawozdanie%20Krzysztof%20D%C4%85browski%20293101.pdf)
