@@ -150,16 +150,25 @@ Zastanawiałem się ilu jest użytkowników, którzy mają ponad przeciętną li
 ```
 
 `{\footnotesize`{=latex}
-```{python}
-#| label: tbl-users-with-games-above-average
-#| tbl-cap: Użytkownicy z ponad przeciętną liczbą gier
-#| echo: false
 
-import pandas as pd
-df = pd.read_csv("users-with-games-above-average.csv")
-df = df.style.hide(axis='index')
-df
-```
+|game_name     |designer      |main_category|avg_rating|rating_count|category_avg_rating|
+|--------------|--------------|-------------|----------|------------|-------------------|
+|Gloomhaven    |Isaac Childres|Adventure    |9.67      |3           |9.29               |
+|Gloomhaven    |Isaac Childres|Cooperative  |9.67      |3           |9.13               |
+|Gloomhaven    |Isaac Childres|Strategy     |9.67      |3           |8.31               |
+|Brass: Birmingham|Martin Wallace|Strategy     |9.33      |3           |8.31               |
+|Brass: Birmingham|Martin Wallace|Economic     |9.33      |3           |8.24               |
+|Scythe        |Jamey Stegmaier|Economic     |9.00      |4           |8.24               |
+|Scythe        |Jamey Stegmaier|Strategy     |9.00      |4           |8.31               |
+|Wingspan      |Elizabeth Hargrave|Family       |8.80      |5           |8.03               |
+|Wingspan      |Elizabeth Hargrave|Strategy     |8.80      |5           |8.31               |
+|Pandemic      |Matt Leacock  |Family       |8.80      |5           |8.03               |
+|Pandemic      |Matt Leacock  |Strategy     |8.80      |5           |8.31               |
+|Terraforming Mars|Jacob Fryxelius|Strategy     |8.75      |4           |8.31               |
+|Terraforming Mars|Jacob Fryxelius|Economic     |8.75      |4           |8.24               |
+
+
+: Użytkownicy z ponad przeciętną liczbą gier {#tbl-users-with-games-above-average}
 
 `}`{=latex}
 
@@ -173,17 +182,16 @@ Napisałem zapytanie, które dla każdej kategorii znajduje gry z ponad przecię
 ```
 
 `{\footnotesize`{=latex}
-```{python}
-#| label: tbl-games-above-category-average
-#| tbl-cap: Gry z oceną powyżej średniej w swojej kategorii
-#| echo: false
 
-import pandas as pd
-df = pd.read_csv("above-average-games.csv")
-df.name = "Test name"
-df = df.style.hide(axis='index')
-df
-```
+
+|username      |game_count    |avg_games_per_user|ratings_given|sessions_played|first_game_acquired|
+|--------------|--------------|------------------|-------------|---------------|-------------------|
+|board_master_42|9             |4.50              |9            |17             |2005-08-10 12:00:00|
+|meeple_collector|6             |4.50              |6            |17             |2010-05-20 17:45:00|
+|strategy_queen|6             |4.50              |8            |18             |2008-01-20 14:15:00|
+|euro_enthusiast|5             |4.50              |6            |16             |2011-03-15 18:00:00|
+
+: Gry z oceną powyżej średniej w swojej kategorii {#tbl-games-above-category-average}
 
 `}`{=latex}
 
@@ -213,16 +221,15 @@ FROM main.user_game_collection;
 ```
 
 `{\footnotesize`{=latex}
-```{python}
-#| label: tbl-user-game-collection
-#| tbl-cap: Kolekcja gier użytkownika casual_gamer
-#| echo: false
 
-import pandas as pd
-df = pd.read_csv("user_game_collection.csv")
-df = df.style.hide(axis='index')
-df
-```
+|game_name     |publisher_name|language|current_price|currency|years_owned|times_played|
+|--------------|--------------|--------|-------------|--------|-----------|------------|
+|Catan         |KOSMOS        |English |42.00        |USD     |9          |0           |
+|Ticket to Ride|Days of Wonder|English |44.99        |USD     |10         |4           |
+|Pandemic      |Z-Man Games   |English |39.99        |USD     |11         |4           |
+|Carcassonne   |Z-Man Games   |German  |29.99        |EUR     |15         |2           |
+
+: Kolekcja gier użytkownika casual_gamer {#tbl-user-game-collection}
 
 `}`{=latex}
 
