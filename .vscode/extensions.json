@@ -3,6 +3,7 @@
     "mermaidchart.vscode-mermaid-chart",
     "quarto.quarto",
     "editorconfig.editorconfig",
-    "ms-ossdata.vscode-pgsql"
+    "ms-ossdata.vscode-pgsql",
+    "ms-mssql.mssql"
   ]
 }
