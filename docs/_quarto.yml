@@ -3,10 +3,11 @@ project:
 
 lang: pl
 author:
-  - name: Krzysztof Dąbrowski 293101
-    id: kd
-    email: krzysztof.dabrowski7.stud@pw.edu.pl
-    affiliation: Politechnika Warszawska
+  name: Krzysztof Dąbrowski
+  id: 293101
+  email: krzysztof.dabrowski7.stud@pw.edu.pl
+  note: GR6 (Poniedziałek 8:15)
+  affiliation: Politechnika Warszawska
 
 filters:
   - acronyms # Needed for the acronyms plugin
@@ -26,6 +27,8 @@ format:
     lof: true
     code-overflow: wrap
     lot: true
+    template-partials:
+      - partials/title.tex
 
     # highlight-style: arrow # default
     # highlight-style: pygments # brak tła

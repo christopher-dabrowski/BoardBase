@@ -4,10 +4,9 @@ subtitle: Zaawansowane systemy baz danych
 format:
   pdf:
     output-file: Etap 3 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
+    keep-tex: false
     # fig-pos: 'H'
 ---
-
-<!-- TODO: Spróbować dodać informacje o wydziale -->
 
 ```{=latex}
 \listoflistings
