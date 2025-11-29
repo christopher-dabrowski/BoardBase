@@ -1,0 +1,18 @@
+---
+title: Sprawozdanie z Etapu 3 - MongoDB
+subtitle: Zaawansowane systemy baz danych
+format:
+  pdf:
+    output-file: Etap 3 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
+    # fig-pos: 'H'
+---
+
+\listoflistings
+
+{{< include ../shared/repo_callout.qmd >}}
+
+
+# Źródła {.unnumbered}
+
+::: {#refs}
+:::
