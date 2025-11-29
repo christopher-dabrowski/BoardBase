@@ -1,5 +1,5 @@
 ---
-title: Sprawozdanie z Etapu 3 - MongoDB
+title: Sprawozdanie Etap 3 - MongoDB
 subtitle: Zaawansowane systemy baz danych
 format:
   pdf:
