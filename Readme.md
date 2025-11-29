@@ -26,3 +26,10 @@ Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjn
 
 > [!IMPORTANT]
 > Wyrenderowane [Sprawozdanie z etapu 2](https://github.com/christopher-dabrowski/BoardBase/blob/publish/milestone2/Etap%202%20Sprawozdanie%20Krzysztof%20D%C4%85browski%20293101.pdf).
+
+## Etap 3 - MongoDB
+
+[![Publish Milestone 3 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml)
+
+> [!IMPORTANT]
+> Wyrenderowane [Sprawozdanie z etapu 3](https://github.com/christopher-dabrowski/BoardBase/blob/publish/milestone3/Etap%203%20Sprawozdanie%20Krzysztof%20D%C4%85browski%20293101.pdf).
