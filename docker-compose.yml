@@ -32,12 +32,14 @@ services:
   mongodb:
     image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
     environment:
+      - MONGO_INITDB_DATABASE=mtg
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?error}
     ports:
       - "27017:27017"
     volumes:
       - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
 
 volumes:
   pgdata:
@@ -52,3 +54,6 @@ volumes:
   mongodb-data:
     labels:
       pw.kd.description: "MongoDB data volume"
+  mongodb-config:
+    labels:
+      pw.kd.description: "MongoDB config volume"
