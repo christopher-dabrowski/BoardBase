@@ -28,6 +28,17 @@ services:
       - "1433:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
+
+  mongodb:
+    image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?error}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
 volumes:
   pgdata:
     labels:
@@ -38,3 +49,6 @@ volumes:
   sqlserver_data:
     labels:
       com.example.description: "MS SQL Server data volume"
+  mongodb-data:
+    labels:
+      pw.kd.description: "MongoDB data volume"
