@@ -8,10 +8,6 @@ format:
     # fig-pos: 'H'
 ---
 
-```{=latex}
-\listoflistings
-```
-
 {{< include ../shared/repo_callout.qmd >}}
 
 # Wybrany zbór danych
@@ -46,8 +42,6 @@ Dane zawierają złożone struktury, wiele pól i referencje na dane z innych zb
 # Instalacja MongoDB i wczytanie danych
 
 Przygotowanie bazy MongoDB @mongodb:homepage.
-
-<!-- Był obraz bazowy na Ubunu i Readhat -->
 
 ## Instalacja MongoDB
 

@@ -25,10 +25,12 @@ format:
     code-line-numbers: true
     toc: true
     lof: true
+    lol: true
     code-overflow: wrap
     lot: true
     template-partials:
       - partials/title.tex
+      - partials/toc.tex
 
     # highlight-style: arrow # default
     # highlight-style: pygments # brak tła
