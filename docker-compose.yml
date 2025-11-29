@@ -1,5 +1,7 @@
 services:
   postgres:
+    profiles:
+      - sql
     build:
       context: .
       dockerfile: Postgres.Dockerfile
@@ -14,6 +16,8 @@ services:
       - ./postgresql.conf:/etc/postgresql.conf:ro
       - pgdata:/var/lib/postgresql
   sqlserver:
+    profiles:
+      - sql
     image: mcr.microsoft.com/mssql/server:2022-CU21-GDR2-ubuntu-22.04
     environment:
       ACCEPT_EULA: Y
