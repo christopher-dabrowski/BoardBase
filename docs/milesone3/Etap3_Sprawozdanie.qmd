@@ -11,6 +11,35 @@ format:
 
 {{< include ../shared/repo_callout.qmd >}}
 
+# Wybrany zbór danych
+
+W liceum zacząłem grać w grę karcianą [\acr{MTG}](https://magic.wizards.com/), która do dziś jest moim hobby.
+Gra \acr{MTG} jest bardzo złożona, do tego stopnia, że za pomocą kart i mechanik _można zbudować maszynę Turinga_ @mtg-turing-complete.
+Gra zawiera bardzo wiele kart, z których każda ma zestaw parametrów zależnych od jej typu.
+Poza cechami kart związanymi bezpośrednio z rozgrywką, karty mają też dodatkowe cechy takie jak sety, w których zostały wydane, grafikę, która może różnić się między wydaniami, czy też przynależność do talii lub legalność w danych formatach gry.
+Istotnym cechą kart są też ich ceny, których zmienność prowadzi nawet do spekulacji cenowych i inwestycji niektórych graczy.
+
+Z uwagi na moje zainteresowanie \acr{MTG}, oraz złożoność danych o kartach i relacji między nimi zdecydowałem się użyć zbioru na ten temat.
+W tym celu skorzystałem z projektu MTGJSON @mtgjson:homepage, który jest otwarto źródłowym projektem katalogującym wiele informacji o \acr{MTG} w przenośnych formatach jak na przykład \acr{JSON}.
+
+W ramach projektu dostępne są tysiące zbiorów danych, ponieważ dla każdej oficjalnej talii czy set'u dostępne są dedykowane zbiory.
+Postanowiłem się skupić na formacie standard @magic-wizards:standard-format i jednym wybranym secie i talii.
+Wybrałem więc zbiory:
+
+- [AllPricesToday](https://mtgjson.com/downloads/all-files/#allpricestoday) - aktualne ceny każdego wydania dla każdej karty
+- [DeckList](https://mtgjson.com/downloads/all-files/#decklist) - metadane każdej oficjalnej talii
+- [SetList](https://mtgjson.com/downloads/all-files/#setlist) - metadane każdego dodatku
+- [Keywords](https://mtgjson.com/downloads/all-files/#keywords) - słowa kluczowe z kart
+- [CardTypes](https://mtgjson.com/downloads/all-files/#cardtypes) - typy kart
+- [Standard](https://mtgjson.com/downloads/all-files/#standard) - podzbiór wszystkich kart legalnych w formacie standard @magic-wizards:standard-format
+- [StandardAtomic](https://mtgjson.com/downloads/all-files/#standardatomic) - podstawowe informacje o kartach legalnych w formacie standard (bez rozróżnienia na różne wydania tej samej karty)
+- set Edge of Eternities ([endpoint do pobrania informacji o wybranym dodatku](https://mtgjson.com/downloads/all-sets/))
+- deck World Shaper - ([endpoint do pobrania informacji o wybranej talii](https://mtgjson.com/downloads/all-decks/))
+
+<!-- TODO: Opisać wielkość zbioru danych -->
+
+Dane zawierają złożone struktury, wiele pól i referencje na dane z innych zbiorów.
+
 
 # Źródła {.unnumbered}
 
