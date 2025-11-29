@@ -7,6 +7,8 @@ format:
     # fig-pos: 'H'
 ---
 
+<!-- TODO: Spróbować dodać informacje o wydziale -->
+
 ```{=latex}
 \listoflistings
 ```
@@ -16,7 +18,7 @@ format:
 # Wybrany zbór danych
 
 W liceum zacząłem grać w grę karcianą [\acr{MTG}](https://magic.wizards.com/), która do dziś jest moim hobby.
-Gra \acr{MTG} jest bardzo złożona, do tego stopnia, że za pomocą kart i mechanik _można zbudować maszynę Turinga_ @mtg-turing-complete.
+Gra \acr{MTG} jest bardzo złożona, do tego stopnia, że za pomocą kart i mechanik _można zbudować maszynę Turinga_ @mtg-turing-complete. \
 Gra zawiera bardzo wiele kart, z których każda ma zestaw parametrów zależnych od jej typu.
 Poza cechami kart związanymi bezpośrednio z rozgrywką, karty mają też dodatkowe cechy takie jak sety, w których zostały wydane, grafikę, która może różnić się między wydaniami, czy też przynależność do talii lub legalność w danych formatach gry.
 Istotnym cechą kart są też ich ceny, których zmienność prowadzi nawet do spekulacji cenowych i inwestycji niektórych graczy.
@@ -42,6 +44,25 @@ Wybrałem więc zbiory:
 
 Dane zawierają złożone struktury, wiele pól i referencje na dane z innych zbiorów.
 
+# Instalacja MongoDB i wczytanie danych
+
+Przygotowanie bazy MongoDB @mongodb:homepage.
+
+<!-- Był obraz bazowy na Ubunu i Readhat -->
+
+## Instalacja MongoDB
+
+Wybrałem wersję MongoDB Community, ponieważ chciałem skonfigurować lokalną wersję bazy i nie płacić za licencję wersji Enterprise.
+Rozważałem też użycie MongoDB Atlas @mongodb:atlas-homepage, ale uznałem, że wolę lokalnie działającą wersję.
+
+Ponieważ w poprzednich etapach dobrze sprawdzała mi się instalacja jako obraz Docker tym razem też się na to zdecydowałem.
+Skonfigurowałem uruchomienie obrazu w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml), kierując się oficjalnym poradnikiem Install MongoDB Community Edition @mongodb:install-community-edition. \
+Niestety oficjalna strona obrazu wersji community @docker:mongodb-community-server nie opisuje jakie są możliwe tagi, ani jak rozumieć zastosowane w nich skróty. Na szczęście strona do wersji open source obrazu MongoDB @docker:mongodb-official-image jest lepiej opisana. \
+Nie byłem pewien, który obraz wybrać, ale sugerując się wątkiem na reddit @reddit:mongo-vs-mongodb-community-server pozostałem przy obrazie `mongodb/mongodb-community-server`. \
+Dowiedziałem się, że jest on dostępny w wersji bazującej na Redhat i Ubuntu. Wybrałem wersję na Ubuntu, ponieważ mam większe doświadczenie z tą dystrybucją, choć pewnie nie będzie to miało znaczenia.
+
+Po uruchomieniu kontenera połączyłem się do niego `mongosh` i pobrałem informacje o bazie poleceniem `db.runCommand({hello:1})`. \
+Zobaczyłem \acr{JSON} z informacjami o bazie, co potwierdza, że działą ona poprawnie.
 
 # Źródła {.unnumbered}
 
