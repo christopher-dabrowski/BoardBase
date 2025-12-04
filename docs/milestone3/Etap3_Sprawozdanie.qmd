@@ -57,7 +57,21 @@ Dowiedziałem się, że jest on dostępny w wersji bazującej na Redhat i Ubuntu
 Po uruchomieniu kontenera połączyłem się do niego `mongosh` i pobrałem informacje o bazie poleceniem `db.runCommand({hello:1})` jak w samouczku @mongodb:install-community-edition. \
 Zobaczyłem \acr{JSON} z informacjami o bazie, co potwierdza, że działą ona poprawnie.
 
-<!-- TODO: Napisać, że przejrzałem opcje konfiguracji i zdecydowałem się nic nie ustawiać -->
+Skonfigurowałem login i hasło użytkownika `root`, żeby ograniczyć dostęp do bazy. \
+Rozważałem też ustawienie innych opcji @mongodb:configuration-file, ale uznałem, że na tym etapie domyślne ustawienia mi pasują.
+
+## Wczytanie danych
+
+Na początku spróbowałem wczytać dane za pomocą \acr{Compass} @mongodb:compass.
+Zorientowałem się jednak, że ponieważ [moje dane](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/data) są pojedynczymi plikami \acr{JSON} to do kolekcji został dodany tylko jeden dokument zawierający wszystkie dane (@fig-compass-import).
+
+![Wczytanie pliku za pomocą MongoDB Compass](img/compass-import.png){#fig-compass-import width=60%}
+
+Ponieważ chciałbym widzieć każdą daną jako oddzielny dokument, przygotowałem skrypty skrypty transformujące dane i wczytujące je do bazy za pomocą `mongoimport` i `jq`.
+Skrypty wczytujące dane umieściłem w katalogu [`mongo/importData/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/importData).
+
+Na początku miałem problem z uwierzytelnieniem. Udało mi się go rozwiązać kodując hasło w connection string używając URL encoding, zgodnie z przykładem z poradnika Decoding Encoded URLs in Linux @baeldung:decoding-encoded-urls-in-linux.
+
 
 # Źródła {.unnumbered}
 
