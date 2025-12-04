@@ -67,7 +67,7 @@ Zorientowałem się jednak, że ponieważ [moje dane](https://github.com/christo
 
 ![Wczytanie pliku za pomocą MongoDB Compass](img/compass-import.png){#fig-compass-import width=60%}
 
-Ponieważ chciałbym widzieć każdą daną jako oddzielny dokument, przygotowałem skrypty skrypty transformujące dane i wczytujące je do bazy za pomocą `mongoimport` i `jq`.
+W dokumentacji przeczytałem, że dobrym sposobem na wczytanie danych z \acr{JSON} jest użycie narzędzia `mongoimport` razem z `jq` do transformacji danych @mongodb:mongoimport-guide.
 Skrypty wczytujące dane umieściłem w katalogu [`mongo/importData/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/importData).
 
 Na początku miałem problem z uwierzytelnieniem. Udało mi się go rozwiązać kodując hasło w connection string używając URL encoding, zgodnie z przykładem z poradnika Decoding Encoded URLs in Linux @baeldung:decoding-encoded-urls-in-linux.
