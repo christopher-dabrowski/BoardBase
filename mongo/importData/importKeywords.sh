@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ -z "$MONGO_PASS" ]; then
-    MONGO_PASS=$(grep MONGO_PASSWORD ../../.env | cut -d '=' -f2 | tr -d "'" | tr -d '\n')
+if [ -z "$MONGO_PASSWORD" ]; then
+    MONGO_PASSWORD=$(grep MONGO_PASSWORD ../../.env | cut -d '=' -f2 | tr -d "'")
 fi
-MONGO_PASS=$(echo "$MONGO_PASS" | jq -sRr @uri)
+MONGO_PASSWORD=$(echo "$MONGO_PASSWORD" | tr -d '\n' | jq -sRr @uri)
 
 jq -c '.data | to_entries | .[] | {type: .key, values: .value}' ../data/Keywords.json \
-| mongoimport --uri "mongodb://admin:${MONGO_PASS}@localhost:27017/mtg?authSource=admin" \
+| mongoimport --uri "mongodb://admin:${MONGO_PASSWORD}@localhost:27017/mtg?authSource=admin" \
   --collection keywords
