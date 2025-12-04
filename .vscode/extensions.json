@@ -4,6 +4,7 @@
     "quarto.quarto",
     "editorconfig.editorconfig",
     "ms-ossdata.vscode-pgsql",
-    "ms-mssql.mssql"
+    "ms-mssql.mssql",
+    "mongodb.mongodb-vscode"
   ]
 }
