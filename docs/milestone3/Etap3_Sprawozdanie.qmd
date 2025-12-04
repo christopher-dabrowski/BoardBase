@@ -54,8 +54,10 @@ Niestety oficjalna strona obrazu wersji community @docker:mongodb-community-serv
 Nie byłem pewien, który obraz wybrać, ale sugerując się wątkiem na reddit @reddit:mongo-vs-mongodb-community-server pozostałem przy obrazie `mongodb/mongodb-community-server`. \
 Dowiedziałem się, że jest on dostępny w wersji bazującej na Redhat i Ubuntu. Wybrałem wersję na Ubuntu, ponieważ mam większe doświadczenie z tą dystrybucją, choć pewnie nie będzie to miało znaczenia.
 
-Po uruchomieniu kontenera połączyłem się do niego `mongosh` i pobrałem informacje o bazie poleceniem `db.runCommand({hello:1})`. \
+Po uruchomieniu kontenera połączyłem się do niego `mongosh` i pobrałem informacje o bazie poleceniem `db.runCommand({hello:1})` jak w samouczku @mongodb:install-community-edition. \
 Zobaczyłem \acr{JSON} z informacjami o bazie, co potwierdza, że działą ona poprawnie.
+
+<!-- TODO: Napisać, że przejrzałem opcje konfiguracji i zdecydowałem się nic nie ustawiać -->
 
 # Źródła {.unnumbered}
 
