@@ -91,7 +91,7 @@ Nie musiałem więc modyfikować ich struktury, poza zmianami, na które zdecydo
 Różnica między zagnieżdżeniem a referencją polega na tym, że w przypadku zagniezdzenia całe dane są przechowywane w bazowym dokumencie,
 a referencja przechowuje tylko identyfikator danych w innym dokumencie. \
 Referencja przypomina bardziej znormalizowany model relacyjny.
-Stosując MongoDB zalecane jest jednak zagniezdzanie danych, gdy są one często czytane razem, ponieważ znacznie przyśpiesza to regularne działanie bazy @data-modeling-best-practices. \
+Stosując MongoDB zalecane jest jednak zagniezdzanie danych, gdy są one często czytane razem, ponieważ znacznie przyśpiesza to regularne działanie bazy @mongodb:data-modeling-best-practices. \
 
 ::: {#fig-nesting-and-reference layout="[50, -5, 50]"}
 
