@@ -120,6 +120,12 @@ Wyniki zapytania dla 3 najdroższych kart przedstawiam w @lst-most-expensive-sta
 {{< include listings/mostExpensiveStandardCards.json >}}
 ```
 
+# Logika biznesowa
+
+Do implementacji logiki biznesowej zdecydowałem się użyć zewnętrznych funkcji w MongoDB Playgrounds @mongodb:playgrounds. \
+Rozważałem użycie `$function` @mongodb:function-expression, jednak uznałem, że oferują zbyt małe możliwości do solidnej implementacji logiki biznesowej.
+Dodatkowo użycie `$function` nie jest rekomendowane @mongodb:function-expression.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
