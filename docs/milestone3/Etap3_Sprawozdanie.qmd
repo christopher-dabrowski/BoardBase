@@ -110,6 +110,16 @@ Wynik zapytania z filtrem na 3 najczęstsze słowa kluczowe widać w @lst-eoe-to
 {{< include listings/eoeTop3Keywords.json >}}
 ```
 
+Do pokazania relacji napisałem zapytanie [`mostExpensiveStandardCards.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/relations/mostExpensiveStandardCards.mongodb.js) wyświetlające najdroższe karty legalne w standardzie.
+Kolekcja `standard` zawiera informacje o kartach, ale ich aktualne ceny są w kolekcji `allPrices`. Kolekcja `allPrices` zawiera jedynie id kart i dane o cenach.
+
+Zapytanie działało bardzo wolno dla 6440 kart. Prawdopodobnie dodanie indeksów przyśpieszyłoby działanie, ponieważ indeksy są tematem innego etapu, to na razie ograniczyłem liczbę przetwarzanych kart do 100. \
+Wyniki zapytania dla 3 najdroższych kart przedstawiam w @lst-most-expensive-standard-cards.
+
+```{#lst-most-expensive-standard-cards .json lst-cap="Top 3 najdroższych kart legalnych w standardzie"}
+{{< include listings/mostExpensiveStandardCards.json >}}
+```
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
