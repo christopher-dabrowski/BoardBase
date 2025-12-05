@@ -126,6 +126,18 @@ Do implementacji logiki biznesowej zdecydowałem się użyć zewnętrznych funkc
 Rozważałem użycie `$function` @mongodb:function-expression, jednak uznałem, że oferują zbyt małe możliwości do solidnej implementacji logiki biznesowej.
 Dodatkowo użycie `$function` nie jest rekomendowane @mongodb:function-expression.
 
+Napisany kod umieściłem w katalogu [`mongo/businessLogic/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/businessLogic).
+
+- [`addKeyword.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/businessLogic/addKeyword.mongodb.js) - dodaje słowo kluczowe do odpowiedniego dokumentu. Sprawdzana jest poprawność typu słowa kluczowego, a następnie jest ono dodawane do odpowiedniej listy, jeśli jeszcze go tam nie ma.
+- [`addCardmarketPrice.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/businessLogic/addCardmarketPrice.mongodb.js) - dodanie ceny danej karty jako cena z [Cardmarket](https://www.cardmarket.com/en). Funkcja znajduje `uuid` karty na podstawie jej nazwy i dodaje podaną cenę z aktualną datą.
+
+Na początku implementując `addCardmarketPrice` nadpisywałem cały dokument w `$set`. Traciłem przez to ceni z poprzednich dni.
+Na forum @mongodb-community:update-collection-item-without-removing-non-existing-values znalazłem rozwiązanie, że należy użyć _Dot Notation_ @mongodb:dot-notation, żeby zaktualizować tylko wybrane pola.
+
+Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
+
+- funkcje do dodawania cen dla innych sklepów i cen wersji online
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
