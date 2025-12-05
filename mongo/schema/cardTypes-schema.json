@@ -1,0 +1,147 @@
+{
+    "count": 14,
+    "fields": [
+        {
+            "name": "_id",
+            "path": [
+                "_id"
+            ],
+            "count": 14,
+            "type": "ObjectId",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "ObjectId",
+                    "path": [
+                        "_id"
+                    ],
+                    "count": 14,
+                    "probability": 1,
+                    "bsonType": "ObjectId"
+                }
+            ]
+        },
+        {
+            "name": "name",
+            "path": [
+                "name"
+            ],
+            "count": 14,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "name"
+                    ],
+                    "count": 14,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        },
+        {
+            "name": "subTypes",
+            "path": [
+                "subTypes"
+            ],
+            "count": 14,
+            "type": "Array",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "Array",
+                    "path": [
+                        "subTypes"
+                    ],
+                    "count": 14,
+                    "probability": 1,
+                    "bsonType": "Array",
+                    "types": [
+                        {
+                            "name": "String",
+                            "path": [
+                                "subTypes"
+                            ],
+                            "count": 563,
+                            "probability": 1,
+                            "bsonType": "String"
+                        }
+                    ],
+                    "totalCount": 563,
+                    "lengths": [
+                        0,
+                        0,
+                        12,
+                        91,
+                        0,
+                        6,
+                        0,
+                        6,
+                        82,
+                        0,
+                        328,
+                        18,
+                        1,
+                        19
+                    ],
+                    "averageLength": 40.214285714285715
+                }
+            ]
+        },
+        {
+            "name": "superTypes",
+            "path": [
+                "superTypes"
+            ],
+            "count": 14,
+            "type": "Array",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "Array",
+                    "path": [
+                        "superTypes"
+                    ],
+                    "count": 14,
+                    "probability": 1,
+                    "bsonType": "Array",
+                    "types": [
+                        {
+                            "name": "String",
+                            "path": [
+                                "superTypes"
+                            ],
+                            "count": 70,
+                            "probability": 1,
+                            "bsonType": "String"
+                        }
+                    ],
+                    "totalCount": 70,
+                    "lengths": [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                    ],
+                    "averageLength": 5
+                }
+            ]
+        }
+    ]
+}

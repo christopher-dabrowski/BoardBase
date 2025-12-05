@@ -1,0 +1,131 @@
+{
+    "count": 100,
+    "fields": [
+        {
+            "name": "_id",
+            "path": [
+                "_id"
+            ],
+            "count": 100,
+            "type": "ObjectId",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "ObjectId",
+                    "path": [
+                        "_id"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "ObjectId"
+                }
+            ]
+        },
+        {
+            "name": "code",
+            "path": [
+                "code"
+            ],
+            "count": 100,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "code"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        },
+        {
+            "name": "fileName",
+            "path": [
+                "fileName"
+            ],
+            "count": 100,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "fileName"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        },
+        {
+            "name": "name",
+            "path": [
+                "name"
+            ],
+            "count": 100,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "name"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        },
+        {
+            "name": "releaseDate",
+            "path": [
+                "releaseDate"
+            ],
+            "count": 100,
+            "type": "Date",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "Date",
+                    "path": [
+                        "releaseDate"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "Date"
+                }
+            ]
+        },
+        {
+            "name": "type",
+            "path": [
+                "type"
+            ],
+            "count": 100,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "type"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        }
+    ]
+}

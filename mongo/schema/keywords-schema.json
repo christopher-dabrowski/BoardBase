@@ -1,0 +1,86 @@
+{
+  "count": 3,
+  "fields": [
+    {
+      "name": "_id",
+      "path": [
+        "_id"
+      ],
+      "count": 3,
+      "type": "ObjectId",
+      "probability": 1,
+      "hasDuplicates": false,
+      "types": [
+        {
+          "name": "ObjectId",
+          "path": [
+            "_id"
+          ],
+          "count": 3,
+          "probability": 1,
+          "bsonType": "ObjectId"
+        }
+      ]
+    },
+    {
+      "name": "type",
+      "path": [
+        "type"
+      ],
+      "count": 3,
+      "type": "String",
+      "probability": 1,
+      "hasDuplicates": false,
+      "types": [
+        {
+          "name": "String",
+          "path": [
+            "type"
+          ],
+          "count": 3,
+          "probability": 1,
+          "bsonType": "String"
+        }
+      ]
+    },
+    {
+      "name": "values",
+      "path": [
+        "values"
+      ],
+      "count": 3,
+      "type": "Array",
+      "probability": 1,
+      "hasDuplicates": false,
+      "types": [
+        {
+          "name": "Array",
+          "path": [
+            "values"
+          ],
+          "count": 3,
+          "probability": 1,
+          "bsonType": "Array",
+          "types": [
+            {
+              "name": "String",
+              "path": [
+                "values"
+              ],
+              "count": 342,
+              "probability": 1,
+              "bsonType": "String"
+            }
+          ],
+          "totalCount": 342,
+          "lengths": [
+            66,
+            212,
+            64
+          ],
+          "averageLength": 114
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1790 @@
+{
+    "count": 100,
+    "fields": [
+        {
+            "name": "_id",
+            "path": [
+                "_id"
+            ],
+            "count": 100,
+            "type": "ObjectId",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "ObjectId",
+                    "path": [
+                        "_id"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "ObjectId"
+                }
+            ]
+        },
+        {
+            "name": "cardUuid",
+            "path": [
+                "cardUuid"
+            ],
+            "count": 100,
+            "type": "String",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "String",
+                    "path": [
+                        "cardUuid"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "String"
+                }
+            ]
+        },
+        {
+            "name": "prices",
+            "path": [
+                "prices"
+            ],
+            "count": 100,
+            "type": "Document",
+            "probability": 1,
+            "hasDuplicates": false,
+            "types": [
+                {
+                    "name": "Document",
+                    "path": [
+                        "prices"
+                    ],
+                    "count": 100,
+                    "probability": 1,
+                    "bsonType": "Document",
+                    "fields": [
+                        {
+                            "name": "mtgo",
+                            "path": [
+                                "prices",
+                                "mtgo"
+                            ],
+                            "count": 40,
+                            "type": [
+                                "Document",
+                                "Undefined"
+                            ],
+                            "probability": 0.4,
+                            "hasDuplicates": true,
+                            "types": [
+                                {
+                                    "name": "Document",
+                                    "path": [
+                                        "prices",
+                                        "mtgo"
+                                    ],
+                                    "count": 40,
+                                    "probability": 0.4,
+                                    "bsonType": "Document",
+                                    "fields": [
+                                        {
+                                            "name": "cardhoarder",
+                                            "path": [
+                                                "prices",
+                                                "mtgo",
+                                                "cardhoarder"
+                                            ],
+                                            "count": 40,
+                                            "type": "Document",
+                                            "probability": 1,
+                                            "hasDuplicates": false,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "mtgo",
+                                                        "cardhoarder"
+                                                    ],
+                                                    "count": 40,
+                                                    "probability": 1,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "mtgo",
+                                                                "cardhoarder",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 40,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "mtgo",
+                                                                        "cardhoarder",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 40,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "mtgo",
+                                                                "cardhoarder",
+                                                                "currency"
+                                                            ],
+                                                            "count": 40,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "mtgo",
+                                                                        "cardhoarder",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 40,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "mtgo",
+                                                                "cardhoarder",
+                                                                "retail"
+                                                            ],
+                                                            "count": 40,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "mtgo",
+                                                                        "cardhoarder",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 40,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "mtgo",
+                                                                                "cardhoarder",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 40,
+                                                                            "type": "Document",
+                                                                            "probability": 1,
+                                                                            "hasDuplicates": false,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "mtgo",
+                                                                                        "cardhoarder",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 40,
+                                                                                    "probability": 1,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "mtgo",
+                                                                                                "cardhoarder",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 40,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "mtgo",
+                                                                                                        "cardhoarder",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 40,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Undefined",
+                                    "bsonType": "Undefined",
+                                    "unique": 0,
+                                    "hasDuplicates": true,
+                                    "path": [
+                                        "prices",
+                                        "mtgo"
+                                    ],
+                                    "count": 60,
+                                    "probability": 0.6
+                                }
+                            ]
+                        },
+                        {
+                            "name": "paper",
+                            "path": [
+                                "prices",
+                                "paper"
+                            ],
+                            "count": 100,
+                            "type": "Document",
+                            "probability": 1,
+                            "hasDuplicates": false,
+                            "types": [
+                                {
+                                    "name": "Document",
+                                    "path": [
+                                        "prices",
+                                        "paper"
+                                    ],
+                                    "count": 100,
+                                    "probability": 1,
+                                    "bsonType": "Document",
+                                    "fields": [
+                                        {
+                                            "name": "cardkingdom",
+                                            "path": [
+                                                "prices",
+                                                "paper",
+                                                "cardkingdom"
+                                            ],
+                                            "count": 98,
+                                            "type": [
+                                                "Document",
+                                                "Undefined"
+                                            ],
+                                            "probability": 0.98,
+                                            "hasDuplicates": true,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardkingdom"
+                                                    ],
+                                                    "count": 98,
+                                                    "probability": 0.98,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardkingdom",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 98,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardkingdom",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 98,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "foil",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardkingdom",
+                                                                                "buylist",
+                                                                                "foil"
+                                                                            ],
+                                                                            "count": 27,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.2755102040816326,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "buylist",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 27,
+                                                                                    "probability": 0.2755102040816326,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardkingdom",
+                                                                                                "buylist",
+                                                                                                "foil",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 27,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardkingdom",
+                                                                                                        "buylist",
+                                                                                                        "foil",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 27,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "buylist",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 71,
+                                                                                    "probability": 0.7244897959183674
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardkingdom",
+                                                                                "buylist",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 45,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.45918367346938777,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "buylist",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 45,
+                                                                                    "probability": 0.45918367346938777,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardkingdom",
+                                                                                                "buylist",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 45,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardkingdom",
+                                                                                                        "buylist",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 45,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "buylist",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 53,
+                                                                                    "probability": 0.5408163265306123
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardkingdom",
+                                                                "currency"
+                                                            ],
+                                                            "count": 98,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardkingdom",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 98,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardkingdom",
+                                                                "retail"
+                                                            ],
+                                                            "count": 98,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardkingdom",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 98,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "foil",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardkingdom",
+                                                                                "retail",
+                                                                                "foil"
+                                                                            ],
+                                                                            "count": 43,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.4387755102040816,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 43,
+                                                                                    "probability": 0.4387755102040816,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardkingdom",
+                                                                                                "retail",
+                                                                                                "foil",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 43,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardkingdom",
+                                                                                                        "retail",
+                                                                                                        "foil",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 43,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 55,
+                                                                                    "probability": 0.5612244897959183
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardkingdom",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 80,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.8163265306122449,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 80,
+                                                                                    "probability": 0.8163265306122449,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardkingdom",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 80,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardkingdom",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 80,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardkingdom",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 18,
+                                                                                    "probability": 0.1836734693877551
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Undefined",
+                                                    "bsonType": "Undefined",
+                                                    "unique": 0,
+                                                    "hasDuplicates": true,
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardkingdom"
+                                                    ],
+                                                    "count": 2,
+                                                    "probability": 0.02
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "cardmarket",
+                                            "path": [
+                                                "prices",
+                                                "paper",
+                                                "cardmarket"
+                                            ],
+                                            "count": 97,
+                                            "type": [
+                                                "Document",
+                                                "Undefined"
+                                            ],
+                                            "probability": 0.97,
+                                            "hasDuplicates": true,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardmarket"
+                                                    ],
+                                                    "count": 97,
+                                                    "probability": 0.97,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardmarket",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 97,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardmarket",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 97,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardmarket",
+                                                                "currency"
+                                                            ],
+                                                            "count": 97,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardmarket",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 97,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardmarket",
+                                                                "retail"
+                                                            ],
+                                                            "count": 97,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardmarket",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 97,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "foil",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardmarket",
+                                                                                "retail",
+                                                                                "foil"
+                                                                            ],
+                                                                            "count": 58,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.5979381443298969,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardmarket",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 58,
+                                                                                    "probability": 0.5979381443298969,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardmarket",
+                                                                                                "retail",
+                                                                                                "foil",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 58,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardmarket",
+                                                                                                        "retail",
+                                                                                                        "foil",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 58,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardmarket",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 39,
+                                                                                    "probability": 0.4020618556701031
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardmarket",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 86,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.8865979381443299,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardmarket",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 86,
+                                                                                    "probability": 0.8865979381443299,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardmarket",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 86,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardmarket",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 86,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardmarket",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 11,
+                                                                                    "probability": 0.1134020618556701
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Undefined",
+                                                    "bsonType": "Undefined",
+                                                    "unique": 0,
+                                                    "hasDuplicates": true,
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardmarket"
+                                                    ],
+                                                    "count": 3,
+                                                    "probability": 0.03
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "cardsphere",
+                                            "path": [
+                                                "prices",
+                                                "paper",
+                                                "cardsphere"
+                                            ],
+                                            "count": 74,
+                                            "type": [
+                                                "Document",
+                                                "Undefined"
+                                            ],
+                                            "probability": 0.74,
+                                            "hasDuplicates": true,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardsphere"
+                                                    ],
+                                                    "count": 74,
+                                                    "probability": 0.74,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardsphere",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 74,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardsphere",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 74,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardsphere",
+                                                                "currency"
+                                                            ],
+                                                            "count": 74,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardsphere",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 74,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "cardsphere",
+                                                                "retail"
+                                                            ],
+                                                            "count": 74,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "cardsphere",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 74,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "cardsphere",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 74,
+                                                                            "type": "Document",
+                                                                            "probability": 1,
+                                                                            "hasDuplicates": false,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "cardsphere",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 74,
+                                                                                    "probability": 1,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "cardsphere",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 74,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "cardsphere",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 74,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Undefined",
+                                                    "bsonType": "Undefined",
+                                                    "unique": 0,
+                                                    "hasDuplicates": true,
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "cardsphere"
+                                                    ],
+                                                    "count": 26,
+                                                    "probability": 0.26
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "manapool",
+                                            "path": [
+                                                "prices",
+                                                "paper",
+                                                "manapool"
+                                            ],
+                                            "count": 96,
+                                            "type": [
+                                                "Document",
+                                                "Undefined"
+                                            ],
+                                            "probability": 0.96,
+                                            "hasDuplicates": true,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "manapool"
+                                                    ],
+                                                    "count": 96,
+                                                    "probability": 0.96,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "manapool",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 96,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "manapool",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 96,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "manapool",
+                                                                "currency"
+                                                            ],
+                                                            "count": 96,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "manapool",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 96,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "manapool",
+                                                                "retail"
+                                                            ],
+                                                            "count": 96,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "manapool",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 96,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "foil",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "manapool",
+                                                                                "retail",
+                                                                                "foil"
+                                                                            ],
+                                                                            "count": 44,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.4583333333333333,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "manapool",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 44,
+                                                                                    "probability": 0.4583333333333333,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "manapool",
+                                                                                                "retail",
+                                                                                                "foil",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 44,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "manapool",
+                                                                                                        "retail",
+                                                                                                        "foil",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 44,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "manapool",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 52,
+                                                                                    "probability": 0.5416666666666666
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "manapool",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 83,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.8645833333333334,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "manapool",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 83,
+                                                                                    "probability": 0.8645833333333334,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "manapool",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 83,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "manapool",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 83,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "manapool",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 13,
+                                                                                    "probability": 0.13541666666666666
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Undefined",
+                                                    "bsonType": "Undefined",
+                                                    "unique": 0,
+                                                    "hasDuplicates": true,
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "manapool"
+                                                    ],
+                                                    "count": 4,
+                                                    "probability": 0.04
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "tcgplayer",
+                                            "path": [
+                                                "prices",
+                                                "paper",
+                                                "tcgplayer"
+                                            ],
+                                            "count": 100,
+                                            "type": "Document",
+                                            "probability": 1,
+                                            "hasDuplicates": false,
+                                            "types": [
+                                                {
+                                                    "name": "Document",
+                                                    "path": [
+                                                        "prices",
+                                                        "paper",
+                                                        "tcgplayer"
+                                                    ],
+                                                    "count": 100,
+                                                    "probability": 1,
+                                                    "bsonType": "Document",
+                                                    "fields": [
+                                                        {
+                                                            "name": "buylist",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "tcgplayer",
+                                                                "buylist"
+                                                            ],
+                                                            "count": 100,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "tcgplayer",
+                                                                        "buylist"
+                                                                    ],
+                                                                    "count": 100,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "currency",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "tcgplayer",
+                                                                "currency"
+                                                            ],
+                                                            "count": 100,
+                                                            "type": "String",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "String",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "tcgplayer",
+                                                                        "currency"
+                                                                    ],
+                                                                    "count": 100,
+                                                                    "probability": 1,
+                                                                    "bsonType": "String"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "retail",
+                                                            "path": [
+                                                                "prices",
+                                                                "paper",
+                                                                "tcgplayer",
+                                                                "retail"
+                                                            ],
+                                                            "count": 100,
+                                                            "type": "Document",
+                                                            "probability": 1,
+                                                            "hasDuplicates": false,
+                                                            "types": [
+                                                                {
+                                                                    "name": "Document",
+                                                                    "path": [
+                                                                        "prices",
+                                                                        "paper",
+                                                                        "tcgplayer",
+                                                                        "retail"
+                                                                    ],
+                                                                    "count": 100,
+                                                                    "probability": 1,
+                                                                    "bsonType": "Document",
+                                                                    "fields": [
+                                                                        {
+                                                                            "name": "foil",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "tcgplayer",
+                                                                                "retail",
+                                                                                "foil"
+                                                                            ],
+                                                                            "count": 43,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.43,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "tcgplayer",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 43,
+                                                                                    "probability": 0.43,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "tcgplayer",
+                                                                                                "retail",
+                                                                                                "foil",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 43,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "tcgplayer",
+                                                                                                        "retail",
+                                                                                                        "foil",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 43,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "tcgplayer",
+                                                                                        "retail",
+                                                                                        "foil"
+                                                                                    ],
+                                                                                    "count": 57,
+                                                                                    "probability": 0.57
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "normal",
+                                                                            "path": [
+                                                                                "prices",
+                                                                                "paper",
+                                                                                "tcgplayer",
+                                                                                "retail",
+                                                                                "normal"
+                                                                            ],
+                                                                            "count": 88,
+                                                                            "type": [
+                                                                                "Document",
+                                                                                "Undefined"
+                                                                            ],
+                                                                            "probability": 0.88,
+                                                                            "hasDuplicates": true,
+                                                                            "types": [
+                                                                                {
+                                                                                    "name": "Document",
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "tcgplayer",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 88,
+                                                                                    "probability": 0.88,
+                                                                                    "bsonType": "Document",
+                                                                                    "fields": [
+                                                                                        {
+                                                                                            "name": "2025-12-02",
+                                                                                            "path": [
+                                                                                                "prices",
+                                                                                                "paper",
+                                                                                                "tcgplayer",
+                                                                                                "retail",
+                                                                                                "normal",
+                                                                                                "2025-12-02"
+                                                                                            ],
+                                                                                            "count": 88,
+                                                                                            "type": "Double",
+                                                                                            "probability": 1,
+                                                                                            "hasDuplicates": false,
+                                                                                            "types": [
+                                                                                                {
+                                                                                                    "name": "Double",
+                                                                                                    "path": [
+                                                                                                        "prices",
+                                                                                                        "paper",
+                                                                                                        "tcgplayer",
+                                                                                                        "retail",
+                                                                                                        "normal",
+                                                                                                        "2025-12-02"
+                                                                                                    ],
+                                                                                                    "count": 88,
+                                                                                                    "probability": 1,
+                                                                                                    "bsonType": "Double"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Undefined",
+                                                                                    "bsonType": "Undefined",
+                                                                                    "unique": 0,
+                                                                                    "hasDuplicates": true,
+                                                                                    "path": [
+                                                                                        "prices",
+                                                                                        "paper",
+                                                                                        "tcgplayer",
+                                                                                        "retail",
+                                                                                        "normal"
+                                                                                    ],
+                                                                                    "count": 12,
+                                                                                    "probability": 0.12
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
