@@ -35,8 +35,6 @@ Wybrałem więc zbiory:
 - set Edge of Eternities ([endpoint do pobrania informacji o wybranym dodatku](https://mtgjson.com/downloads/all-sets/))
 - deck World Shaper - ([endpoint do pobrania informacji o wybranej talii](https://mtgjson.com/downloads/all-decks/))
 
-<!-- TODO: Opisać wielkość zbioru danych -->
-
 Dane zawierają złożone struktury, wiele pól i referencje na dane z innych zbiorów.
 
 # Instalacja MongoDB i wczytanie danych
@@ -71,6 +69,10 @@ W dokumentacji przeczytałem, że dobrym sposobem na wczytanie danych z \acr{JSO
 Skrypty wczytujące dane umieściłem w katalogu [`mongo/importData/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/importData).
 
 Na początku miałem problem z uwierzytelnieniem. Udało mi się go rozwiązać kodując hasło w connection string używając URL encoding, zgodnie z przykładem z poradnika Decoding Encoded URLs in Linux @baeldung:decoding-encoded-urls-in-linux.
+
+Po wczytaniu danych zauważyłem, że wszystkie pola mają typ `string`.
+Przeczytałem, że w przypadku importu z \acr{JSON} wszystkie pola są zapisywane jako `string` @mongodb-community:mongoimport-date-handling.
+Przygotowałem więc skrypty `.mongodb.js` w [`mongo/importData/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/importData), które dostosowują typy we wczytanych dokumentach.
 
 
 # Źródła {.unnumbered}
