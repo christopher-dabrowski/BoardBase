@@ -2,6 +2,8 @@ use('mtg');
 
 db.standard.aggregate([
   { $unwind: '$cards' },
+  // { $count: "totalCards" },
+
   { $limit: 100 },
   {
     $project: {
