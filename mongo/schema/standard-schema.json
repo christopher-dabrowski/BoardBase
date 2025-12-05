@@ -1,0 +1,1104 @@
+{
+  "collectionName": "standard",
+  "description": "Magic: The Gathering Standard format sets collection. Each document represents a complete MTG set with all its cards and tokens, including comprehensive metadata about legality, availability, and game mechanics.",
+  "documentStructure": "Each document is a complete MTG set containing an array of cards and tokens with full details",
+  "rootLevel": {
+    "_id": {
+      "type": "ObjectId",
+      "description": "MongoDB unique identifier for the set document",
+      "example": "6932aebf08d330e596dd429a",
+      "required": true
+    },
+    "setCode": {
+      "type": "String",
+      "description": "Three-letter code uniquely identifying the set (e.g., 'BIG' for 'The Big Score')",
+      "example": "BIG",
+      "required": true
+    },
+    "baseSetSize": {
+      "type": "Number",
+      "description": "Number of cards in the base set, not including special variants or tokens",
+      "example": 30,
+      "required": true
+    },
+    "block": {
+      "type": "String",
+      "description": "The block or storyline grouping this set belongs to",
+      "example": "Outlaws of Thunder Junction",
+      "required": false
+    },
+    "cardsphereSetId": {
+      "type": "Number",
+      "description": "Identifier for this set on Cardsphere platform",
+      "example": 1817,
+      "required": false
+    },
+    "code": {
+      "type": "String",
+      "description": "Set code (typically same as setCode)",
+      "example": "BIG",
+      "required": true
+    },
+    "isFoilOnly": {
+      "type": "Boolean",
+      "description": "Whether this set only contains foil cards",
+      "example": false,
+      "required": true
+    },
+    "isOnlineOnly": {
+      "type": "Boolean",
+      "description": "Whether this set is only available in digital formats (MTGO, Arena)",
+      "example": false,
+      "required": true
+    },
+    "keyruneCode": {
+      "type": "String",
+      "description": "Code used for the Keyrune font icon set",
+      "example": "BIG",
+      "required": false
+    },
+    "languages": {
+      "type": "Array<String>",
+      "description": "List of languages this set is available in",
+      "example": [
+        "Chinese Simplified",
+        "English",
+        "French",
+        "German",
+        "Italian",
+        "Japanese",
+        "Portuguese (Brazil)",
+        "Spanish"
+      ],
+      "required": true
+    },
+    "mcmId": {
+      "type": "Number",
+      "description": "CardMarket (MagicCardMarket) identifier for this set",
+      "example": 5664,
+      "required": false
+    },
+    "mcmName": {
+      "type": "String",
+      "description": "Name of the set as displayed on CardMarket",
+      "example": "The Big Score",
+      "required": false
+    },
+    "mtgoCode": {
+      "type": "String",
+      "description": "Magic: The Gathering Online code for this set",
+      "example": "BIG",
+      "required": false
+    },
+    "name": {
+      "type": "String",
+      "description": "Full name of the set",
+      "example": "The Big Score",
+      "required": true
+    },
+    "parentCode": {
+      "type": "String",
+      "description": "Code of the parent set if this is a supplemental or bonus set",
+      "example": "OTJ",
+      "required": false
+    },
+    "releaseDate": {
+      "type": "Date",
+      "description": "Official release date of the set",
+      "example": {
+        "$date": "2024-04-19T00:00:00.000Z"
+      },
+      "required": true
+    },
+    "tcgplayerGroupId": {
+      "type": "Number",
+      "description": "TCGPlayer group identifier for this set",
+      "example": 23443,
+      "required": false
+    },
+    "tokenSetCode": {
+      "type": "String",
+      "description": "Set code for associated tokens (usually prefixed with 'T')",
+      "example": "TBIG",
+      "required": false
+    },
+    "totalSetSize": {
+      "type": "Number",
+      "description": "Total number of cards including variants, promos, and special versions",
+      "example": 95,
+      "required": true
+    },
+    "translations": {
+      "type": "Object",
+      "description": "Object containing translations of set name in various languages",
+      "example": {},
+      "required": false
+    },
+    "type": {
+      "type": "String",
+      "description": "Type of set (e.g., 'expansion', 'core', 'commander', 'masters')",
+      "example": "expansion",
+      "required": true
+    },
+    "cards": {
+      "type": "Array<CardObject>",
+      "description": "Array of all cards in this set with complete card data",
+      "required": true,
+      "itemStructure": "See CardObject schema below"
+    },
+    "tokens": {
+      "type": "Array<TokenObject>",
+      "description": "Array of all token cards associated with this set",
+      "required": false,
+      "itemStructure": "See TokenObject schema below"
+    }
+  },
+  "CardObject": {
+    "description": "Represents a single Magic: The Gathering card with all its properties, rules, and metadata",
+    "fields": {
+      "artist": {
+        "type": "String",
+        "description": "Name of the card's artist",
+        "example": "Bartek Fedyczak",
+        "required": false
+      },
+      "artistIds": {
+        "type": "Array<String>",
+        "description": "Array of UUID identifiers for the artists",
+        "example": [
+          "70b1ba71-4ee1-4087-8a9e-ea919f20ebff"
+        ],
+        "required": false
+      },
+      "availability": {
+        "type": "Array<String>",
+        "description": "Platforms where this card is available",
+        "possibleValues": [
+          "arena",
+          "mtgo",
+          "paper"
+        ],
+        "example": [
+          "arena",
+          "mtgo",
+          "paper"
+        ],
+        "required": true
+      },
+      "borderColor": {
+        "type": "String",
+        "description": "Color of the card border",
+        "possibleValues": [
+          "black",
+          "white",
+          "silver",
+          "gold",
+          "borderless"
+        ],
+        "example": "black",
+        "required": true
+      },
+      "colorIdentity": {
+        "type": "Array<String>",
+        "description": "Colors in the card's color identity (for Commander format)",
+        "possibleValues": [
+          "W",
+          "U",
+          "B",
+          "R",
+          "G"
+        ],
+        "example": [
+          "W"
+        ],
+        "required": true
+      },
+      "colors": {
+        "type": "Array<String>",
+        "description": "Colors in the card's mana cost",
+        "possibleValues": [
+          "W",
+          "U",
+          "B",
+          "R",
+          "G"
+        ],
+        "example": [
+          "W"
+        ],
+        "required": false
+      },
+      "convertedManaCost": {
+        "type": "Number",
+        "description": "Total converted mana cost (CMC) of the card (deprecated, use manaValue)",
+        "example": 2,
+        "required": false
+      },
+      "manaValue": {
+        "type": "Number",
+        "description": "Total mana value of the card (replaces convertedManaCost)",
+        "example": 2,
+        "required": false
+      },
+      "manaCost": {
+        "type": "String",
+        "description": "Mana cost in standard notation using {X}{W}{U}{B}{R}{G} format",
+        "example": "{1}{W}",
+        "required": false
+      },
+      "edhrecRank": {
+        "type": "Number",
+        "description": "Card's ranking on EDHREC for Commander format popularity",
+        "example": 11082,
+        "required": false
+      },
+      "edhrecSaltiness": {
+        "type": "Number",
+        "description": "EDHREC saltiness score (how unfun/annoying players find this card)",
+        "example": 0.5,
+        "required": false
+      },
+      "finishes": {
+        "type": "Array<String>",
+        "description": "Available card finishes",
+        "possibleValues": [
+          "nonfoil",
+          "foil",
+          "etched"
+        ],
+        "example": [
+          "nonfoil",
+          "foil"
+        ],
+        "required": true
+      },
+      "flavorText": {
+        "type": "String",
+        "description": "Italicized flavor text appearing on the card (if any)",
+        "example": "\"You think because you've mapped the land, you own the land. You own an idea, nothing more.\"",
+        "required": false
+      },
+      "foreignData": {
+        "type": "Array<ForeignDataObject>",
+        "description": "Array of translations and foreign language versions of this card",
+        "required": false,
+        "itemStructure": "See ForeignDataObject schema below"
+      },
+      "frameVersion": {
+        "type": "String",
+        "description": "Card frame design version",
+        "possibleValues": [
+          "1993",
+          "1997",
+          "2003",
+          "2015",
+          "future"
+        ],
+        "example": "2015",
+        "required": true
+      },
+      "hasFoil": {
+        "type": "Boolean",
+        "description": "Whether this card is available in foil",
+        "example": true,
+        "required": true
+      },
+      "hasNonFoil": {
+        "type": "Boolean",
+        "description": "Whether this card is available in non-foil",
+        "example": true,
+        "required": true
+      },
+      "identifiers": {
+        "type": "IdentifiersObject",
+        "description": "Various platform-specific identifiers for this card",
+        "required": true,
+        "structure": "See IdentifiersObject schema below"
+      },
+      "isReprint": {
+        "type": "Boolean",
+        "description": "Whether this card is a reprint from a previous set",
+        "example": true,
+        "required": false
+      },
+      "isStarter": {
+        "type": "Boolean",
+        "description": "Whether this card is part of a starter deck",
+        "example": true,
+        "required": false
+      },
+      "keywords": {
+        "type": "Array<String>",
+        "description": "Array of keyword abilities this card has",
+        "example": [
+          "Hideaway",
+          "Flying",
+          "Trample"
+        ],
+        "required": false
+      },
+      "language": {
+        "type": "String",
+        "description": "Language of this card version",
+        "example": "English",
+        "required": true
+      },
+      "layout": {
+        "type": "String",
+        "description": "Card layout type",
+        "possibleValues": [
+          "normal",
+          "split",
+          "flip",
+          "transform",
+          "modal_dfc",
+          "adventure",
+          "leveler",
+          "saga",
+          "planar",
+          "scheme",
+          "vanguard",
+          "token",
+          "double_faced_token",
+          "emblem",
+          "augment",
+          "host",
+          "art_series",
+          "reversible_card"
+        ],
+        "example": "normal",
+        "required": true
+      },
+      "legalities": {
+        "type": "LegalitiesObject",
+        "description": "Object containing legality status in various formats",
+        "required": true,
+        "structure": "See LegalitiesObject schema below"
+      },
+      "name": {
+        "type": "String",
+        "description": "Card name in English",
+        "example": "Collector's Cage",
+        "required": true
+      },
+      "number": {
+        "type": "String",
+        "description": "Collector number within the set",
+        "example": "1",
+        "required": true
+      },
+      "originalText": {
+        "type": "String",
+        "description": "Original oracle text as printed on the card",
+        "example": "Hideaway 5 (When this artifact enters the battlefield...)",
+        "required": false
+      },
+      "text": {
+        "type": "String",
+        "description": "Current oracle text with latest errata",
+        "example": "Hideaway 5 (When this artifact enters, look at the top five cards...)",
+        "required": false
+      },
+      "power": {
+        "type": "String",
+        "description": "Power value for creature cards (can be '*' or numeric)",
+        "example": "2",
+        "required": false
+      },
+      "toughness": {
+        "type": "String",
+        "description": "Toughness value for creature cards (can be '*' or numeric)",
+        "example": "2",
+        "required": false
+      },
+      "printings": {
+        "type": "Array<String>",
+        "description": "Array of set codes where this card has been printed",
+        "example": [
+          "BIG",
+          "C14",
+          "CMM"
+        ],
+        "required": true
+      },
+      "purchaseUrls": {
+        "type": "PurchaseUrlsObject",
+        "description": "URLs to purchase this card from various retailers",
+        "required": false,
+        "structure": "See PurchaseUrlsObject schema below"
+      },
+      "rarity": {
+        "type": "String",
+        "description": "Card rarity",
+        "possibleValues": [
+          "common",
+          "uncommon",
+          "rare",
+          "mythic",
+          "special",
+          "bonus"
+        ],
+        "example": "mythic",
+        "required": true
+      },
+      "rulings": {
+        "type": "Array<RulingObject>",
+        "description": "Official rulings and clarifications about how the card works",
+        "required": false,
+        "itemStructure": "See RulingObject schema below"
+      },
+      "securityStamp": {
+        "type": "String",
+        "description": "Type of security stamp on the card",
+        "possibleValues": [
+          "oval",
+          "triangle",
+          "acorn",
+          "arena"
+        ],
+        "example": "oval",
+        "required": false
+      },
+      "setCode": {
+        "type": "String",
+        "description": "Set code this card belongs to",
+        "example": "BIG",
+        "required": true
+      },
+      "sourceProducts": {
+        "type": "Object",
+        "description": "UUIDs of products this card can be found in, separated by finish",
+        "structure": {
+          "foil": "Array<String>",
+          "nonfoil": "Array<String>"
+        },
+        "required": false
+      },
+      "subtypes": {
+        "type": "Array<String>",
+        "description": "Card subtypes (creature types, artifact types, etc.)",
+        "example": [
+          "Human",
+          "Cleric"
+        ],
+        "required": true
+      },
+      "supertypes": {
+        "type": "Array<String>",
+        "description": "Card supertypes (Legendary, Basic, Snow, etc.)",
+        "example": [],
+        "required": true
+      },
+      "type": {
+        "type": "String",
+        "description": "Full type line of the card",
+        "example": "Creature — Human Cleric",
+        "required": true
+      },
+      "types": {
+        "type": "Array<String>",
+        "description": "Card types",
+        "possibleValues": [
+          "Artifact",
+          "Creature",
+          "Enchantment",
+          "Instant",
+          "Land",
+          "Planeswalker",
+          "Sorcery",
+          "Tribal",
+          "Battle"
+        ],
+        "example": [
+          "Artifact"
+        ],
+        "required": true
+      },
+      "uuid": {
+        "type": "String",
+        "description": "Universal unique identifier for this specific card printing",
+        "example": "8b959fa6-401f-56dc-bc55-4474bcfa3a7c",
+        "required": true
+      },
+      "variations": {
+        "type": "Array<String>",
+        "description": "UUIDs of alternate art or promotional versions of this card",
+        "example": [
+          "b7045ad4-a28e-54a0-9318-f4bd2c42ae20"
+        ],
+        "required": false
+      }
+    }
+  },
+  "TokenObject": {
+    "description": "Represents a token card that can be created by other cards during gameplay",
+    "fields": {
+      "artist": {
+        "type": "String",
+        "description": "Name of the token's artist",
+        "required": false
+      },
+      "artistIds": {
+        "type": "Array<String>",
+        "description": "Array of UUID identifiers for the artists",
+        "required": false
+      },
+      "availability": {
+        "type": "Array<String>",
+        "description": "Platforms where this token is available",
+        "possibleValues": [
+          "arena",
+          "mtgo",
+          "paper"
+        ],
+        "required": true
+      },
+      "borderColor": {
+        "type": "String",
+        "description": "Color of the token border",
+        "required": true
+      },
+      "colorIdentity": {
+        "type": "Array<String>",
+        "description": "Colors in the token's color identity",
+        "required": true
+      },
+      "colors": {
+        "type": "Array<String>",
+        "description": "Colors in the token",
+        "required": true
+      },
+      "finishes": {
+        "type": "Array<String>",
+        "description": "Available finishes for this token",
+        "required": true
+      },
+      "frameVersion": {
+        "type": "String",
+        "description": "Token frame design version",
+        "required": true
+      },
+      "hasFoil": {
+        "type": "Boolean",
+        "description": "Whether this token is available in foil",
+        "required": true
+      },
+      "hasNonFoil": {
+        "type": "Boolean",
+        "description": "Whether this token is available in non-foil",
+        "required": true
+      },
+      "identifiers": {
+        "type": "Object",
+        "description": "Platform-specific identifiers for this token",
+        "required": false
+      },
+      "isReprint": {
+        "type": "Boolean",
+        "description": "Whether this token is a reprint",
+        "required": false
+      },
+      "keywords": {
+        "type": "Array<String>",
+        "description": "Keywords abilities this token has",
+        "required": false
+      },
+      "language": {
+        "type": "String",
+        "description": "Language of this token",
+        "required": true
+      },
+      "layout": {
+        "type": "String",
+        "description": "Token layout type (always 'token' for tokens)",
+        "example": "token",
+        "required": true
+      },
+      "name": {
+        "type": "String",
+        "description": "Name of the token",
+        "example": "Gnome",
+        "required": true
+      },
+      "number": {
+        "type": "String",
+        "description": "Collector number within the token set",
+        "required": true
+      },
+      "power": {
+        "type": "String",
+        "description": "Power value for creature tokens",
+        "required": false
+      },
+      "toughness": {
+        "type": "String",
+        "description": "Toughness value for creature tokens",
+        "required": false
+      },
+      "relatedCards": {
+        "type": "Object",
+        "description": "Related card UUIDs (typically empty for tokens)",
+        "required": false
+      },
+      "reverseRelated": {
+        "type": "Array<String>",
+        "description": "Names of cards that create this token",
+        "example": [
+          "Oltec Matterweaver",
+          "Very Cryptic Command"
+        ],
+        "required": false
+      },
+      "setCode": {
+        "type": "String",
+        "description": "Token set code (usually with 'T' prefix)",
+        "example": "TBIG",
+        "required": true
+      },
+      "subtypes": {
+        "type": "Array<String>",
+        "description": "Token subtypes",
+        "example": [
+          "Gnome"
+        ],
+        "required": true
+      },
+      "supertypes": {
+        "type": "Array<String>",
+        "description": "Token supertypes",
+        "required": true
+      },
+      "text": {
+        "type": "String",
+        "description": "Token's rules text",
+        "required": false
+      },
+      "type": {
+        "type": "String",
+        "description": "Full type line of the token",
+        "example": "Token Artifact Creature — Gnome",
+        "required": true
+      },
+      "types": {
+        "type": "Array<String>",
+        "description": "Token types",
+        "required": true
+      },
+      "uuid": {
+        "type": "String",
+        "description": "Universal unique identifier for this token",
+        "required": true
+      }
+    }
+  },
+  "ForeignDataObject": {
+    "description": "Translation and localization data for a card in a specific language",
+    "fields": {
+      "flavorText": {
+        "type": "String",
+        "description": "Translated flavor text",
+        "required": false
+      },
+      "identifiers": {
+        "type": "Object",
+        "description": "Identifiers specific to this language version",
+        "fields": {
+          "multiverseId": "String - Multiverse ID for this language",
+          "scryfallId": "String - Scryfall UUID for this language"
+        },
+        "required": false
+      },
+      "language": {
+        "type": "String",
+        "description": "Language name",
+        "example": "German",
+        "required": true
+      },
+      "multiverseId": {
+        "type": "Number",
+        "description": "Multiverse ID for this language version",
+        "required": false
+      },
+      "name": {
+        "type": "String",
+        "description": "Translated card name",
+        "example": "Käfig des Sammlers",
+        "required": true
+      },
+      "text": {
+        "type": "String",
+        "description": "Translated rules text",
+        "required": false
+      },
+      "type": {
+        "type": "String",
+        "description": "Translated type line",
+        "required": false
+      },
+      "uuid": {
+        "type": "String",
+        "description": "UUID for this specific language version",
+        "required": true
+      }
+    }
+  },
+  "IdentifiersObject": {
+    "description": "Collection of platform-specific identifiers for cross-referencing cards",
+    "fields": {
+      "cardKingdomFoilId": {
+        "type": "String",
+        "description": "Card Kingdom foil product ID",
+        "required": false
+      },
+      "cardKingdomId": {
+        "type": "String",
+        "description": "Card Kingdom non-foil product ID",
+        "required": false
+      },
+      "cardsphereId": {
+        "type": "String",
+        "description": "Cardsphere platform ID",
+        "required": false
+      },
+      "deckboxId": {
+        "type": "String",
+        "description": "Deckbox platform ID",
+        "required": false
+      },
+      "mcmId": {
+        "type": "String",
+        "description": "CardMarket/MagicCardMarket ID",
+        "required": false
+      },
+      "mtgArenaId": {
+        "type": "String",
+        "description": "MTG Arena game ID",
+        "required": false
+      },
+      "mtgjsonV4Id": {
+        "type": "String",
+        "description": "Legacy MTGJSON v4 ID",
+        "required": false
+      },
+      "mtgoId": {
+        "type": "String",
+        "description": "Magic: The Gathering Online ID",
+        "required": false
+      },
+      "multiverseId": {
+        "type": "String",
+        "description": "Wizards of the Coast Multiverse ID",
+        "required": false
+      },
+      "scryfallCardBackId": {
+        "type": "String",
+        "description": "Scryfall UUID for the card back",
+        "required": false
+      },
+      "scryfallId": {
+        "type": "String",
+        "description": "Scryfall UUID for this card",
+        "required": false
+      },
+      "scryfallIllustrationId": {
+        "type": "String",
+        "description": "Scryfall illustration UUID (same for all printings with same art)",
+        "required": false
+      },
+      "scryfallOracleId": {
+        "type": "String",
+        "description": "Scryfall oracle UUID (same for all printings of same card name)",
+        "required": false
+      },
+      "tcgplayerProductId": {
+        "type": "String",
+        "description": "TCGPlayer product ID",
+        "required": false
+      }
+    }
+  },
+  "LegalitiesObject": {
+    "description": "Format legality status for competitive play",
+    "fields": {
+      "brawl": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Brawl format"
+      },
+      "commander": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Commander/EDH format"
+      },
+      "duel": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Duel Commander format"
+      },
+      "future": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Future Standard format"
+      },
+      "gladiator": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Historic Gladiator format"
+      },
+      "historic": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Historic format (Arena)"
+      },
+      "legacy": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Legacy format"
+      },
+      "modern": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Modern format"
+      },
+      "oathbreaker": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Oathbreaker format"
+      },
+      "penny": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Penny Dreadful format"
+      },
+      "pioneer": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Pioneer format"
+      },
+      "standard": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Standard format"
+      },
+      "standardbrawl": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Standard Brawl format"
+      },
+      "timeless": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Timeless format (Arena)"
+      },
+      "vintage": {
+        "type": "String",
+        "possibleValues": [
+          "Legal",
+          "Not Legal",
+          "Restricted",
+          "Banned"
+        ],
+        "description": "Legality in Vintage format"
+      }
+    },
+    "note": "Not all formats appear for every card; only relevant formats are included"
+  },
+  "PurchaseUrlsObject": {
+    "description": "Affiliate URLs to purchase the card from various retailers",
+    "fields": {
+      "cardKingdom": {
+        "type": "String",
+        "description": "URL to Card Kingdom product page",
+        "required": false
+      },
+      "cardKingdomFoil": {
+        "type": "String",
+        "description": "URL to Card Kingdom foil product page",
+        "required": false
+      },
+      "tcgplayer": {
+        "type": "String",
+        "description": "URL to TCGPlayer product page",
+        "required": false
+      }
+    }
+  },
+  "RulingObject": {
+    "description": "Official ruling or clarification about card functionality",
+    "fields": {
+      "date": {
+        "type": "String",
+        "description": "Date the ruling was issued (YYYY-MM-DD format)",
+        "example": "2024-04-12",
+        "required": true
+      },
+      "text": {
+        "type": "String",
+        "description": "The ruling text explaining card interaction or clarification",
+        "example": "Any player who has controlled a permanent with a hideaway ability since a card was exiled with it may look at that card.",
+        "required": true
+      }
+    }
+  },
+  "queryPatterns": {
+    "description": "Common query patterns and use cases for this collection",
+    "examples": [
+      {
+        "pattern": "Find all cards in a specific set",
+        "query": "db.standard.findOne({setCode: 'BIG'}).cards"
+      },
+      {
+        "pattern": "Find sets released after a certain date",
+        "query": "db.standard.find({releaseDate: {$gte: new Date('2024-01-01')}})"
+      },
+      {
+        "pattern": "Find all mythic rare cards across all sets",
+        "query": "db.standard.aggregate([{$unwind: '$cards'}, {$match: {'cards.rarity': 'mythic'}}])"
+      },
+      {
+        "pattern": "Find cards legal in Standard format",
+        "query": "db.standard.aggregate([{$unwind: '$cards'}, {$match: {'cards.legalities.standard': 'Legal'}}])"
+      },
+      {
+        "pattern": "Find cards with specific keywords",
+        "query": "db.standard.aggregate([{$unwind: '$cards'}, {$match: {'cards.keywords': 'Flying'}}])"
+      },
+      {
+        "pattern": "Get tokens created by specific cards",
+        "query": "db.standard.aggregate([{$unwind: '$tokens'}, {$match: {'tokens.reverseRelated': 'Oltec Matterweaver'}}])"
+      },
+      {
+        "pattern": "Find cards by specific artist",
+        "query": "db.standard.aggregate([{$unwind: '$cards'}, {$match: {'cards.artist': 'Bartek Fedyczak'}}])"
+      },
+      {
+        "pattern": "Find cards with specific mana value",
+        "query": "db.standard.aggregate([{$unwind: '$cards'}, {$match: {'cards.manaValue': 2}}])"
+      }
+    ]
+  },
+  "indexRecommendations": [
+    {
+      "fields": {
+        "setCode": 1
+      },
+      "reason": "Fast lookups by set code (primary access pattern)"
+    },
+    {
+      "fields": {
+        "cards.name": 1
+      },
+      "reason": "Search for cards by name across all sets"
+    },
+    {
+      "fields": {
+        "cards.uuid": 1
+      },
+      "reason": "Unique card lookups by UUID"
+    },
+    {
+      "fields": {
+        "releaseDate": 1
+      },
+      "reason": "Chronological queries and date-based filtering"
+    },
+    {
+      "fields": {
+        "cards.legalities.standard": 1
+      },
+      "reason": "Filter cards by format legality"
+    },
+    {
+      "fields": {
+        "cards.rarity": 1
+      },
+      "reason": "Rarity-based filtering"
+    }
+  ],
+  "dataQualityNotes": [
+    "Some fields may be absent if not applicable to the card type (e.g., power/toughness on non-creatures)",
+    "convertedManaCost is deprecated in favor of manaValue but both are present",
+    "foreignData array length varies based on how many languages the set was printed in",
+    "tokens array may be empty or missing if the set has no associated tokens",
+    "identifiers object fields vary by availability - not all cards have all identifier types",
+    "rulings array may be empty for cards with straightforward mechanics",
+    "variations array lists UUIDs of alternate versions but the actual card data for those variations would be separate documents"
+  ],
+  "colorCodes": {
+    "W": "White",
+    "U": "Blue",
+    "B": "Black",
+    "R": "Red",
+    "G": "Green"
+  }
+}
