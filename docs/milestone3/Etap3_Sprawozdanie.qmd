@@ -5,6 +5,7 @@ format:
   pdf:
     output-file: Etap 3 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
     keep-tex: false
+    lot: false
     # fig-pos: 'H'
 ---
 
@@ -156,6 +157,16 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 - analiza trendów cen danych kart
 - wyliczenie wartości kolekcji podanych kart
 - rozbudowanie wyliczania statystyk dla danej talii o więcej parametrów
+
+# Indeksy
+
+<!-- Można robić indeksy na zagniezdzonych dokumentach, wtedy jeśli zapytanie podaje cały zagnieżdżony dokument to indeks jest używany -->
+<!-- Hashed Sharding -->
+<!-- Multikey Indexes -->
+<!-- Założenie niektórych typów indeksów ogranicza schemat dokumentów np. compound multikey index może mieć tylko jedną tablicę -->
+<!-- Wildcard indexes -->
+<!-- Domyślne wsparcie dla indeksów przestrzennych -->
+<!-- Indeksy TTL -->
 
 # Źródła {.unnumbered}
 
