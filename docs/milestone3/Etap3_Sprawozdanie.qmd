@@ -135,6 +135,17 @@ Napisany kod umieściłem w katalogu [`mongo/businessLogic/`](https://github.com
 Na początku implementując `addCardmarketPrice` nadpisywałem cały dokument w `$set`. Traciłem przez to ceni z poprzednich dni.
 Na forum @mongodb-community:update-collection-item-without-removing-non-existing-values znalazłem rozwiązanie, że należy użyć _Dot Notation_ @mongodb:dot-notation, żeby zaktualizować tylko wybrane pola.
 
+Uznałem, że w moim przypadku **sekwencje do autoinkrementacji** nie są potrzebne.
+Szczególnie w środowiskach rozproszonych używanie tego typu sekwencji może sprawiać problemy z synchronizacją wartości. Na przykład w sytuacji równoległego dodania dwóch dokumentów.
+Gdybym w przyszłości potrzebował sekwencji, to zaimplementowałbym je bazując na artykule _MongoDB Auto-Increment_ @mongodb:auto-increment.
+
+Agregację danych wykonałem w zapytaniach testujących relacje.
+Przygotowałem też nowe zapytanie wyliczające podstawowe statystyki dla danej talii w pliku [`deckStatistics.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/businessLogic/deckStatistics.mongodb.js).
+
+- [`usingNestedData.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/relations/usingNestedData.mongodb.js) - wyszukanie najczęstszych słów kluczowych
+- [`mostExpensiveStandardCards.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/relations/mostExpensiveStandardCards.mongodb.js) - wyszukanie najdroższych kart legalnych w standardzie
+- [`deckStatistics.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/businessLogic/deckStatistics.mongodb.js) - wyliczenie podstawowych statystyk talii
+
 Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 
 - funkcje do dodawania cen dla innych sklepów i cen wersji online
@@ -142,10 +153,9 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 - funkcję do dodawania nowych kart lub aktualizacji istniejących
 - funkcję do dodawania i aktualizacji setów
 - funkcję do dodawania i aktualizacji szczegółowych informacji o taliach
-
-Uznałem, że w moim przypadku **sekwencje do autoinkrementacji** nie są potrzebne.
-Szczególnie w środowiskach rozproszonych używanie tego typu sekwencji może sprawiać problemy z synchronizacją wartości. Na przykład w sytuacji równoległego dodania dwóch dokumentów.
-Gdybym w przyszłości potrzebował sekwencji, to zaimplementowałbym je bazując na artykule _MongoDB Auto-Increment_ @mongodb:auto-increment.
+- analiza trendów cen danych kart
+- wyliczenie wartości kolekcji podanych kart
+- rozbudowanie wyliczania statystyk dla danej talii o więcej parametrów
 
 # Źródła {.unnumbered}
 
