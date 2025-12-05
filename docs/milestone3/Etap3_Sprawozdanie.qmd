@@ -74,6 +74,15 @@ Po wczytaniu danych zauważyłem, że wszystkie pola mają typ `string`.
 Przeczytałem, że w przypadku importu z \acr{JSON} wszystkie pola są zapisywane jako `string` @mongodb-community:mongoimport-date-handling.
 Przygotowałem więc skrypty `.mongodb.js` w [`mongo/importData/`](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/importData), które dostosowują typy we wczytanych dokumentach.
 
+## Podział na kolekcje
+
+Ponieważ projekt MTGJSON @mtgjson:homepage już rozsądnie grupuje różne rodzaje danych, to w mojej bazie załadowałem każdy ze zbiorów danych do osobnej kolekcji.
+W przypadku niektórych zbiorów podzieliłem dane na mniejsze dokumenty. Zrobiłem tak na przykład w [`importKeywords.sh`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/importData/importKeywords.sh). \
+Gdybym używał danych wielu tali lub setów umieściłbym je wszystkie w kolekcjach `decks` i `sets`. Jednak, ponieważ mam już wiele zestawów danych, to wybrałem tylko po jednej tali i secie.
+Utworzone kolekcje są widoczne na @fig-collections.
+
+![Utworzone kolekcje](img/loaded-data.png){#fig-collections}
+
 
 # Źródła {.unnumbered}
 
