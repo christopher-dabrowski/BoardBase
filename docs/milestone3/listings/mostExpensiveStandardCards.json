@@ -1,20 +1,26 @@
 [
   {
+    "cardUuid": "73030017-9483-5f73-b4be-0660e1a5c1eb",
     "cardName": "Simulacrum Synthesizer",
     "rarity": "mythic",
     "type": "Artifact",
+    "setCode": "BIG",
     "cardMarketPrice": "80.48 EUR"
   },
   {
+    "cardUuid": "1ff3d49d-979d-5237-b2dd-28f4da08401a",
     "cardName": "Vaultborn Tyrant",
     "rarity": "mythic",
     "type": "Creature — Dinosaur",
+    "setCode": "BIG",
     "cardMarketPrice": "61.62 EUR"
   },
   {
+    "cardUuid": "c3cfc938-9b15-5ca1-9361-e89523d310dd",
     "cardName": "Simulacrum Synthesizer",
     "rarity": "mythic",
     "type": "Artifact",
+    "setCode": "BIG",
     "cardMarketPrice": "47.21 EUR"
   }
 ]

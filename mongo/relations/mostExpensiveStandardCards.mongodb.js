@@ -11,7 +11,8 @@ db.standard.aggregate([
       cardUuid: '$cards.uuid',
       cardName: '$cards.name',
       rarity: '$cards.rarity',
-      type: '$cards.type'
+      type: '$cards.type',
+      setCode: '$setCode'
     }
   },
   {
@@ -40,7 +41,9 @@ db.standard.aggregate([
   { $limit: 3 },
   {
     $project: {
+      cardUuid: 1,
       cardName: 1,
+      setCode: 1,
       rarity: 1,
       type: 1,
       cardMarketPrice: { $concat: [{ $toString: "$cardMarketPrice" }, " ", "$cardMarketCurrency"] },
