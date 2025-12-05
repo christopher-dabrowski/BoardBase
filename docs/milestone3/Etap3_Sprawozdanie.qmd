@@ -58,7 +58,7 @@ Zobaczyłem \acr{JSON} z informacjami o bazie, co potwierdza, że działą ona p
 Skonfigurowałem login i hasło użytkownika `root`, żeby ograniczyć dostęp do bazy. \
 Rozważałem też ustawienie innych opcji @mongodb:configuration-file, ale uznałem, że na tym etapie domyślne ustawienia mi pasują.
 
-## Wczytanie danych
+## Wczytanie danych {#sec-data-import}
 
 Na początku spróbowałem wczytać dane za pomocą \acr{Compass} @mongodb:compass.
 Zorientowałem się jednak, że ponieważ [moje dane](https://github.com/christopher-dabrowski/BoardBase/tree/main/mongo/data) są pojedynczymi plikami \acr{JSON} to do kolekcji został dodany tylko jeden dokument zawierający wszystkie dane (@fig-compass-import).
@@ -82,6 +82,25 @@ Gdybym używał danych wielu tali lub setów umieściłbym je wszystkie w kolekc
 Utworzone kolekcje są widoczne na @fig-collections.
 
 ![Utworzone kolekcje](img/loaded-data.png){#fig-collections}
+
+## Relacje
+
+Wybrane przeze mnie zbiory posiadają już za równo zagniezdzone dokumenty jak i referencje (@fig-nesting-and-reference).
+Nie musiałem więc modyfikować ich struktury, poza zmianami, na które zdecydowałem się przy wczytywaniu danych (@sec-data-import).
+
+Różnica między zagnieżdżeniem a referencją polega na tym, że w przypadku zagniezdzenia całe dane są przechowywane w bazowym dokumencie,
+a referencja przechowuje tylko identyfikator danych w innym dokumencie. \
+Referencja przypomina bardziej znormalizowany model relacyjny.
+Stosując MongoDB zalecane jest jednak zagniezdzanie danych, gdy są one często czytane razem, ponieważ znacznie przyśpiesza to regularne działanie bazy @data-modeling-best-practices. \
+
+::: {#fig-nesting-and-reference layout="[50, -5, 50]"}
+
+![Przykład zagniezdzonych danych](img/nesting-example.png)
+
+![Przykład referencji](img/reference-example.png)
+
+Przykładowe zagniezdzenie i referencja
+:::
 
 
 # Źródła {.unnumbered}
