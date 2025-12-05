@@ -138,6 +138,10 @@ Na forum @mongodb-community:update-collection-item-without-removing-non-existing
 Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 
 - funkcje do dodawania cen dla innych sklepów i cen wersji online
+- funkcję do dodawania i aktualizacji typów kart
+- funkcję do dodawania nowych kart lub aktualizacji istniejących
+- funkcję do dodawania i aktualizacji setów
+- funkcję do dodawania i aktualizacji szczegółowych informacji o taliach
 
 Uznałem, że w moim przypadku **sekwencje do autoinkrementacji** nie są potrzebne.
 Szczególnie w środowiskach rozproszonych używanie tego typu sekwencji może sprawiać problemy z synchronizacją wartości. Na przykład w sytuacji równoległego dodania dwóch dokumentów.
