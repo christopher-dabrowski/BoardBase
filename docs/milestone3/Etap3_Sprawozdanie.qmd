@@ -102,6 +102,13 @@ Stosując MongoDB zalecane jest jednak zagniezdzanie danych, gdy są one często
 Przykładowe zagniezdzenie i referencja
 :::
 
+Byłem ciekaw jakie są najczęstsze słowa kluczowe w kartach z dodatku _Edge of Eternities_.
+W tym celu napisałem zapytanie w pliku [`usingNestedData.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/relations/usingNestedData.mongodb.js), które to wylicza. \
+Wynik zapytania z filtrem na 3 najczęstsze słowa kluczowe widać w @lst-eoe-top-3-keywords.
+
+```{#lst-eoe-top-3-keywords .json lst-cap="Top 3 słów kluczowych w dodatku Edge of Eternities"}
+{{< include listings/eoeTop3Keywords.json >}}
+```
 
 # Źródła {.unnumbered}
 
