@@ -199,6 +199,8 @@ Po ponownym przeanalizowaniu zapytania widać, że czas etapu `$lookup` zmniejsz
 Jest to bardzo znacząca poprawa wydajności. \
 Podobnie jak w przypadku kluczy obcych w bazach relacyjnych, indeksy są kluczowe dla zaczytywania danych z innych kolekcji.
 
+Żeby uniknąć wpływu cache na testy wydajności usuwałem kontener z bazą i tworzyłem go ponownie pomiędzy testami.
+
 Zachęcony poprawą wydajności usunąłem ograniczenie brania tylko 100 pierwszych kart i przeanalizowałem ceny wszystkich 6440 kart ze standardu.
 Zapytanie, które wcześniej wykonywało się tak długo, że nie chciałem na nie czekać, teraz wykonało się poniżej 1 sekundy!
 
@@ -244,6 +246,8 @@ Pozostałe indeksy, które założyłem są w pliku [`createIndexes.mongodb.js`]
 <!-- Indeksy tekstowe -->
 <!-- Indeksy wildcard text -->
 <!-- Create index jest idempotentne -->
+
+# Transakcje
 
 # Źródła {.unnumbered}
 
