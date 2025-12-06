@@ -159,13 +159,6 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 
 # Indeksy
 
-<!-- Stwórz indeksy na odpowiednich polach kolekcji. Przedstaw na praktycznych przykładach
-wydajność zapytań pokrytych różną liczbą indeksów.
-Uwaga: Dla pełnych punktów polecane jest porównanie zapytań pokrytych różną liczbą
-indeksów oraz indeksami prostymi i kompozytowymi oraz wnioski prezentujące zrozumienie
-działania indeksów w MongoDB (i czym się różnią od działania indeksów w bazach
-relacyjnych). Polecam posłużyć się analizatorem zapytań. -->
-
 Używając zapytania wyszukującego najdroższe karty, zauważyłem, że było ono bardzo wolne.
 Przypuszczam, że wynika to z operacji `$lookup`.
 Żeby to zweryfikować użyłem metody `explain`.
@@ -187,6 +180,9 @@ Za pomocą `explain("executionStats")` zbadałem czas wykonania poszczególnych 
 Widać, że największy narzut pochodzi z etapu `$lookup` (@tbl-query-analysis-before-index).
 Ponieważ `$lookup` wyszukuje dokumenty w kolekcji `allPrices` po polu `uuid`, to dodanie indeksu powinno to przyśpieszyć.
 
+Dodałem indeks na polu `cardUuid` w kolekcji `allPrices` za pomocą skryptu [`createIndexes.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/indexes/createIndexes.mongodb.js).
+
+
 | Etap | Czas wykonania etapu (ms) | Całkowity czas (ms) |
 |-------|----------------|-----------------|
 | $unwind | 5 | 5 |
@@ -206,7 +202,24 @@ Podobnie jak w przypadku kluczy obcych w bazach relacyjnych, indeksy są kluczow
 Zachęcony poprawą wydajności usunąłem ograniczenie brania tylko 100 pierwszych kart i przeanalizowałem ceny wszystkich 6440 kart ze standardu.
 Zapytanie, które wcześniej wykonywało się tak długo, że nie chciałem na nie czekać, teraz wykonało się poniżej 1 sekundy!
 
-<!-- : Gry użytkownika źródłowego po nieudanym wykonaniu procedury {#tbl-games-after-failed-merge} -->
+Gracze często szukają kart po ich nazwach.
+Żeby to przyśpieszyć dodałem indeksy na nazwach kart.
+W kolekcji `standardAtomic` dodałem zwykły indeks _Single Field_ @mongodb:single-field-indexes na polu `name`, a w kolekcji `standard` na polu `cards.name` indeks _Multikey_ @mongodb:multikey-indexes.
+Dodałem podobne indeksy do wyszukiwania innych elementów po ich nazwach lub kodach. \
+Tego typu indeksy testowałem analizując statystyki wykonania z włączonym i wyłączonym indeksem w pliku [`cardSearchByName.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/indexes/cardSearchByName.mongodb.js).
+
+Gracze często szukają kart do swoich talii bazując na kolorze karty i jej koszcie many.
+Żeby przyśpieszyć tego typu wyszukiwania utworzyłem _Compound Index_ @mongodb:compound-indexes.
+Ponieważ tylko przednia strona karty jest istotna przy tego typu wyborze, ustawiłem indeks na pierwszym elemencie listy stron kart (@lst-compound-index).
+
+```{#lst-compound-index .js lst-cap="Utworzenie indeksu złożonego"}
+db.standardAtomic.createIndex({ "sides.0.colors": 1 }, { "sides.0.manaValue": 1 });
+```
+
+W indeksach złożonych kolejność pól ma istotne znaczenie.
+Kierowałem się zasadą ESR @mongodb:esr-indexing-guideline, najpierw wybierając kolor, po którym użytkownicy będą zazwyczaj bezpośrednio filtrować, a potem dając koszt many, który będzie częściej wyszukiwany w zakresach. \
+W ten sposób dane o wartościach many w ramach danego koloru są **ułożone obok siebie w indeksie**, zapytania tego typu są wydajne. \
+Testując zapytania tego typu w pliku [`cardForDeckSlot.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/indexes/cardForDeckSlot.mongodb.js) ustaliłem, że indeks znacząco przyśpiesza wyszukiwanie.
 
 <!-- Można robić indeksy na zagniezdzonych dokumentach, wtedy jeśli zapytanie podaje cały zagnieżdżony dokument to indeks jest używany -->
 <!-- Hashed Sharding -->
@@ -217,6 +230,7 @@ Zapytanie, które wcześniej wykonywało się tak długo, że nie chciałem na n
 <!-- Indeksy TTL -->
 <!-- Indeksy tekstowe -->
 <!-- Indeksy wildcard text -->
+<!-- Create index jest idempotentne -->
 
 # Źródła {.unnumbered}
 
