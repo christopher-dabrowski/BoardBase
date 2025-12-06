@@ -5,7 +5,6 @@ format:
   pdf:
     output-file: Etap 3 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
     keep-tex: false
-    lot: false
     # fig-pos: 'H'
 ---
 
@@ -160,6 +159,55 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 
 # Indeksy
 
+<!-- Stwórz indeksy na odpowiednich polach kolekcji. Przedstaw na praktycznych przykładach
+wydajność zapytań pokrytych różną liczbą indeksów.
+Uwaga: Dla pełnych punktów polecane jest porównanie zapytań pokrytych różną liczbą
+indeksów oraz indeksami prostymi i kompozytowymi oraz wnioski prezentujące zrozumienie
+działania indeksów w MongoDB (i czym się różnią od działania indeksów w bazach
+relacyjnych). Polecam posłużyć się analizatorem zapytań. -->
+
+Używając zapytania wyszukującego najdroższe karty, zauważyłem, że było ono bardzo wolne.
+Przypuszczam, że wynika to z operacji `$lookup`.
+Żeby to zweryfikować użyłem metody `explain`.
+Pozwala ona przeanalizować dane o wykonaniu zapytania, takie jak czas poszczególnych etapów @mongodb:analyze-query-performance. \
+Za pomocą `explain("executionStats")` zbadałem czas wykonania poszczególnych etapów zapytania (@tbl-query-analysis-before-index).
+
+| Etap | Czas wykonania etapu (ms) | Całkowity czas (ms) |
+|-------|----------------|-----------------|
+| $unwind | 10 | 10 |
+| $limit | 0 | 10 |
+| $project | 0 | 10 |
+| $lookup | 7047 | 7057 |
+| $addFields | 0 | 7057 |
+| $sort | 0 | 7057 |
+| $project | 0 | 7057 |
+
+: Czas zapytania przed dodaniem indeksu {#tbl-query-analysis-before-index}
+
+Widać, że największy narzut pochodzi z etapu `$lookup` (@tbl-query-analysis-before-index).
+Ponieważ `$lookup` wyszukuje dokumenty w kolekcji `allPrices` po polu `uuid`, to dodanie indeksu powinno to przyśpieszyć.
+
+| Etap | Czas wykonania etapu (ms) | Całkowity czas (ms) |
+|-------|----------------|-----------------|
+| $unwind | 5 | 5 |
+| $limit | 0 | 5 |
+| $project | 0 | 5 |
+| $lookup | 27 | 32 |
+| $addFields | 0 | 32 |
+| $sort | 0 | 32 |
+| $project | 0 | 32 |
+
+: Czas zapytania po dodaniu indeksu {#tbl-query-analysis-after-index}
+
+Po ponownym przeanalizowaniu zapytania widać, że czas etapu `$lookup` zmniejszył się z 7047 ms do 27 ms (@tbl-query-analysis-after-index).
+Jest to bardzo znacząca poprawa wydajności. \
+Podobnie jak w przypadku kluczy obcych w bazach relacyjnych, indeksy są kluczowe dla zaczytywania danych z innych kolekcji.
+
+Zachęcony poprawą wydajności usunąłem ograniczenie brania tylko 100 pierwszych kart i przeanalizowałem ceny wszystkich 6440 kart ze standardu.
+Zapytanie, które wcześniej wykonywało się tak długo, że nie chciałem na nie czekać, teraz wykonało się poniżej 1 sekundy!
+
+<!-- : Gry użytkownika źródłowego po nieudanym wykonaniu procedury {#tbl-games-after-failed-merge} -->
+
 <!-- Można robić indeksy na zagniezdzonych dokumentach, wtedy jeśli zapytanie podaje cały zagnieżdżony dokument to indeks jest używany -->
 <!-- Hashed Sharding -->
 <!-- Multikey Indexes -->
@@ -167,6 +215,8 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 <!-- Wildcard indexes -->
 <!-- Domyślne wsparcie dla indeksów przestrzennych -->
 <!-- Indeksy TTL -->
+<!-- Indeksy tekstowe -->
+<!-- Indeksy wildcard text -->
 
 # Źródła {.unnumbered}
 
