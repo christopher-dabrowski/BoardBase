@@ -210,7 +210,8 @@ Tego typu indeksy testowałem analizując statystyki wykonania z włączonym i w
 
 Gracze często szukają kart do swoich talii bazując na kolorze karty i jej koszcie many.
 Żeby przyśpieszyć tego typu wyszukiwania utworzyłem _Compound Index_ @mongodb:compound-indexes.
-Ponieważ tylko przednia strona karty jest istotna przy tego typu wyborze, ustawiłem indeks na pierwszym elemencie listy stron kart (@lst-compound-index).
+Ponieważ tylko przednia strona karty jest istotna przy tego typu wyborze, ustawiłem indeks na pierwszym elemencie listy stron kart (@lst-compound-index). \
+Indeksy na tego typu zagniezdzonych wartościach nie są możliwe do utworzenia w relacyjnych bazach danych, gdzie indeksuje się całe kolumny.
 
 ```{#lst-compound-index .js lst-cap="Utworzenie indeksu złożonego"}
 db.standardAtomic.createIndex({ "sides.0.colors": 1 }, { "sides.0.manaValue": 1 });
@@ -220,6 +221,18 @@ W indeksach złożonych kolejność pól ma istotne znaczenie.
 Kierowałem się zasadą ESR @mongodb:esr-indexing-guideline, najpierw wybierając kolor, po którym użytkownicy będą zazwyczaj bezpośrednio filtrować, a potem dając koszt many, który będzie częściej wyszukiwany w zakresach. \
 W ten sposób dane o wartościach many w ramach danego koloru są **ułożone obok siebie w indeksie**, zapytania tego typu są wydajne. \
 Testując zapytania tego typu w pliku [`cardForDeckSlot.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/indexes/cardForDeckSlot.mongodb.js) ustaliłem, że indeks znacząco przyśpiesza wyszukiwanie.
+
+Ponieważ z czasem w \acr{MTG} pojawiają się nowe formaty, na obiekcie opisującym legalność karty ustawiłem indeks _Wildcard_ @mongodb:wildcard-indexes poleceniem z @lst-wildcard-index. \
+Dzięki temu rodzajowi indeksu nie muszę jawnie podawać pól, które będą indeksowane.
+Indeks obejmie wszystkie pola zagnieżdżone pod `sides.legalities`, nawet gdy z czasem dojdzie nowy rodzaj formatu. \
+Indeksy tego rodzaju raczej nie występują w bazach relacyjnych.
+
+```{#lst-wildcard-index .js lst-cap="Utworzenie indeksu typu Wildcard"}
+db.standardAtomic.createIndex({ "sides.legalities.$**": 1 });
+```
+
+Pozostałe indeksy, które założyłem są w pliku [`createIndexes.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/indexes/createIndexes.mongodb.js).
+
 
 <!-- Można robić indeksy na zagniezdzonych dokumentach, wtedy jeśli zapytanie podaje cały zagnieżdżony dokument to indeks jest używany -->
 <!-- Hashed Sharding -->
