@@ -301,6 +301,27 @@ Dla transakcji skonfigurowałem odpowiedni `readConcern` i `writeConcern` @mongo
 Po skonfigurowaniu replik, za równo przy połączeniu z `directConnection` jak i listą replik, transakcja działała poprawnie.
 Jednak to drugi rodzaj połączenia uważam za prawdziwe zastosowanie rozproszonych transakcji @mongodb:transactions.
 
+# Zaawansowane funkcjonalności
+
+Wybrane zaawansowane funkcjonalności MongoDB, które pasują do mojego zbioru danych.
+
+## Przetwarzanie grafów
+
+W \acr{MTG} z danymi dodatkami wypuszczane są dodatkowe produkty, takie jak zestawy promocyjne kart z innymi grafikami.
+Do reprezentacji tej relacji w mojej bazie wykorzystywane jest pole `parentSet` w kolekcji `setList`.
+
+Powiązania produktu innymi produktami mogą być wielopoziomowe.
+Przykładowo dodatek _Outlaws of Thunder Junction_ ma rozszerzenie _The Big Score_, do którego został wydany zestaw promocyjny _The Big Score Promos_.
+Z tego powodu chcąc zobaczyć wszystkie suplementarne produkty nie wystarczy wyszukać `{parentSet: baseSetCode}`.
+
+Sądzę, że do analizy tego typu relacji idealnie nadaje się mechanizm przetwarzania grafów @mongodb:mongodb-as-graph-database.
+Przejście wielu poziomów relacji można bardzo prosto zrealizować `$graphLookup`. \
+Zapytanie, które wykorzystuje przetwarzanie grafów do znalezienia produktów powiązanych z zadanym napisałem w pliku [`graphQueries.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/advancedFeatures/graphQueries.mongodb.js)
+
+
+# Wnioski
+
+<!-- Brak warstwy widoków z ANSI-SPAC -->
 
 # Źródła {.unnumbered}
 
