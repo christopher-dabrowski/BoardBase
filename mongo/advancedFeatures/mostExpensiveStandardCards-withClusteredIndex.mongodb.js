@@ -4,7 +4,7 @@ db.standard
   .explain("executionStats")
   .aggregate([
     { $unwind: '$cards' },
-    { $limit: 100 },
+    // { $limit: 100 },
     {
       $project: {
         _id: 0,
