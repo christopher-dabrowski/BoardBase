@@ -157,7 +157,7 @@ Analogiczne elementy, które warto dodać w pełnej wersji aplikacji:
 - wyliczenie wartości kolekcji podanych kart
 - rozbudowanie wyliczania statystyk dla danej talii o więcej parametrów
 
-# Indeksy
+# Indeksy {#sec-indexes}
 
 Używając zapytania wyszukującego najdroższe karty, zauważyłem, że było ono bardzo wolne.
 Przypuszczam, że wynika to z operacji `$lookup`.
@@ -318,10 +318,46 @@ Sądzę, że do analizy tego typu relacji idealnie nadaje się mechanizm przetwa
 Przejście wielu poziomów relacji można bardzo prosto zrealizować `$graphLookup`. \
 Zapytanie, które wykorzystuje przetwarzanie grafów do znalezienia produktów powiązanych z zadanym napisałem w pliku [`graphQueries.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/advancedFeatures/graphQueries.mongodb.js)
 
+## Indeks klastrowany
+
+Tworząc kolekcję można ustawić `_id` jako indeks klastrowany.
+Dokumentacja zaleca to podejście, ponieważ pozwala ono często na wyelimniowanie jednego zwykłego indeksu, zmniejsza rozmiar kolekcji i przyśpiesza zapytania @mongodb:clustered-collections.
+Postanowiłem to przetestować.
+
+Wybrałem kolekcję `allPrices`, ponieważ mierzyłem już czytanie z niej szukając najdroższych kart w @sec-indexes. \
+Ponieważ indeks kastrowany można utworzyć tylko przy tworzeniu kolekcji @mongodb:clustered-collections usunąłem ją i utworzyłem ponownie [`clusteredCollection.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/advancedFeatures/clusteredCollection.mongodb.js).
+Zmieniłem wczytywanie danych do kolekcji `allPrices`, umieszczając w `_id` wartość `cardUuid` [`importAllPricesToday.sh`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/importData/importAllPricesToday.sh).
+Żeby nie musieć przerabiać poprzednich zapytań zostawiłem też jawne pole `cardUuid`.
+
+Po skonfigurowaniu indeksu klastrowanego zmieniłem zapytanie wyszukujące nadroższe karty, żeby z niego skorzystać [`mostExpensiveStandardCards-withClusteredIndex.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/advancedFeatures/mostExpensiveStandardCards-withClusteredIndex.mongodb.js).
+Następnie zbadałem czas wykonania zapytań.
+
+Dla spólnego porównania ograniczyłem liczbę przetwarzanych kart do 100.
+Czas zapytania spadł do 9 ms (@tbl-most-expensive-with-clustered-index).
+Przy stosowaniu zwykłego indeksu zapytanie trwało 32 ms (@tbl-query-analysis-after-index). \
+Przetestowałem też czas wykonania zapytania dla wszystkich 6440 kart.
+Dla indeksu klastrowanego czas wyniósł 410 ms, a dla zwykłego indeksu trwał około 900 ms.
+
+| Etap | Czas wykonania etapu (ms) | Całkowity czas (ms) |
+|-------|----------------|-----------------|
+| $unwind | 1 | 1 |
+| $limit | 0 | 1 |
+| $project | 0 | 1 |
+| $lookup | 8 | 9 |
+| $addFields | 0 | 9 |
+| $sort | 0 | 9 |
+| $project | 0 | 9 |
+
+: Wyszukanie najdroższych kart z indeksem klastrowanym (tylko pierwsze 100 kart) {#tbl-most-expensive-with-clustered-index}
+
+Stosowanie indeksu klastrowanego znacząco przyśpieszyło moje zapytanie, nawet w stosunku do zwykłego indeksu.
+Zdecydowanie będę korzystał z tej funkcjonalności w przyszłości. \
+Ciekawe było też dla mnie to, że przy analizie zapytania korzystającego z indeksu klastrowanego analiza zapytania pokazuje, że nie został użyty żaden indeks `"indexesUsed": [],`.
+Jestem jednak pewien, że indeks klastrowany został użyty, ponieważ w przeciwnym razie wykonanie trwałoby znacznie dłużej.
 
 # Wnioski
 
-<!-- Brak warstwy widoków z ANSI-SPAC -->
+<!-- Brak warstwy widoków z ANSI-SPAC, jednak są widoki ale nie można modyfikować ich wartości -->
 
 # Źródła {.unnumbered}
 
