@@ -352,7 +352,7 @@ Dla indeksu klastrowanego czas wyniósł 410 ms, a dla zwykłego indeksu trwał 
 
 Stosowanie indeksu klastrowanego znacząco przyśpieszyło moje zapytanie, nawet w stosunku do zwykłego indeksu.
 Zdecydowanie będę korzystał z tej funkcjonalności w przyszłości. \
-Ciekawe było też dla mnie to, że przy analizie zapytania korzystającego z indeksu klastrowanego analiza zapytania pokazuje, że nie został użyty żaden indeks `"indexesUsed": [],`.
+Ciekawe było też dla mnie to, że przy analizie zapytania korzystającego z indeksu klastrowanego `explain("executionStats")` pokazuje, że nie został użyty żaden indeks `"indexesUsed": [],`.
 Jestem jednak pewien, że indeks klastrowany został użyty, ponieważ w przeciwnym razie wykonanie trwałoby znacznie dłużej.
 
 # Wnioski
