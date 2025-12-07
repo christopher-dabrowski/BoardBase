@@ -249,6 +249,59 @@ Pozostałe indeksy, które założyłem są w pliku [`createIndexes.mongodb.js`]
 
 # Transakcje
 
+Transakcje w MongoDB działają tylko, gdy system składa się z więcej niż jednej repliki @mongodb:transactions-production-consideration.
+Żeby je przetestować skonfigurowałem dodatkowe instancje w [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml). \
+Moją konfigurację bazowałem na artykule _Create a replica set in MongoDB with Docker Compose_ @tericcabrel:mongodb-replica-set-docker-compose.
+Uprościłem konfigurację sieciową, w stosunku do proponowanej w artykule, korzystając z domyślnej sieci tworzonej przez Docker Compose @docker-compose:networking.
+Zautomatyzowałem też inicjalizację połączenia replik skryptem [`replica-set-init.sh`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/replica-set-init.sh) za pomocą Docker Compose lifecycle hook'u `post_start`. Konfiguracja sugerowana w artykule wymagała ręcznego uruchomienia skryptu po uruchomieniu kontenerów.
+
+Zauważałem, że po skonfigurowaniu replik moje połączenia z Playgrounds @mongodb:playgrounds i \acr{Compass} przestały działać.
+Po przeczytaniu wątku na forum _Cannot connect to replica set via mongo compass_ @mongodb-community:cannot-connect-to-replica-set-via-mongo-compass zrozumiałem, że muszę dostosować connection string. \
+Na początku wypróbowałem `directConnection=true`, co sprawiło, że połączenie zadziałało.
+W tej konfiguracji jednak łączyłem się tylko z główną repliką, co w sytuacji potencjalnej awarii neguje zalety używania replik. \
+Idąc za radami z forum @mongodb-community:cannot-connect-to-replica-set-via-mongo-compass dodałem nowe routing do `/etc/hosts` (@lst-mongo-replica-set-hosts).
+Po tej zmianie udało mi się połączyć connection string'iem `mongodb://admin:*****@mongodb:27017,mongodb-secondary1:27018,mongodb-secondary2:27019/?replicaSet=rsmtg` do wielu replik.
+
+```{#lst-mongo-replica-set-hosts .plaintext lst-cap="Routing do replik MongoDB w /etc/hosts"}
+127.0.0.1 mongodb
+127.0.0.1 mongodb-secondary1
+127.0.0.1 mongodb-secondary2
+```
+
+Poprawne działanie replik widać między innymi uruchamiając `db.runCommand({ hello: 1 })` (@lst-mongo-replica-set-hello).
+
+```{#lst-mongo-replica-set-hello .json lst-cap="Odpowiedź z polecenia hello po skonfigurowaniu replik"}
+{
+  "topologyVersion": {
+    "processId": {
+      "$oid": "69357bfa954b1bf67799cd35"
+    },
+    "counter": 7
+  },
+  "hosts": [
+    "mongodb:27017",
+    "mongodb-secondary1:27017",
+    "mongodb-secondary2:27017"
+  ],
+  "setName": "rsmtg",
+  "setVersion": 1,
+  "isWritablePrimary": true,
+  "secondary": false,
+  "primary": "mongodb:27017",
+  "me": "mongodb:27017",
+  "electionId": {
+    "$oid": "7fffffff0000000000000007"
+  },
+// Skrócony wynik ...
+}
+```
+
+Przykładową transakcję przygotowałem w pliku [`updateSetName.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/transactions/updateSetName.mongodb.js). Aktualizuje ona nazwę dodatku w kilku kolekcjach. \
+Dla transakcji skonfigurowałem odpowiedni `readConcern` i `writeConcern` @mongodb:read-concern @mongodb:write-concern. \
+Po skonfigurowaniu replik, za równo przy połączeniu z `directConnection` jak i listą replik, transakcja działała poprawnie.
+Jednak to drugi rodzaj połączenia uważam za prawdziwe zastosowanie rozproszonych transakcji @mongodb:transactions.
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
