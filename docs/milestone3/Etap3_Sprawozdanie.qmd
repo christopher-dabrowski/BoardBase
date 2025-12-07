@@ -355,6 +355,20 @@ Zdecydowanie będę korzystał z tej funkcjonalności w przyszłości. \
 Ciekawe było też dla mnie to, że przy analizie zapytania korzystającego z indeksu klastrowanego `explain("executionStats")` pokazuje, że nie został użyty żaden indeks `"indexesUsed": [],`.
 Jestem jednak pewien, że indeks klastrowany został użyty, ponieważ w przeciwnym razie wykonanie trwałoby znacznie dłużej.
 
+## Map Reduce
+
+Byłem ciekaw ile w danym roku zostało wydanych setów w ramach danych bloków (rodzajów). Chciałem też zobaczyć jak zmienia się to na przestrzeni lat.
+
+Wykorzystałem do tego podejście map reduce w pliku [`mapReduce.mongodb.js`](https://github.com/christopher-dabrowski/BoardBase/blob/main/mongo/advancedFeatures/mapReduce.mongodb.js) \
+Najpierw zmapowałem każdy dokument mający `releaseDate` i `block` na rok i nazwę bloku.
+Następnie w funkcji redukującej wyliczyłem liczbę setów dla danego roku i bloku.
+Na koniec, już poza map reduce, posortowałem wyniki po roku.
+
+Całkiem wygodnie pisało mi się to zapytanie w formie map reduce.
+Było to dla mnie łatwiejsze niż napisanie analogicznego zapytania jako `aggregate`, choć myślę, że może to wynikać z mojej małej wprawy w zapytaniach `aggregate`. \
+W map reduce brakowało mi możliwości posortowania wynków. Zrobiłem je osobno zwykłym `sort` na końcu.
+Warto uwzględnić, że używanie map reduce nie jest już zalecane @mongodb:map-reduce. Z tego powodu nie będę raczej wracał do tej funkcjonalności.
+
 # Wnioski
 
 <!-- Brak warstwy widoków z ANSI-SPAC, jednak są widoki ale nie można modyfikować ich wartości -->
