@@ -32,7 +32,6 @@ services:
   mongodb:
     image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
     environment:
-      - MONGO_INITDB_DATABASE=mtg
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?error}
     ports:
@@ -40,6 +39,37 @@ services:
     volumes:
       - mongodb-data:/data/db
       - mongodb-config:/data/configdb
+      - ./mongo/replica-set-init.sh:/scripts/replica-set-init.sh:ro
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
+    depends_on:
+      - mongodb-secondary1
+      - mongodb-secondary2
+    post_start:
+      - command: /scripts/replica-set-init.sh:ro
+
+  mongodb-secondary1:
+    image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?error}
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb-data-secondary1:/data/db
+      - mongodb-config-secondary1:/data/configdb
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
+
+  mongodb-secondary2:
+    image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?error}
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongodb-data-secondary2:/data/db
+      - mongodb-config-secondary2:/data/configdb
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
 
 volumes:
   pgdata:
@@ -57,3 +87,15 @@ volumes:
   mongodb-config:
     labels:
       pw.kd.description: "MongoDB config volume"
+  mongodb-data-secondary1:
+    labels:
+      pw.kd.description: "MongoDB secondary1 data volume"
+  mongodb-config-secondary1:
+    labels:
+      pw.kd.description: "MongoDB secondary1 config volume"
+  mongodb-data-secondary2:
+    labels:
+      pw.kd.description: "MongoDB secondary2 data volume"
+  mongodb-config-secondary2:
+    labels:
+      pw.kd.description: "MongoDB secondary2 config volume"
