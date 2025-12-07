@@ -371,7 +371,31 @@ Warto uwzględnić, że używanie map reduce nie jest już zalecane @mongodb:map
 
 # Wnioski
 
-<!-- Brak warstwy widoków z ANSI-SPAC, jednak są widoki ale nie można modyfikować ich wartości -->
+<!-- max 1/2 strony -->
+
+Implementacja bazy do analizy danych o kartach \acr{MTG} w MongoDB zawiera kilka istotnych różnic w stosunku do podobnego systemu zrobionego na bazie relacyjnej.
+
+Główną różnicę, którą odczułem jest **inne podejście do modelowania danych**.
+W bazach relacyjnych stosuje się zazwyczaj 3NF, a w MongoDB typowe jest zagnieżdżanie i duplikacja danych @mongodb:data-modeling-best-practices.
+Takie podejście prowadzi do znacznie **szybszych i prostszych zapytań**.
+Jednak umożliwia **łatwą utratę spójności bazy**, gdy na przykład zwielokrotnione dane zostaną zmienione tylko w jednym miejscu.
+
+Baza MongoDB odchodzi od architektury ANSI-SPAC.
+Posiada ona widoki, ale nie daje możliwości ich edycji.
+Cho prawda w bazach relacyjnych trudno uzyskać działanie edycji widoków, jednak jest to teoretycznie możliwe.
+
+MongoDB nie posiada bezpośrednio wyzwalaczy.
+Logika zapewniająca spójność musi znajdować się po stronie aplikacji, może to być jednak trudne, gdy różne aplikacje korzystają z tej samej bazy.
+Atlas oferuje wyzwalacze @mongodb-atlas:database-triggers, jednak ja korzystałem z lokalnej bazy.
+Efekt podobny do wyzwalaczy można osiągnąć korzystając z _Change Streams_ @mongodb:change-streams, jest to jednak bardziej skomplikowane.
+
+Konfiguracja replikacji jest zdecydowanie prostsza w MongoDB niż w relacyjnych bazach danych.
+
+Brak silnego schematu utrudnia to odpytywanie bazy, ponieważ nie można być pewnym jakie pola są dostępne w dokumentach ani nawet, że wszystkie ich wartości będą tego samego typu.
+
+Mimo, że to był mój pierwszy kontakt z MongoDB, to pracowało mi się zdecydowanie przyjemnie.
+Może to wynika z mojego większego doświadczenia z JavaScriptem niż \acr{SQL}, jednak gdybym miał wybierać z jaką bazą przyjdzie mi pracować, to pewnie wybrałbym MongoDB.
+
 
 # Źródła {.unnumbered}
 
