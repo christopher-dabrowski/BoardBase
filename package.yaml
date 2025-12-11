@@ -1,0 +1,17 @@
+name: boardbase
+version: "1.0.0"
+description: Projekt akademicki do nauki zaawansowanych systemów baz danych
+packageManager: pnpm@10.25.0
+engines:
+  node: ">=24"
+  pnpm: ">=10"
+pnpm:
+  onlyBuiltDependencies:
+    - lefthook
+devDependencies:
+  "@commitlint/cli": "^20.1.0"
+  "@commitlint/config-conventional": "^20.0.0"
+  lefthook: "^2.0.4"
+repository:
+  type: git
+  url: git+https://github.com/christopher-dabrowski/BoardBase.git
