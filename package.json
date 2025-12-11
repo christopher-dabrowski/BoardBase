@@ -2,6 +2,7 @@
   "name": "boardbase",
   "version": "1.0.0",
   "description": "Projekt akademicki do nauki zaawansowanych systemów baz danych",
+  "packageManager": "pnpm@10.25.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "lefthook"
