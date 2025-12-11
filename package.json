@@ -2,6 +2,11 @@
   "name": "boardbase",
   "version": "1.0.0",
   "description": "Projekt akademicki do nauki zaawansowanych systemów baz danych",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
