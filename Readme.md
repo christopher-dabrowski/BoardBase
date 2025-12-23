@@ -34,6 +34,8 @@ Migracja bazy danych z PostgreSQL do MS SQL Server i związane z tym kłopoty :b
 
 [![Publish Milestone 3 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml)
 
+Użycie bazy dokumentowej MongoDB do analizy danych o grze Magic: The Gathering na podstawie zbiorów z [MTGJSON](https://mtgjson.com/).
+
 > [!IMPORTANT]
 > Wyrenderowane [Sprawozdanie z etapu 3](https://github.com/christopher-dabrowski/BoardBase/blob/publish/milestone3/Etap%203%20Sprawozdanie%20Krzysztof%20D%C4%85browski%20293101.pdf).
 
