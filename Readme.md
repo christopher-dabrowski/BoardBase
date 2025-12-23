@@ -43,5 +43,7 @@ Użycie bazy dokumentowej MongoDB do analizy danych o grze Magic: The Gathering 
 
 [![Publish Milestone 4 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone4-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone4-pdf.yaml)
 
+Zastosowanie bazy grafowej Neo4j do analizy danych o świecie Pieśni Lodu i Ognia (Gra o Tron).
+
 > [!IMPORTANT]
 > Wyrenderowane [Sprawozdanie z etapu 4](https://github.com/christopher-dabrowski/BoardBase/blob/publish/milestone4/Etap%204%20Sprawozdanie%20Krzysztof%20D%C4%85browski%20293101.pdf).
