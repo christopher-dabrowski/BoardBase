@@ -2,6 +2,9 @@
 
 [![Conventional Commits](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml)
 
+![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
+![Static Badge](https://img.shields.io/badge/MongoDB-8.2.2-%2347A248?style=for-the-badge&logo=mongodb)
+
 Projekt akademicki do nauki zaawansowanych systemów baz danych.
 Projekt będzie skupiał się na implementacji bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
 
@@ -13,6 +16,8 @@ Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plik
 
 [![Publish Case Study PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml)
 [![Publish Milestone 1 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone1-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone1-pdf.yaml)
+
+![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
 
 Pierwszy etap projektu koncentruje się na zaprojektowaniu i wdrożeniu relacyjnej bazy danych zgodnie z najlepszymi praktykami. Obejmuje przygotowanie case study, wybór i konfigurację SZBD, stworzenie schematu bazy danych w 3NF z co najmniej 8 tabelami, wypełnienie danymi, konfigurację użytkowników oraz przygotowanie zapytań, perspektyw i indeksów. Kluczowe jest nie tylko stworzenie funkcjonalnej bazy, ale także jej dokładne udokumentowanie i uzasadnienie podjętych decyzji projektowych.
 
@@ -28,6 +33,8 @@ Kod SQL do konfiguracji bazy oraz zapytań jest w katalogu [`sql`](./sql).
 
 [![Publish Milestone 2 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml)
 
+![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
+
 Rozwinięcie relacyjnej bazy danych z pierwszego etapu o elementy programowalne takie jak procedury składowane, wyzwalacze i funkcje użytkownika.
 Migracja bazy danych z PostgreSQL do MS SQL Server i związane z tym kłopoty :bomb:.
 
@@ -39,6 +46,8 @@ Kod SQL do konfiguracji bazy oraz zapytań jest w katalogu [`sql`](./sql).
 ## Etap 3 - MongoDB
 
 [![Publish Milestone 3 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone3-pdf.yaml)
+
+![Static Badge](https://img.shields.io/badge/MongoDB-8.2.2-%2347A248?style=for-the-badge&logo=mongodb)
 
 Użycie bazy dokumentowej MongoDB do analizy danych o grze Magic: The Gathering na podstawie zbiorów z [MTGJSON](https://mtgjson.com/).
 Piki związane z tym etapem są w katalogu [`mongo`](./mongo).
