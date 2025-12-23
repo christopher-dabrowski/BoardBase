@@ -7,7 +7,8 @@
 ![Static Badge](https://img.shields.io/badge/Neo4j-latest-%234581C3?style=for-the-badge&logo=neo4j&logoColor=%234581C3)
 
 Projekt akademicki do nauki zaawansowanych systemów baz danych.
-Projekt będzie skupiał się na implementacji bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
+Pierwsze dwa etapy skupiają się na na implementacji relacyjnej bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
+Etapy 3 i 4 bazują na bazach NoSQL.
 
 Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plików Quarto przez GitHub Actions i publikowane na orphan branchach 🚀
 
