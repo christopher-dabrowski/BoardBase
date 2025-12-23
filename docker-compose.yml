@@ -30,6 +30,8 @@ services:
       - sqlserver_data:/var/opt/mssql
 
   mongodb:
+    profiles:
+      - mongo
     image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
@@ -48,6 +50,8 @@ services:
       - command: /scripts/replica-set-init.sh:ro
 
   mongodb-secondary1:
+    profiles:
+      - mongo
     image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
@@ -60,6 +64,8 @@ services:
     entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
 
   mongodb-secondary2:
+    profiles:
+      - mongo
     image: mongodb/mongodb-community-server:8.2.2-ubuntu2204
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
