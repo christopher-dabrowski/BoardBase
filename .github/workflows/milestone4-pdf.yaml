@@ -1,0 +1,23 @@
+name: Publish Milestone 4 PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/milestone4/Etap4_Sprawozdanie.qmd
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow}}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    uses: ./.github/workflows/quarto-pdf-publish.yaml
+    with:
+      source_file_path: docs/milestone4/Etap4_Sprawozdanie.qmd
+      publish_branch: publish/milestone4
+      commit_message: "docs: update milestone 4 PDF report"
+    permissions:
+      contents: write
