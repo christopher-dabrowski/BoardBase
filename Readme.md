@@ -11,7 +11,7 @@ Projekt akademicki do nauki zaawansowanych systemów baz danych.
 Pierwsze dwa etapy skupiają się na na implementacji relacyjnej bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
 Etapy 3 i 4 bazują na bazach NoSQL.
 
-Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plików Quarto przez GitHub Actions i publikowane na orphan branchach 🚀
+🚀 Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plików Quarto przez GitHub Actions i publikowane na orphan branchach.
 
 :whale: Zastosowane bazy danych można łatwo uruchomić korzystając z [`docker-compose.yml`](./docker-compose.yml).
 
