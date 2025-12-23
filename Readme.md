@@ -4,6 +4,7 @@
 
 ![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
 ![Static Badge](https://img.shields.io/badge/MongoDB-8.2.2-%2347A248?style=for-the-badge&logo=mongodb)
+![Static Badge](https://img.shields.io/badge/Neo4j-latest-%234581C3?style=for-the-badge&logo=neo4j&logoColor=%234581C3)
 
 Projekt akademicki do nauki zaawansowanych systemów baz danych.
 Projekt będzie skupiał się na implementacji bazy danych gier planszowych z funkcjami do zarządzania informacjami o konkretnych grach planszowych, ich wersjach, dodatkach oraz śledzeniu rozgrywek i recenzji graczy.
@@ -58,6 +59,8 @@ Piki związane z tym etapem są w katalogu [`mongo`](./mongo).
 ## Etap 4 - Baza grafowa Neo4j
 
 [![Publish Milestone 4 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone4-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone4-pdf.yaml)
+
+![Static Badge](https://img.shields.io/badge/Neo4j-latest-%234581C3?style=for-the-badge&logo=neo4j&logoColor=%234581C3)
 
 Zastosowanie bazy grafowej Neo4j do analizy danych o świecie Pieśni Lodu i Ognia (Gra o Tron).
 
