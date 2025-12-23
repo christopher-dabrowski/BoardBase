@@ -7,6 +7,8 @@ Projekt będzie skupiał się na implementacji bazy danych gier planszowych z fu
 
 Sprawozdania z danych etapów są automatycznie generowane w formacie PDF z plików Quarto przez GitHub Actions i publikowane na orphan branchach 🚀
 
+:whale: Zastosowane bazy danych można łatwo uruchomić korzystając z [`docker-compose.yml`](./docker-compose.yml).
+
 ## Etap 1 - Projektowanie i implementacja bazy danych
 
 [![Publish Case Study PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/case-study-pdf.yaml)
