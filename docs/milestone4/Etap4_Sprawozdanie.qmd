@@ -1,0 +1,22 @@
+---
+title: Sprawozdanie Etap 4 - Neo4j
+subtitle: Zaawansowane systemy baz danych
+format:
+  pdf:
+    output-file: Etap 4 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
+    keep-tex: false
+    # fig-pos: 'H'
+---
+
+{{< include ../shared/repo_callout.qmd >}}
+
+# Zbiór danych
+
+
+
+# Instalacja Neo4j i wczytanie danych
+
+# Źródła {.unnumbered}
+
+::: {#refs}
+:::
