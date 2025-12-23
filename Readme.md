@@ -3,6 +3,7 @@
 [![Conventional Commits](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml)
 
 ![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
+![Static Badge](https://img.shields.io/badge/Microsoft%20SQL%20Server-2022-%230065b1?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/MongoDB-8.2.2-%2347A248?style=for-the-badge&logo=mongodb)
 ![Static Badge](https://img.shields.io/badge/Neo4j-latest-%234581C3?style=for-the-badge&logo=neo4j&logoColor=%234581C3)
 
@@ -36,6 +37,7 @@ Kod SQL do konfiguracji bazy oraz zapytań jest w katalogu [`sql`](./sql).
 [![Publish Milestone 2 PDF](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/milestone2-pdf.yaml)
 
 ![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
+![Static Badge](https://img.shields.io/badge/Microsoft%20SQL%20Server-2022-%230065b1?style=for-the-badge)
 
 Rozwinięcie relacyjnej bazy danych z pierwszego etapu o elementy programowalne takie jak procedury składowane, wyzwalacze i funkcje użytkownika.
 Migracja bazy danych z PostgreSQL do MS SQL Server i związane z tym kłopoty :bomb:.
