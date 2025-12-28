@@ -27,6 +27,7 @@ _freeze/
 *.lof
 *.lot
 *.lop
+*.xdv
 
 # Caches
 _cache/
