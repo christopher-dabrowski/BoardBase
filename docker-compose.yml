@@ -77,6 +77,19 @@ services:
       - mongodb-config-secondary2:/data/configdb
     entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
 
+  neo4j:
+    image: neo4j:2025.11.2
+    volumes:
+      - neo4j-logs:/logs
+      - neo4j-config:/config
+      - neo4j-data:/data
+      - neo4j-plugins:/plugins
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:?error}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
 volumes:
   pgdata:
     labels:
@@ -87,6 +100,7 @@ volumes:
   sqlserver_data:
     labels:
       com.example.description: "MS SQL Server data volume"
+
   mongodb-data:
     labels:
       pw.kd.description: "MongoDB data volume"
@@ -105,3 +119,16 @@ volumes:
   mongodb-config-secondary2:
     labels:
       pw.kd.description: "MongoDB secondary2 config volume"
+
+  neo4j-logs:
+    labels:
+      pw.kd.description: Neo4j logs volume
+  neo4j-config:
+    labels:
+      pw.kd.description: Neo4j config volume
+  neo4j-data:
+    labels:
+      pw.kd.description: Neo4j data volume
+  neo4j-plugins:
+    labels:
+      pw.kd.description: Neo4j plugins volume
