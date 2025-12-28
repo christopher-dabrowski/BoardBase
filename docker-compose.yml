@@ -99,32 +99,32 @@ secrets:
 volumes:
   pgdata:
     labels:
-      com.example.description: "Postgres data volume"
+      com.example.description: Postgres data volume
   pgbackuptest:
     labels:
-      com.example.description: "Temporary volume for backup verification"
+      com.example.description: Temporary volume for backup verification
   sqlserver_data:
     labels:
-      com.example.description: "MS SQL Server data volume"
+      com.example.description: MS SQL Server data volume
 
   mongodb-data:
     labels:
-      pw.kd.description: "MongoDB data volume"
+      pw.kd.description: MongoDB data volume
   mongodb-config:
     labels:
-      pw.kd.description: "MongoDB config volume"
+      pw.kd.description: MongoDB config volume
   mongodb-data-secondary1:
     labels:
-      pw.kd.description: "MongoDB secondary1 data volume"
+      pw.kd.description: MongoDB secondary1 data volume
   mongodb-config-secondary1:
     labels:
-      pw.kd.description: "MongoDB secondary1 config volume"
+      pw.kd.description: MongoDB secondary1 config volume
   mongodb-data-secondary2:
     labels:
-      pw.kd.description: "MongoDB secondary2 data volume"
+      pw.kd.description: MongoDB secondary2 data volume
   mongodb-config-secondary2:
     labels:
-      pw.kd.description: "MongoDB secondary2 config volume"
+      pw.kd.description: MongoDB secondary2 config volume
 
   neo4j-logs:
     labels:
