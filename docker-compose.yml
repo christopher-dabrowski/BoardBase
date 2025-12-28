@@ -85,10 +85,16 @@ services:
       - neo4j-data:/data
       - neo4j-plugins:/plugins
     environment:
-      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:?error}
+      - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
     ports:
       - "7474:7474"
       - "7687:7687"
+    secrets:
+      - neo4j_auth_file
+
+secrets:
+  neo4j_auth_file:
+    file: ./neo4j/neo4j_auth.txt
 
 volumes:
   pgdata:
