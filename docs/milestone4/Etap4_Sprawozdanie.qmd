@@ -12,7 +12,15 @@ format:
 
 # Zbiór danych
 
+Wybrałem zbiór danych _Game of Graphs_ @github:game-of-graphs zawierający informacje o postaciach, rodach, rejonach i siedzibach rodów z serii książek Pieśń Lodu i Ognia (Gra o Tron) autorstwa George’a R.R. Martina @martin:game-of-thrones @martin:clash-of-kings @martin:storm-of-swords @martin:feast-for-crows @martin:dance-with-dragons.
+Zdecydowałem się na ten zbiór, ponieważ jestem fanem fantastyki. Sądzę, że ciekawe będzie przeanalizowanie go.
 
+Zbiór _Game of Graphs_ @github:game-of-graphs został przygotowany na podstawie danych z projektu An API of Ice And Fire @github:an-api-of-ice-and-fire.
+W zbiorze bzowo występują 4 rodzaje węzłów oraz 17 rodzajów relacji widocznych na @fig-base-gog-schema.
+
+![Bazowy schemat danych Game of Graphs. Źródło: Repozytorium Game of Graphs @github:game-of-graphs](img/got-graphql-schema.jpg){#fig-base-gog-schema}
+
+<!-- TODO: dodać node `Book` przerabiając mój zbiór danych -->
 
 # Instalacja Neo4j i wczytanie danych
 
