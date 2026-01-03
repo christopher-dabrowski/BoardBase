@@ -17,10 +17,15 @@ Zdecydowałem się na ten zbiór, ponieważ jestem fanem fantastyki. Sądzę, �
 
 Zbiór _Game of Graphs_ @github:game-of-graphs został przygotowany na podstawie danych z projektu An API of Ice And Fire @github:an-api-of-ice-and-fire.
 W zbiorze bzowo występują 4 rodzaje węzłów oraz 17 rodzajów relacji widocznych na @fig-base-gog-schema.
+Bazowy zbiór zawiera 2122 węzłów i 3233 relacji widocznych na podglądzie @fig-base-gog-data.
 
 ![Bazowy schemat danych Game of Graphs. Źródło: Repozytorium Game of Graphs @github:game-of-graphs](img/got-graphql-schema.jpg){#fig-base-gog-schema}
 
-<!-- TODO: dodać node `Book` przerabiając mój zbiór danych -->
+![Podgląd danych Game of Graphs](img/got-graph.jpg){#fig-base-gog-data}
+
+Ponieważ bazowy zbiór _Game of Graphs_ @github:game-of-graphs zawiera tylko 4 rodzaje węzłów, dodam do niego typ węzła `Book` reprezentujący książki z serii.
+Projekt _An API of Ice And Fire_ @github:an-api-of-ice-and-fire dostarcza endpoint pozwalający na pobranie informacji o książkach.
+Nie został on jednak wykorzystany w bazowym zbiorze _Game of Graphs_ @github:game-of-graphs.
 
 # Instalacja Neo4j i wczytanie danych
 
