@@ -82,8 +82,8 @@ services:
     volumes:
       - neo4j-data:/data
       - neo4j-logs:/logs
-      - neo4j-config:/config
       - neo4j-plugins:/plugins
+      - ./neo4j/conf:/conf:ro
     environment:
       - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
     ports:
@@ -129,9 +129,6 @@ volumes:
   neo4j-logs:
     labels:
       pw.kd.description: Neo4j logs volume
-  neo4j-config:
-    labels:
-      pw.kd.description: Neo4j config volume
   neo4j-data:
     labels:
       pw.kd.description: Neo4j data volume
