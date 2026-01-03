@@ -29,9 +29,15 @@ Nie został on jednak wykorzystany w bazowym zbiorze _Game of Graphs_ @github:ga
 
 # Instalacja Neo4j i wczytanie danych
 
+## Instalacja
+
 Wybrałem wersję Neo4j _Community Edition_, ponieważ jest ona darmowa @neo4j:editions. Nie potrzebuję funkcji dostępnych w wersji _Enterprise Edition_ @neo4j:editions.
 
+Zdecydowałem się na użycie Docker'a, w celu zapewnienia replikowalności mojego środowiska.
+Skonfigurowałem Neo4j jako kontener Docker w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml) , bazując na instrukcjach z dokumentacji Neo4j @neo4j:docker-getting-started @neo4j:docker-persisting-volumes.
 
+Żeby skonfigurować Neo4j zdecydowałem się na pobranie domyślnych plików konfiguracyjnych, modyfikację ich i podmontowanie do kontenera. \
+Bazową konfigurację pobrałem poleceniem `docker run --rm --volume=./neo4j/conf:/conf neo4j:2025.11.2 dump-config` bazując na dokumentacji @neo4j:docker-configuration.
 
 # Źródła {.unnumbered}
 
