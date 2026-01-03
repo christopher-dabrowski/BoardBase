@@ -38,6 +38,7 @@ Skonfigurowałem Neo4j jako kontener Docker w pliku [`docker-compose.yml`](https
 
 Żeby skonfigurować Neo4j zdecydowałem się na pobranie domyślnych plików konfiguracyjnych, modyfikację ich i podmontowanie do kontenera. \
 Bazową konfigurację pobrałem poleceniem `docker run --rm --volume=./neo4j/conf:/conf neo4j:2025.11.2 dump-config` bazując na dokumentacji @neo4j:docker-configuration.
+Zwiększyłem dostępną pamięć i wyłączyłem telemetrię dostosowując plik [`neo4j.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/conf/neo4j.conf).
 
 # Źródła {.unnumbered}
 
