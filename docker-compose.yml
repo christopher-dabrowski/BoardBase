@@ -82,10 +82,10 @@ services:
     volumes:
       - neo4j-data:/data
       - neo4j-logs:/logs
-      - neo4j-plugins:/plugins
       - ./neo4j/conf:/conf:ro
     environment:
       - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
+      - NEO4J_PLUGINS='["apoc"]'
     ports:
       - "7474:7474"
       - "7687:7687"
@@ -132,6 +132,3 @@ volumes:
   neo4j-data:
     labels:
       pw.kd.description: Neo4j data volume
-  neo4j-plugins:
-    labels:
-      pw.kd.description: Neo4j plugins volume
