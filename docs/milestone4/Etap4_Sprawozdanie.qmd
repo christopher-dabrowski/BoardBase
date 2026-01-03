@@ -21,7 +21,7 @@ Bazowy zbiór zawiera 2122 węzłów i 3233 relacji widocznych na podglądzie @f
 
 ![Bazowy schemat danych Game of Graphs. Źródło: Repozytorium Game of Graphs @github:game-of-graphs](img/got-graphql-schema.jpg){#fig-base-gog-schema}
 
-![Podgląd danych Game of Graphs](img/got-graph.jpg){#fig-base-gog-data}
+![Podgląd danych Game of Graphs. Źródło: Repozytorium Game of Graphs ](img/got-graph.jpg){#fig-base-gog-data}
 
 Ponieważ bazowy zbiór _Game of Graphs_ @github:game-of-graphs zawiera tylko 4 rodzaje węzłów, dodam do niego typ węzła `Book` reprezentujący książki z serii.
 Projekt _An API of Ice And Fire_ @github:an-api-of-ice-and-fire dostarcza endpoint pozwalający na pobranie informacji o książkach.
