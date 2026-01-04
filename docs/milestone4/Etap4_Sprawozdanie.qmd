@@ -42,6 +42,11 @@ Zwiększyłem dostępną pamięć i wyłączyłem telemetrię dostosowując plik
 
 Skonfigurowałem również automatyczną instalację pluginu _APOC Core_ oraz skonfigurowałem go w pliku [`apoc.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/conf/apoc.conf), zgodnie z dokumentacją @neo4j:docker-plugins @neo4j:apoc-installation @neo4j:apoc-configuration.
 
+Po uruchomieniu kontenera sprawdziłem czy Neo4j działa poprawnie, używając `cyhper-shell` @neo4j:cypher-shell. \
+Możliwe jest też użycie _Aura Console_ do podłączenia się do lokalnej instancji Neo4j @neo4j:access, mi to jednak nie działało.
+Zamiast tego, żeby móc korzystać z wizualizacji uruchomiłem wbudowany interfejs webowy <http://localhost:7474/browser>. \
+Skonfigurowałem również rozszerzenie edytora kodu [Neo4j for VS Code](https://marketplace.visualstudio.com/items?itemName=neo4j-extensions.neo4j-for-vscode).
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
