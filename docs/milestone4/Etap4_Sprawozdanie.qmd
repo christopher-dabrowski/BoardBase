@@ -42,7 +42,8 @@ Skonfigurowałem Neo4j jako kontener Docker w pliku [`docker-compose.yml`](https
 Bazową konfigurację pobrałem poleceniem `docker run --rm --volume=./neo4j/conf:/conf neo4j:2025.11.2 dump-config` bazując na dokumentacji @neo4j:docker-configuration.
 Zwiększyłem dostępną pamięć i wyłączyłem telemetrię dostosowując plik [`neo4j.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/conf/neo4j.conf).
 
-Przeczytałem, że domyślnie format pliku konfiguracyjnego to _ISO-8859-1_, co może powodować problemy, gdybym używał polskich znaków. Zmieniłem go na _UTF-8_ ustawiając zmienną środowiskową @neo4j:neo4j-conf.
+Przeczytałem, że domyślnie format pliku konfiguracyjnego to _ISO-8859-1_, co może powodować problemy, gdybym używał polskich znaków. Próbowałem zmienić go na _UTF-8_ ustawiając zmienną środowiskową @neo4j:neo4j-conf. \
+Jednak po uruchomieniu kontenera Neo4j wyświetlał błąd konfiguracji, więc zrezygnowałem z tego ustawienia.
 
 Do wybrania wartości ustawień dostępnej pamięci uzyłem narzędzia `bin/neo4j-admin server memory-recommendation` @neo4j:memory-recommendations w kontenerze podając dostępną pamięć jako 4 GB.
 
