@@ -1,0 +1,81 @@
+[
+  {
+    "Id": 12,
+    "Name": "Balon Greyjoy",
+    "IsFemale": false,
+    "Culture": "",
+    "Titles": [
+      "Iron King",
+      "King of the Isles and the North",
+      "King of Salt and Rock",
+      "Son of the Sea Wind",
+      "Lord Reaper of Pyke",
+      "The Greyjoy",
+      "Captain of the Great Kraken"
+    ],
+    "Aliases": [
+      "Balon the Brave",
+      "Balon the Blessed",
+      "Balon the Twice Crowned",
+      "Balon the Widowmaker",
+      "The Kraken King"
+    ],
+    "Born": "",
+    "Died": "299 AC, at Pyke",
+    "Father": 836,
+    "Mother": null,
+    "Spouse": 66,
+    "Children": [
+      913,
+      718,
+      150,
+      1022
+    ],
+    "Allegiances": [],
+    "Books": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "PovBooks": [],
+    "PlayedBy": [
+      "Patrick Malahide"
+    ],
+    "TvSeries": [
+      "Season 2",
+      "Season 3",
+      "Season 6"
+    ]
+  },
+  {
+    "Id": 836,
+    "Name": "Quellon Greyjoy",
+    "IsFemale": false,
+    "Culture": "Ironborn",
+    "Titles": [
+      "Lord of the Iron Islands",
+      "Lord Reaper of Pyke"
+    ],
+    "Aliases": [],
+    "Born": "",
+    "Died": "In 283 AC, at the mouth of the Mander",
+    "Father": null,
+    "Mother": null,
+    "Spouse": null,
+    "Children": [],
+    "Allegiances": [
+      169
+    ],
+    "Books": [
+      5,
+      11
+    ],
+    "PovBooks": [],
+    "PlayedBy": [
+      ""
+    ],
+    "TvSeries": []
+  }
+]
