@@ -49,24 +49,24 @@ FOREACH (id IN data.allegiances |
   MERGE (p)-[:ALLIED_WITH]->(h)
 )
 FOREACH (id IN
-CASE data.father
-  WHEN null THEN []
-  ELSE [data.father]
+CASE
+  WHEN data.father IS NOT NULL THEN [data.father]
+  ELSE []
 END |
   MERGE (o:Person {id: id})
   MERGE (o)-[:PARENT_OF {type: 'father'}]->(p)
 )
 FOREACH (id IN
-CASE data.mother
-  WHEN null THEN []
+CASE
+  WHEN data.mother IS NULL THEN []
   ELSE [data.mother]
 END |
   MERGE (o:Person {id: id})
   MERGE (o)-[:PARENT_OF {type: 'mother'}]->(p)
 )
 FOREACH (id IN
-CASE data.spouse
-  WHEN null THEN []
+CASE
+  WHEN data.spouse IS NULL THEN []
   ELSE [data.spouse]
 END |
   MERGE (o:Person {id: id})
