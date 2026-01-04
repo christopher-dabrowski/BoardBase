@@ -86,6 +86,7 @@ services:
     environment:
       - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
       - NEO4J_PLUGINS='["apoc"]'
+      - NEO4J_CONFIG_FILE_CHARSET=UTF-8
     ports:
       - "7474:7474"
       - "7687:7687"
