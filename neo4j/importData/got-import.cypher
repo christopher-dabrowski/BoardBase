@@ -24,11 +24,9 @@ CREATE INDEX region_name_index
 FOR (r:Region)
 ON (r.name);
 
-CALL
-  apoc.load.jsonArray(
-    'https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/characters.json'
-  )
-  YIELD value
+WITH 'file:///api-of-fire-and-ice/characters.json' AS url
+// WITH 'file:///api-of-fire-and-ice/characters-small.json' AS url
+CALL apoc.load.jsonArray(url) YIELD value
 WITH apoc.convert.toMap(value) AS data
 WITH apoc.map.clean(data, [], ['', [''], [], null]) AS data
 WITH
@@ -76,11 +74,8 @@ END |
 )
 RETURN p.id, p.name;
 
-CALL
-  apoc.load.jsonArray(
-    'https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/houses.json'
-  )
-  YIELD value
+WITH 'file:///api-of-fire-and-ice/houses.json' AS url
+CALL apoc.load.jsonArray(url) YIELD value
 WITH apoc.convert.toMap(value) AS data
 WITH apoc.map.clean(data, [], ['', [''], [], null]) AS data
 WITH
