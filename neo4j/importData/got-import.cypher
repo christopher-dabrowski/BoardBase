@@ -112,41 +112,41 @@ FOREACH (id IN data.cadetBranches |
   MERGE (b)-[:BRANCH_OF]->(h)
 )
 FOREACH (id IN
-CASE data.overlord
-  WHEN null THEN []
-  ELSE [data.overlord]
+CASE
+  WHEN data.overlord IS NOT NULL THEN [data.overlord]
+  ELSE []
 END |
   MERGE (o:House {id: id})
   MERGE (h)-[:SWORN_TO]->(o)
 )
 FOREACH (id IN
-CASE data.currentLord
-  WHEN null THEN []
-  ELSE [data.currentLord]
+CASE
+  WHEN data.currentLord IS NOT NULL THEN [data.currentLord]
+  ELSE []
 END |
   MERGE (o:Person {id: id})
   MERGE (h)-[:LED_BY]->(o)
 )
 FOREACH (id IN
-CASE data.founder
-  WHEN null THEN []
-  ELSE [data.founder]
+CASE
+  WHEN data.founder IS NOT NULL THEN [data.founder]
+  ELSE []
 END |
   MERGE (o:Person {id: id})
   MERGE (h)-[:FOUNDED_BY]->(o)
 )
 FOREACH (id IN
-CASE data.heir
-  WHEN null THEN []
-  ELSE [data.heir]
+CASE
+  WHEN data.heir IS NOT NULL THEN [data.heir]
+  ELSE []
 END |
   MERGE (o:Person {id: id})
   MERGE (o)-[:HEIR_TO]->(h)
 )
 FOREACH (r IN
-CASE data.region
-  WHEN null THEN []
-  ELSE [data.region]
+CASE
+  WHEN data.region IS NOT NULL THEN [data.region]
+  ELSE []
 END |
   MERGE (o:Region {name: r})
   MERGE (h)-[:IN_REGION]->(o)
