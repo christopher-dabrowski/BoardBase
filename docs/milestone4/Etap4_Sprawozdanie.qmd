@@ -29,6 +29,8 @@ Nie został on jednak wykorzystany w bazowym zbiorze _Game of Graphs_ @github:ga
 
 # Instalacja Neo4j i wczytanie danych
 
+Przygotowanie bazy danych i wczytanie wstępnych danych.
+
 ## Instalacja
 
 Wybrałem wersję Neo4j _Community Edition_, ponieważ jest ona darmowa @neo4j:editions. Nie potrzebuję funkcji dostępnych w wersji _Enterprise Edition_ @neo4j:editions.
