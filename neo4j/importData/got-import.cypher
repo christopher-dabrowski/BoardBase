@@ -1,39 +1,158 @@
 // Base file is from the GitHub repository: https://github.com/neo4j-examples/game-of-thrones/blob/master/got-import.cypher
+CREATE CONSTRAINT
+FOR (p:Person)
+REQUIRE p.id IS UNIQUE;
 
-create constraint on (p:Person) assert p.id is unique;
-create constraint on (h:House) assert h.id is unique;
-create index on :Person(name);
-create index on :House(name);
-create index on :Seat(name);
-create index on :Region(name);
+CREATE CONSTRAINT
+FOR (h:House)
+REQUIRE h.id IS UNIQUE;
 
-call apoc.load.jsonArray('https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/characters.json') yield value
-with apoc.convert.toMap(value) as data
-with apoc.map.clean(data, [],['',[''],[],null]) as data
-with apoc.map.fromPairs([k in keys(data) | [toLower(substring(k,0,1))+substring(k,1,size(k)), data[k]]]) as data
-MERGE (p:Person {id:data.id})
+CREATE INDEX
+FOR (p:Person)
+ON (p.name);
+
+CREATE INDEX
+FOR (h:House)
+ON (h.name);
+
+CREATE INDEX
+FOR (s:Seat)
+ON (s.name);
+
+CREATE INDEX
+FOR (r:Region)
+ON (r.name);
+
+CALL
+  apoc.load.jsonArray(
+    'https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/characters.json'
+  )
+  YIELD value
+WITH apoc.convert.toMap(value) AS data
+WITH apoc.map.clean(data, [], ['', [''], [], null]) AS data
+WITH
+  apoc.map.fromPairs(
+    [
+      k IN keys(data)
+      | [toLower(substring(k, 0, 1)) + substring(k, 1, size(k)), data[k]]
+    ]) AS data
+MERGE (p:Person {id: data.id})
 SET
-p += apoc.map.clean(data, ['allegiances','father','spouse','mother'],['',[''],[],null]),
-p.name = coalesce(p.name,head(p.aliases))
-FOREACH (id in data.allegiances | MERGE (h:House {id:id}) MERGE (p)-[:ALLIED_WITH]->(h))
-FOREACH (id in case data.father when null then [] else [data.father] end | MERGE (o:Person {id:id}) MERGE (o)-[:PARENT_OF {type:'father'}]->(p))
-FOREACH (id in case data.mother when null then [] else [data.mother] end | MERGE (o:Person {id:id}) MERGE (o)-[:PARENT_OF {type:'mother'}]->(p))
-FOREACH (id in case data.spouse when null then [] else [data.spouse] end | MERGE (o:Person {id:id}) MERGE (o)-[:SPOUSE]-(p))
-return p.id, p.name;
+  p +=
+    apoc.map.clean(
+      data,
+      ['allegiances', 'father', 'spouse', 'mother'],
+      ['', [''], [], null]
+    ),
+  p.name = coalesce(p.name, head(p.aliases))
+FOREACH (id IN data.allegiances |
+  MERGE (h:House {id: id})
+  MERGE (p)-[:ALLIED_WITH]->(h)
+)
+FOREACH (id IN
+CASE data.father
+  WHEN null THEN []
+  ELSE [data.father]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (o)-[:PARENT_OF {type: 'father'}]->(p)
+)
+FOREACH (id IN
+CASE data.mother
+  WHEN null THEN []
+  ELSE [data.mother]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (o)-[:PARENT_OF {type: 'mother'}]->(p)
+)
+FOREACH (id IN
+CASE data.spouse
+  WHEN null THEN []
+  ELSE [data.spouse]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (o)-[:SPOUSE]-(p)
+)
+RETURN p.id, p.name;
 
-call apoc.load.jsonArray('https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/houses.json') yield value
-with apoc.convert.toMap(value) as data
-with apoc.map.clean(data, [],['',[''],[],null]) as data
-with apoc.map.fromPairs([k in keys(data) | [toLower(substring(k,0,1))+substring(k,1,size(k)), data[k]]]) as data
-MERGE (h:House {id:data.id})
+CALL
+  apoc.load.jsonArray(
+    'https://raw.githubusercontent.com/joakimskoog/AnApiOfIceAndFire/master/data/houses.json'
+  )
+  YIELD value
+WITH apoc.convert.toMap(value) AS data
+WITH apoc.map.clean(data, [], ['', [''], [], null]) AS data
+WITH
+  apoc.map.fromPairs(
+    [
+      k IN keys(data)
+      | [toLower(substring(k, 0, 1)) + substring(k, 1, size(k)), data[k]]
+    ]) AS data
+MERGE (h:House {id: data.id})
 SET
-h += apoc.map.clean(data, ['overlord','swornMembers','currentLord','heir','founder','cadetBranches'],['',[''],[],null])
-FOREACH (id in data.swornMembers | MERGE (o:Person {id:id}) MERGE (o)-[:ALLIED_WITH]->(h))
-FOREACH (s in data.seats | MERGE (seat:Seat {name:s}) MERGE (seat)-[:SEAT_OF]->(h))
-FOREACH (id in data.cadetBranches | MERGE (b:House {id:id}) MERGE (b)-[:BRANCH_OF]->(h))
-FOREACH (id in case data.overlord when null then [] else [data.overlord] end | MERGE (o:House {id:id}) MERGE (h)-[:SWORN_TO]->(o))
-FOREACH (id in case data.currentLord when null then [] else [data.currentLord] end | MERGE (o:Person {id:id}) MERGE (h)-[:LED_BY]->(o))
-FOREACH (id in case data.founder when null then [] else [data.founder] end | MERGE (o:Person {id:id}) MERGE (h)-[:FOUNDED_BY]->(o))
-FOREACH (id in case data.heir when null then [] else [data.heir] end | MERGE (o:Person {id:id}) MERGE (o)-[:HEIR_TO]->(h))
-FOREACH (r in case data.region when null then [] else [data.region] end | MERGE (o:Region {name:r}) MERGE (h)-[:IN_REGION]->(o))
-return h.id, h.name;
+  h +=
+    apoc.map.clean(
+      data,
+      [
+        'overlord',
+        'swornMembers',
+        'currentLord',
+        'heir',
+        'founder',
+        'cadetBranches'
+      ],
+      ['', [''], [], null]
+    )
+FOREACH (id IN data.swornMembers |
+  MERGE (o:Person {id: id})
+  MERGE (o)-[:ALLIED_WITH]->(h)
+)
+FOREACH (s IN data.seats |
+  MERGE (seat:Seat {name: s})
+  MERGE (seat)-[:SEAT_OF]->(h)
+)
+FOREACH (id IN data.cadetBranches |
+  MERGE (b:House {id: id})
+  MERGE (b)-[:BRANCH_OF]->(h)
+)
+FOREACH (id IN
+CASE data.overlord
+  WHEN null THEN []
+  ELSE [data.overlord]
+END |
+  MERGE (o:House {id: id})
+  MERGE (h)-[:SWORN_TO]->(o)
+)
+FOREACH (id IN
+CASE data.currentLord
+  WHEN null THEN []
+  ELSE [data.currentLord]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (h)-[:LED_BY]->(o)
+)
+FOREACH (id IN
+CASE data.founder
+  WHEN null THEN []
+  ELSE [data.founder]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (h)-[:FOUNDED_BY]->(o)
+)
+FOREACH (id IN
+CASE data.heir
+  WHEN null THEN []
+  ELSE [data.heir]
+END |
+  MERGE (o:Person {id: id})
+  MERGE (o)-[:HEIR_TO]->(h)
+)
+FOREACH (r IN
+CASE data.region
+  WHEN null THEN []
+  ELSE [data.region]
+END |
+  MERGE (o:Region {name: r})
+  MERGE (h)-[:IN_REGION]->(o)
+)
+RETURN h.id, h.name;
