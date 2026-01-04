@@ -5,6 +5,7 @@
     "editorconfig.editorconfig",
     "ms-ossdata.vscode-pgsql",
     "ms-mssql.mssql",
-    "mongodb.mongodb-vscode"
+    "mongodb.mongodb-vscode",
+    "neo4j-extensions.neo4j-for-vscode"
   ]
 }
