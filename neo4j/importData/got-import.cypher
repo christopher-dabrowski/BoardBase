@@ -1,25 +1,26 @@
 // Base file is from the GitHub repository: https://github.com/neo4j-examples/game-of-thrones/blob/master/got-import.cypher
-CREATE CONSTRAINT
+// I've updated the base file and modified it to fit my project needs.
+CREATE CONSTRAINT unique_person_id
 FOR (p:Person)
 REQUIRE p.id IS UNIQUE;
 
-CREATE CONSTRAINT
+CREATE CONSTRAINT unique_house_id
 FOR (h:House)
 REQUIRE h.id IS UNIQUE;
 
-CREATE INDEX
+CREATE INDEX person_name_index
 FOR (p:Person)
 ON (p.name);
 
-CREATE INDEX
+CREATE INDEX house_name_index
 FOR (h:House)
 ON (h.name);
 
-CREATE INDEX
+CREATE INDEX seat_name_index
 FOR (s:Seat)
 ON (s.name);
 
-CREATE INDEX
+CREATE INDEX region_name_index
 FOR (r:Region)
 ON (r.name);
 
