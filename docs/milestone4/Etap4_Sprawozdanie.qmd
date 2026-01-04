@@ -53,6 +53,23 @@ Możliwe jest też użycie _Aura Console_ do podłączenia się do lokalnej inst
 Zamiast tego, żeby móc korzystać z wizualizacji uruchomiłem wbudowany interfejs webowy <http://localhost:7474/browser>. \
 Skonfigurowałem również rozszerzenie edytora kodu [Neo4j for VS Code](https://marketplace.visualstudio.com/items?itemName=neo4j-extensions.neo4j-for-vscode).
 
+## Wyczytanie danych
+
+Próbowałem stworzyć bazę danych poleceniem Cypher @neo4j:create-databases (@lst-cypher-create-database).
+Przy okazji chciałem też ustawić domyślną wersję Cypher na 25, żeby mieć dostęp do najnowszych funkcji języka. \
+Otrzymałem jednak błąd.
+Dopiero gdy doczytałem dokumentację zorientowałem się, że **polecenie `CREATE DATABASE` nie działa w tylko w wersji _Enterprise Edition_** @neo4j:create-databases.
+
+```{#lst-cypher-create-database .cypher lst-cap="Nieudane utworzenie bazy w Cypher"}
+CREATE DATABASE GameOfGraphs
+DEFAULT LANGUAGE CYPHER 25
+```
+
+Żeby utworzyć bazę danych `GameOfGraphs` zastosowałem obejście z wątku na forum @stackoverflow:error-when-creating-new-database-under-neo4j-4, polegające na zmianie domyślnej bazy w pliku konfiguracyjnym [`neo4j.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/conf/neo4j.conf). \
+Przy restarcie kontenera zauważyłem ostrzeżenie, że klucz konfiguracyjny `dbms.default_database` jest przestarzały i należy użyć `initial.dbms.default_database`, więc to poprawiłem. \
+Przy okazji skonfigurowałem też domyślną wersję Cypher na 25, ponieważ bazowo jest to już nie rozwijany Cypher 5 @neo4j:configuration-settings:cypher-version @neo4j:select-cypher-version.
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
