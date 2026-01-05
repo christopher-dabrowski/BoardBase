@@ -26,22 +26,24 @@ CALL {
   UNWIND coalesce(data.authors, []) AS authorName
   MERGE (a:Author {name: authorName})
   MERGE (a)-[:WROTE]->(b)
-  RETURN count(*) AS _
+  RETURN count(*) AS wroteCount
 }
+WITH b, data
 CALL {
+  WITH b, data
   WITH b, data.precededById AS prevId
-  WITH b, prevId
   WHERE prevId IS NOT NULL
   MERGE (prev:Book {id: prevId})
   MERGE (b)-[:FOLLOWS]->(prev)
-  RETURN count(*) AS _
+  RETURN count(*) AS followsCount
 }
+WITH b, data
 CALL {
+  WITH b, data
   WITH b, data.followedBy AS nextId
-  WITH b, nextId
   WHERE nextId IS NOT NULL
   MERGE (next:Book {id: nextId})
   MERGE (b)-[:PRECEDES]->(next)
-  RETURN count(*) AS _
+  RETURN count(*) AS precedesCount
 }
 RETURN b.id, b.name;
