@@ -1,120 +1,319 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd">
 <language name="Cypher" version="1.0" kateversion="5.0" section="Database"
-  extensions="*.cql;*.cypher" mimetype="text/x-cypher">
+  extensions="*.cypher;*.cyp;*.cql" mimetype="text/x-cypher" author="Generated for Neo4j Cypher"
+  license="MIT">
   <highlighting>
     <list name="keywords">
-      <item>MATCH</item>
-      <item>OPTIONAL MATCH</item>
-      <item>RETURN</item>
-      <item>DISTINCT</item>
-      <item>AS</item>
-      <item>WHERE</item>
-      <item>ORDER BY</item>
-      <item>SKIP</item>
-      <item>LIMIT</item>
+      <!-- Query clauses -->
+      <item>CALL</item>
       <item>CREATE</item>
-      <item>MERGE</item>
       <item>DELETE</item>
       <item>DETACH</item>
-      <item>SET</item>
-      <item>REMOVE</item>
-      <item>WITH</item>
-      <item>UNION</item>
-      <item>ALL</item>
-      <item>UNWIND</item>
+      <item>EXISTS</item>
       <item>FOREACH</item>
-      <item>CALL</item>
+      <item>LOAD</item>
+      <item>MATCH</item>
+      <item>MERGE</item>
+      <item>OPTIONAL</item>
+      <item>REMOVE</item>
+      <item>RETURN</item>
+      <item>SET</item>
+      <item>START</item>
+      <item>UNION</item>
+      <item>UNWIND</item>
+      <item>WITH</item>
       <item>YIELD</item>
-      <item>CASE</item>
-      <item>WHEN</item>
-      <item>THEN</item>
-      <item>ELSE</item>
-      <item>END</item>
+
+      <!-- Sub-clauses -->
+      <item>LIMIT</item>
+      <item>ORDER</item>
+      <item>SKIP</item>
+      <item>WHERE</item>
+      <item>BY</item>
+      <item>ASC</item>
+      <item>ASCENDING</item>
+      <item>DESC</item>
+      <item>DESCENDING</item>
+
+      <!-- Modifiers -->
+      <item>ALL</item>
+      <item>DISTINCT</item>
+      <item>ON</item>
+
+      <!-- Boolean operators -->
       <item>AND</item>
       <item>OR</item>
       <item>XOR</item>
       <item>NOT</item>
+
+      <!-- Comparison -->
       <item>IN</item>
-      <item>IS NULL</item>
-      <item>IS NOT NULL</item>
-      <item>true</item>
-      <item>false</item>
-      <item>null</item>
+      <item>IS</item>
+      <item>STARTS</item>
+      <item>ENDS</item>
+      <item>CONTAINS</item>
+
+      <!-- Pattern matching -->
+      <item>AS</item>
+      <item>CASE</item>
+      <item>ELSE</item>
+      <item>END</item>
+      <item>THEN</item>
+      <item>WHEN</item>
+
+      <!-- Database operations -->
+      <item>USE</item>
+      <item>USING</item>
+      <item>INDEX</item>
+      <item>CONSTRAINT</item>
+      <item>DROP</item>
+      <item>SHOW</item>
+
+      <!-- CSV operations -->
+      <item>CSV</item>
+      <item>FROM</item>
+      <item>HEADERS</item>
+      <item>FIELDTERMINATOR</item>
+      <item>PERIODIC</item>
+      <item>COMMIT</item>
+
+      <!-- Transaction keywords -->
+      <item>BEGIN</item>
+      <item>COMMIT</item>
+      <item>ROLLBACK</item>
+
+      <!-- Special keywords -->
+      <item>EXPLAIN</item>
+      <item>PROFILE</item>
+    </list>
+
+    <list name="predicates">
+      <item>ALL</item>
+      <item>ANY</item>
+      <item>NONE</item>
+      <item>SINGLE</item>
     </list>
 
     <list name="functions">
-      <item>count</item>
-      <item>collect</item>
-      <item>sum</item>
-      <item>avg</item>
-      <item>min</item>
-      <item>max</item>
-      <item>coalesce</item>
-      <item>head</item>
-      <item>last</item>
-      <item>size</item>
-      <item>timestamp</item>
-      <item>id</item>
-      <item>labels</item>
-      <item>keys</item>
-      <item>startNode</item>
-      <item>endNode</item>
-      <item>type</item>
-      <item>length</item>
-      <item>nodes</item>
-      <item>relationships</item>
-      <item>toInteger</item>
-      <item>toFloat</item>
-      <item>toString</item>
-      <item>toBoolean</item>
-      <item>substring</item>
+      <!-- Scalar functions -->
+      <item>abs</item>
+      <item>ceil</item>
+      <item>floor</item>
+      <item>rand</item>
+      <item>round</item>
+      <item>sign</item>
+      <item>e</item>
+      <item>exp</item>
+      <item>log</item>
+      <item>log10</item>
+      <item>sqrt</item>
+      <item>acos</item>
+      <item>asin</item>
+      <item>atan</item>
+      <item>atan2</item>
+      <item>cos</item>
+      <item>cot</item>
+      <item>degrees</item>
+      <item>haversin</item>
+      <item>pi</item>
+      <item>radians</item>
+      <item>sin</item>
+      <item>tan</item>
+
+      <!-- String functions -->
       <item>left</item>
       <item>right</item>
       <item>ltrim</item>
       <item>rtrim</item>
       <item>trim</item>
+      <item>lower</item>
+      <item>upper</item>
       <item>replace</item>
-      <item>split</item>
       <item>reverse</item>
-      <item>toLower</item>
-      <item>toUpper</item>
+      <item>split</item>
+      <item>substring</item>
+      <item>toString</item>
+      <item>toStringOrNull</item>
+
+      <!-- Collection functions -->
+      <item>head</item>
+      <item>last</item>
+      <item>tail</item>
+      <item>size</item>
+      <item>length</item>
+      <item>reverse</item>
+      <item>extract</item>
+      <item>filter</item>
+      <item>reduce</item>
+      <item>range</item>
+      <item>labels</item>
+      <item>nodes</item>
+      <item>relationships</item>
+      <item>keys</item>
+
+      <!-- Aggregating functions -->
+      <item>avg</item>
+      <item>collect</item>
+      <item>count</item>
+      <item>max</item>
+      <item>min</item>
+      <item>percentileCont</item>
+      <item>percentileDisc</item>
+      <item>stDev</item>
+      <item>stDevP</item>
+      <item>sum</item>
+
+      <!-- Type conversion -->
+      <item>toBoolean</item>
+      <item>toBooleanOrNull</item>
+      <item>toFloat</item>
+      <item>toFloatOrNull</item>
+      <item>toInteger</item>
+      <item>toIntegerOrNull</item>
+
+      <!-- Temporal functions -->
+      <item>date</item>
+      <item>datetime</item>
+      <item>duration</item>
+      <item>localtime</item>
+      <item>localdatetime</item>
+      <item>time</item>
+      <item>timestamp</item>
+
+      <!-- Graph functions -->
+      <item>id</item>
+      <item>type</item>
+      <item>startNode</item>
+      <item>endNode</item>
+      <item>properties</item>
+
+      <!-- Utility functions -->
+      <item>coalesce</item>
+      <item>exists</item>
+      <item>isEmpty</item>
+    </list>
+
+    <list name="apoc_namespaces">
+      <!-- APOC function namespaces -->
+      <item>apoc</item>
+      <item>gds</item>
+    </list>
+
+    <list name="constants">
+      <item>true</item>
+      <item>false</item>
+      <item>null</item>
+      <item>NULL</item>
+      <item>TRUE</item>
+      <item>FALSE</item>
     </list>
 
     <contexts>
       <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
-        <Detect2Chars attribute="Comment" context="#stay" char="/" char1="/" />
+        <DetectSpaces />
 
-        <keyword attribute="Keyword" context="#stay" String="keywords" caseSensitive="false" />
-        <keyword attribute="Function" context="#stay" String="functions" caseSensitive="false" />
+        <!-- Comments -->
+        <Detect2Chars attribute="Comment" context="LineComment" char="/" char1="/" />
+        <Detect2Chars attribute="Comment" context="BlockComment" char="/" char1="*"
+          beginRegion="BlockComment" />
 
-        <DetectChar attribute="String" context="StringDouble" char="&quot;" />
-        <DetectChar attribute="String" context="StringSingle" char="'" />
+        <!-- Strings -->
+        <DetectChar attribute="String" context="String" char="&quot;" />
+        <DetectChar attribute="String" context="String2" char="'" />
 
-        <AnyChar attribute="Symbol" context="#stay" String="()[]{}!-&lt;&gt;=:" />
-
+        <!-- Numbers -->
         <Float attribute="Float" context="#stay" />
         <Int attribute="Decimal" context="#stay" />
+        <HlCOct attribute="Octal" context="#stay" />
+        <HlCHex attribute="Hex" context="#stay" />
+
+        <!-- Keywords -->
+        <keyword attribute="Keyword" context="#stay" String="keywords" insensitive="true" />
+        <keyword attribute="Predicate" context="#stay" String="predicates" insensitive="true" />
+
+        <!-- APOC and GDS function calls with dot notation -->
+        <RegExpr attribute="APOC Function" context="#stay"
+          String="\b(apoc|gds)\.[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\s*(?=\()" insensitive="true" />
+
+        <!-- Standard functions -->
+        <keyword attribute="Function" context="#stay" String="functions" insensitive="true" />
+        <keyword attribute="Constant" context="#stay" String="constants" insensitive="true" />
+
+        <!-- Parameters -->
+        <RegExpr attribute="Parameter" context="#stay"
+          String="(\$[a-zA-Z_][a-zA-Z0-9_]*|\{[a-zA-Z_][a-zA-Z0-9_]*\})" />
+
+        <!-- Labels and relationship types -->
+        <RegExpr attribute="Label" context="#stay" String=":[a-zA-Z_][a-zA-Z0-9_]*" />
+
+        <!-- Variables -->
+        <RegExpr attribute="Variable" context="#stay" String="\b[a-zA-Z_][a-zA-Z0-9_]*\b" />
+
+        <!-- Operators -->
+        <AnyChar attribute="Operator" context="#stay" String="+-*/%&lt;&gt;=!&amp;|^~" />
+        <AnyChar attribute="Symbol" context="#stay" String="()[]{},.;:" />
+
+        <!-- Relationship arrows -->
+        <Detect2Chars attribute="Operator" context="#stay" char="-" char1="&gt;" />
+        <Detect2Chars attribute="Operator" context="#stay" char="&lt;" char1="-" />
+        <Detect2Chars attribute="Operator" context="#stay" char="=" char1="&gt;" />
+        <Detect2Chars attribute="Operator" context="#stay" char="&lt;" char1="=" />
       </context>
 
-      <context name="StringDouble" attribute="String" lineEndContext="#stay">
+      <!-- String contexts -->
+      <context name="String" attribute="String" lineEndContext="#pop">
+        <LineContinue attribute="String" context="#stay" />
+        <HlCStringChar attribute="Char" context="#stay" />
         <DetectChar attribute="String" context="#pop" char="&quot;" />
       </context>
 
-      <context name="StringSingle" attribute="String" lineEndContext="#stay">
+      <context name="String2" attribute="String" lineEndContext="#pop">
+        <LineContinue attribute="String" context="#stay" />
+        <HlCStringChar attribute="Char" context="#stay" />
         <DetectChar attribute="String" context="#pop" char="'" />
+      </context>
+
+      <!-- Comment contexts -->
+      <context name="LineComment" attribute="Comment" lineEndContext="#pop">
+        <LineContinue attribute="Comment" context="#stay" />
+        <DetectSpaces />
+        <IncludeRules context="##Comments" />
+      </context>
+
+      <context name="BlockComment" attribute="Comment" lineEndContext="#stay">
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="BlockComment" />
+        <IncludeRules context="##Comments" />
       </context>
     </contexts>
 
     <itemDatas>
-      <itemData name="Normal Text" defStyleNum="dsNormal" />
-      <itemData name="Keyword" defStyleNum="dsKeyword" color="#0000ff" bold="true" />
-      <itemData name="Function" defStyleNum="dsFunction" color="#644a9b" />
-      <itemData name="Comment" defStyleNum="dsComment" color="#808080" italic="true" />
-      <itemData name="String" defStyleNum="dsString" color="#008000" />
-      <itemData name="Symbol" defStyleNum="dsOperator" />
-      <itemData name="Decimal" defStyleNum="dsDecVal" />
-      <itemData name="Float" defStyleNum="dsFloat" />
+      <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false" />
+      <itemData name="Function" defStyleNum="dsFunction" spellChecking="false" />
+      <itemData name="Predicate" defStyleNum="dsBuiltIn" spellChecking="false" />
+      <itemData name="Constant" defStyleNum="dsConstant" spellChecking="false" />
+      <itemData name="Decimal" defStyleNum="dsDecVal" spellChecking="false" />
+      <itemData name="Octal" defStyleNum="dsBaseN" spellChecking="false" />
+      <itemData name="Hex" defStyleNum="dsBaseN" spellChecking="false" />
+      <itemData name="Float" defStyleNum="dsFloat" spellChecking="false" />
+      <itemData name="Char" defStyleNum="dsChar" spellChecking="false" />
+      <itemData name="String" defStyleNum="dsString" />
+      <itemData name="Comment" defStyleNum="dsComment" />
+      <itemData name="Operator" defStyleNum="dsOperator" spellChecking="false" />
+      <itemData name="Symbol" defStyleNum="dsOperator" spellChecking="false" />
+      <itemData name="Variable" defStyleNum="dsVariable" spellChecking="false" />
+      <itemData name="Parameter" defStyleNum="dsSpecialString" spellChecking="false" />
+      <itemData name="Label" defStyleNum="dsAttribute" spellChecking="false" />
+      <itemData name="APOC Function" defStyleNum="dsExtension" spellChecking="false" />
     </itemDatas>
   </highlighting>
+
+  <general>
+    <comments>
+      <comment name="singleLine" start="//" />
+      <comment name="multiLine" start="/*" end="*/" />
+    </comments>
+    <keywords casesensitive="0" />
+  </general>
 </language>
