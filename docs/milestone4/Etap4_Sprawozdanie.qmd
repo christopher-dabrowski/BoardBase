@@ -77,7 +77,16 @@ Jednak nie działała mi ona mimo, że skonfigurowałem instalację pluginu _APO
 Po przyjrzeniu się problemowi zorientowałem się, że ponieważ używam _Docker Compose_ nie mogę mieć cudzysłowów `'` w okół wartości zmiennej środowiskowej `NEO4J_PLUGINS`, tak jak jest to pokazywane w dokumentacji na przykładach @neo4j:docker-plugins, ponieważ przykłady te są ze składnią dla zwykłego Docker CLI. \
 Poprawiłem konfigurację w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml) i plugin _APOC_ został zainstalowany poprawnie.
 
-
+Do wczytania danych chciałem użyć gotowego skryptu z repozytorium _Game of Graphs_ [`got-import.cypher`](https://github.com/neo4j-examples/game-of-thrones/blob/master/got-import.cypher) @github:game-of-graphs.
+Linter z pluginu _Neo4j for VS Code_ @vscode-marketplace:neo4j-for-vscode zwrócił mi uwagę na nieaktualną składnię tworzenia indeksów i constraint, więc poprawiłem ją na zgodną z dokumentacją @neo4j:create-constraints @neo4j:syntax-indexes. \
+Pliki \acr{JSON}, z których korzystał skrypt nie są już dostępne pod adresami URL w skrypcie.
+Udało mi się je jednak odnaleźć na branchu `release` repozytorium _Game of Graphs_ @github:game-of-graphs.
+Pobrałem je i zmodyfikowałem moją wersję skryptu [`got-import.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/got-import.cypher), żeby korzystała z lokalnych plików. \
+Przy próbie importu występował jednak błąd `Cannot merge the following node because of null property value for 'id': (:Person {id: null})`.
+Testując skrypt na mniejszym pliku, który przygotowałem, zauważyłem, że problemem jest tworzenie relacji.
+Ustaliłem, że problemem jest wykonanie `CASE`, który mimo danych będących `null` wykonywał kod tworzący relację do węzła, który w tym  przypadku miał `id` równe `null`.
+Udało mi się rozwiązać ten problem stosując wersję _Generic_ `CASE` zamiast _Simple_ `CASE` @neo4j:conditional-expressions-case. \
+Po tej poprawce udało mi się wczytać dane do bazy.
 
 
 # Źródła {.unnumbered}
