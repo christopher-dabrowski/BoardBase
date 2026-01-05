@@ -6,6 +6,8 @@ format:
     output-file: Etap 4 Sprawozdanie Krzysztof Dąbrowski 293101.pdf
     keep-tex: false
     # fig-pos: 'H'
+syntax-definitions:
+  - ../syntax/cypher.xml
 ---
 
 {{< include ../shared/repo_callout.qmd >}}
@@ -74,6 +76,8 @@ Do importu danych chciałem użyć procedury `apoc.load.json` z pluginu _APOC_.
 Jednak nie działała mi ona mimo, że skonfigurowałem instalację pluginu _APOC_ za pomocą zmiennej środowiskowej `NEO4J_PLUGINS`. \
 Po przyjrzeniu się problemowi zorientowałem się, że ponieważ używam _Docker Compose_ nie mogę mieć cudzysłowów `'` w okół wartości zmiennej środowiskowej `NEO4J_PLUGINS`, tak jak jest to pokazywane w dokumentacji na przykładach @neo4j:docker-plugins, ponieważ przykłady te są ze składnią dla zwykłego Docker CLI. \
 Poprawiłem konfigurację w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml) i plugin _APOC_ został zainstalowany poprawnie.
+
+
 
 
 # Źródła {.unnumbered}

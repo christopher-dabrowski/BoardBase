@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Cypher" version="1.0" kateversion="5.0" section="Database"
+  extensions="*.cql;*.cypher" mimetype="text/x-cypher">
+  <highlighting>
+    <list name="keywords">
+      <item>MATCH</item>
+      <item>OPTIONAL MATCH</item>
+      <item>RETURN</item>
+      <item>DISTINCT</item>
+      <item>AS</item>
+      <item>WHERE</item>
+      <item>ORDER BY</item>
+      <item>SKIP</item>
+      <item>LIMIT</item>
+      <item>CREATE</item>
+      <item>MERGE</item>
+      <item>DELETE</item>
+      <item>DETACH</item>
+      <item>SET</item>
+      <item>REMOVE</item>
+      <item>WITH</item>
+      <item>UNION</item>
+      <item>ALL</item>
+      <item>UNWIND</item>
+      <item>FOREACH</item>
+      <item>CALL</item>
+      <item>YIELD</item>
+      <item>CASE</item>
+      <item>WHEN</item>
+      <item>THEN</item>
+      <item>ELSE</item>
+      <item>END</item>
+      <item>AND</item>
+      <item>OR</item>
+      <item>XOR</item>
+      <item>NOT</item>
+      <item>IN</item>
+      <item>IS NULL</item>
+      <item>IS NOT NULL</item>
+      <item>true</item>
+      <item>false</item>
+      <item>null</item>
+    </list>
+
+    <list name="functions">
+      <item>count</item>
+      <item>collect</item>
+      <item>sum</item>
+      <item>avg</item>
+      <item>min</item>
+      <item>max</item>
+      <item>coalesce</item>
+      <item>head</item>
+      <item>last</item>
+      <item>size</item>
+      <item>timestamp</item>
+      <item>id</item>
+      <item>labels</item>
+      <item>keys</item>
+      <item>startNode</item>
+      <item>endNode</item>
+      <item>type</item>
+      <item>length</item>
+      <item>nodes</item>
+      <item>relationships</item>
+      <item>toInteger</item>
+      <item>toFloat</item>
+      <item>toString</item>
+      <item>toBoolean</item>
+      <item>substring</item>
+      <item>left</item>
+      <item>right</item>
+      <item>ltrim</item>
+      <item>rtrim</item>
+      <item>trim</item>
+      <item>replace</item>
+      <item>split</item>
+      <item>reverse</item>
+      <item>toLower</item>
+      <item>toUpper</item>
+    </list>
+
+    <contexts>
+      <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
+        <Detect2Chars attribute="Comment" context="#stay" char="/" char1="/" />
+
+        <keyword attribute="Keyword" context="#stay" String="keywords" caseSensitive="false" />
+        <keyword attribute="Function" context="#stay" String="functions" caseSensitive="false" />
+
+        <DetectChar attribute="String" context="StringDouble" char="&quot;" />
+        <DetectChar attribute="String" context="StringSingle" char="'" />
+
+        <AnyChar attribute="Symbol" context="#stay" String="()[]{}!-&lt;&gt;=:" />
+
+        <Float attribute="Float" context="#stay" />
+        <Int attribute="Decimal" context="#stay" />
+      </context>
+
+      <context name="StringDouble" attribute="String" lineEndContext="#stay">
+        <DetectChar attribute="String" context="#pop" char="&quot;" />
+      </context>
+
+      <context name="StringSingle" attribute="String" lineEndContext="#stay">
+        <DetectChar attribute="String" context="#pop" char="'" />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal Text" defStyleNum="dsNormal" />
+      <itemData name="Keyword" defStyleNum="dsKeyword" color="#0000ff" bold="true" />
+      <itemData name="Function" defStyleNum="dsFunction" color="#644a9b" />
+      <itemData name="Comment" defStyleNum="dsComment" color="#808080" italic="true" />
+      <itemData name="String" defStyleNum="dsString" color="#008000" />
+      <itemData name="Symbol" defStyleNum="dsOperator" />
+      <itemData name="Decimal" defStyleNum="dsDecVal" />
+      <itemData name="Float" defStyleNum="dsFloat" />
+    </itemDatas>
+  </highlighting>
+</language>
