@@ -88,6 +88,9 @@ Ustaliłem, że problemem jest wykonanie `CASE`, który mimo danych będących `
 Udało mi się rozwiązać ten problem stosując wersję _Generic_ `CASE` zamiast _Simple_ `CASE` @neo4j:conditional-expressions-case. \
 Po tej poprawce udało mi się wczytać dane do bazy.
 
+<!-- TODO: Grafiki wczytania bazowych danych i o książkach -->
+
+<!-- TODO: opisać zaaportowanie danych o książkach -->
 
 # Źródła {.unnumbered}
 
