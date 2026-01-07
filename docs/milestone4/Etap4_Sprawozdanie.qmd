@@ -94,7 +94,7 @@ Na ogolnej wizualizacji widać zgrupowania postaci w danych rodach, oraz zbiór 
 
 ![Wizualizacja bazowych danych](img/initial-data-loaded.png){#fig-initial-data-loaded}
 
-![Wizualizacja danych o książkach i autorach](img/books-and-author-nodes.png){#fig-books-and-authors-loaded}]
+![Wizualizacja danych o książkach i autorach](img/books-and-author-nodes.png){#fig-books-and-authors-loaded}
 
 Wizualizacja wczytanych danych z _Api of Ice And Fire_ @github:an-api-of-ice-and-fire
 :::
