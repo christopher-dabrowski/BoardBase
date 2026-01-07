@@ -103,8 +103,6 @@ Wizualizacja tych danych jest widoczna na @fig-books-and-authors-loaded.
 Wizualizacja wczytanych danych z _Api of Ice And Fire_ @github:an-api-of-ice-and-fire
 :::
 
-<!-- TODO: opisać zaaportowanie danych o książkach -->
-
 # Źródła {.unnumbered}
 
 ::: {#refs}
