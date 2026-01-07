@@ -1,0 +1,433 @@
+{
+  "field": [
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "name"
+        }
+      },
+      "@id": "battles.csv/name",
+      "@type": "cr:Field",
+      "name": "name",
+      "description": "The name of the battle."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "year"
+        }
+      },
+      "@id": "battles.csv/year",
+      "@type": "cr:Field",
+      "name": "year",
+      "description": "The year of the battle."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "battle_number"
+        }
+      },
+      "@id": "battles.csv/battle_number",
+      "@type": "cr:Field",
+      "name": "battle_number",
+      "description": "A unique ID number for the battle."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_king"
+        }
+      },
+      "@id": "battles.csv/attacker_king",
+      "@type": "cr:Field",
+      "name": "attacker_king",
+      "description": "The attacker\u0027s king. A slash indicators that the king charges over the course of the war. For example, \u0022Joffrey/Tommen Baratheon\u0022 is coded as such because one king follows the other in the Iron Throne."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_king"
+        }
+      },
+      "@id": "battles.csv/defender_king",
+      "@type": "cr:Field",
+      "name": "defender_king",
+      "description": "The defender\u0027s king."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_1"
+        }
+      },
+      "@id": "battles.csv/attacker_1",
+      "@type": "cr:Field",
+      "name": "attacker_1",
+      "description": "Major house attacking."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_2"
+        }
+      },
+      "@id": "battles.csv/attacker_2",
+      "@type": "cr:Field",
+      "name": "attacker_2",
+      "description": "Major house attacking."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_3"
+        }
+      },
+      "@id": "battles.csv/attacker_3",
+      "@type": "cr:Field",
+      "name": "attacker_3",
+      "description": "Major house attacking."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_4"
+        }
+      },
+      "@id": "battles.csv/attacker_4",
+      "@type": "cr:Field",
+      "name": "attacker_4",
+      "description": "Major house attacking."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_1"
+        }
+      },
+      "@id": "battles.csv/defender_1",
+      "@type": "cr:Field",
+      "name": "defender_1",
+      "description": "Major house defending."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_2"
+        }
+      },
+      "@id": "battles.csv/defender_2",
+      "@type": "cr:Field",
+      "name": "defender_2",
+      "description": "Major house defending."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_3"
+        }
+      },
+      "@id": "battles.csv/defender_3",
+      "@type": "cr:Field",
+      "name": "defender_3",
+      "description": "Major house defending."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_4"
+        }
+      },
+      "@id": "battles.csv/defender_4",
+      "@type": "cr:Field",
+      "name": "defender_4",
+      "description": "Major house defending."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_outcome"
+        }
+      },
+      "@id": "battles.csv/attacker_outcome",
+      "@type": "cr:Field",
+      "name": "attacker_outcome",
+      "description": "The outcome from the perspective of the attacker. Categories: win, loss, draw."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "battle_type"
+        }
+      },
+      "@id": "battles.csv/battle_type",
+      "@type": "cr:Field",
+      "name": "battle_type",
+      "description": "A classification of the battle\u0027s primary type. Categories: \n\npitched_battle: Armies meet in a location and fight. This is also the baseline category. \n\nambush: A battle where stealth or subterfuge was the primary means of attack. \n\nsiege: A prolonged of a fortied position. \n\nrazing: An attack against an undefended position"
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "major_death"
+        }
+      },
+      "@id": "battles.csv/major_death",
+      "@type": "cr:Field",
+      "name": "major_death",
+      "description": "If there was a death of a major figure during the battle."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "major_capture"
+        }
+      },
+      "@id": "battles.csv/major_capture",
+      "@type": "cr:Field",
+      "name": "major_capture",
+      "description": "If there was the capture of the major figure during the battle."
+    },
+    {
+      "dataType": [
+        "sc:Integer"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_size"
+        }
+      },
+      "@id": "battles.csv/attacker_size",
+      "@type": "cr:Field",
+      "name": "attacker_size",
+      "description": "The size of the attacker\u0027s force. No distinction is made between the types of soldiers such as cavalry and footmen."
+    },
+    {
+      "dataType": [
+        "sc:Integer"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_size"
+        }
+      },
+      "@id": "battles.csv/defender_size",
+      "@type": "cr:Field",
+      "name": "defender_size",
+      "description": "The size of the defenders\u0027s force. No distinction is made between the types of soldiers such as cavalry and footmen."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "attacker_commander"
+        }
+      },
+      "@id": "battles.csv/attacker_commander",
+      "@type": "cr:Field",
+      "name": "attacker_commander",
+      "description": "Major commanders of the attackers. Commander\u0027s names are included without honorific titles and commanders are separated by commas."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "defender_commander"
+        }
+      },
+      "@id": "battles.csv/defender_commander",
+      "@type": "cr:Field",
+      "name": "defender_commander",
+      "description": "Major commanders of the defender. Commander\u0027s names are included without honorific titles and commanders are separated by commas."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "summer"
+        }
+      },
+      "@id": "battles.csv/summer",
+      "@type": "cr:Field",
+      "name": "summer",
+      "description": "Was it summer?"
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "location"
+        }
+      },
+      "@id": "battles.csv/location",
+      "@type": "cr:Field",
+      "name": "location",
+      "description": "The location of the battle."
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "region"
+        }
+      },
+      "@id": "battles.csv/region",
+      "@type": "cr:Field",
+      "name": "region",
+      "description": "The region where the battle takes place. Categories: Beyond the Wall, The North, The Iron Islands, The Riverlands, The Vale of Arryn, The Westerlands, The Crownlands, The Reach, The Stormlands, Dorne"
+    },
+    {
+      "dataType": [
+        "sc:Text"
+      ],
+      "source": {
+        "fileObject": {
+          "@id": "battles.csv_fileobject"
+        },
+        "extract": {
+          "column": "note"
+        }
+      },
+      "@id": "battles.csv/note",
+      "@type": "cr:Field",
+      "name": "note",
+      "description": "Coding notes regarding individual observations."
+    }
+  ],
+  "@id": "battles.csv",
+  "@type": "cr:RecordSet",
+  "name": "battles.csv",
+  "description": "This csv contains information about all of the battles in game of thrones."
+}
