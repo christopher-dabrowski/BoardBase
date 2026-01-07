@@ -87,6 +87,17 @@ Testując skrypt na mniejszym pliku, który przygotowałem, zauważyłem, że pr
 Ustaliłem, że problemem jest wykonanie `CASE`, który mimo danych będących `null` wykonywał kod tworzący relację do węzła, który w tym  przypadku miał `id` równe `null`.
 Udało mi się rozwiązać ten problem stosując wersję _Generic_ `CASE` zamiast _Simple_ `CASE` @neo4j:conditional-expressions-case. \
 Po tej poprawce udało mi się wczytać dane do bazy.
+Ich wizualizacja jest widoczna na @fig-initial-data-loaded.
+Na ogolnej wizualizacji widać zgrupowania postaci w danych rodach, oraz zbiór niezależnych postaci otaczajacy środkowe grupy.
+
+::: {#fig-loaded-data layout="[50, -5, 50]"}
+
+![Wizualizacja bazowych danych](img/initial-data-loaded.png){#fig-initial-data-loaded}
+
+![Wizualizacja danych o książkach i autorach](img/books-and-author-nodes.png){#fig-books-and-authors-loaded}]
+
+Wizualizacja wczytanych danych z _Api of Ice And Fire_ @github:an-api-of-ice-and-fire
+:::
 
 <!-- TODO: Grafiki wczytania bazowych danych i o książkach -->
 
