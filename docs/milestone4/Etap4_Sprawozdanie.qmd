@@ -92,7 +92,39 @@ Na ogolnej wizualizacji widać zgrupowania postaci w danych rodach, oraz zbiór 
 
 Ponieważ bazowy zbiór _Game of Graphs_ @github:game-of-graphs zawiera tylko 4 rodzaje węzłów, wczytałem też dane o książkach z serii. \
 Napisałem skrypt [`import_books.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_books.cypher), który na podstawie danych z _An API of Ice And Fire_ @github:an-api-of-ice-and-fire tworzy węzły `Author` i `Book`, oraz relacje `WROTE`, `FOLLOWS` i `PRECEDES` między nimi.
-Wizualizacja tych danych jest widoczna na @fig-books-and-authors-loaded.
+
+Wyliczyłem liczbę węzłów i relacji prostymi zapytaniami i przedstawiłem je w tabelach @tbl-initial-node-count i @tbl-initial-rel-count.
+Wizualizacja wczytanych danych jest widoczna na @fig-books-and-authors-loaded.
+
+| typ węzła | ilość węzłów |
+|----------|-------------:|
+| "Person" | 2134        |
+| "House"  | 444         |
+| "Seat"   | 224         |
+| "Region" | 12          |
+
+: Liczba węzłów po wczytaniu danych {#tbl-initial-node-count}
+
+| relationshipType | targetNodeType | count |
+|------------------|----------------|------:|
+| "ALLIED_WITH"   | "House"       | 1567 |
+| "ALLIED_WITH"   | "Person"      | 1567 |
+| "SWORN_TO"      | "House"       | 794  |
+| "IN_REGION"     | "Region"      | 438  |
+| "IN_REGION"     | "House"       | 438  |
+| "SPOUSE"        | "Person"      | 398  |
+| "SEAT_OF"       | "House"       | 244  |
+| "SEAT_OF"       | "Seat"        | 244  |
+| "LED_BY"        | "Person"      | 180  |
+| "LED_BY"        | "House"       | 180  |
+| "PARENT_OF"     | "Person"      | 122  |
+| "BRANCH_OF"     | "House"       | 86   |
+| "HEIR_TO"       | "House"       | 60   |
+| "HEIR_TO"       | "Person"      | 60   |
+| "FOUNDED_BY"    | "Person"      | 44   |
+| "FOUNDED_BY"    | "House"       | 44   |
+
+: Liczba relacji po wczytaniu danych {#tbl-initial-rel-count}
 
 ::: {#fig-loaded-data layout="[50, -5, 50]"}
 
