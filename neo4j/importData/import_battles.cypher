@@ -19,39 +19,10 @@ WITH
   'file:///kaggle/battles.csv' AS battlesFile
 // WITH commanderNameLookup, houseNameLookup, 'file:///kaggle/battles-with-deliberate-errors.csv' AS battlesFile
 LOAD CSV WITH HEADERS FROM battlesFile AS row
-WITH
-  commanderNameLookup,
-  houseNameLookup,
-  apoc.map.clean(row, [], ['', null]) AS data
-WHERE data.name IS NOT NULL
+WITH commanderNameLookup, houseNameLookup, row AS data
 MERGE (b:Battle {battleNumber: toInteger(data.battle_number)})
 SET
-  b +=
-    apoc.map.clean(
-      data,
-      [
-        'battle_number',
-        'attacker_king',
-        'defender_king',
-        'attacker_1',
-        'attacker_2',
-        'attacker_3',
-        'attacker_4',
-        'defender_1',
-        'defender_2',
-        'defender_3',
-        'defender_4',
-        'attacker_commander',
-        'defender_commander',
-        'region',
-        'attacker_size',
-        'defender_size',
-        'major_death',
-        'major_capture',
-        'summer'
-      ],
-      ['', null]
-    ),
+  b.name = data.name,
   b.year = toInteger(data.year),
   b.attackerOutcome = data.attacker_outcome,
   b.battleType = data.battle_type,
