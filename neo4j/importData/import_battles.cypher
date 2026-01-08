@@ -119,7 +119,8 @@ UNWIND [data.attacker_1, data.attacker_2, data.attacker_3, data.attacker_4] AS
   attackerHouse
 WITH b, data, attackerHouse
 WHERE attackerHouse IS NOT NULL
-OPTIONAL MATCH (h:House {name: attackerHouse})
+OPTIONAL MATCH (h:House)
+WHERE h.name CONTAINS attackerHouse
 WITH b, data, attackerHouse, h
 WHERE
   h IS NOT NULL OR
@@ -136,7 +137,8 @@ UNWIND [data.defender_1, data.defender_2, data.defender_3, data.defender_4] AS
   defenderHouse
 WITH b, data, defenderHouse
 WHERE defenderHouse IS NOT NULL
-OPTIONAL MATCH (h:House {name: defenderHouse})
+OPTIONAL MATCH (h:House)
+WHERE h.name CONTAINS defenderHouse
 WITH b, data, defenderHouse, h
 WHERE
   h IS NOT NULL OR
