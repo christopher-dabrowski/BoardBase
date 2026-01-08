@@ -96,7 +96,7 @@ Napisałem skrypt [`import_books.cypher`](https://github.com/christopher-dabrows
 Wyliczyłem liczbę węzłów i relacji prostymi zapytaniami i przedstawiłem je w tabelach @tbl-initial-node-count i @tbl-initial-rel-count.
 Wizualizacja wczytanych danych jest widoczna na @fig-books-and-authors-loaded.
 
-| typ węzła | ilość węzłów |
+| typ węzła | liczba węzłów |
 |----------|-------------:|
 | "Person" | 2134        |
 | "House"  | 444         |
@@ -105,7 +105,7 @@ Wizualizacja wczytanych danych jest widoczna na @fig-books-and-authors-loaded.
 
 : Liczba węzłów po wczytaniu danych {#tbl-initial-node-count}
 
-| relationshipType | targetNodeType | count |
+| relacja | typ docelowego węzła | liczba relacji |
 |------------------|----------------|------:|
 | "ALLIED_WITH"   | "House"       | 1567 |
 | "ALLIED_WITH"   | "Person"      | 1567 |
@@ -175,6 +175,18 @@ Ostatnim problemem, który napotkałem przy imporcie były różnice w nazwach p
 Rozwiązałem to przygotowując mapowania nazw dowódców oraz wykluczając nazwy grup nie będących rodami.
 Dodałem też logikę usuwającą przedrostek _Lord_ przed wyszukaniem powiązanych postaci.
 Zaskoczyło mnie, że kilka nazw postaci w dodatkowym zbiorze zawiera literówki.
+
+Po rozwiązaniu napotkanych problemów udało mi się wczytać informacje o wszystkich 38 bitwach oraz relacje (@tbl-battle-rel-stats).
+
+| relacja | typ docelowego węzła | liczba relacji |
+|------------------|----------------|------:|
+| "COMMANDED_ATTACK_IN" | "Person" | 130 |
+| "COMMANDED_DEFENSE_IN"| "Person" | 100 |
+| "ATTACKED_IN"         | "House"  | 79  |
+| "DEFENDED_IN"         | "House"  | 65  |
+| "TOOK_PLACE_IN"       | "Region" | 38  |
+
+: Liczba relacji związanych z bitwami {#tbl-battle-rel-stats}
 
 ## Wykorzystanie rozszerzonych danych
 
