@@ -234,16 +234,11 @@ WHERE
   )
 MERGE (p)-[:COMMANDED_DEFENSE_IN]->(b)
 
-WITH DISTINCT b
 RETURN b.battleNumber, b.name, b.year;
 MATCH (b:Battle)
-RETURN
-  count(b) AS totalBattles,
-  count(b.location) AS battlesWithLocation,
-  count(b.attackerSize) AS battlesWithAttackerSize,
-  count(b.defenderSize) AS battlesWithDefenderSize;
+RETURN count(b) AS totalBattles;
 
-MATCH (b:Battle)-[r]->(n)
+MATCH (b:Battle)-[r]-(n)
 RETURN
   type(r) AS relationshipType,
   labels(n)[0] AS targetNodeType,
