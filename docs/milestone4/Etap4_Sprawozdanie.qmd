@@ -135,6 +135,50 @@ Wizualizacja wczytanych danych jest widoczna na @fig-books-and-authors-loaded.
 Wizualizacja wczytanych danych z _Api of Ice And Fire_ @github:an-api-of-ice-and-fire
 :::
 
+# Dołączenie drugiego zbioru danych
+
+Zdecydowałem się rozszerzyć mój zbiór danych o zbiór z informacjami o bitwach z platformy _Kaggle_ @kaggle:dataset:game-of-thrones.
+
+## Wczytanie danych o bitwach
+
+Napisałem skrypt [`import_battles.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_battles.cypher), który wczytuje dane z pliku CSV i tworzy węzły `Battle` oraz relacje z już istniejącymi węzłami `Person`, `House` i `Region` opisane w @tbl-battle-relations.
+
+| Nazwa relacji | Węzeł źródłowy | Węzeł docelowy | Opis |
+|---------------|----------------|----------------|------|
+| `TOOK_PLACE_IN` | `Battle` | `Region` | Bitwa miała miejsce w danym regionie |
+| `COMMANDED_ATTACK_IN` | `Person` | `Battle` | Osoba dowodzi atakiem w bitwie |
+| `COMMANDED_DEFENSE_IN` | `Person` | `Battle` | Osoba dowodzi obroną w bitwie |
+| `ATTACKED_IN` | `House` | `Battle` | Ród atakował w bitwie |
+| `DEFENDED_IN` | `House` | `Battle` | Ród bronił się w bitwie |
+
+: Relacje tworzone w skrypcie import_battles.cypher {#tbl-battle-relations}
+
+Do wczytania pliku \acr{CSV} na początku chciałem użyć procedury `apoc.load.csv`.
+Po pojawieniu się błędu o nieznalezionej procedurze zorientowałem się, że jest ona w pluginie _APOC Extended_, a nie w podstawowym _APOC Core_ @neo4j:apoc-load-csv.
+W sytuacji zdecydowałem się wypróbować domyślne polecenie `LOAD CSV`, ponieważ nie potrzebowałem żadnych specjalnych opcji dostępnych w `apoc.load.csv` @neo4j:apoc-load-csv.
+
+Pisząc skrypt zwróciłem uwagę, żeby nie tworzyć węzłów innych niż `Battle`.
+Traktowałem mój główny zbiór danych jako właściwą listę postaci, domów i rodów.
+Żeby to osiągnąć użyłem `MATCH` zamiast `MERGE` przy wyszukiwaniu istniejących węzłów.
+Dodałem też walidację, korzystając z `apoc.util.validatePredicate` na wypadek gdyby nazwy różniły się między zbiorami.
+
+Dane w pliku \acr{CSV} posiadały niestandardowy format wymienienia wielu postaci.
+W kolumnach `attacker_king` i `defender_king`, w przypadku uczestnictwa kilku władców, różni królowie mieli podane najpierw imiona oddzielone `/`, a potem wspólne nazwisko. Przykładowo `Joffrey/Tommen Baratheon` oznaczało udział Joffrey'a Baratheona i Tommena Baratheona.
+Wymagało to dedykowanej logiki oddzielania postaci.
+W pozostałych kolumnach, z wieloma wartościami wartości, były oddzielone przecinkami.
+
+Dostosowania wymagało też powiązanie nazw domów.
+W pliku \acr{CSV} nazwy domów były krótkie np. `Lannister`, natomiast w bazowych danych były one pełne, np. `House Lannister of Casterly Rock`.
+Żeby powiązać te nazwy użyłem `CONTAINS`.
+
+Ostatnim problemem, który napotkałem przy imporcie były różnice w nazwach postaci między dwoma zbiorami i pojawienie się nazw grup w dodatku do nazw rodów.
+Rozwiązałem to przygotowując mapowania nazw dowódców oraz wykluczając nazwy grup nie będących rodami.
+Dodałem też logikę usuwającą przedrostek _Lord_ przed wyszukaniem powiązanych postaci.
+Zaskoczyło mnie, że kilka nazw postaci w dodatkowym zbiorze zawiera literówki.
+
+## Wykorzystanie rozszerzonych danych
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
