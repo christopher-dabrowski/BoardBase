@@ -21,7 +21,7 @@ SET
       WHEN data.releaseDate IS NULL THEN null
       ELSE datetime(replace(data.releaseDate, ' ', 'T'))
     END
-CALL {
+CALL (b, data) {
   WITH b, data
   UNWIND coalesce(data.authors, []) AS authorName
   MERGE (a:Author {name: authorName})
@@ -38,7 +38,7 @@ CALL {
   RETURN count(*) AS followsCount
 }
 WITH b, data
-CALL {
+CALL (b, data) {
   WITH b, data
   WITH b, data.followedBy AS nextId
   WHERE nextId IS NOT NULL
