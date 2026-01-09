@@ -33,7 +33,6 @@ MERGE (b:Battle {battleNumber: toInteger(data.battle_number)})
 SET
   b.name = data.name,
   b.year = toInteger(data.year),
-  b.attackerOutcome = data.attacker_outcome,
   b.battleType = data.battle_type,
   b.majorDeath = toInteger(data.major_death) = 1,
   b.majorCapture = toInteger(data.major_capture) = 1,
@@ -77,7 +76,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       ELSE [data.attacker_king]
     END AS kingName
   OPTIONAL MATCH (king:Person {name: kingName})
-  WITH b, kingName, king
+  WITH b, data, kingName, king
   WHERE
     king IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -85,7 +84,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Attacker king not found: %s",
       [kingName]
     )
-  MERGE (king)-[:COMMANDED_ATTACK_IN]->(b)
+  MERGE (king)-[r:COMMANDED_ATTACK_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'win')
   RETURN count(*) AS attackerKingCount
 }
 WITH b, data, commanderNameLookup, houseNameLookup
@@ -109,7 +109,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       ELSE [data.defender_king]
     END AS kingName
   OPTIONAL MATCH (king:Person {name: kingName})
-  WITH b, kingName, king
+  WITH b, data, kingName, king
   WHERE
     king IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -117,7 +117,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Defender king not found: %s",
       [kingName]
     )
-  MERGE (king)-[:COMMANDED_DEFENSE_IN]->(b)
+  MERGE (king)-[r:COMMANDED_DEFENSE_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'loss')
   RETURN count(*) AS defenderKingCount
 }
 WITH b, data, commanderNameLookup, houseNameLookup
@@ -140,7 +141,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
   WHERE mappedAttackerHouse IS NOT NULL
   OPTIONAL MATCH (h:House)
   WHERE h.name CONTAINS mappedAttackerHouse
-  WITH b, mappedAttackerHouse, h
+  WITH b, data, mappedAttackerHouse, h
   WHERE
     h IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -148,7 +149,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Attacking house not found: %s",
       [mappedAttackerHouse]
     )
-  MERGE (h)-[:ATTACKED_IN]->(b)
+  MERGE (h)-[r:ATTACKED_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'win')
   RETURN count(*) AS attackerHouseCount
 }
 WITH b, data, commanderNameLookup, houseNameLookup
@@ -171,7 +173,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
   WHERE mappedDefenderHouse IS NOT NULL
   OPTIONAL MATCH (h:House)
   WHERE h.name CONTAINS mappedDefenderHouse
-  WITH b, mappedDefenderHouse, h
+  WITH b, data, mappedDefenderHouse, h
   WHERE
     h IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -179,7 +181,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Defending house not found: %s",
       [mappedDefenderHouse]
     )
-  MERGE (h)-[:DEFENDED_IN]->(b)
+  MERGE (h)-[r:DEFENDED_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'loss')
   RETURN count(*) AS defenderHouseCount
 }
 WITH b, data, commanderNameLookup, houseNameLookup
@@ -210,7 +213,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
   WHERE mappedCommanderName IS NOT NULL
   OPTIONAL MATCH (p:Person)
   WHERE p.name = mappedCommanderName OR mappedCommanderName IN p.aliases
-  WITH b, mappedCommanderName, p
+  WITH b, data, mappedCommanderName, p
   WHERE
     p IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -218,7 +221,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Attacker commander not found: %s",
       [mappedCommanderName]
     )
-  MERGE (p)-[:COMMANDED_ATTACK_IN]->(b)
+  MERGE (p)-[r:COMMANDED_ATTACK_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'win')
   RETURN count(*) AS attackerCommanderCount
 }
 WITH b, data, commanderNameLookup, houseNameLookup
@@ -249,7 +253,7 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
   WHERE mappedCommanderName IS NOT NULL
   OPTIONAL MATCH (p:Person)
   WHERE p.name = mappedCommanderName OR mappedCommanderName IN p.aliases
-  WITH b, mappedCommanderName, p
+  WITH b, data, mappedCommanderName, p
   WHERE
     p IS NOT NULL OR
     apoc.util.validatePredicate(
@@ -257,7 +261,8 @@ CALL (b, data, commanderNameLookup, houseNameLookup) {
       "Defender commander not found: %s",
       [mappedCommanderName]
     )
-  MERGE (p)-[:COMMANDED_DEFENSE_IN]->(b)
+  MERGE (p)-[r:COMMANDED_DEFENSE_IN]->(b)
+  SET r.won = (data.attacker_outcome = 'loss')
   RETURN count(*) AS defenderCommanderCount
 }
 
