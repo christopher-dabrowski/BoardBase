@@ -193,6 +193,19 @@ Chciałem też umieścić w relacjach informacje o liczebności armii, niestety 
 
 ## Wykorzystanie rozszerzonych danych
 
+Byłem ciekaw jaka postać jest rodzicem najliczniejszego rodu.
+Żeby to zbadać napisałem zapytanie [`most_descendants.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/most_descendants.cypher) korzystające z procedury `apoc.path.subgraphNodes`. \
+Według wyniku zapytania najwięcej potomków ma _Aegon IV_ z liczbą 6 potomków.
+Zdziwił mnie ten wynik. Spodziewałem się znacznie większej liczby potomków nawet samego _Aegona IV_, oraz ogólnie dla przodków starych rodów.
+Przeanalizowałem dane prostymi zapytaniami typu @lst-cypher-eddard-relations wyświetlającymi relacje znanych mi postaci.
+Okazało się, że wiele postaci nie ma relacji do wielu swoich dzieci.
+Niestety wynika to z niepełności danych w zbiorze _Game of Graphs_ @github:game-of-graphs.
+
+```{#lst-cypher-eddard-relations .cypher lst-cap="Relacje Eddarda Starka"}
+MATCH (p:Person)-[r]-(p2:Person)
+WHERE p.name = "Eddard Stark"
+RETURN p, r, p2
+```
 
 # Źródła {.unnumbered}
 
