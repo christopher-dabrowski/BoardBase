@@ -188,6 +188,9 @@ Po rozwiązaniu napotkanych problemów udało mi się wczytać informacje o wszy
 
 : Liczba relacji związanych z bitwami {#tbl-battle-rel-stats}
 
+W relacjach `COMMANDED_ATTACK_IN`, `COMMANDED_DEFENSE_IN`, `ATTACKED_IN` i `DEFENDED_IN` dodałem atrybut `won` określający czy dana strona wygrała bitwę.
+Chciałem też umieścić w relacjach informacje o liczebności armii, niestety jednak w danych jest tylko informacja o całkowitej liczbie wojsk, bez podziału na konkretne domy @kaggle:dataset:game-of-thrones.
+
 ## Wykorzystanie rozszerzonych danych
 
 
