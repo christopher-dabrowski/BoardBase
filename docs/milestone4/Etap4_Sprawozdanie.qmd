@@ -223,7 +223,7 @@ Chciałem sprawdzić, który ród jest najbardziej agresywny.
 Ponieważ rody główne rody mają dodatkowe gałęzie (relacja `BRANCH_OF`), w zapytaniu przechodzę po tej relacji aż do głównego rodu i dla niego liczę ataki sumując również bitwy, w których brały udział gałęzie rodów. \
 Rozgałęzienia rodów można zobaczyć zapytaniem [`branches_of_house.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/branches_of_house.cypher) (@fig-lannister-branches, @tbl-lannister-branches).
 
-![Gałęzie rodu Lannisterów](img/house-Lannister-branches.png){#fig-lannister-branches}
+![Gałęzie rodu Lannisterów](img/house-Lannister-branches.png){#fig-lannister-branches width="60%"}
 
 {{< include tables/house-Lannister-branches.qmd >}}
 : Gałęzie rodu Lannisterów {#tbl-lannister-branches}
