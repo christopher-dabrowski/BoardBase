@@ -249,14 +249,6 @@ Optymalizacja napisanych wcześniej zapytań i analiza ich wydajności.
 
 ## Indeksy
 
-<!-- Dla przygotowanych zapytań stwórz indeksy – przedstaw zasadę działania indeksów w
-Neo4j, oceń w praktyce ich skuteczność. Omów jakie jeszcze indeksy warto stworzyć w
-wykorzystywanym zbiorze danych i dlaczego. Zapoznaj się z mechanizmami
-optymalizacji zapytań w Neo4j, przedstaw praktycznie, jak przygotowane przez ciebie
-zapytania można wykonać szybciej.
-Uwaga: Dla uzyskania pełnych punktów trzeba przestawić również inne mechanizmy
-optymalizacji zapytań niż tylko indeksy. -->
-
 Indeksy w Neo4j tworzą dodatkową kopię danych, która pozwala na szybsze wyszukiwanie węzłów lub krawędzi według zadanych wartości. @neo4j:indexes
 Domyślnie Neo4j tworzy indeksy typu B-tree @graphable:neo4j-performance, jednak dostępne są też inne typy indeksów, takie jak `POINT INDEX` dla danych geoprzestrzennych czy dedykowane indeksy do typów tekstowych `TEXT INDEX` oraz indeksy pełnotekstowe. @neo4j:manage-indexes.
 Domyślnie dostępne są też indeksy wektorowe.
@@ -301,8 +293,16 @@ Niestety w przypadku literówki w imieniu postaci _Arja Stark_ (prawidłowo _Ary
 Świadczy to o tym, że indeks `FULLTEXT` oddzielnie tonizuje każde słowo, co potwierdza dokumentacja @neo4j:full-text-indexes.
 Zaciekawiło minie, że indeks `FULLTEXT` ma możliwość aktualizacji w tle, dzięki czemu nie spowalnia on bezpośrednio zapisu danych, gdy ustawi się opcję `fulltext.eventually_consistent` @neo4j:full-text-indexes.
 
+## Optymalizacja struktury grafu
 
-<!-- Zoptymalizowanie BRANCH_OF* na bezpośrednią relację do głównego domu -->
+Inną, niż indeksy, techniką optymalizacji zapytań jest przebudowanie grafu, by zwiększyć wydajność zapytań.
+W tym celu można na przykład dodać relacje skracające ścieżki między węzłami.
+
+W moim zapytaniu [`most_aggressive_houses.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/most_aggressive_houses.cypher.cypher) przechodzę po wielu poziomach relacji `BRANCH_OF`, żeby znaleźć główny ród.
+Ponieważ gałęzie domów mogą mieć swoje podgałęzie, które dalej mogą być rozgałęzione, zapytanie nie korzysta z kryterium lokalności i może eksplodować na dużą część grafu.
+
+Żeby to zoptymalizować, mogę dodać relacje `MAIN_HOUSE` bezpośrednio łączące gałęzie domów z ich głównymi rodami.
+Utworzyłem tą relację i zaktualizowałem zapytanie w skrypcie [`optimized_most_aggressive_houses.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/optimalization/optimized_most_aggressive_houses.cypher.cypher).
 
 # Źródła {.unnumbered}
 
