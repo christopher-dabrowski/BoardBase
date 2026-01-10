@@ -19,3 +19,22 @@ MERGE
     {name: 'Ryman Frey', aliases: ['Ser Fey'], isFemale: false})
 MATCH (houseFrey:House {name: 'House Frey of the Crossing'})
 MERGE (raymanFrey)-[:ALLIED_WITH]->(houseFrey);
+
+MATCH (battleCastleBlack:Battle {battleNumber: 28})
+MATCH (jonSnow:Person {name: 'Jon Snow'})
+MATCH (styr:Person {name: 'Styr'})
+MATCH (freeFolk:Group {name: 'Free folk'})
+MATCH (nightWatch:Group {name: "Night's Watch"})
+MERGE (jonSnow)-[r1:COMMANDED_DEFENSE_IN]->(battleCastleBlack)
+SET r1.won = false
+MERGE (styr)-[r2:COMMANDED_ATTACK_IN]->(battleCastleBlack)
+SET r2.won = false
+MERGE (freeFolk)-[r3:ATTACKED_IN]->(battleCastleBlack)
+SET r3.won = false
+MERGE (nightWatch)-[r4:DEFENDED_IN]->(battleCastleBlack)
+SET r4.won = false;
+
+MATCH (siegeRiverrun:Battle {battleNumber: 36})
+MATCH (rymanFrey:Person {name: 'Ryman Frey'})
+MERGE (rymanFrey)-[r5:COMMANDED_ATTACK_IN]->(siegeRiverrun)
+SET r5.won = true;
