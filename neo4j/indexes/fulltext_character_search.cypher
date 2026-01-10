@@ -1,12 +1,7 @@
 CREATE FULLTEXT INDEX personNameFullText IF NOT EXISTS
 FOR (p:Person)
 ON EACH [p.name]
-OPTIONS {
-  indexConfig: {
-    `fulltext.analyzer`: 'english',
-    `fulltext.eventually_consistent`: true
-  }
-};
+OPTIONS {indexConfig: {`fulltext.eventually_consistent`: true}};
 
 SHOW FULLTEXT INDEXES;
 
