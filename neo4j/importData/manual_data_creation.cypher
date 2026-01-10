@@ -26,13 +26,13 @@ MATCH (styr:Person {name: 'Styr'})
 MATCH (freeFolk:Group {name: 'Free folk'})
 MATCH (nightWatch:Group {name: "Night's Watch"})
 MERGE (jonSnow)-[r1:COMMANDED_DEFENSE_IN]->(battleCastleBlack)
-SET r1.won = false
+SET r1.won = true
 MERGE (styr)-[r2:COMMANDED_ATTACK_IN]->(battleCastleBlack)
 SET r2.won = false
 MERGE (freeFolk)-[r3:ATTACKED_IN]->(battleCastleBlack)
 SET r3.won = false
 MERGE (nightWatch)-[r4:DEFENDED_IN]->(battleCastleBlack)
-SET r4.won = false;
+SET r4.won = true;
 
 MATCH (siegeRiverrun:Battle {battleNumber: 36})
 MATCH (rymanFrey:Person {name: 'Ryman Frey'})
