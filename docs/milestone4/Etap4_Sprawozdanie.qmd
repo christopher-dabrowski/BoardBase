@@ -158,6 +158,7 @@ Po pojawieniu się błędu o nieznalezionej procedurze zorientowałem się, że 
 W sytuacji zdecydowałem się wypróbować domyślne polecenie `LOAD CSV`, ponieważ nie potrzebowałem żadnych specjalnych opcji dostępnych w `apoc.load.csv` @neo4j:apoc-load-csv.
 
 Pisząc skrypt zwróciłem uwagę, żeby nie tworzyć węzłów innych niż `Battle`.
+Do tworzenia węzłów `Battle` użyłem `MERGE`, żeby nie tworzyć duplikatów przy ponownym uruchomieniu skryptu.
 Traktowałem mój główny zbiór danych jako właściwą listę postaci, domów i rodów.
 Żeby to osiągnąć użyłem `MATCH` zamiast `MERGE` przy wyszukiwaniu istniejących węzłów.
 Dodałem też walidację, korzystając z `apoc.util.validatePredicate` na wypadek gdyby nazwy różniły się między zbiorami.
