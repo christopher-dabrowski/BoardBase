@@ -30,11 +30,11 @@ WITH
   totalHouses,
   totalCommanders,
   (CASE
-      WHEN b.majorDeath THEN 10
+      WHEN b.majorDeath THEN 20
       ELSE 0
     END) +
   (CASE
-      WHEN b.majorCapture THEN 5
+      WHEN b.majorCapture THEN 10
       ELSE 0
     END) +
   (totalHouses * 2) +
