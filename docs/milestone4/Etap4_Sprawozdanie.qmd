@@ -228,6 +228,21 @@ Rozgałęzienia rodów można zobaczyć zapytaniem [`branches_of_house.cypher`](
 {{< include tables/house-Lannister-branches.qmd >}}
 : Gałęzie rodu Lannisterów {#tbl-lannister-branches}
 
+## Ręczne tworzenie węzłów
+
+Utworzyłem 5 nowych węzłów i powiązałem je relacjami z istniejącymi węzłami w pliku [`manual_data_creation.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/manual_data_creation.cypher).
+Dodałem głównie dane, które były brakujące przy imporcie danych o bitwach.
+
+Dodałem nowy rodzaj węzła `Group`, reprezentujący grupy postaci niebędące rodami.
+Utworzyłem grupy `Free folk` i `Night's Watch`. \
+`Free folk` powiązałem relacją `IN_REGION` z regionem `Beyond the Wall`, ponieważ są to dzikie plemiona żyjące na północ od Muru. \
+Grupę `Night's Watch` powiązałem relacją `IN_REGION` z regionami `The North` i `Beyond the Wall`, ponieważ ich główna siedziba to Mur, który jest granicą między tymi regionami. Czesto członkowie tej organizacji wyruszają na wyprawy na północ od Muru (`Beyond the Wall`).
+Dodałem też relację do postaci `Jon Snow`, który był członkiem Nocnej Straży (`Night's Watch`).
+
+Utworzyłem węzły dla brakujących postaci `Styr` i `Ryman Frey` oraz przypisałem im relacje `ALLIED_WITH` i `MEMBER_OF` do odpowiednich domów i grup.
+
+Żeby powiązać nowe wezły z danymi o bitwach wyszukałem po `battleNumber` bitwy i dodałem odpowiednie relacje.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
