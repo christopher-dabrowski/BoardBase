@@ -243,6 +243,56 @@ Utworzyłem węzły dla brakujących postaci `Styr` i `Ryman Frey` oraz przypisa
 
 Żeby powiązać nowe wezły z danymi o bitwach wyszukałem po `battleNumber` bitwy i dodałem odpowiednie relacje.
 
+# Optymalizacja zapytań
+
+Optymalizacja napisanych wcześniej zapytań i analiza ich wydajności.
+
+## Indeksy
+
+<!-- Dla przygotowanych zapytań stwórz indeksy – przedstaw zasadę działania indeksów w
+Neo4j, oceń w praktyce ich skuteczność. Omów jakie jeszcze indeksy warto stworzyć w
+wykorzystywanym zbiorze danych i dlaczego. Zapoznaj się z mechanizmami
+optymalizacji zapytań w Neo4j, przedstaw praktycznie, jak przygotowane przez ciebie
+zapytania można wykonać szybciej.
+Uwaga: Dla uzyskania pełnych punktów trzeba przestawić również inne mechanizmy
+optymalizacji zapytań niż tylko indeksy. -->
+
+Indeksy w Neo4j tworzą dodatkową kopię danych, która pozwala na szybsze wyszukiwanie węzłów lub krawędzi według zadanych wartości. @neo4j:indexes
+Domyślnie Neo4j tworzy indeksy typu B-tree @graphable:neo4j-performance, jednak dostępne są też inne typy indeksów, takie jak `POINT INDEX` dla danych geoprzestrzennych czy dedykowane indeksy do typów tekstowych `TEXT INDEX` oraz indeksy pełnotekstowe. @neo4j:manage-indexes.
+Domyślnie dostępne są też indeksy wektorowe.
+
+Ponieważ indeksy duplikują dane spowalnia to zapisy sprawia, że baza zajmuje więcej miejsca.
+Należy ostrożnie tworzyć indeksy i regularnie analizować czy ciągle są przydatne. @neo4j:query-tuning.
+
+Już po utworzeniu czystej bazy w Neo4j istnieją w niej dwa indeksy token lookup.
+Służą one do wyszukiwania po etykiecie.
+Jeden z jest dla węzłów, a drugi dla relacji. \
+Na początku zdziwiłem się, gdy je zobaczyłem uruchamiając polecenie `SHOW INDEXES`.
+Potem przeczytałem, że jest to domyślne zachowanie Neo4j @neo4j:manage-indexes.
+
+Podstawową techniką optymalizacji jest dodanie indeksów do właściwości używanych w zapytaniach. \
+W zapytaniach [`branches_of_house.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/branches_of_house.cypher) i [`characters_in_battle_of_castle_black.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/characters_in_battle_of_castle_black.cypher) stosuję filtrowanie po właściwości. \
+Mogę zoptymalizować te zapytania dodając indeksy do właściwości `name` węzłów `House` i `Battle`.
+Takie indeksy istniały już w podstawowym skrypcie importu danych w repozytorium _Game of Graphs_ @github:game-of-graphs.
+
+Przetestowałem działanie indeksu w zapytaniu [`branches_of_house.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/branches_of_house.cypher).
+Skorzystałem w tym celu z polecenia `EXPLAIN`, wykonując zapytanie z usuniętym indeksem i działającym. \
+Żeby uniknąć wpływu cache'u na wyniki testu, pomiędzy testami usuwałem całkowicie kontener Neo4j. Zostawiałem oczywiście wolumen z danymi.
+
+Porównanie statystyk wykonania i planów zapytania (@fig-house-lanister-branches-index-showcase)
+pokazuje, że włączenie indeksu prowadzi do zaczęcia wykonania zapytania przez `NodeIndexSeek` zamiast `NodeByLabelScan`.
+Dzięki temu liczba przeczytanych węzłów spadła z 910 do 23, a czas wykonania z 194 ms do 93 ms.
+Jest to znacząca poprawa wydajności.
+
+::: {#fig-house-lanister-branches-index-showcase layout-nrow=2}
+
+![Plan zapytania bez indeksu](img/branches_of_house-no_index.png)
+
+![Plan zapytania z indeksem](img/branches_of_house-with_index.png)
+
+Zapytanie o gałęzie rodu Lannisterów z i bez indeksu
+:::
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
