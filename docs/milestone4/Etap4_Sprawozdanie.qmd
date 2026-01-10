@@ -293,6 +293,17 @@ Jest to znacząca poprawa wydajności.
 Zapytanie o gałęzie rodu Lannisterów z i bez indeksu
 :::
 
+Często zdarza mi się robić literówki w nazwach postaci.
+Chciałem wypróbować czy indeks `FULLTEXT` pomoże mi znajdować właściwe postaci mimo literówek.
+W dokumentacji zauważyłem, że indeks tego typu pozwala na luźne dopasowanie i zwrócenie poza wnykiem współczynnika dopasowania @neo4j:full-text-indexes.
+Przetestowałem indeks `FULLTEXT` w zapytaniu [`fulltext_character_search.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/indexes/fulltext_character_search.cypher). \
+Niestety w przypadku literówki w imieniu postaci _Arja Stark_ (prawidłowo _Arya Stark_) indeks zwracał mi wszystkie postaci o nazwisku _Stark_ z tym samym `score`, co nie rozwiązywało mojego problemu. \
+Świadczy to o tym, że indeks `FULLTEXT` oddzielnie tonizuje każde słowo, co potwierdza dokumentacja @neo4j:full-text-indexes.
+Zaciekawiło minie, że indeks `FULLTEXT` ma możliwość aktualizacji w tle, dzięki czemu nie spowalnia on bezpośrednio zapisu danych, gdy ustawi się opcję `fulltext.eventually_consistent` @neo4j:full-text-indexes.
+
+
+<!-- Zoptymalizowanie BRANCH_OF* na bezpośrednią relację do głównego domu -->
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
