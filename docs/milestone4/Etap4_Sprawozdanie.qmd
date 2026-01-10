@@ -151,7 +151,7 @@ Napisałem skrypt [`import_battles.cypher`](https://github.com/christopher-dabro
 | `ATTACKED_IN` | `House` | `Battle` | Ród atakował w bitwie |
 | `DEFENDED_IN` | `House` | `Battle` | Ród bronił się w bitwie |
 
-: Relacje tworzone w skrypcie import_battles.cypher {#tbl-battle-relations}
+: Relacje tworzone w skrypcie import_battles.cypher {#tbl-battle-relations tbl-colwidths="[30, 15, 15, 40]"}
 
 Do wczytania pliku \acr{CSV} na początku chciałem użyć procedury `apoc.load.csv`.
 Po pojawieniu się błędu o nieznalezionej procedurze zorientowałem się, że jest ona w pluginie _APOC Extended_, a nie w podstawowym _APOC Core_ @neo4j:apoc-load-csv.
