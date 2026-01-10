@@ -1,0 +1,7 @@
+| mainHouse | branchHouse |
+|-----------|-------------|
+| House Lannister of Casterly Rock | House Lannett |
+| House Lannister of Casterly Rock | House Lannister of Darry |
+| House Lannister of Casterly Rock | House Lanny |
+| House Lannister of Casterly Rock | House Lannister of Lannisport |
+| House Lannister of Casterly Rock | House Lantell |

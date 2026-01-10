@@ -217,6 +217,16 @@ Chciałem zobaczyć, które postacie brały udział w tej bitwie.
 W tym celu napisałem zapytanie [`characters_in_battle_of_castle_black.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/characters_in_battle_of_castle_black.cypher).
 Użyłem w nim `UNION`, żeby wyświetlić postaci na podstawie różnych relacji dopisując do każdego rodzaju wartości konkretne wartości kolumn.
 
+Chciałem sprawdzić, który ród jest najbardziej agresywny.
+Żeby to zrobić przygotowałem zapytanie [`most_aggressive_houses.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/most_aggressive_houses.cypher.cypher), które liczy w ilu bitwach dany ród atakował.
+Ponieważ rody główne rody mają dodatkowe gałęzie (relacja `BRANCH_OF`), w zapytaniu przechodzę po tej relacji aż do głównego rodu i dla niego liczę ataki sumując również bitwy, w których brały udział gałęzie rodów. \
+Rozgałęzienia rodów można zobaczyć zapytaniem [`branches_of_house.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/branches_of_house.cypher) (@fig-lannister-branches, @tbl-lannister-branches).
+
+![Gałęzie rodu Lannisterów](img/house-Lannister-branches.png){#fig-lannister-branches}
+
+{{< include tables/house-Lannister-branches.qmd >}}
+: Gałęzie rodu Lannisterów {#tbl-lannister-branches}
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
