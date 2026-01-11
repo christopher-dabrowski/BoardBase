@@ -317,6 +317,8 @@ Kontujac [konwersację z modelem](https://gemini.google.com/share/0875649e3e7a) 
 
 Wygenerowane dane przestrzenne dodałem do węzłów skryptem [`add_spatial_data.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/add_spatial_data.cypher).
 
+Zastanawiało mnie czy w okolicy siedzib danych rodów było średniej więcej bitew niż w innych.
+Przygotowałem zapytanie [`battles_near_house_seats.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/battles_near_house_seats.cypher), które znajduje bitwy w zadanym promieniu od siedzib rodów i agreguje ich średnią oraz najbliższą odległość.
 
 # Źródła {.unnumbered}
 
