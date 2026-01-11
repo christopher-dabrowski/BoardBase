@@ -368,6 +368,39 @@ Do uruchomienia kodu z projektu wymagane było też dodanie przestrzeni nazw w p
 
 Po przygotowaniu procedury i wgraniu jej do bazy przetestowałem jej działanie w pliku [`parse_king_names.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/custom-procedures/parse_king_names.cypher).
 
+# Analiza produkcyjna
+
+Uznałem, że dobrym sposobem na podział bazy na kilka maszyn jest wyznaczenie podgrafów spójnych.
+Rozdzielenie grafu spójnego może prowadzić do tego, że niektóre zapytania będą wymagały połączeń między maszynami, co na pewno wpłynie na wydajność. \
+Żeby znaleźć spójne podgrafy skorzystałem z algorytmu _Weakly Connected Components_ z biblioteki _Graph Data Science_ @neo4j-gds:wcc, kierujac się poradami z wątku na forum @neo4j-community:finding-all-disconnected-subgraphs-in-a-graph.
+
+Dodałem plugin _Graph Data Science_ do Neo4j korzystajac ze zmiennej środowiskowej `NEO4J_PLUGINS` w pliku [`docker-compose.yml`](https://github.com/christopher-dabrowski/BoardBase/blob/main/docker-compose.yml) i mechanizmu automatycznej instalacji @neo4j:docker-plugins. \
+
+Skryptami w pliku [`disconnected_subgraphs.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/production-analysis/disconnected_subgraphs.cypher) ustaliłem, że w mojej bazie są aktualnie 4 rodzaje spójnych podgrafów  przedstawionych w @tbl-disconnected-subgraphs-stats.
+
+| Rodzaj węzłów | Liczba spójnych podgrafów | Średnia wielkość | Odchylenie std. | Min | Max |
+|---------------|---------------------------|------------------|-----------------|-----|-----|
+| Person | 692 | 1.02 | 0.21 | 1 | 5 |
+| Person, House, Seat, Region, Battle, Group | 1 | 2150 | 0 | 2150 | 2150 |
+| Person, House | 1 | 2 | 0 | 2 | 2 |
+| Book, Author | 1 | 15 | 0 | 15 | 15 |
+
+: Statystyki spójnych podgrafów w bazie {#tbl-disconnected-subgraphs-stats}
+
+Z mojej analizy wynika, że informacje o książkach i autorach nie są powiązane z resztą grafu.
+Dane te więc można łatwo umieścić na oddzielnej maszynie.
+
+Charakterystyczny jest też jeden duży spójny podgraf zawierający większość danych o postaciach, rodach i bitwach.
+Podział tego podgrafu będzie wymagał dalszej analizy.
+
+Zauważyłem też wiele podgrafów składających się jedynie z postaci.
+Dodatkowo często postaci te nie mają relacji do innych węzłów (średnia wielkość: 1,02 węzła).
+Tego typu dane można też łatwo rozdzielić między maszynami.
+
+
+# APOC
+
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
