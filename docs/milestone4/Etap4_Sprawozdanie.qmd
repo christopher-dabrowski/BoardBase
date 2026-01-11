@@ -320,6 +320,15 @@ Wygenerowane dane przestrzenne dodałem do węzłów skryptem [`add_spatial_data
 Zastanawiało mnie czy w okolicy siedzib danych rodów było średniej więcej bitew niż w innych.
 Przygotowałem zapytanie [`battles_near_house_seats.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/battles_near_house_seats.cypher), które znajduje bitwy w zadanym promieniu od siedzib rodów i agreguje ich średnią oraz najbliższą odległość.
 
+Wcześniej analizowałem dane związane z bitwą _Battle of Castle Black_.
+Uznałem, że warto sprawdzić czy rody z okolicznymi siedzibami brały udział w tej bitwie.
+Napisałem w tym celu zapytanie [`house_seats_near_battle.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/house_seats_near_battle.cypher).
+Wykorzystałem w nim funkcję odległości `point.distance`.
+
+Żeby zobaczyć wszystkie bitwy, które miały miejsce na Północy (_The North_),
+eksperymentalnie wyznaczyłem przybliżony prostokąt ograniczający ten region.
+Następnie korzystając z funkcji przestrzennej `point.withinBBox()` wylistowałem chronologicznie bitwy w tym obszarze w zapytaniu [`battles_in_bounding_box.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/battles_in_bounding_box.cypher).
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
