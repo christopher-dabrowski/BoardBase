@@ -447,6 +447,22 @@ Wizualizacje wybranych ciekawych procedur _APOC_
 
 :::
 
+# Wnioski
+
+Bazy grafowe są zdecydowanie różne od innych rodzajów baz, z którymi miałem do tej pory styczność.
+Pozwalają na znacznie bardziej naturalne/intucyjne oddanie zależności i infoformacji z żeczywistego świata.
+Sądzę, że przedstawianie danych w postaći węzłów i relacji jest znacznie bardziej intuicyjne model relacyjny czy dokumentowy.
+
+Struktura grafu ma bardzo istotny wpływ na wydajność zapytań.
+Myślę, że w bazach grafowych szczególnie ważne jest optymalizowanie struktury bazy do zadanego problemu.
+Sądzę, że bardzo łatwo jest spowodować, że baza grafowa będzie bardzo wolna przez niedobrze przemyślaną struktórę i zapytania. \
+Znajomość i biegłość z algorytmów grafowych i matematycznej teorii grafów na pewno jest sporym atutem w pracy z bazami tego typu.
+
+Wizualizacje danych przychodzą naturalnie w bazie grafowej i pozwalają na skuteczne analizowanie niektórych problemów.
+
+Ogólnie uważam, że bazy grafowe są bardzo potężnym narzędziem, które nadaje się do rozwiązywania konkretnych problemów.
+Ich skuteczna obsługa wymaga jednak sporej wiedzy i przemyślanego podejścia.
+
 # Źródła {.unnumbered}
 
 ::: {#refs}
