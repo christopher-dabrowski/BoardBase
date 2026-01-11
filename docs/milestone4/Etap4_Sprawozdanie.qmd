@@ -406,6 +406,11 @@ Posortowałem mosty według wielkości mniejszego podgrafu po usunięciu mostu.
 Niestety nawet w najlepszym przypadku był to podział podgrafu na podgrafy o 2143 i 7 węzłach.
 Być może w danych produkcyjnych podgrafy po usunięciu mostów byłyby większe, ale dla aktualnych wyników nie jest to dobry kandydat na podział bazy.
 
+Przeanalizowałem też węzły przegubowe w skrypcie [`articulation_points.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/production-analysis/articulation_points.cypher).
+Węzły o najwyższym stopniu (liczbie relacji) to największe rody.
+Dają one potencjał na rozdzielenie bazy na maszyny lub kopie danych do odczuty skupione w ramach jednego dużego rodu.
+Możliwe, że spora część zapytań będzie dotyczyła jednego rodu, ale należałoby to zweryfikować.
+
 # APOC
 
 
