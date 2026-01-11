@@ -399,6 +399,13 @@ Tego typu dane można też łatwo rozdzielić między maszynami.
 
 Podejrzewam, że nawet w znacznie większym zbiorze danych występowałby takie same trendy.
 
+W podobny sposób odnalazłem mosty w mojej bazie w skrypcie [`bridges.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/production-analysis/bridges.cypher).
+Miałem nadzieję znaleźć mosty łączące duże części grafu.
+Tego typu luźno połączone części grafu byłyby dobrą podstawą do podziału danych między maszyny. \
+Posortowałem mosty według wielkości mniejszego podgrafu po usunięciu mostu.
+Niestety nawet w najlepszym przypadku był to podział podgrafu na podgrafy o 2143 i 7 węzłach.
+Być może w danych produkcyjnych podgrafy po usunięciu mostów byłyby większe, ale dla aktualnych wyników nie jest to dobry kandydat na podział bazy.
+
 # APOC
 
 
