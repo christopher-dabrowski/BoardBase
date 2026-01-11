@@ -306,6 +306,9 @@ Utworzyłem tą relację i zaktualizowałem zapytanie w skrypcie [`optimized_mos
 
 # Dane przestrzenne
 
+Funkcje przestrzenne pozwalają na wyszukiwanie nie tylko na podstawie relacji między węzłami grafu, ale też na podstawie dwu, lub rzy wymiarowego położenia w systemie kartezjańskim lub WGS 84 @neo4j:spatial-functions.
+Możliwe jest też korzystanie z danych przestrzennych w połączeniu z klasycznymi algorytmami przeszukiwania grafów, takimi jak algorytm Dijkstry @lyonwj:spatial-search-functionality-with-neo4j.
+
 Mój zbiór danych ani rozszerzenie nie zawierają danych przestrzennych.
 Chciałem dodać dane o lokalizacji do bitew.
 Żeby dane mogły mieć podstawę w geografii świata powieści, poprosiłem model \acr{AI} o utworzenie pliku rozwijającego moje dane o bitwach o współrzędne geograficzne w [konwersacji](https://gemini.google.com/share/0875649e3e7a). \
@@ -328,6 +331,12 @@ Wykorzystałem w nim funkcję odległości `point.distance` @neo4j:spatial-funct
 Żeby zobaczyć wszystkie bitwy, które miały miejsce na Północy (_The North_),
 eksperymentalnie wyznaczyłem przybliżony prostokąt ograniczający ten region.
 Następnie korzystając z funkcji przestrzennej `point.withinBBox()` @neo4j:spatial-functions wylistowałem chronologicznie bitwy w tym obszarze w zapytaniu [`battles_in_bounding_box.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/battles_in_bounding_box.cypher).
+
+Wydajność zapytań przestrzennych może stanowić problem, szczególnie jeśli, tak jak w przypadku moich zapytań, nie występuje relacja między różnymi rodzajami węzłów, które są używane w zapytaniu.
+Prowadzi to do konieczności przeszukania wszystkich możliwych kombinacji węzłów, co dla dużej bazy byłoby bardzo wolne. \
+Pomocne w rozwiązaniu problemów z wydajnością mogą być indeksy `POINT` @neo4j:manage-indexes i uwzględnienie relacji w strukturze grafu, które pozowlą ograniczyć przeszukiwane węzły.
+
+<!-- TODO: Dodać zapytanie typu Shortest paths -->
 
 # Źródła {.unnumbered}
 
