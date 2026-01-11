@@ -5,5 +5,5 @@ MATCH (b:Battle)
 WHERE
   b.location IS NOT NULL AND
   point.withinBBox(b.location, northRegionLowerLeft, northRegionUpperRight)
-RETURN b.name, b.year, b.location.latitude AS lat, b.location.longitude AS lon
+RETURN b.name, b.year, b.location.latitude, b.location.longitude
 ORDER BY b.year;
