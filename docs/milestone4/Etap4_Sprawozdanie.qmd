@@ -397,6 +397,7 @@ Zauważyłem też wiele podgrafów składających się jedynie z postaci.
 Dodatkowo często postaci te nie mają relacji do innych węzłów (średnia wielkość: 1,02 węzła).
 Tego typu dane można też łatwo rozdzielić między maszynami.
 
+Podejrzewam, że nawet w znacznie większym zbiorze danych występowałby takie same trendy.
 
 # APOC
 
