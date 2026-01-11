@@ -312,9 +312,11 @@ Chciałem dodać dane o lokalizacji do bitew.
 Nie udało mi się pobrać pliku \acr{CSV}, ale otrzymałem skrypt do przygotowania danych.
 Lekko go zmieniłem, ponieważ uznałem, że wystarczą mi tylko kolumny `name`, `latitude` i `longitude`.
 Dostosowałem też ścieżki.
-Skrypt zapisałem jako [`add_coordinates.py`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/add_coordinates.py) i uruchomiłem generujac plik \acr{CSV} z danymi przestrzennymi.
+Skrypt zapisałem jako [`add_coordinates.py`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/add_coordinates.py) i uruchomiłem generujac plik \acr{CSV} z danymi przestrzennymi. \
+Kontujac [konwersację z modelem](https://gemini.google.com/share/0875649e3e7a) \acr{AI}, wygenerowałem dane przestrzenne dla siedzib rodów (`Seat`).
 
 Wygenerowane dane przestrzenne dodałem do węzłów skryptem [`add_spatial_data.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/spatial/add_spatial_data.cypher).
+
 
 # Źródła {.unnumbered}
 
