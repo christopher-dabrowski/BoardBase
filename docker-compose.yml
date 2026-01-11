@@ -78,7 +78,9 @@ services:
     entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rsmtg"]
 
   neo4j:
-    image: neo4j:2025.11.2
+    build:
+      context: ./neo4j
+      dockerfile: Dockerfile
     volumes:
       - neo4j-data:/data
       - neo4j-logs:/logs
