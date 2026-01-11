@@ -6,7 +6,7 @@ RETURN
   s.name AS seat,
   h.name AS house,
   count(b) AS battlesNearby,
-  round(avg(distance), 2) AS averageDistance,
-  round(min(distance), 2) AS closestBattle
+  avg(distance) AS averageDistance,
+  min(distance) AS closestBattle
 ORDER BY battlesNearby DESC
 LIMIT 10;
