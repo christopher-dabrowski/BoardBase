@@ -336,6 +336,12 @@ Wydajność zapytań przestrzennych może stanowić problem, szczególnie jeśli
 Prowadzi to do konieczności przeszukania wszystkich możliwych kombinacji węzłów, co dla dużej bazy byłoby bardzo wolne. \
 Pomocne w rozwiązaniu problemów z wydajnością mogą być indeksy `POINT` @neo4j:manage-indexes i uwzględnienie relacji w strukturze grafu, które pozowlą ograniczyć przeszukiwane węzły.
 
+Do zalet zapytań przestrzennych należy łatwość ich stosowania.
+W przeciwieństwie do poprzednich \acr{DBMS}, które badałem, Neo4j domyślnie wspiera zapytania tego typu nawet bez _APOC_.
+
+Sądzę, że wadą może być to, że łatwo napisać zapytanie przestrzenne, które będzie mało wydajne, przez to, że będzie wymagało analizy wszystkich węzłów danego typu.
+Da się temu zapobiegać przez odpowiednią strukturę grafu, ale nie jest to łatwe.
+
 <!-- TODO: Dodać zapytanie typu Shortest paths -->
 
 # Źródła {.unnumbered}
