@@ -344,7 +344,8 @@ W przeciwieństwie do poprzednich \acr{SZBD}, które badałem, Neo4j domyślnie 
 Sądzę, że wadą może być to, że łatwo napisać zapytanie przestrzenne, które będzie mało wydajne, przez to, że będzie wymagało analizy wszystkich węzłów danego typu.
 Da się temu zapobiegać przez odpowiednią strukturę grafu, ale nie jest to łatwe.
 
-<!-- TODO: Dodać zapytanie typu Shortest paths -->
+Za zapytanie przestrzenne może być też uznane wyszukiwanie najkrótszej ścieżki po węzłach grafu.
+Przetestowałem zastosowanie algorytmu Dijkstry do tego w pliku [`shortest_path.cypher`](https://github.com/christopher-dabrowski/BoardBase/tree/main/neo4j/apoc).
 
 # Procedury
 
@@ -425,6 +426,26 @@ Ponieważ wydała się bardzo przydatna korzystałem z niej już w skryptach.
 
 Procedury z _APOC_ były kluczowe nawet do postawowych operacji, takich jak wczytanie danych z plików \acr{JSON}.
 Co ciekawe wczytywanie danych z plików \acr{CSV} jest dostępne domyślnie, jednak wydaje mi się, że stosunkowo niedawno zostało rozbudowane o przydante funkcje, ponieważ dokumentacja `apoc.load.csv` wspomina o brakujących możliwościach `LOAD CSV`, które jednak w większości wyglądają aktualnie na dostępne @neo4j:apoc-load-csv @neo4j:load-csv.
+
+Wypróbowałem też kilka innych procedur z _APOC_, które wydały mi się ciekawe.
+
+- `apoc.cypher.run` w [`dynamic_cypher.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/apoc/dynamic_cypher.cypher) do dynamicznie tworzonych i parametryzowanych zapytań,
+- `apoc.text.jaroWinklerDistance` w [`fuzzy_search.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/apoc/fuzzy_search.cypher) do wyszukiwania postaci z podobnymi nazwami pomimo literówek. Próbowałem to osiągnąć wcześniej z indeksem pełnotekstowym, jednak dopiero to podejście zadziałało,
+- `apoc.meta.graph` i `apoc.meta.stats` w [`graph_schema.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/apoc/graph_schema.cypher) do analizy schematu i statystyk grafu,
+- `apoc.path.subgraphNodes` w [`nodes_within_distance.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/apoc/nodes_within_distance.cypher) do znajdowania węzłów w określonej odległości od danego węzła,
+- `apoc.algo.dijkstra` w [`shortest_path.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/apoc/shortest_path.cypher) do znalezienia ścieżki między węzłami.
+
+Wizualizacje ciekawych wyników ilustruję na @fig-apoc-wizualizations.
+
+::: {#fig-apoc-wizualizations layout="[50, -5, 50]"}
+
+![Shemat bazy](img/graph_schema.png)
+
+![Scieżka między John'em Snow a Tyrion'em Lanister](img/john_to_tyrion_path.png)
+
+Wizualizacje wybranych ciekawych procedur _APOC_
+
+:::
 
 # Źródła {.unnumbered}
 
