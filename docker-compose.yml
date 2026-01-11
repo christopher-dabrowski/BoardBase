@@ -88,7 +88,7 @@ services:
       - ./neo4j/data:/import:ro
     environment:
       - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
-      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
       # - NEO4J_CONFIG_FILE_CHARSET=utf8
     ports:
       - "7474:7474"
