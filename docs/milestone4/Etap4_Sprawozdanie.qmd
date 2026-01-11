@@ -33,7 +33,7 @@ Nie został on jednak wykorzystany w bazowym zbiorze _Game of Graphs_ @github:ga
 
 Przygotowanie bazy danych i wczytanie wstępnych danych.
 
-## Instalacja
+## Instalacja {#sec-neo4j-installation}
 
 Wybrałem wersję Neo4j _Community Edition_, ponieważ jest ona darmowa @neo4j:editions. Nie potrzebuję funkcji dostępnych w wersji _Enterprise Edition_ @neo4j:editions.
 
@@ -413,6 +413,18 @@ Możliwe, że spora część zapytań będzie dotyczyła jednego rodu, ale nale�
 
 # APOC
 
+Już przy instalacji i konfiguracji (@sec-neo4j-installation) Neo4j natrafiłem na bibliotekę _APOC_.
+Ponieważ wydała się bardzo przydatna korzystałem z niej już w skryptach.
+
+- `apoc.load.jsonArray` w [`got-import.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/got-import.cypher) i [`import_books.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_books.cypher),
+- `apoc.convert.toMap` w [`got-import.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/got-import.cypher) i [`import_books.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_books.cypher),
+- `apoc.map.clean` i `apoc.map.fromPairs` w [`got-import.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/got-import.cypher) i [`import_books.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_books.cypher),
+- `apoc.util.validatePredicate` w [`import_battles.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/import_battles.cypher),
+- `apoc.path.subgraphNodes` w [`most_descendants.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/queries/most_descendants.cypher),
+- `apoc.load.json` w [`playground.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/importData/playground.cypher).
+
+Procedury z _APOC_ były kluczowe nawet do postawowych operacji, takich jak wczytanie danych z plików \acr{JSON}.
+Co ciekawe wczytywanie danych z plików \acr{CSV} jest dostępne domyślnie, jednak wydaje mi się, że stosunkowo niedawno zostało rozbudowane o przydante funkcje, ponieważ dokumentacja `apoc.load.csv` wspomina o brakujących możliwościach `LOAD CSV`, które jednak w większości wyglądają aktualnie na dostępne @neo4j:apoc-load-csv @neo4j:load-csv.
 
 # Źródła {.unnumbered}
 
