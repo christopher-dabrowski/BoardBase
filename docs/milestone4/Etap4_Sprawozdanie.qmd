@@ -386,7 +386,7 @@ Skryptami w pliku [`disconnected_subgraphs.cypher`](https://github.com/christoph
 | Person, House | 1 | 2 | 0 | 2 | 2 |
 | Book, Author | 1 | 15 | 0 | 15 | 15 |
 
-: Statystyki spójnych podgrafów w bazie {#tbl-disconnected-subgraphs-stats}
+: Statystyki spójnych podgrafów w bazie {#tbl-disconnected-subgraphs-stats tbl-colwidths="[30, 20, 15, 15, 10, 10]"}
 
 Z mojej analizy wynika, że informacje o książkach i autorach nie są powiązane z resztą grafu.
 Dane te więc można łatwo umieścić na oddzielnej maszynie.
