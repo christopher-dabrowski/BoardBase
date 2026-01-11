@@ -163,10 +163,12 @@ Traktowałem mój główny zbiór danych jako właściwą listę postaci, domów
 Żeby to osiągnąć użyłem `MATCH` zamiast `MERGE` przy wyszukiwaniu istniejących węzłów.
 Dodałem też walidację, korzystając z `apoc.util.validatePredicate` na wypadek gdyby nazwy różniły się między zbiorami.
 
+::: {#rem-custom-king-names-import}
 Dane w pliku \acr{CSV} posiadały niestandardowy format wymienienia wielu postaci.
 W kolumnach `attacker_king` i `defender_king`, w przypadku uczestnictwa kilku władców, różni królowie mieli podane najpierw imiona oddzielone `/`, a potem wspólne nazwisko. Przykładowo `Joffrey/Tommen Baratheon` oznaczało udział Joffrey'a Baratheona i Tommena Baratheona.
 Wymagało to dedykowanej logiki oddzielania postaci.
 W pozostałych kolumnach, z wieloma wartościami wartości, były oddzielone przecinkami.
+:::
 
 Dostosowania wymagało też powiązanie nazw domów.
 W pliku \acr{CSV} nazwy domów były krótkie np. `Lannister`, natomiast w bazowych danych były one pełne, np. `House Lannister of Casterly Rock`.
@@ -343,6 +345,28 @@ Sądzę, że wadą może być to, że łatwo napisać zapytanie przestrzenne, kt
 Da się temu zapobiegać przez odpowiednią strukturę grafu, ale nie jest to łatwe.
 
 <!-- TODO: Dodać zapytanie typu Shortest paths -->
+
+# Procedury
+
+Procedury w Neo4j pozwalają na wykonywanie w ramach zapytań Cypher kodu napisanego w Javie i prawdopodobnie w innych językach \acr{JVM}.
+Dzięki temu można rozszerzyć możliwości zapytań o logikę, która byłaby trudna lub niemożliwa do wyrażenia w Cypher @neo4j:user-defined-procedures. \
+W porównaniu do procedur w bazach relacyjnych nie są pisane w języku zapytań, a w innym języku programowania.
+Dostarcza to zupełnie innych możliwości, które wykraczają poza podstawowy język bazy. \
+Podoba mi się to podejście, ponieważ czuję się znacznie bieglej w języku Java niż w SQL czy Cypher.
+
+Przy imporcie danych bitew imiona królów były czasem w nietypowym formacie (@rem-custom-king-names-import).
+Wymagało to napisania dedykowanej logiki parsowania w Cypher.
+Zdecydowanie łatwiej jest mi wyrazić taką logikę w Javie.
+Chcę też ukryć złożoność tej logiki w moim kodzie importu. \
+Z tych powodów przygotowałem moją własną procedurę [`ParseKingNames`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/custom-procedures/neo4j-procedure-template-2025.x/src/main/java/pw/ParseKingNames.java) która realizuję tą logikę.
+
+Projekt Java z kodem procedury bazowałem na oficjalnym szablonie @github:neo4j-procedure-template,
+do którego dodałem moją procedurę.
+Żeby wczytać procedurę do bazy należy skompilować projekt do \acr{JAR} i umieścić go w katalogu `/plugins` @neo4j:docker-plugins.
+Zrealizowałem to tworząc dedykowany obraz Docker w pliku [`Dockerfile`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/Dockerfile).
+Do uruchomienia kodu z projektu wymagane było też dodanie przestrzeni nazw w pliku konfiguracyjnym [`neo4j.conf`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/conf/neo4j.conf).
+
+Po przygotowaniu procedury i wgraniu jej do bazy przetestowałem jej działanie w pliku [`parse_king_names.cypher`](https://github.com/christopher-dabrowski/BoardBase/blob/main/neo4j/custom-procedures/parse_king_names.cypher).
 
 # Źródła {.unnumbered}
 
