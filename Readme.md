@@ -2,6 +2,8 @@
 
 [![Conventional Commits](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml/badge.svg?branch=main)](https://github.com/christopher-dabrowski/BoardBase/actions/workflows/conventional-commits.yaml)
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/christopher-dabrowski/BoardBase?style=for-the-badge&color=red)
+
 ![Static Badge](https://img.shields.io/badge/PostgreSQL-18.0-%234169E1?style=for-the-badge&logo=postgresql&logoColor=%234A77FF&color=%234169E1)
 ![Static Badge](https://img.shields.io/badge/Microsoft%20SQL%20Server-2022-%230065b1?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/MongoDB-8.2.2-%2347A248?style=for-the-badge&logo=mongodb)
