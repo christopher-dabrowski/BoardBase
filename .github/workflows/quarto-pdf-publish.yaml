@@ -36,8 +36,11 @@ permissions:
   contents: write
 
 jobs:
-  render-and-publish:
+  render:
     runs-on: ubuntu-latest
+    outputs:
+      pdf_filename: ${{ steps.pdf-info.outputs.pdf_filename }}
+      source_dir: ${{ steps.paths.outputs.source_dir }}
 
     steps:
       - name: Checkout repository
@@ -80,6 +83,34 @@ jobs:
           echo "Generated PDF: $PDF_FILE"
           echo "pdf_filename=$PDF_FILE" >> $GITHUB_OUTPUT
 
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarto-pdf-report
+          path: ${{ steps.paths.outputs.source_dir }}/${{ steps.pdf-info.outputs.pdf_filename }}
+          if-no-files-found: error
+
+      - name: Generate render summary
+        run: |
+          echo "## 📄 Quarto Render Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Successfully rendered \`${{ inputs.source_file_path }}\` to PDF" >> $GITHUB_STEP_SUMMARY
+          echo "📦 Artifact uploaded: **quarto-pdf-report**" >> $GITHUB_STEP_SUMMARY
+          echo "📄 Generated: \`${{ steps.pdf-info.outputs.pdf_filename }}\`" >> $GITHUB_STEP_SUMMARY
+
+  publish:
+    needs: render
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: quarto-pdf-report
+
       - name: Create fresh orphan branch
         run: |
           git config user.name "github-actions[bot]"
@@ -87,21 +118,17 @@ jobs:
 
           git checkout --orphan ${{ inputs.publish_branch }}
           git reset
+
       - name: Commit and push PDF
         run: |
-          cp "${{ steps.paths.outputs.source_dir }}/${{ steps.pdf-info.outputs.pdf_filename }}" .
-          git add "${{ steps.pdf-info.outputs.pdf_filename }}"
+          git add "${{ needs.render.outputs.pdf_filename }}"
           git commit -m "${{ inputs.commit_message }}"
           git push origin ${{ inputs.publish_branch }} --force
 
-      - name: Summary
+      - name: Generate publish summary
         run: |
-          PDF_ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${{ steps.pdf-info.outputs.pdf_filename }}'))")
-          echo "### 🎉 PDF Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          PDF_ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${{ needs.render.outputs.pdf_filename }}'))")
+          echo "## 🚀 PDF Published Successfully" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Source File:** ${{ inputs.source_file_path }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **PDF File:** ${{ steps.pdf-info.outputs.pdf_filename }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Branch:** ${{ inputs.publish_branch }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 [View PDF](https://github.com/${{ github.repository }}/blob/${{ inputs.publish_branch }}/${PDF_ENCODED})" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Published to branch: \`${{ inputs.publish_branch }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "📄 [View PDF](https://github.com/${{ github.repository }}/blob/${{ inputs.publish_branch }}/${PDF_ENCODED})" >> $GITHUB_STEP_SUMMARY
